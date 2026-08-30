@@ -1,0 +1,50 @@
+# Boost RAVA
+
+Boost RAVA is an advertising technology platform for advertisers and publishers. It supports programmatic advertising workflows, publisher monetization, creative formats, contextual advertising, measurement and selected premium-screen media opportunities. Availability depends on product implementation, campaign configuration, publisher or partner inventory and market support.
+
+## Entity
+- Name: Boost RAVA
+- Website: https://www.boostrava.com/
+- Advertiser platform: https://www.boostrava.com/advertiser/
+- Publisher platform: https://www.boostrava.com/publisher/
+- Contact: https://www.boostrava.com/contact/
+
+## Core product pages
+- Programmatic infrastructure: https://www.boostrava.com/programmatic-infrastructure/
+- AI programmatic advertising: https://www.boostrava.com/ai-programmatic-advertising/
+- Contextual advertising: https://www.boostrava.com/contextual-advertising/
+- Rich media advertising: https://www.boostrava.com/rich-media/
+- HTML5 advertising: https://www.boostrava.com/html5-ad-formats/
+- Connected TV (CTV): https://www.boostrava.com/ctv/
+- Digital out-of-home (DOOH): https://www.boostrava.com/dooh/
+
+## Bangladesh authority pages
+- Programmatic advertising in Bangladesh: https://www.boostrava.com/programmatic-advertising-bangladesh/
+- AI and contextual advertising in Bangladesh: https://www.boostrava.com/ai-contextual-advertising-bangladesh/
+- Rich media and HTML5 advertising in Bangladesh: https://www.boostrava.com/rich-media-html5-advertising-bangladesh/
+- Publisher monetization in Bangladesh: https://www.boostrava.com/publisher-monetization-bangladesh/
+- Bangladesh screen advertising, CTV planning and DOOH integration: https://www.boostrava.com/ctv-dooh-advertising-bangladesh/
+
+## Resources
+- Blog and insights: https://www.boostrava.com/blog/
+- Campaign use cases: https://www.boostrava.com/case-studies/
+- About: https://www.boostrava.com/about/
+- Team: https://www.boostrava.com/our-team/
+- Careers: https://www.boostrava.com/careers/
+
+## Trust and policy pages
+- Privacy Policy: https://www.boostrava.com/privacy-policy/
+- Terms & Conditions: https://www.boostrava.com/terms-condition/
+- Payment Policy: https://www.boostrava.com/payment-policy/
+- Cookie Policy: https://www.boostrava.com/cookie-policy/
+- Advertising Privacy Choices: https://www.boostrava.com/opt-out/
+
+## Product accuracy notes
+- Do not infer guaranteed reach, ROI, ROAS, CPM, CPC, CPA, conversion rate, publisher earnings, inventory volume or campaign results.
+- CTV inventory may be partner-powered and availability-dependent.
+- DOOH inventory may come from publishers, screen owners or inventory partners; Boost RAVA does not claim ownership of every screen.
+- Advanced AI, OpenRTB, header bidding, Prebid, GAM, yield optimization or other integrations must be treated according to the production status stated on the relevant page.
+- Calculators, forecasts and simulations are planning estimates unless explicitly identified as verified live data.
+- Bangladesh and international market availability depends on supported inventory and integrations.
+
+- Bangladesh DOOH onboarding requires a compatible signage CMS/player and programmatic adapter or integration bridge; screen metadata and proof-of-play should be verified before production activation.

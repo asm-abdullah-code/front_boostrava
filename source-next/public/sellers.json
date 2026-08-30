@@ -1,0 +1,12 @@
+{
+  "version": "1.0",
+  "contact_email": "support@boostrava.com",
+  "sellers": [
+    {
+      "seller_id": "pub-2",
+      "seller_type": "INTERMEDIARY",
+      "name": "Boost Rava Ads Network",
+      "domain": "boostrava.com"
+    }
+  ]
+}

@@ -1,0 +1,135 @@
+<style>
+  .br-site-header{position:sticky;top:0;z-index:80;background:rgba(255,255,255,.94);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(15,23,42,.08);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+  .br-header-inner{max-width:1280px;margin:0 auto;padding:0 24px;height:74px;display:flex;align-items:center;gap:26px}
+  .br-logo{display:flex;align-items:center;flex:0 0 auto;text-decoration:none}
+  .br-logo img{display:block;width:172px;height:34px;object-fit:contain;object-position:left center}
+  .br-desktop-nav{display:flex;align-items:center;justify-content:center;gap:4px;flex:1;min-width:0}
+  .br-nav-link,.br-nav-summary{display:flex;align-items:center;gap:6px;padding:10px 11px;border-radius:10px;color:#334155;text-decoration:none;font-size:14px;line-height:1;font-weight:700;white-space:nowrap;transition:background .18s ease,color .18s ease,transform .18s ease}
+  .br-nav-link:hover,.br-nav-summary:hover,.br-nav-group[open]>.br-nav-summary{background:#eef2ff;color:#4338ca}
+  .br-nav-link:focus-visible,.br-nav-summary:focus-visible,.br-action:focus-visible,.br-mobile-summary:focus-visible,.br-mobile-link:focus-visible{outline:3px solid rgba(99,102,241,.28);outline-offset:2px}
+  .br-nav-group{position:relative}
+  .br-nav-group>summary{list-style:none;cursor:pointer}
+  .br-nav-group>summary::-webkit-details-marker{display:none}
+  .br-chevron{width:14px;height:14px;transition:transform .18s ease}
+  .br-nav-group[open] .br-chevron{transform:rotate(180deg)}
+  .br-dropdown{position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%);width:590px;padding:14px;background:#fff;border:1px solid #e2e8f0;border-radius:18px;box-shadow:0 22px 60px rgba(15,23,42,.16);display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .br-dropdown.br-bd{width:520px}
+  .br-drop-link{display:block;padding:12px 13px;border-radius:12px;text-decoration:none;color:#0f172a;transition:background .18s ease,transform .18s ease}
+  .br-drop-link:hover{background:#f8fafc;transform:translateY(-1px)}
+  .br-drop-title{display:block;font-weight:800;font-size:14px;color:#0f172a;margin-bottom:3px}
+  .br-drop-copy{display:block;font-size:12px;line-height:1.45;color:#64748b}
+  .br-header-actions{display:flex;align-items:center;gap:9px;flex:0 0 auto}
+  .br-action{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:0 14px;border-radius:10px;text-decoration:none;font-size:13px;font-weight:800;transition:transform .18s ease,box-shadow .18s ease,background .18s ease}
+  .br-action:hover{transform:translateY(-1px)}
+  .br-login{border:1px solid #c7d2fe;color:#4338ca;background:#fff}
+  .br-login:hover{background:#eef2ff}
+  .br-register{color:#fff;background:linear-gradient(135deg,#4f46e5 0%,#7c3aed 56%,#db2777 100%);box-shadow:0 10px 24px rgba(79,70,229,.22)}
+  .br-mobile-nav{display:none;margin-left:auto}
+  .br-mobile-nav>summary{list-style:none;cursor:pointer}
+  .br-mobile-nav>summary::-webkit-details-marker{display:none}
+  .br-mobile-summary{width:44px;height:44px;border:1px solid #e2e8f0;border-radius:12px;background:#fff;display:grid;place-items:center;color:#0f172a}
+  .br-mobile-summary svg{width:22px;height:22px}
+  .br-mobile-panel{position:absolute;left:16px;right:16px;top:70px;max-height:calc(100vh - 88px);overflow:auto;background:#fff;border:1px solid #e2e8f0;border-radius:18px;box-shadow:0 22px 60px rgba(15,23,42,.18);padding:12px}
+  .br-mobile-link{display:flex;align-items:center;justify-content:space-between;padding:12px 13px;border-radius:11px;color:#0f172a;text-decoration:none;font-size:14px;font-weight:750}
+  .br-mobile-link:hover{background:#f8fafc;color:#4338ca}
+  .br-mobile-section{padding:10px 11px 6px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:900;color:#64748b}
+  .br-mobile-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;padding:10px 2px 2px}
+  @media(max-width:1120px){.br-desktop-nav,.br-header-actions{display:none}.br-mobile-nav{display:block}.br-header-inner{height:66px;padding:0 16px;gap:16px}.br-logo img{width:150px;height:30px}}
+  @media(max-width:520px){.br-mobile-panel{left:10px;right:10px}.br-mobile-actions{grid-template-columns:1fr}.br-logo img{width:142px;height:29px}}
+  @media(prefers-reduced-motion:reduce){.br-site-header *{scroll-behavior:auto!important;transition:none!important}}
+</style>
+<header class="br-site-header" aria-label="Primary site header">
+  <div class="br-header-inner">
+    <a class="br-logo" href="/" aria-label="Boost RAVA home">
+      <img src="/assets/images/logo/boost-rava-header-logo.png" alt="Boost RAVA" width="1052" height="205" decoding="async" />
+    </a>
+
+    <nav class="br-desktop-nav" aria-label="Primary navigation">
+      <a class="br-nav-link" href="/advertiser/">Advertisers</a>
+      <a class="br-nav-link" href="/publisher/">Publishers</a>
+
+      <details class="br-nav-group" name="br-primary-menu">
+        <summary class="br-nav-summary">Solutions
+          <svg class="br-chevron" aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="m5 7.5 5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </summary>
+        <div class="br-dropdown">
+          <a class="br-drop-link" href="/programmatic-infrastructure/"><span class="br-drop-title">Programmatic Infrastructure</span><span class="br-drop-copy">Ad serving, RTB, bidding and delivery architecture.</span></a>
+          <a class="br-drop-link" href="/ai-programmatic-advertising/"><span class="br-drop-title">AI Programmatic</span><span class="br-drop-copy">Planning, intelligence and optimization workflows.</span></a>
+          <a class="br-drop-link" href="/contextual-advertising/"><span class="br-drop-title">Contextual Advertising</span><span class="br-drop-copy">Content-led relevance and privacy-aware targeting.</span></a>
+          <a class="br-drop-link" href="/rich-media/"><span class="br-drop-title">Rich Media</span><span class="br-drop-copy">Interactive, high-impact creative experiences.</span></a>
+          <a class="br-drop-link" href="/html5-ad-formats/"><span class="br-drop-title">HTML5 Advertising</span><span class="br-drop-copy">Animated and interactive digital creative.</span></a>
+          <a class="br-drop-link" href="/ctv/"><span class="br-drop-title">CTV Advertising</span><span class="br-drop-copy">Partner-powered connected TV opportunities.</span></a>
+          <a class="br-drop-link" href="/dooh/"><span class="br-drop-title">DOOH Advertising</span><span class="br-drop-copy">Digital outdoor screens, booking and monetization.</span></a>
+          <a class="br-drop-link" href="/case-studies/"><span class="br-drop-title">Use Cases</span><span class="br-drop-copy">Planning examples and campaign applications.</span></a>
+        </div>
+      </details>
+
+      <details class="br-nav-group" name="br-primary-menu">
+        <summary class="br-nav-summary">Bangladesh
+          <svg class="br-chevron" aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="m5 7.5 5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </summary>
+        <div class="br-dropdown br-bd">
+          <a class="br-drop-link" href="/programmatic-advertising-bangladesh/"><span class="br-drop-title">Programmatic Advertising Bangladesh</span><span class="br-drop-copy">Local market programmatic advertising guide.</span></a>
+          <a class="br-drop-link" href="/ai-contextual-advertising-bangladesh/"><span class="br-drop-title">AI &amp; Contextual Bangladesh</span><span class="br-drop-copy">AI and contextual advertising for Bangladesh.</span></a>
+          <a class="br-drop-link" href="/rich-media-html5-advertising-bangladesh/"><span class="br-drop-title">Rich Media &amp; HTML5 Bangladesh</span><span class="br-drop-copy">Interactive creative formats for local campaigns.</span></a>
+          <a class="br-drop-link" href="/publisher-monetization-bangladesh/"><span class="br-drop-title">Publisher Monetization Bangladesh</span><span class="br-drop-copy">Monetization pathways for Bangladesh publishers.</span></a>
+          <a class="br-drop-link" href="/ctv-dooh-advertising-bangladesh/"><span class="br-drop-title">Screen Advertising Bangladesh</span><span class="br-drop-copy">CTV planning plus DOOH screen integration and activation.</span></a>
+        </div>
+      </details>
+
+      <details class="br-nav-group" name="br-primary-menu">
+        <summary class="br-nav-summary">Resources
+          <svg class="br-chevron" aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="m5 7.5 5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </summary>
+        <div class="br-dropdown br-bd">
+          <a class="br-drop-link" href="/blog/"><span class="br-drop-title">Blog &amp; Insights</span><span class="br-drop-copy">Programmatic advertising explainers and strategy.</span></a>
+          <a class="br-drop-link" href="/about/"><span class="br-drop-title">About Boost RAVA</span><span class="br-drop-copy">Company, mission and advertising technology.</span></a>
+          <a class="br-drop-link" href="/careers/"><span class="br-drop-title">Careers</span><span class="br-drop-copy">Explore opportunities to build AdTech with us.</span></a>
+          <a class="br-drop-link" href="/our-team/"><span class="br-drop-title">Our Team</span><span class="br-drop-copy">Meet the people behind Boost RAVA.</span></a>
+        </div>
+      </details>
+
+      <a class="br-nav-link" href="/contact/">Contact</a>
+    </nav>
+
+    <div class="br-header-actions" aria-label="Account actions">
+      <a class="br-action br-login" href="https://panel.boostrava.com/#/login" target="_blank" rel="noopener noreferrer">Login</a>
+      <a class="br-action br-register" href="https://panel.boostrava.com/#/register" target="_blank" rel="noopener noreferrer">Start Advertising</a>
+    </div>
+
+    <details class="br-mobile-nav">
+      <summary class="br-mobile-summary" aria-label="Toggle navigation menu">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </summary>
+      <nav class="br-mobile-panel" aria-label="Mobile navigation">
+        <a class="br-mobile-link" href="/advertiser/">Advertisers <span>→</span></a>
+        <a class="br-mobile-link" href="/publisher/">Publishers <span>→</span></a>
+        <div class="br-mobile-section">Solutions</div>
+        <a class="br-mobile-link" href="/programmatic-infrastructure/">Programmatic Infrastructure</a>
+        <a class="br-mobile-link" href="/ai-programmatic-advertising/">AI Programmatic</a>
+        <a class="br-mobile-link" href="/contextual-advertising/">Contextual Advertising</a>
+        <a class="br-mobile-link" href="/rich-media/">Rich Media</a>
+        <a class="br-mobile-link" href="/html5-ad-formats/">HTML5 Advertising</a>
+        <a class="br-mobile-link" href="/ctv/">CTV Advertising</a>
+        <a class="br-mobile-link" href="/dooh/">DOOH Advertising</a>
+        <a class="br-mobile-link" href="/case-studies/">Use Cases</a>
+        <div class="br-mobile-section">Bangladesh</div>
+        <a class="br-mobile-link" href="/programmatic-advertising-bangladesh/">Programmatic Advertising</a>
+        <a class="br-mobile-link" href="/ai-contextual-advertising-bangladesh/">AI &amp; Contextual Advertising</a>
+        <a class="br-mobile-link" href="/rich-media-html5-advertising-bangladesh/">Rich Media &amp; HTML5</a>
+        <a class="br-mobile-link" href="/publisher-monetization-bangladesh/">Publisher Monetization</a>
+        <a class="br-mobile-link" href="/ctv-dooh-advertising-bangladesh/">Screen Advertising BD</a>
+        <div class="br-mobile-section">Company &amp; Resources</div>
+        <a class="br-mobile-link" href="/blog/">Blog &amp; Insights</a>
+        <a class="br-mobile-link" href="/about/">About</a>
+        <a class="br-mobile-link" href="/careers/">Careers</a>
+        <a class="br-mobile-link" href="/our-team/">Our Team</a>
+        <a class="br-mobile-link" href="/contact/">Contact</a>
+        <div class="br-mobile-actions">
+          <a class="br-action br-login" href="https://panel.boostrava.com/#/login" target="_blank" rel="noopener noreferrer">Login</a>
+          <a class="br-action br-register" href="https://panel.boostrava.com/#/register" target="_blank" rel="noopener noreferrer">Start Advertising</a>
+        </div>
+      </nav>
+    </details>
+  </div>
+</header>
