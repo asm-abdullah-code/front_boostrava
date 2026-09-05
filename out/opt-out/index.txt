@@ -1,0 +1,202 @@
+1:"$Sreact.fragment"
+2:I[9766,[],""]
+3:I[8924,[],""]
+5:I[4431,[],"OutletBoundary"]
+7:I[5278,[],"AsyncMetadataOutlet"]
+9:I[4431,[],"ViewportBoundary"]
+b:I[4431,[],"MetadataBoundary"]
+c:"$Sreact.suspense"
+e:I[7150,[],""]
+:HL["/_next/static/css/efa9839af6514457.css","style"]
+0:{"P":null,"b":"PqWC_napv4lWfpA-gRt3G","p":"","c":["","opt-out",""],"i":false,"f":[[["",{"children":[["slug","opt-out","oc"],{"children":["__PAGE__",{}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/efa9839af6514457.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","suppressHydrationWarning":true,"children":[["$","head",null,{"children":[["$","link",null,{"rel":"preconnect","href":"https://fonts.googleapis.com"}],["$","link",null,{"rel":"preconnect","href":"https://fonts.gstatic.com","crossOrigin":"anonymous"}],["$","link",null,{"rel":"stylesheet","href":"https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&family=Inter:wght@300;400;500;600;700;800;900&display=swap"}],["$","link",null,{"rel":"stylesheet","href":"/assets/css/19cdf6876c2cbba5.css"}],["$","link",null,{"rel":"stylesheet","href":"/assets/css/e1c551ca151c626b.css"}],["$","link",null,{"rel":"stylesheet","href":"/assets/css/30718e32e17299a4.css"}]]}],["$","body",null,{"suppressHydrationWarning":true,"children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]]}]]}],{"children":[["slug","opt-out","oc"],["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L4",null,["$","$L5",null,{"children":["$L6",["$","$L7",null,{"promise":"$@8"}]]}]]}],{},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,[["$","$L9",null,{"children":"$La"}],null],["$","$Lb",null,{"children":["$","div",null,{"hidden":true,"children":["$","$c",null,{"fallback":null,"children":"$Ld"}]}]}]]}],false]],"m":"$undefined","G":["$e",[]],"s":false,"S":true}
+f:T200f,<header class="br-site-header" aria-label="Primary site header">
+  <div class="br-header-inner">
+    <a class="br-logo" href="/" aria-label="Boost RAVA home">
+      <img src="/assets/images/logo/boost-rava-header-logo.png" alt="Boost RAVA" width="1052" height="205" decoding="async" />
+    </a>
+
+    <nav class="br-desktop-nav" aria-label="Primary navigation">
+      <a class="br-nav-link" href="/advertiser/">Advertisers</a>
+      <a class="br-nav-link" href="/publisher/">Publishers</a>
+
+      <details class="br-nav-group" name="br-primary-menu">
+        <summary class="br-nav-summary">Solutions
+          <svg class="br-chevron" aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="m5 7.5 5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </summary>
+        <div class="br-dropdown">
+          <a class="br-drop-link" href="/programmatic-infrastructure/"><span class="br-drop-title">Programmatic Infrastructure</span><span class="br-drop-copy">Ad serving, RTB, bidding and delivery architecture.</span></a>
+          <a class="br-drop-link" href="/ai-programmatic-advertising/"><span class="br-drop-title">AI Programmatic</span><span class="br-drop-copy">Planning, intelligence and optimization workflows.</span></a>
+          <a class="br-drop-link" href="/contextual-advertising/"><span class="br-drop-title">Contextual Advertising</span><span class="br-drop-copy">Content-led relevance and privacy-aware targeting.</span></a>
+          <a class="br-drop-link" href="/rich-media/"><span class="br-drop-title">Rich Media</span><span class="br-drop-copy">Interactive, high-impact creative experiences.</span></a>
+          <a class="br-drop-link" href="/html5-ad-formats/"><span class="br-drop-title">HTML5 Advertising</span><span class="br-drop-copy">Animated and interactive digital creative.</span></a>
+          <a class="br-drop-link" href="/ctv/"><span class="br-drop-title">CTV Advertising</span><span class="br-drop-copy">Partner-powered connected TV opportunities.</span></a>
+          <a class="br-drop-link" href="/dooh/"><span class="br-drop-title">DOOH Advertising</span><span class="br-drop-copy">Digital outdoor screens, booking and monetization.</span></a>
+          <a class="br-drop-link" href="/case-studies/"><span class="br-drop-title">Use Cases</span><span class="br-drop-copy">Planning examples and campaign applications.</span></a>
+        </div>
+      </details>
+
+      <details class="br-nav-group" name="br-primary-menu">
+        <summary class="br-nav-summary">Bangladesh
+          <svg class="br-chevron" aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="m5 7.5 5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </summary>
+        <div class="br-dropdown br-bd">
+          <a class="br-drop-link" href="/programmatic-advertising-bangladesh/"><span class="br-drop-title">Programmatic Advertising Bangladesh</span><span class="br-drop-copy">Local market programmatic advertising guide.</span></a>
+          <a class="br-drop-link" href="/ai-contextual-advertising-bangladesh/"><span class="br-drop-title">AI &amp; Contextual Bangladesh</span><span class="br-drop-copy">AI and contextual advertising for Bangladesh.</span></a>
+          <a class="br-drop-link" href="/rich-media-html5-advertising-bangladesh/"><span class="br-drop-title">Rich Media &amp; HTML5 Bangladesh</span><span class="br-drop-copy">Interactive creative formats for local campaigns.</span></a>
+          <a class="br-drop-link" href="/publisher-monetization-bangladesh/"><span class="br-drop-title">Publisher Monetization Bangladesh</span><span class="br-drop-copy">Monetization pathways for Bangladesh publishers.</span></a>
+          <a class="br-drop-link" href="/ctv-dooh-advertising-bangladesh/"><span class="br-drop-title">Screen Advertising Bangladesh</span><span class="br-drop-copy">CTV planning plus DOOH screen integration and activation.</span></a>
+        </div>
+      </details>
+
+      <details class="br-nav-group" name="br-primary-menu">
+        <summary class="br-nav-summary">Resources
+          <svg class="br-chevron" aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="m5 7.5 5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </summary>
+        <div class="br-dropdown br-bd">
+          <a class="br-drop-link" href="/blog/"><span class="br-drop-title">Blog &amp; Insights</span><span class="br-drop-copy">Programmatic advertising explainers and strategy.</span></a>
+          <a class="br-drop-link" href="/about/"><span class="br-drop-title">About Boost RAVA</span><span class="br-drop-copy">Company, mission and advertising technology.</span></a>
+          <a class="br-drop-link" href="/careers/"><span class="br-drop-title">Careers</span><span class="br-drop-copy">Explore opportunities to build AdTech with us.</span></a>
+          <a class="br-drop-link" href="/our-team/"><span class="br-drop-title">Our Team</span><span class="br-drop-copy">Meet the people behind Boost RAVA.</span></a>
+        </div>
+      </details>
+
+      <a class="br-nav-link" href="/contact/">Contact</a>
+    </nav>
+
+    <div class="br-header-actions" aria-label="Account actions">
+      <a class="br-action br-login" href="https://panel.boostrava.com/#/login" target="_blank" rel="noopener noreferrer">Login</a>
+      <a class="br-action br-register" href="https://panel.boostrava.com/#/register" target="_blank" rel="noopener noreferrer">Start Advertising</a>
+    </div>
+
+    <details class="br-mobile-nav">
+      <summary class="br-mobile-summary" aria-label="Toggle navigation menu">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </summary>
+      <nav class="br-mobile-panel" aria-label="Mobile navigation">
+        <a class="br-mobile-link" href="/advertiser/">Advertisers <span>→</span></a>
+        <a class="br-mobile-link" href="/publisher/">Publishers <span>→</span></a>
+        <div class="br-mobile-section">Solutions</div>
+        <a class="br-mobile-link" href="/programmatic-infrastructure/">Programmatic Infrastructure</a>
+        <a class="br-mobile-link" href="/ai-programmatic-advertising/">AI Programmatic</a>
+        <a class="br-mobile-link" href="/contextual-advertising/">Contextual Advertising</a>
+        <a class="br-mobile-link" href="/rich-media/">Rich Media</a>
+        <a class="br-mobile-link" href="/html5-ad-formats/">HTML5 Advertising</a>
+        <a class="br-mobile-link" href="/ctv/">CTV Advertising</a>
+        <a class="br-mobile-link" href="/dooh/">DOOH Advertising</a>
+        <a class="br-mobile-link" href="/case-studies/">Use Cases</a>
+        <div class="br-mobile-section">Bangladesh</div>
+        <a class="br-mobile-link" href="/programmatic-advertising-bangladesh/">Programmatic Advertising</a>
+        <a class="br-mobile-link" href="/ai-contextual-advertising-bangladesh/">AI &amp; Contextual Advertising</a>
+        <a class="br-mobile-link" href="/rich-media-html5-advertising-bangladesh/">Rich Media &amp; HTML5</a>
+        <a class="br-mobile-link" href="/publisher-monetization-bangladesh/">Publisher Monetization</a>
+        <a class="br-mobile-link" href="/ctv-dooh-advertising-bangladesh/">Screen Advertising BD</a>
+        <div class="br-mobile-section">Company &amp; Resources</div>
+        <a class="br-mobile-link" href="/blog/">Blog &amp; Insights</a>
+        <a class="br-mobile-link" href="/about/">About</a>
+        <a class="br-mobile-link" href="/careers/">Careers</a>
+        <a class="br-mobile-link" href="/our-team/">Our Team</a>
+        <a class="br-mobile-link" href="/contact/">Contact</a>
+        <div class="br-mobile-actions">
+          <a class="br-action br-login" href="https://panel.boostrava.com/#/login" target="_blank" rel="noopener noreferrer">Login</a>
+          <a class="br-action br-register" href="https://panel.boostrava.com/#/register" target="_blank" rel="noopener noreferrer">Start Advertising</a>
+        </div>
+      </nav>
+    </details>
+  </div>
+</header>
+4:["$","div",null,{"className":"page-shell brv4-page brv4-opt_out","data-source-reconstructed":"true","data-page-route":"opt-out","suppressHydrationWarning":true,"children":[[["$","style","0",{"dangerouslySetInnerHTML":{"__html":"body{margin:0;background:#020817;color:#e5e7eb;font-family:Arial,sans-serif}header,footer{padding:24px 6%;border-color:#1f2937;border-style:solid;border-width:0 0 1px}footer{border-width:1px 0 0}nav a{color:#cbd5e1;margin-right:18px;text-decoration:none}main{max-width:900px;margin:auto;padding:70px 24px}h1{font-size:42px;margin:0 0 20px}h2{margin-top:36px}p,li{color:#aeb8c7;line-height:1.8}.cta{display:inline-block;background:#2563eb;color:white;padding:12px 18px;border-radius:9px;text-decoration:none;margin-top:14px}"}}]],[["$","script","ld-0",{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"WebPage\",\"url\":\"https://www.boostrava.com/opt-out/\",\"name\":\"Advertising Privacy Choices\",\"isPartOf\":{\"@id\":\"https://www.boostrava.com/#website\"},\"about\":{\"@id\":\"https://www.boostrava.com/#organization\"}}"}}]],[["$","script","supp-schema-0",{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Organization\",\"@id\":\"https://www.boostrava.com/#organization\",\"name\":\"Boost RAVA\",\"url\":\"https://www.boostrava.com/\",\"logo\":\"https://www.boostrava.com/assets/images/logo/Logo-03.png\",\"description\":\"Boost RAVA is an advertising technology platform for advertisers and publishers.\"}"}}],["$","script","supp-schema-1",{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"WebSite\",\"@id\":\"https://www.boostrava.com/#website\",\"url\":\"https://www.boostrava.com/\",\"name\":\"Boost RAVA\",\"publisher\":{\"@id\":\"https://www.boostrava.com/#organization\"},\"inLanguage\":\"en\"}"}}],["$","script","supp-schema-2",{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://www.boostrava.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Legal & Privacy\",\"item\":\"https://www.boostrava.com/privacy-policy/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Advertising Privacy Choices\",\"item\":\"https://www.boostrava.com/opt-out/\"}]}"}}],["$","script","supp-schema-3",{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"FAQPage\",\"mainEntity\":[{\"@type\":\"Question\",\"name\":\"What are advertising privacy choices?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Advertising privacy choices are controls or requests that can affect how supported advertising technologies use cookies, identifiers or other signals, subject to the implementation and applicable law.\"}},{\"@type\":\"Question\",\"name\":\"Will every advertising signal disappear after a privacy choice?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Not necessarily. Some data may still be processed for security, fraud prevention, measurement, legal obligations or strictly necessary service functions where permitted.\"}}]}"}}]],[["$","div",null,{"dangerouslySetInnerHTML":{"__html":"$f"}}],"$L10"],"$L11","$L12","$L13","$L14"]}]
+15:I[7516,["974","static/chunks/974-4a27fba791dfb44a.js","340","static/chunks/app/%5B%5B...slug%5D%5D/page-907b8cdfb6ba6050.js"],"HeaderBehavior"]
+10:["$","$L15",null,{}]
+11:["$","nav",null,{"className":"brseo-breadcrumb","aria-label":"Breadcrumb","children":["$","ol",null,{"children":[["$","li","/-0",{"children":["$","a",null,{"href":"/","children":"Home"}]}],["$","li","/privacy-policy/-1",{"children":["$","a",null,{"href":"/privacy-policy/","children":"Legal & Privacy"}]}],["$","li","/opt-out/-2",{"children":["$","span",null,{"aria-current":"page","children":"Advertising Privacy Choices"}]}]]}]}]
+16:T7f2,<h1>Advertising Privacy Choices</h1><p>This page explains available choices related to cookies and advertising technologies used on Boost RAVA properties. The exact controls available to you can depend on your browser, device, region and the services involved.</p><h2>Browser and cookie controls</h2><p>You can manage or delete cookies through your browser settings. Blocking certain cookies may affect website functionality. Where a consent or preference control is presented, use that interface to update your choices.</p><h2>Industry opt-out resources</h2><p>Our Cookie Policy lists recognised industry resources that may provide additional advertising choices in supported regions. Those services are operated independently and their availability may vary.</p><h2>Contact us</h2><p>If you need help understanding Boost RAVA privacy choices, contact us with the relevant website, device and request details. Do not send passwords or sensitive authentication information.</p><a class="cta" href="/contact/">Contact Boost RAVA</a><section class="max-w-3xl mx-auto px-4 py-8"><h2>What this page can and cannot do</h2><p>Boost RAVA can explain the privacy and advertising choices available on its own properties. Some advertising choices are controlled by your browser, device, publisher, consent platform or another service provider, so a single request may not disable every form of advertising or measurement across the internet.</p><h2>Before you contact us</h2><p>Please include the relevant Boost RAVA property or page, your country or region, device type, browser and a short description of the choice you are trying to exercise. Do not include passwords, payment credentials or other sensitive authentication information.</p><h2>Effect of blocking technologies</h2><p>Blocking or deleting cookies and similar storage may reset preferences, sign you out of services or reduce functionality. Privacy choices can also differ by browser profile and device, so you may need to repeat them in more than one environment.</p></section>12:["$","main",null,{"children":[["$","div",null,{"dangerouslySetInnerHTML":{"__html":"$16"}}],["$","section",null,{"className":"brseo-answers","aria-labelledby":"quick-answers-opt-out","children":["$","div",null,{"className":"brseo-answers-inner","children":[["$","div",null,{"className":"brseo-answers-head","children":[["$","span",null,{"children":"Helpful answers"}],["$","h2",null,{"id":"quick-answers-opt-out","children":"Questions people ask about this topic"}],["$","p",null,{"children":"Concise answers based on Boost RAVA's stated services and availability rules."}]]}],["$","div",null,{"className":"brseo-answer-grid","children":[["$","article","0",{"children":[["$","h3",null,{"children":"What are advertising privacy choices?"}],["$","p",null,{"children":"Advertising privacy choices are controls or requests that can affect how supported advertising technologies use cookies, identifiers or other signals, subject to the implementation and applicable law."}]]}],["$","article","1",{"children":[["$","h3",null,{"children":"Will every advertising signal disappear after a privacy choice?"}],["$","p",null,{"children":"Not necessarily. Some data may still be processed for security, fraud prevention, measurement, legal obligations or strictly necessary service functions where permitted."}]]}]]}]]}]}]]}]
+17:T14cc,<footer class="br-site-footer" aria-label="Site footer">
+  <div class="br-footer-wrap">
+    <div class="br-footer-top">
+      <div class="br-footer-brand">
+        <img src="/assets/images/logo/white-logo.png" alt="Boost RAVA" width="1200" height="182" loading="lazy" decoding="async" />
+        <p>Programmatic advertising technology for advertisers, publishers and modern media environments—from digital display and interactive creative to partner-powered CTV and DOOH opportunities.</p>
+        <span class="br-footer-badge">Bangladesh • International Markets</span>
+      </div>
+
+      <div class="br-footer-col">
+        <h3 class="br-footer-title">Platform</h3>
+        <ul class="br-footer-list">
+          <li><a class="br-footer-link" href="/advertiser/">Advertiser Platform</a></li>
+          <li><a class="br-footer-link" href="/publisher/">Publisher Platform</a></li>
+          <li><a class="br-footer-link" href="/programmatic-infrastructure/">Programmatic Infrastructure</a></li>
+          <li><a class="br-footer-link" href="/ai-programmatic-advertising/">AI Programmatic</a></li>
+          <li><a class="br-footer-link" href="/contextual-advertising/">Contextual Advertising</a></li>
+        </ul>
+      </div>
+
+      <div class="br-footer-col">
+        <h3 class="br-footer-title">Creative &amp; Screens</h3>
+        <ul class="br-footer-list">
+          <li><a class="br-footer-link" href="/rich-media/">Rich Media</a></li>
+          <li><a class="br-footer-link" href="/html5-ad-formats/">HTML5 Advertising</a></li>
+          <li><a class="br-footer-link" href="/ctv/">CTV Advertising</a></li>
+          <li><a class="br-footer-link" href="/dooh/">DOOH Advertising</a></li>
+        </ul>
+      </div>
+
+      <div class="br-footer-col">
+        <h3 class="br-footer-title">Bangladesh</h3>
+        <ul class="br-footer-list">
+          <li><a class="br-footer-link" href="/programmatic-advertising-bangladesh/">Programmatic Advertising</a></li>
+          <li><a class="br-footer-link" href="/ai-contextual-advertising-bangladesh/">AI &amp; Contextual</a></li>
+          <li><a class="br-footer-link" href="/rich-media-html5-advertising-bangladesh/">Rich Media &amp; HTML5</a></li>
+          <li><a class="br-footer-link" href="/publisher-monetization-bangladesh/">Publisher Monetization</a></li>
+          <li><a class="br-footer-link" href="/ctv-dooh-advertising-bangladesh/">Screen Advertising BD</a></li>
+        </ul>
+      </div>
+
+      <div class="br-footer-col">
+        <h3 class="br-footer-title">Company &amp; Resources</h3>
+        <ul class="br-footer-list">
+          <li><a class="br-footer-link" href="/about/">About</a></li>
+          <li><a class="br-footer-link" href="/blog/">Blog &amp; Insights</a></li>
+          <li><a class="br-footer-link" href="/case-studies/">Use Cases</a></li>
+          <li><a class="br-footer-link" href="/careers/">Careers</a></li>
+          <li><a class="br-footer-link" href="/our-team/">Our Team</a></li>
+          <li><a class="br-footer-link" href="/contact/">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="br-footer-col">
+        <h3 class="br-footer-title">Legal &amp; Privacy</h3>
+        <ul class="br-footer-list">
+          <li><a class="br-footer-link" href="/privacy-policy/">Privacy Policy</a></li>
+          <li><a class="br-footer-link" href="/terms-condition/">Terms &amp; Conditions</a></li>
+          <li><a class="br-footer-link" href="/payment-policy/">Payment Policy</a></li>
+          <li><a class="br-footer-link" href="/cookie-policy/">Cookie Policy</a></li>
+          <li><a class="br-footer-link" href="/opt-out/">Advertising Privacy Choices</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="br-footer-cta">
+      <div>
+        <strong>Ready to use Boost RAVA?</strong>
+        <span>Open your advertising workspace or sign in to manage an existing account.</span>
+      </div>
+      <div style="display:flex;gap:9px;flex-wrap:wrap">
+        <a class="br-footer-account login" href="https://panel.boostrava.com/#/login" target="_blank" rel="noopener noreferrer">Login</a>
+        <a class="br-footer-account register" href="https://panel.boostrava.com/#/register" target="_blank" rel="noopener noreferrer">Create Account</a>
+      </div>
+    </div>
+
+    <div class="br-footer-bottom">
+      <span>© 2026 Boost RAVA. All Rights Reserved.</span>
+      <div class="br-footer-socials" aria-label="Boost RAVA social media">
+        <a class="br-footer-social" href="https://www.linkedin.com/company/boost-rava/" target="_blank" rel="noopener noreferrer" aria-label="Boost RAVA on LinkedIn"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6ZM2 9h4v12H2zM4 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a class="br-footer-social" href="https://www.facebook.com/boostrvaads" target="_blank" rel="noopener noreferrer" aria-label="Boost RAVA on Facebook"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M14 8h4V3h-4c-3.3 0-6 2.7-6 6v3H4v5h4v4h5v-4h4l1-5h-5V9c0-.6.4-1 1-1Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+13:["$","div",null,{"dangerouslySetInnerHTML":{"__html":"$17"}}]
+14:[]
+a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+6:null
+8:{"metadata":[["$","title","0",{"children":"Advertising Privacy Choices | Boost RAVA"}],["$","meta","1",{"name":"description","content":"Review advertising privacy choices and learn how supported cookies, identifiers and advertising signals may be controlled across Boost RAVA services."}],["$","meta","2",{"name":"robots","content":"index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"}],["$","link","3",{"rel":"canonical","href":"https://www.boostrava.com/opt-out/"}],["$","meta","4",{"property":"og:title","content":"Advertising Privacy Choices | Boost RAVA"}],["$","meta","5",{"property":"og:description","content":"Review advertising privacy choices and learn how supported cookies, identifiers and advertising signals may be controlled across Boost RAVA services."}],["$","meta","6",{"property":"og:url","content":"https://www.boostrava.com/opt-out/"}],["$","meta","7",{"property":"og:image","content":"https://www.boostrava.com/assets/images/seo/boost-rava-social-default.png"}],["$","meta","8",{"property":"og:type","content":"website"}],["$","meta","9",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","10",{"name":"twitter:title","content":"Advertising Privacy Choices | Boost RAVA"}],["$","meta","11",{"name":"twitter:description","content":"Review advertising privacy choices and learn how supported cookies, identifiers and advertising signals may be controlled across Boost RAVA services."}],["$","meta","12",{"name":"twitter:image","content":"https://www.boostrava.com/assets/images/seo/boost-rava-social-default.png"}]],"error":null,"digest":"$undefined"}
+d:"$8:metadata"

@@ -1,0 +1,245 @@
+1:"$Sreact.fragment"
+2:I[9766,[],""]
+3:I[8924,[],""]
+5:I[4431,[],"OutletBoundary"]
+7:I[5278,[],"AsyncMetadataOutlet"]
+9:I[4431,[],"ViewportBoundary"]
+b:I[4431,[],"MetadataBoundary"]
+c:"$Sreact.suspense"
+e:I[7150,[],""]
+:HL["/_next/static/css/efa9839af6514457.css","style"]
+0:{"P":null,"b":"PqWC_napv4lWfpA-gRt3G","p":"","c":["","blog","the-future-of-programmatic-advertising-ai-driven-campaigns-vvv%20fffffff",""],"i":false,"f":[[["",{"children":[["slug","blog/the-future-of-programmatic-advertising-ai-driven-campaigns-vvv%20fffffff","oc"],{"children":["__PAGE__",{}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/efa9839af6514457.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","suppressHydrationWarning":true,"children":[["$","head",null,{"children":[["$","link",null,{"rel":"preconnect","href":"https://fonts.googleapis.com"}],["$","link",null,{"rel":"preconnect","href":"https://fonts.gstatic.com","crossOrigin":"anonymous"}],["$","link",null,{"rel":"stylesheet","href":"https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&family=Inter:wght@300;400;500;600;700;800;900&display=swap"}],["$","link",null,{"rel":"stylesheet","href":"/assets/css/19cdf6876c2cbba5.css"}],["$","link",null,{"rel":"stylesheet","href":"/assets/css/e1c551ca151c626b.css"}],["$","link",null,{"rel":"stylesheet","href":"/assets/css/30718e32e17299a4.css"}]]}],["$","body",null,{"suppressHydrationWarning":true,"children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]]}]]}],{"children":[["slug","blog/the-future-of-programmatic-advertising-ai-driven-campaigns-vvv%20fffffff","oc"],["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L4",null,["$","$L5",null,{"children":["$L6",["$","$L7",null,{"promise":"$@8"}]]}]]}],{},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,[["$","$L9",null,{"children":"$La"}],null],["$","$Lb",null,{"children":["$","div",null,{"hidden":true,"children":["$","$c",null,{"fallback":null,"children":"$Ld"}]}]}]]}],false]],"m":"$undefined","G":["$e",[]],"s":false,"S":true}
+a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+6:null
+f:T200f,<header class="br-site-header" aria-label="Primary site header">
+  <div class="br-header-inner">
+    <a class="br-logo" href="/" aria-label="Boost RAVA home">
+      <img src="/assets/images/logo/boost-rava-header-logo.png" alt="Boost RAVA" width="1052" height="205" decoding="async" />
+    </a>
+
+    <nav class="br-desktop-nav" aria-label="Primary navigation">
+      <a class="br-nav-link" href="/advertiser/">Advertisers</a>
+      <a class="br-nav-link" href="/publisher/">Publishers</a>
+
+      <details class="br-nav-group" name="br-primary-menu">
+        <summary class="br-nav-summary">Solutions
+          <svg class="br-chevron" aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="m5 7.5 5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </summary>
+        <div class="br-dropdown">
+          <a class="br-drop-link" href="/programmatic-infrastructure/"><span class="br-drop-title">Programmatic Infrastructure</span><span class="br-drop-copy">Ad serving, RTB, bidding and delivery architecture.</span></a>
+          <a class="br-drop-link" href="/ai-programmatic-advertising/"><span class="br-drop-title">AI Programmatic</span><span class="br-drop-copy">Planning, intelligence and optimization workflows.</span></a>
+          <a class="br-drop-link" href="/contextual-advertising/"><span class="br-drop-title">Contextual Advertising</span><span class="br-drop-copy">Content-led relevance and privacy-aware targeting.</span></a>
+          <a class="br-drop-link" href="/rich-media/"><span class="br-drop-title">Rich Media</span><span class="br-drop-copy">Interactive, high-impact creative experiences.</span></a>
+          <a class="br-drop-link" href="/html5-ad-formats/"><span class="br-drop-title">HTML5 Advertising</span><span class="br-drop-copy">Animated and interactive digital creative.</span></a>
+          <a class="br-drop-link" href="/ctv/"><span class="br-drop-title">CTV Advertising</span><span class="br-drop-copy">Partner-powered connected TV opportunities.</span></a>
+          <a class="br-drop-link" href="/dooh/"><span class="br-drop-title">DOOH Advertising</span><span class="br-drop-copy">Digital outdoor screens, booking and monetization.</span></a>
+          <a class="br-drop-link" href="/case-studies/"><span class="br-drop-title">Use Cases</span><span class="br-drop-copy">Planning examples and campaign applications.</span></a>
+        </div>
+      </details>
+
+      <details class="br-nav-group" name="br-primary-menu">
+        <summary class="br-nav-summary">Bangladesh
+          <svg class="br-chevron" aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="m5 7.5 5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </summary>
+        <div class="br-dropdown br-bd">
+          <a class="br-drop-link" href="/programmatic-advertising-bangladesh/"><span class="br-drop-title">Programmatic Advertising Bangladesh</span><span class="br-drop-copy">Local market programmatic advertising guide.</span></a>
+          <a class="br-drop-link" href="/ai-contextual-advertising-bangladesh/"><span class="br-drop-title">AI &amp; Contextual Bangladesh</span><span class="br-drop-copy">AI and contextual advertising for Bangladesh.</span></a>
+          <a class="br-drop-link" href="/rich-media-html5-advertising-bangladesh/"><span class="br-drop-title">Rich Media &amp; HTML5 Bangladesh</span><span class="br-drop-copy">Interactive creative formats for local campaigns.</span></a>
+          <a class="br-drop-link" href="/publisher-monetization-bangladesh/"><span class="br-drop-title">Publisher Monetization Bangladesh</span><span class="br-drop-copy">Monetization pathways for Bangladesh publishers.</span></a>
+          <a class="br-drop-link" href="/ctv-dooh-advertising-bangladesh/"><span class="br-drop-title">Screen Advertising Bangladesh</span><span class="br-drop-copy">CTV planning plus DOOH screen integration and activation.</span></a>
+        </div>
+      </details>
+
+      <details class="br-nav-group" name="br-primary-menu">
+        <summary class="br-nav-summary">Resources
+          <svg class="br-chevron" aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="m5 7.5 5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </summary>
+        <div class="br-dropdown br-bd">
+          <a class="br-drop-link" href="/blog/"><span class="br-drop-title">Blog &amp; Insights</span><span class="br-drop-copy">Programmatic advertising explainers and strategy.</span></a>
+          <a class="br-drop-link" href="/about/"><span class="br-drop-title">About Boost RAVA</span><span class="br-drop-copy">Company, mission and advertising technology.</span></a>
+          <a class="br-drop-link" href="/careers/"><span class="br-drop-title">Careers</span><span class="br-drop-copy">Explore opportunities to build AdTech with us.</span></a>
+          <a class="br-drop-link" href="/our-team/"><span class="br-drop-title">Our Team</span><span class="br-drop-copy">Meet the people behind Boost RAVA.</span></a>
+        </div>
+      </details>
+
+      <a class="br-nav-link" href="/contact/">Contact</a>
+    </nav>
+
+    <div class="br-header-actions" aria-label="Account actions">
+      <a class="br-action br-login" href="https://panel.boostrava.com/#/login" target="_blank" rel="noopener noreferrer">Login</a>
+      <a class="br-action br-register" href="https://panel.boostrava.com/#/register" target="_blank" rel="noopener noreferrer">Start Advertising</a>
+    </div>
+
+    <details class="br-mobile-nav">
+      <summary class="br-mobile-summary" aria-label="Toggle navigation menu">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </summary>
+      <nav class="br-mobile-panel" aria-label="Mobile navigation">
+        <a class="br-mobile-link" href="/advertiser/">Advertisers <span>→</span></a>
+        <a class="br-mobile-link" href="/publisher/">Publishers <span>→</span></a>
+        <div class="br-mobile-section">Solutions</div>
+        <a class="br-mobile-link" href="/programmatic-infrastructure/">Programmatic Infrastructure</a>
+        <a class="br-mobile-link" href="/ai-programmatic-advertising/">AI Programmatic</a>
+        <a class="br-mobile-link" href="/contextual-advertising/">Contextual Advertising</a>
+        <a class="br-mobile-link" href="/rich-media/">Rich Media</a>
+        <a class="br-mobile-link" href="/html5-ad-formats/">HTML5 Advertising</a>
+        <a class="br-mobile-link" href="/ctv/">CTV Advertising</a>
+        <a class="br-mobile-link" href="/dooh/">DOOH Advertising</a>
+        <a class="br-mobile-link" href="/case-studies/">Use Cases</a>
+        <div class="br-mobile-section">Bangladesh</div>
+        <a class="br-mobile-link" href="/programmatic-advertising-bangladesh/">Programmatic Advertising</a>
+        <a class="br-mobile-link" href="/ai-contextual-advertising-bangladesh/">AI &amp; Contextual Advertising</a>
+        <a class="br-mobile-link" href="/rich-media-html5-advertising-bangladesh/">Rich Media &amp; HTML5</a>
+        <a class="br-mobile-link" href="/publisher-monetization-bangladesh/">Publisher Monetization</a>
+        <a class="br-mobile-link" href="/ctv-dooh-advertising-bangladesh/">Screen Advertising BD</a>
+        <div class="br-mobile-section">Company &amp; Resources</div>
+        <a class="br-mobile-link" href="/blog/">Blog &amp; Insights</a>
+        <a class="br-mobile-link" href="/about/">About</a>
+        <a class="br-mobile-link" href="/careers/">Careers</a>
+        <a class="br-mobile-link" href="/our-team/">Our Team</a>
+        <a class="br-mobile-link" href="/contact/">Contact</a>
+        <div class="br-mobile-actions">
+          <a class="br-action br-login" href="https://panel.boostrava.com/#/login" target="_blank" rel="noopener noreferrer">Login</a>
+          <a class="br-action br-register" href="https://panel.boostrava.com/#/register" target="_blank" rel="noopener noreferrer">Start Advertising</a>
+        </div>
+      </nav>
+    </details>
+  </div>
+</header>
+4:["$","div",null,{"className":"page-shell brv4-blog-post","data-source-reconstructed":"true","data-page-route":"blog/the-future-of-programmatic-advertising-ai-driven-campaigns-vvv fffffff","suppressHydrationWarning":true,"children":[false,[],[["$","script","supp-schema-0",{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Organization\",\"@id\":\"https://www.boostrava.com/#organization\",\"name\":\"Boost RAVA\",\"url\":\"https://www.boostrava.com/\",\"logo\":\"https://www.boostrava.com/assets/images/logo/Logo-03.png\",\"description\":\"Boost RAVA is an advertising technology platform for advertisers and publishers.\"}"}}],["$","script","supp-schema-1",{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"WebSite\",\"@id\":\"https://www.boostrava.com/#website\",\"url\":\"https://www.boostrava.com/\",\"name\":\"Boost RAVA\",\"publisher\":{\"@id\":\"https://www.boostrava.com/#organization\"},\"inLanguage\":\"en\"}"}}],["$","script","supp-schema-2",{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://www.boostrava.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Blog & Insights\",\"item\":\"https://www.boostrava.com/blog/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"The Future of Programmatic Advertising: AI-Driven Campaigns vvv\",\"item\":\"https://www.boostrava.com/blog/the-future-of-programmatic-advertising-ai-driven-campaigns-vvv fffffff/\"}]}"}}]],[["$","div",null,{"dangerouslySetInnerHTML":{"__html":"$f"}}],"$L10"],false,"$L11","$L12",false]}]
+13:I[7516,["974","static/chunks/974-4a27fba791dfb44a.js","340","static/chunks/app/%5B%5B...slug%5D%5D/page-907b8cdfb6ba6050.js"],"HeaderBehavior"]
+14:I[4271,["974","static/chunks/974-4a27fba791dfb44a.js","340","static/chunks/app/%5B%5B...slug%5D%5D/page-907b8cdfb6ba6050.js"],"BlogPostPage"]
+10:["$","$L13",null,{}]
+15:T8c3,<h2>What is AI-Driven Programmatic Advertising?</h2>
+<p>Programmatic advertising is the automated buying and selling of digital advertising inventory using software, data, and real-time bidding technologies. When augmented with artificial intelligence (AI), programmatic algorithms evaluate vast multidimensional datasets at auction time to determine the precise value of every single impression.</p>
+<h2>How Machine Learning Transforms Bid Optimization</h2>
+<p>Traditional programmatic media buying relied heavily on static CPM caps and rigid frequency rules. Today, AI bidding engines utilize deep neural networks to forecast user engagement probability before placing a bid. Key benefits include:</p>
+<ul>
+<li><strong>Dynamic Bid Valuation:</strong> Calculating real-time clearing prices based on historical supply-path yield.</li>
+<li><strong>Predictive Audience Clustering:</strong> Grouping high-intent users without relying on invasive tracking.</li>
+<li><strong>Automated Creative Optimization (DCO):</strong> Assembling tailored ad variations in real-time.</li>
+</ul>
+<h2>Comparison: Traditional vs AI-Powered Programmatic ww</h2>
+<div class="table-responsive">
+<table class="table table-bordered">
+<thead>
+<tr>
+<th>Feature</th>
+<th>Legacy Programmatic</th>
+<th>AI-Driven Programmatic (BoostRAVA)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bidding Logic</td>
+<td>Static rule sets &amp; manual CPM caps</td>
+<td>Real-time predictive neural valuation</td>
+</tr>
+<tr>
+<td>Decisioning Speed</td>
+<td>50ms - 100ms</td>
+<td>&lt; 10ms low-latency auctions</td>
+</tr>
+<tr>
+<td>Signal Processing</td>
+<td>Basic demographic tags</td>
+<td>Contextual + First-Party + Behavioral telemetry</td>
+</tr>
+<tr>
+<td>Fraud Protection</td>
+<td>Post-bid blocklists</td>
+<td>Pre-bid automated IVT filtering</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2>Why Topical Authority and Context Matter in Modern AdTech</h2>
+<p>With global privacy regulations like GDPR and the phase-out of third-party identifiers, contextual intelligence has resurfaced as a premier targeting mechanism. BoostRAVA&rsquo;s semantic engine analyzes content structure, sentiment, and entity relationships to place relevant advertisements seamlessly.</p>11:["$","main",null,{"children":[["$","$L14",null,{"post":{"id":1,"title":"The Future of Programmatic Advertising: AI-Driven Campaigns vvv","slug":"the-future-of-programmatic-advertising-ai-driven-campaigns-vvv fffffff","category":{"id":1,"name":"Programmatic Advertising","slug":"programmatic-advertising","is_pillar":true},"author":{"id":1,"name":"Sarah Johnson","slug":"sarah-johnson","avatar":"/assets/images/icons/icon.png","role":"Principal AdTech Strategist","bio":"Sarah has over 12 years of experience leading programmatic media operations, DSP algorithm design, and omnichannel yield strategies across global networks.","expertise":"Programmatic DSP, Machine Learning Bidding, Brand Safety","social_links":{"linkedin":"https://linkedin.com","twitter":"https://x.com"}},"tags":[{"id":1,"name":"Programmatic","slug":"programmatic"},{"id":2,"name":"DSP","slug":"dsp"},{"id":6,"name":"AI","slug":"ai"},{"id":7,"name":"Optimization","slug":"optimization"}],"content_type":"Guide","short_description":"Discover how artificial intelligence is reshaping programmatic advertising with sharper targeting, smarter bidding, and better ROI across modern ad exchanges. ffff","featured_image":"http://127.0.0.1:8000/uploads/blog/1788519957_screenshot-2026-09-01-154322.png","featured_image_alt":"The Future of Programmatic Advertising AI-Driven Campaigns","reading_time":"8 min read","quick_answer":"AI-driven programmatic advertising uses real-time machine learning algorithms to analyze billions of bid requests per second, predict conversion probabilities, and dynamically adjust bid values. This eliminates manual guesswork, reduces media waste, and delivers up to 40% higher return on ad spend (ROAS) compared to legacy rule-based bidding. ssssss","key_takeaways":["Dynamic Bid Valuation: Calculating real-time clearing prices based on historical supply-path yield.","Predictive Audience Clustering: Grouping high-intent users without relying on invasive tracking.","Automated Creative Optimization (DCO): Assembling tailored ad variations in real-time."],"table_of_contents":[],"body":"$15","faqs":[],"sources":[],"related_products":[],"cta":{"type":"advertiser","text":"Launch With BoostRAVA","link":"https://panel.boostrava.com/#/register"},"seo":{"primary_keyword":"Programmatic Advertising AI","secondary_keywords":["Programmatic","DSP","AI","Optimization","Programmatic Advertising"],"search_intent":"Informational","meta_title":"The Future of Programmatic Advertising: AI-Driven Campaigns","meta_description":"Explore how artificial intelligence powers real-time programmatic bidding, predictive CTR modeling, and superior ROAS for modern media campaigns.","canonical_url":"https://www.boostrava.com/blog/the-future-of-programmatic-advertising-ai-driven-campaigns-vvv fffffff/","robots":"index, follow","og_title":"Future of Programmatic Advertising: AI-Driven Campaigns | BoostRAVA","og_description":"Explore how artificial intelligence powers real-time programmatic bidding, predictive CTR modeling, and superior ROAS for modern media campaigns.","og_image":"http://127.0.0.1:8000/uploads/blog/1788519957_screenshot-2026-09-01-154322.png","twitter_card":"summary_large_image","schema_type":"BlogPosting","json_ld":[{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.boostrava.com/blog/the-future-of-programmatic-advertising-ai-driven-campaigns-vvv fffffff/"},"headline":"The Future of Programmatic Advertising: AI-Driven Campaigns vvv","description":"Explore how artificial intelligence powers real-time programmatic bidding, predictive CTR modeling, and superior ROAS for modern media campaigns.","image":"http://127.0.0.1:8000/uploads/blog/1788519957_screenshot-2026-09-01-154322.png","datePublished":"2026-08-20T16:53:00+00:00","dateModified":"2026-09-04T11:05:57+00:00","author":{"@type":"Person","name":"Sarah Johnson"},"publisher":{"@type":"Organization","name":"Boost RAVA","url":"https://www.boostrava.com","logo":{"@type":"ImageObject","url":"https://www.boostrava.com/assets/images/icons/Logo full png file-02.png"}},"inLanguage":"en","isAccessibleForFree":true,"wordCount":219,"url":"https://www.boostrava.com/blog/the-future-of-programmatic-advertising-ai-driven-campaigns-vvv fffffff/","isPartOf":{"@type":"WebSite","name":"BoostRAVA","url":"https://www.boostrava.com"},"about":[{"@type":"Thing","name":"Programmatic Advertising"},{"@type":"Thing","name":"Programmatic Advertising AI"}],"mentions":[{"@type":"Thing","name":"Programmatic"},{"@type":"Thing","name":"DSP"},{"@type":"Thing","name":"AI"},{"@type":"Thing","name":"Optimization"}],"keywords":"Programmatic Advertising AI, Programmatic, DSP, AI, Optimization, Programmatic Advertising","articleSection":"Programmatic Advertising"},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.boostrava.com"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://www.boostrava.com/blog/"},{"@type":"ListItem","position":3,"name":"Programmatic Advertising","item":"https://www.boostrava.com/blog/category/programmatic-advertising/"},{"@type":"ListItem","position":4,"name":"The Future of Programmatic Advertising: AI-Driven Campaigns vvv","item":"https://www.boostrava.com/blog/the-future-of-programmatic-advertising-ai-driven-campaigns-vvv fffffff/"}]}]},"published_at":"August 20, 2026","published_iso":"2026-08-20T16:53:00+00:00","updated_at":"September 05, 2026","updated_iso":"2026-09-05T17:08:02+00:00","display_date":"September 05, 2026","display_date_iso":"2026-09-05T17:08:02+00:00","display_date_label":"Updated","views_count":1458,"related_posts":[{"id":2,"title":"Smart Floor Pricing: How to Maximize Publisher Revenue","slug":"smart-floor-pricing-maximize-publisher-revenue","url":"/blog/smart-floor-pricing-maximize-publisher-revenue/","category":{"name":"Publisher Monetization","slug":"publisher-monetization"},"author":{"name":"Emily Rodriguez","avatar":"/assets/images/icons/icon.png","role":"Head of Publisher Monetization"},"short_description":"Discover dynamic floor pricing strategies that protect publisher inventory value while maximizing programmatic yield and bid density.","featured_image":"https://boostrava.com/assets/images/dashboard/home/featured2.jpg","featured_image_alt":"Smart Floor Pricing for Publisher Revenue","reading_time":"6 min read","is_featured":true,"is_editors_pick":false,"content_type":"Guide","published_at":"March 12, 2024","published_date":"2024-03-12","updated_at":"September 05, 2026","updated_date":"2026-09-05","display_date":"September 05, 2026","display_date_iso":"2026-09-05T17:08:02+00:00","display_date_label":"Updated"},{"id":3,"title":"The Rise of Curated Advertising: A Smarter Path to Media Performance","slug":"rise-of-curated-advertising-media-performance","url":"/blog/rise-of-curated-advertising-media-performance/","category":{"name":"Industry News","slug":"industry-news"},"author":{"name":"Michael Chen","avatar":"/assets/images/icons/icon.png","role":"VP of Programmatic Engineering"},"short_description":"Why Curated Marketplaces are Expanding Modern advertisers demand direct relationships with premium publishers while preserving the automation and efficiency of programmatic buying. Curated…","featured_image":"https://boostrava.com/assets/images/dashboard/home/featured3.jpg","featured_image_alt":"The Rise of Curated Advertising","reading_time":"7 min read","is_featured":true,"is_editors_pick":false,"content_type":"Industry Insights","published_at":"March 10, 2024","published_date":"2024-03-10","updated_at":"September 05, 2026","updated_date":"2026-09-05","display_date":"September 05, 2026","display_date_iso":"2026-09-05T17:08:02+00:00","display_date_label":"Updated"},{"id":4,"title":"Maximizing ROI with Header Bidding: A Complete Guide","slug":"maximizing-roi-with-header-bidding-complete-guide","url":"/blog/maximizing-roi-with-header-bidding-complete-guide/","category":{"name":"AdTech","slug":"adtech"},"author":{"name":"Michael Chen","avatar":"/assets/images/icons/icon.png","role":"VP of Programmatic Engineering"},"short_description":"Learn how header bidding helps publishers increase competition, improve fill rates, and unlock more value from every impression.","featured_image":"https://boostrava.com/assets/images/blog/blog-thumb-1.jpg","featured_image_alt":"Maximizing ROI with Header Bidding Complete Guide","reading_time":"6 min read","is_featured":false,"is_editors_pick":false,"content_type":"Guide","published_at":"March 08, 2024","published_date":"2024-03-08","updated_at":"September 05, 2026","updated_date":"2026-09-05","display_date":"September 05, 2026","display_date_iso":"2026-09-05T17:08:02+00:00","display_date_label":"Updated"}]}}],false]}]
+16:T14cc,<footer class="br-site-footer" aria-label="Site footer">
+  <div class="br-footer-wrap">
+    <div class="br-footer-top">
+      <div class="br-footer-brand">
+        <img src="/assets/images/logo/white-logo.png" alt="Boost RAVA" width="1200" height="182" loading="lazy" decoding="async" />
+        <p>Programmatic advertising technology for advertisers, publishers and modern media environments—from digital display and interactive creative to partner-powered CTV and DOOH opportunities.</p>
+        <span class="br-footer-badge">Bangladesh • International Markets</span>
+      </div>
+
+      <div class="br-footer-col">
+        <h3 class="br-footer-title">Platform</h3>
+        <ul class="br-footer-list">
+          <li><a class="br-footer-link" href="/advertiser/">Advertiser Platform</a></li>
+          <li><a class="br-footer-link" href="/publisher/">Publisher Platform</a></li>
+          <li><a class="br-footer-link" href="/programmatic-infrastructure/">Programmatic Infrastructure</a></li>
+          <li><a class="br-footer-link" href="/ai-programmatic-advertising/">AI Programmatic</a></li>
+          <li><a class="br-footer-link" href="/contextual-advertising/">Contextual Advertising</a></li>
+        </ul>
+      </div>
+
+      <div class="br-footer-col">
+        <h3 class="br-footer-title">Creative &amp; Screens</h3>
+        <ul class="br-footer-list">
+          <li><a class="br-footer-link" href="/rich-media/">Rich Media</a></li>
+          <li><a class="br-footer-link" href="/html5-ad-formats/">HTML5 Advertising</a></li>
+          <li><a class="br-footer-link" href="/ctv/">CTV Advertising</a></li>
+          <li><a class="br-footer-link" href="/dooh/">DOOH Advertising</a></li>
+        </ul>
+      </div>
+
+      <div class="br-footer-col">
+        <h3 class="br-footer-title">Bangladesh</h3>
+        <ul class="br-footer-list">
+          <li><a class="br-footer-link" href="/programmatic-advertising-bangladesh/">Programmatic Advertising</a></li>
+          <li><a class="br-footer-link" href="/ai-contextual-advertising-bangladesh/">AI &amp; Contextual</a></li>
+          <li><a class="br-footer-link" href="/rich-media-html5-advertising-bangladesh/">Rich Media &amp; HTML5</a></li>
+          <li><a class="br-footer-link" href="/publisher-monetization-bangladesh/">Publisher Monetization</a></li>
+          <li><a class="br-footer-link" href="/ctv-dooh-advertising-bangladesh/">Screen Advertising BD</a></li>
+        </ul>
+      </div>
+
+      <div class="br-footer-col">
+        <h3 class="br-footer-title">Company &amp; Resources</h3>
+        <ul class="br-footer-list">
+          <li><a class="br-footer-link" href="/about/">About</a></li>
+          <li><a class="br-footer-link" href="/blog/">Blog &amp; Insights</a></li>
+          <li><a class="br-footer-link" href="/case-studies/">Use Cases</a></li>
+          <li><a class="br-footer-link" href="/careers/">Careers</a></li>
+          <li><a class="br-footer-link" href="/our-team/">Our Team</a></li>
+          <li><a class="br-footer-link" href="/contact/">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="br-footer-col">
+        <h3 class="br-footer-title">Legal &amp; Privacy</h3>
+        <ul class="br-footer-list">
+          <li><a class="br-footer-link" href="/privacy-policy/">Privacy Policy</a></li>
+          <li><a class="br-footer-link" href="/terms-condition/">Terms &amp; Conditions</a></li>
+          <li><a class="br-footer-link" href="/payment-policy/">Payment Policy</a></li>
+          <li><a class="br-footer-link" href="/cookie-policy/">Cookie Policy</a></li>
+          <li><a class="br-footer-link" href="/opt-out/">Advertising Privacy Choices</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="br-footer-cta">
+      <div>
+        <strong>Ready to use Boost RAVA?</strong>
+        <span>Open your advertising workspace or sign in to manage an existing account.</span>
+      </div>
+      <div style="display:flex;gap:9px;flex-wrap:wrap">
+        <a class="br-footer-account login" href="https://panel.boostrava.com/#/login" target="_blank" rel="noopener noreferrer">Login</a>
+        <a class="br-footer-account register" href="https://panel.boostrava.com/#/register" target="_blank" rel="noopener noreferrer">Create Account</a>
+      </div>
+    </div>
+
+    <div class="br-footer-bottom">
+      <span>© 2026 Boost RAVA. All Rights Reserved.</span>
+      <div class="br-footer-socials" aria-label="Boost RAVA social media">
+        <a class="br-footer-social" href="https://www.linkedin.com/company/boost-rava/" target="_blank" rel="noopener noreferrer" aria-label="Boost RAVA on LinkedIn"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6ZM2 9h4v12H2zM4 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a class="br-footer-social" href="https://www.facebook.com/boostrvaads" target="_blank" rel="noopener noreferrer" aria-label="Boost RAVA on Facebook"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M14 8h4V3h-4c-3.3 0-6 2.7-6 6v3H4v5h4v4h5v-4h4l1-5h-5V9c0-.6.4-1 1-1Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+12:["$","div",null,{"dangerouslySetInnerHTML":{"__html":"$16"}}]
+8:{"metadata":[["$","title","0",{"children":"The Future of Programmatic Advertising: AI-Driven Campaigns"}],["$","meta","1",{"name":"description","content":"Explore how artificial intelligence powers real-time programmatic bidding, predictive CTR modeling, and superior ROAS for modern media campaigns."}],["$","meta","2",{"name":"robots","content":"index, follow"}],["$","link","3",{"rel":"canonical","href":"https://www.boostrava.com/blog/the-future-of-programmatic-advertising-ai-driven-campaigns-vvv%20fffffff/"}],["$","meta","4",{"property":"og:title","content":"Future of Programmatic Advertising: AI-Driven Campaigns | BoostRAVA"}],["$","meta","5",{"property":"og:description","content":"Explore how artificial intelligence powers real-time programmatic bidding, predictive CTR modeling, and superior ROAS for modern media campaigns."}],["$","meta","6",{"property":"og:url","content":"https://www.boostrava.com/blog/the-future-of-programmatic-advertising-ai-driven-campaigns-vvv%20fffffff/"}],["$","meta","7",{"property":"og:image","content":"http://127.0.0.1:8000/uploads/blog/1788519957_screenshot-2026-09-01-154322.png"}],["$","meta","8",{"property":"og:type","content":"article"}],["$","meta","9",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","10",{"name":"twitter:title","content":"Future of Programmatic Advertising: AI-Driven Campaigns | BoostRAVA"}],["$","meta","11",{"name":"twitter:description","content":"Explore how artificial intelligence powers real-time programmatic bidding, predictive CTR modeling, and superior ROAS for modern media campaigns."}],["$","meta","12",{"name":"twitter:image","content":"http://127.0.0.1:8000/uploads/blog/1788519957_screenshot-2026-09-01-154322.png"}]],"error":null,"digest":"$undefined"}
+d:"$8:metadata"
