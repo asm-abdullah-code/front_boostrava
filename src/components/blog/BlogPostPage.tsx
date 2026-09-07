@@ -384,10 +384,11 @@ export function BlogPostPage({ post: initialPost, slug }: BlogPostPageProps) {
                         {rel.category?.name || 'AdTech'}
                       </span>
                       <h3 className="text-xs font-bold text-gray-900 group-hover:text-purple-600 transition line-clamp-2 mt-1">
-                        <Link href={`/blog/${rel.slug}/`}>
+                        <a href={`/blog/${rel.slug}/`}>
                           {rel.title}
-                        </Link>
+                        </a>
                       </h3>
+
                     </div>
                   </div>
                   <div className="p-3.5 pt-0 text-[10px] text-gray-400">

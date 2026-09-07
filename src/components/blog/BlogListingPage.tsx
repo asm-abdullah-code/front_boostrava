@@ -286,9 +286,9 @@ export function BlogListingPage({
                     </div>
 
                     <h2 className="text-lg lg:text-xl font-bold text-gray-900 group-hover:text-purple-600 transition-colors leading-snug mb-3">
-                      <Link href={`/blog/${featuredPost.slug}/`}>
+                      <a href={`/blog/${featuredPost.slug}/`}>
                         {featuredPost.title}
-                      </Link>
+                      </a>
                     </h2>
 
                     <p className="text-gray-600 text-xs leading-relaxed line-clamp-3 mb-4">
@@ -307,12 +307,12 @@ export function BlogListingPage({
                       </div>
                     </div>
 
-                    <Link
+                    <a
                       href={`/blog/${featuredPost.slug}/`}
                       className="inline-flex items-center gap-1 text-xs font-bold text-purple-600 group-hover:text-purple-800 transition"
                     >
                       Read Article →
-                    </Link>
+                    </a>
                   </div>
                 </div>
               </article>
@@ -348,9 +348,9 @@ export function BlogListingPage({
                       </div>
 
                       <h3 className="text-sm sm:text-base font-bold text-gray-900 group-hover:text-purple-600 transition-colors line-clamp-2 leading-snug mb-2">
-                        <Link href={`/blog/${post.slug}/`}>
+                        <a href={`/blog/${post.slug}/`}>
                           {post.title}
-                        </Link>
+                        </a>
                       </h3>
 
                       <p className="text-gray-500 text-xs leading-relaxed line-clamp-3">
@@ -361,13 +361,14 @@ export function BlogListingPage({
 
                   <div className="p-4 sm:p-5 pt-0 border-t border-gray-50 mt-3 flex items-center justify-between text-[11px] text-gray-400">
                     <span>{post.display_date || post.published_at}</span>
-                    <Link href={`/blog/${post.slug}/`} className="font-semibold text-purple-600 hover:underline">
+                    <a href={`/blog/${post.slug}/`} className="font-semibold text-purple-600 hover:underline">
                       Read →
-                    </Link>
+                    </a>
                   </div>
                 </article>
               ))}
             </div>
+
 
             {/* Pagination Controls */}
             {totalPages > 1 && (

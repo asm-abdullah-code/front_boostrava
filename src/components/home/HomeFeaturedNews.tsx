@@ -124,10 +124,11 @@ export function HomeFeaturedNews({ initialPosts }: { initialPosts?: BlogPostSumm
                       {post.category?.name || 'AdTech Insights'}
                     </span>
                     <h3 className="font-bold text-xl text-gray-800 leading-snug group-hover:text-blue-600 transition-colors line-clamp-2">
-                      <Link href={postLink} className="hover:underline">
+                      <a href={postLink} className="hover:underline">
                         {post.title}
-                      </Link>
+                      </a>
                     </h3>
+
                     <p className="text-gray-500 text-sm mt-2 line-clamp-2">
                       {post.short_description}
                     </p>
