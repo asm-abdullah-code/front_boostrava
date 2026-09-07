@@ -90,14 +90,46 @@ export interface BlogListResponse {
   tags: BlogTag[];
 }
 
-export const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'https://api.boostrava.com';
+export function getApiBase(): string {
+  if (typeof window !== 'undefined') {
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+      return process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000';
+    }
+    return 'https://api.boostrava.com';
+  }
+  if (process.env.NODE_ENV === 'development') {
+    return process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000';
+  }
+  return 'https://api.boostrava.com';
+}
 
-async function safeJsonFetch(url: string): Promise<any | null> {
+export const API_BASE = getApiBase();
+
+async function safeJsonFetch(endpoint: string): Promise<any | null> {
+  const base = getApiBase();
+  const url = endpoint.startsWith('http://') || endpoint.startsWith('https://')
+    ? endpoint
+    : `${base}${endpoint.startsWith('/') ? '' : '/'}${endpoint}`;
+
   try {
     const res = await fetch(url);
-    if (!res.ok) return null;
+    if (!res.ok) {
+      if (url.includes('127.0.0.1:8000') || url.includes('localhost:8000')) {
+        const liveUrl = url.replace(/http:\/\/(127\.0\.0\.1|localhost):8000/, 'https://api.boostrava.com');
+        const fallbackRes = await fetch(liveUrl).catch(() => null);
+        if (fallbackRes && fallbackRes.ok) return await fallbackRes.json();
+      }
+      return null;
+    }
     return await res.json();
   } catch (err) {
+    if (url.includes('127.0.0.1:8000') || url.includes('localhost:8000')) {
+      try {
+        const liveUrl = url.replace(/http:\/\/(127\.0\.0\.1|localhost):8000/, 'https://api.boostrava.com');
+        const fallbackRes = await fetch(liveUrl);
+        if (fallbackRes.ok) return await fallbackRes.json();
+      } catch {}
+    }
     return null;
   }
 }
@@ -113,7 +145,6 @@ export function normalizeImageUrl(url?: string | null): string {
   }
   return `/${cleaned}`;
 }
-
 
 function normalizePost<T extends BlogPostSummary>(post: T): T {
   if (!post) return post;
@@ -131,7 +162,7 @@ function normalizePost<T extends BlogPostSummary>(post: T): T {
 
 export async function fetchFeaturedPosts(): Promise<BlogPostSummary[]> {
   try {
-    const json = await safeJsonFetch(`${API_BASE}/api/blog/featured`);
+    const json = await safeJsonFetch('/api/blog/featured');
     const posts: BlogPostSummary[] = json?.data || [];
     return posts.map(normalizePost);
   } catch (err) {
@@ -159,8 +190,8 @@ export async function fetchBlogPosts(params?: {
     if (params?.sort) query.set('sort', params.sort);
 
     const qs = query.toString();
-    const url = qs ? `${API_BASE}/api/blog/posts?${qs}` : `${API_BASE}/api/blog/posts`;
-    const res: BlogListResponse | null = await safeJsonFetch(url);
+    const endpoint = qs ? `/api/blog/posts?${qs}` : '/api/blog/posts';
+    const res: BlogListResponse | null = await safeJsonFetch(endpoint);
     if (res && Array.isArray(res.data)) {
       res.data = res.data.map(normalizePost);
     }
@@ -179,7 +210,7 @@ export async function fetchBlogPostBySlug(slug: string): Promise<BlogPostDetail 
     cleanSlug = cleanSlug.trim();
     if (!cleanSlug) return null;
 
-    const encodedEndpoint = `${API_BASE}/api/blog/posts/${encodeURIComponent(cleanSlug)}`;
+    const encodedEndpoint = `/api/blog/posts/${encodeURIComponent(cleanSlug)}`;
     const json = await safeJsonFetch(encodedEndpoint);
     if (json?.data) {
       const detail: BlogPostDetail = normalizePost(json.data);
@@ -189,9 +220,8 @@ export async function fetchBlogPostBySlug(slug: string): Promise<BlogPostDetail 
       return detail;
     }
 
-    // Fallback attempt with direct raw slug if needed
     if (cleanSlug.includes(' ')) {
-      const rawEndpoint = `${API_BASE}/api/blog/posts/${cleanSlug}`;
+      const rawEndpoint = `/api/blog/posts/${cleanSlug}`;
       const rawJson = await safeJsonFetch(rawEndpoint);
       if (rawJson?.data) {
         const detail: BlogPostDetail = normalizePost(rawJson.data);
@@ -210,7 +240,7 @@ export async function fetchBlogPostBySlug(slug: string): Promise<BlogPostDetail 
 
 export async function fetchCategories(): Promise<BlogCategory[]> {
   try {
-    const json = await safeJsonFetch(`${API_BASE}/api/blog/categories`);
+    const json = await safeJsonFetch('/api/blog/categories');
     return json?.data || [];
   } catch (err) {
     return [];
@@ -219,7 +249,7 @@ export async function fetchCategories(): Promise<BlogCategory[]> {
 
 export async function fetchTags(): Promise<BlogTag[]> {
   try {
-    const json = await safeJsonFetch(`${API_BASE}/api/blog/tags`);
+    const json = await safeJsonFetch('/api/blog/tags');
     return json?.data || [];
   } catch (err) {
     return [];
@@ -228,7 +258,8 @@ export async function fetchTags(): Promise<BlogTag[]> {
 
 export async function subscribeNewsletter(email: string): Promise<{ success: boolean; message: string }> {
   try {
-    const res = await fetch(`${API_BASE}/api/blog/subscribe`, {
+    const base = getApiBase();
+    const res = await fetch(`${base}/api/blog/subscribe`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email }),
@@ -246,3 +277,4 @@ export async function subscribeNewsletter(email: string): Promise<{ success: boo
     return { success: false, message: 'Network error. Please try again.' };
   }
 }
+

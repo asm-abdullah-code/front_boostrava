@@ -1,0 +1,1335 @@
+1:"$Sreact.fragment"
+2:I[9766,[],""]
+3:I[8924,[],""]
+5:I[4431,[],"OutletBoundary"]
+7:I[5278,[],"AsyncMetadataOutlet"]
+9:I[4431,[],"ViewportBoundary"]
+b:I[4431,[],"MetadataBoundary"]
+c:"$Sreact.suspense"
+e:I[7150,[],""]
+:HL["/_next/static/css/efa9839af6514457.css","style"]
+0:{"P":null,"b":"Ww8i0s1fqU-BQ17Uw30fz","p":"","c":["","blog","programmatic-advertising-for-beginners-a-practical-first-campaign-guide",""],"i":false,"f":[[["",{"children":[["slug","blog/programmatic-advertising-for-beginners-a-practical-first-campaign-guide","oc"],{"children":["__PAGE__",{}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/efa9839af6514457.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","suppressHydrationWarning":true,"children":[["$","head",null,{"children":[["$","link",null,{"rel":"preconnect","href":"https://fonts.googleapis.com"}],["$","link",null,{"rel":"preconnect","href":"https://fonts.gstatic.com","crossOrigin":"anonymous"}],["$","link",null,{"rel":"stylesheet","href":"https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&family=Inter:wght@300;400;500;600;700;800;900&display=swap"}],["$","link",null,{"rel":"stylesheet","href":"/assets/css/19cdf6876c2cbba5.css"}],["$","link",null,{"rel":"stylesheet","href":"/assets/css/e1c551ca151c626b.css"}],["$","link",null,{"rel":"stylesheet","href":"/assets/css/30718e32e17299a4.css"}]]}],["$","body",null,{"suppressHydrationWarning":true,"children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]]}]]}],{"children":[["slug","blog/programmatic-advertising-for-beginners-a-practical-first-campaign-guide","oc"],["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L4",null,["$","$L5",null,{"children":["$L6",["$","$L7",null,{"promise":"$@8"}]]}]]}],{},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,[["$","$L9",null,{"children":"$La"}],null],["$","$Lb",null,{"children":["$","div",null,{"hidden":true,"children":["$","$c",null,{"fallback":null,"children":"$Ld"}]}]}]]}],false]],"m":"$undefined","G":["$e",[]],"s":false,"S":true}
+a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+6:null
+f:T200f,<header class="br-site-header" aria-label="Primary site header">
+  <div class="br-header-inner">
+    <a class="br-logo" href="/" aria-label="Boost RAVA home">
+      <img src="/assets/images/logo/boost-rava-header-logo.png" alt="Boost RAVA" width="1052" height="205" decoding="async" />
+    </a>
+
+    <nav class="br-desktop-nav" aria-label="Primary navigation">
+      <a class="br-nav-link" href="/advertiser/">Advertisers</a>
+      <a class="br-nav-link" href="/publisher/">Publishers</a>
+
+      <details class="br-nav-group" name="br-primary-menu">
+        <summary class="br-nav-summary">Solutions
+          <svg class="br-chevron" aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="m5 7.5 5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </summary>
+        <div class="br-dropdown">
+          <a class="br-drop-link" href="/programmatic-infrastructure/"><span class="br-drop-title">Programmatic Infrastructure</span><span class="br-drop-copy">Ad serving, RTB, bidding and delivery architecture.</span></a>
+          <a class="br-drop-link" href="/ai-programmatic-advertising/"><span class="br-drop-title">AI Programmatic</span><span class="br-drop-copy">Planning, intelligence and optimization workflows.</span></a>
+          <a class="br-drop-link" href="/contextual-advertising/"><span class="br-drop-title">Contextual Advertising</span><span class="br-drop-copy">Content-led relevance and privacy-aware targeting.</span></a>
+          <a class="br-drop-link" href="/rich-media/"><span class="br-drop-title">Rich Media</span><span class="br-drop-copy">Interactive, high-impact creative experiences.</span></a>
+          <a class="br-drop-link" href="/html5-ad-formats/"><span class="br-drop-title">HTML5 Advertising</span><span class="br-drop-copy">Animated and interactive digital creative.</span></a>
+          <a class="br-drop-link" href="/ctv/"><span class="br-drop-title">CTV Advertising</span><span class="br-drop-copy">Partner-powered connected TV opportunities.</span></a>
+          <a class="br-drop-link" href="/dooh/"><span class="br-drop-title">DOOH Advertising</span><span class="br-drop-copy">Digital outdoor screens, booking and monetization.</span></a>
+          <a class="br-drop-link" href="/case-studies/"><span class="br-drop-title">Use Cases</span><span class="br-drop-copy">Planning examples and campaign applications.</span></a>
+        </div>
+      </details>
+
+      <details class="br-nav-group" name="br-primary-menu">
+        <summary class="br-nav-summary">Bangladesh
+          <svg class="br-chevron" aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="m5 7.5 5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </summary>
+        <div class="br-dropdown br-bd">
+          <a class="br-drop-link" href="/programmatic-advertising-bangladesh/"><span class="br-drop-title">Programmatic Advertising Bangladesh</span><span class="br-drop-copy">Local market programmatic advertising guide.</span></a>
+          <a class="br-drop-link" href="/ai-contextual-advertising-bangladesh/"><span class="br-drop-title">AI &amp; Contextual Bangladesh</span><span class="br-drop-copy">AI and contextual advertising for Bangladesh.</span></a>
+          <a class="br-drop-link" href="/rich-media-html5-advertising-bangladesh/"><span class="br-drop-title">Rich Media &amp; HTML5 Bangladesh</span><span class="br-drop-copy">Interactive creative formats for local campaigns.</span></a>
+          <a class="br-drop-link" href="/publisher-monetization-bangladesh/"><span class="br-drop-title">Publisher Monetization Bangladesh</span><span class="br-drop-copy">Monetization pathways for Bangladesh publishers.</span></a>
+          <a class="br-drop-link" href="/ctv-dooh-advertising-bangladesh/"><span class="br-drop-title">Screen Advertising Bangladesh</span><span class="br-drop-copy">CTV planning plus DOOH screen integration and activation.</span></a>
+        </div>
+      </details>
+
+      <details class="br-nav-group" name="br-primary-menu">
+        <summary class="br-nav-summary">Resources
+          <svg class="br-chevron" aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="m5 7.5 5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </summary>
+        <div class="br-dropdown br-bd">
+          <a class="br-drop-link" href="/blog/"><span class="br-drop-title">Blog &amp; Insights</span><span class="br-drop-copy">Programmatic advertising explainers and strategy.</span></a>
+          <a class="br-drop-link" href="/about/"><span class="br-drop-title">About Boost RAVA</span><span class="br-drop-copy">Company, mission and advertising technology.</span></a>
+          <a class="br-drop-link" href="/careers/"><span class="br-drop-title">Careers</span><span class="br-drop-copy">Explore opportunities to build AdTech with us.</span></a>
+          <a class="br-drop-link" href="/our-team/"><span class="br-drop-title">Our Team</span><span class="br-drop-copy">Meet the people behind Boost RAVA.</span></a>
+        </div>
+      </details>
+
+      <a class="br-nav-link" href="/contact/">Contact</a>
+    </nav>
+
+    <div class="br-header-actions" aria-label="Account actions">
+      <a class="br-action br-login" href="https://panel.boostrava.com/#/login" target="_blank" rel="noopener noreferrer">Login</a>
+      <a class="br-action br-register" href="https://panel.boostrava.com/#/register" target="_blank" rel="noopener noreferrer">Start Advertising</a>
+    </div>
+
+    <details class="br-mobile-nav">
+      <summary class="br-mobile-summary" aria-label="Toggle navigation menu">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </summary>
+      <nav class="br-mobile-panel" aria-label="Mobile navigation">
+        <a class="br-mobile-link" href="/advertiser/">Advertisers <span>→</span></a>
+        <a class="br-mobile-link" href="/publisher/">Publishers <span>→</span></a>
+        <div class="br-mobile-section">Solutions</div>
+        <a class="br-mobile-link" href="/programmatic-infrastructure/">Programmatic Infrastructure</a>
+        <a class="br-mobile-link" href="/ai-programmatic-advertising/">AI Programmatic</a>
+        <a class="br-mobile-link" href="/contextual-advertising/">Contextual Advertising</a>
+        <a class="br-mobile-link" href="/rich-media/">Rich Media</a>
+        <a class="br-mobile-link" href="/html5-ad-formats/">HTML5 Advertising</a>
+        <a class="br-mobile-link" href="/ctv/">CTV Advertising</a>
+        <a class="br-mobile-link" href="/dooh/">DOOH Advertising</a>
+        <a class="br-mobile-link" href="/case-studies/">Use Cases</a>
+        <div class="br-mobile-section">Bangladesh</div>
+        <a class="br-mobile-link" href="/programmatic-advertising-bangladesh/">Programmatic Advertising</a>
+        <a class="br-mobile-link" href="/ai-contextual-advertising-bangladesh/">AI &amp; Contextual Advertising</a>
+        <a class="br-mobile-link" href="/rich-media-html5-advertising-bangladesh/">Rich Media &amp; HTML5</a>
+        <a class="br-mobile-link" href="/publisher-monetization-bangladesh/">Publisher Monetization</a>
+        <a class="br-mobile-link" href="/ctv-dooh-advertising-bangladesh/">Screen Advertising BD</a>
+        <div class="br-mobile-section">Company &amp; Resources</div>
+        <a class="br-mobile-link" href="/blog/">Blog &amp; Insights</a>
+        <a class="br-mobile-link" href="/about/">About</a>
+        <a class="br-mobile-link" href="/careers/">Careers</a>
+        <a class="br-mobile-link" href="/our-team/">Our Team</a>
+        <a class="br-mobile-link" href="/contact/">Contact</a>
+        <div class="br-mobile-actions">
+          <a class="br-action br-login" href="https://panel.boostrava.com/#/login" target="_blank" rel="noopener noreferrer">Login</a>
+          <a class="br-action br-register" href="https://panel.boostrava.com/#/register" target="_blank" rel="noopener noreferrer">Start Advertising</a>
+        </div>
+      </nav>
+    </details>
+  </div>
+</header>
+4:["$","div",null,{"className":"page-shell brv4-blog-post","data-source-reconstructed":"true","data-page-route":"blog/programmatic-advertising-for-beginners-a-practical-first-campaign-guide","suppressHydrationWarning":true,"children":[false,[],[["$","script","supp-schema-0",{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Organization\",\"@id\":\"https://www.boostrava.com/#organization\",\"name\":\"Boost RAVA\",\"url\":\"https://www.boostrava.com/\",\"logo\":\"https://www.boostrava.com/assets/images/logo/Logo-03.png\",\"description\":\"Boost RAVA is an advertising technology platform for advertisers and publishers.\"}"}}],["$","script","supp-schema-1",{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"WebSite\",\"@id\":\"https://www.boostrava.com/#website\",\"url\":\"https://www.boostrava.com/\",\"name\":\"Boost RAVA\",\"publisher\":{\"@id\":\"https://www.boostrava.com/#organization\"},\"inLanguage\":\"en\"}"}}],["$","script","supp-schema-2",{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://www.boostrava.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Blog & Insights\",\"item\":\"https://www.boostrava.com/blog/\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Programmatic Advertising for Beginners: A Practical First Campaign Guide\",\"item\":\"https://www.boostrava.com/blog/programmatic-advertising-for-beginners-a-practical-first-campaign-guide/\"}]}"}}]],[["$","div",null,{"dangerouslySetInnerHTML":{"__html":"$f"}}],"$L10"],false,"$L11","$L12",false]}]
+13:I[7516,["974","static/chunks/974-4a27fba791dfb44a.js","340","static/chunks/app/%5B%5B...slug%5D%5D/page-af52b3ab32259fe6.js"],"HeaderBehavior"]
+14:I[4271,["974","static/chunks/974-4a27fba791dfb44a.js","340","static/chunks/app/%5B%5B...slug%5D%5D/page-af52b3ab32259fe6.js"],"BlogPostPage"]
+10:["$","$L13",null,{}]
+15:T910d,<p data-pm-slice="1 1 []">Programmatic advertising can look complicated when you encounter it for the first time. Terms such as DSP, SSP, RTB, ad exchange, CPM, conversion tracking, audience segments, frequency caps, and bid optimization can make a relatively straightforward concept feel unnecessarily technical.</p>
+<p>At its core, however, <strong>programmatic advertising is the automated buying and selling of digital advertising inventory using software, data, and predefined campaign rules</strong>. Instead of manually contacting individual websites to negotiate placements, advertisers can use a programmatic advertising platform to reach relevant audiences across websites, mobile apps, video environments, and other digital channels.</p>
+<p>The IAB defines a demand-side platform, or DSP, as software that allows advertisers and agencies to automate the purchase of digital inventory across publishers, exchanges, and supply-side platforms while controlling targeting, budgets, bidding, and reporting. An SSP performs the corresponding function for publishers by helping them automate the sale of their inventory.</p>
+<p>If you are exploring <strong>programmatic advertising for beginners</strong>, the best way to understand the ecosystem is not to memorize every acronym. Instead, learn how to build one properly structured campaign from beginning to end.</p>
+<p>This practical guide walks through that process.</p>
+<div><hr></div>
+<h2>What Is Programmatic Advertising?</h2>
+<p><a href="https://www.boostrava.com/blog/best-programmatic-advertising-platform-in-bangladesh/">Programmatic advertising </a>is a technology-driven method of purchasing digital ad inventory automatically.</p>
+<p>A typical programmatic transaction can involve several participants:</p>
+<p><strong>Advertiser &rarr; DSP &rarr; Ad Exchange &rarr; SSP &rarr; Publisher</strong></p>
+<p>The advertiser creates the campaign and defines targeting, budget, bidding, creative, and measurement rules. A <strong>Demand-Side Platform (DSP)</strong> evaluates available advertising opportunities and determines whether they fit those campaign requirements.</p>
+<p>On the other side of the transaction, a <strong>Supply-Side Platform (SSP)</strong> helps publishers make advertising inventory available to buyers.</p>
+<p>An ad exchange or related marketplace infrastructure may connect the two sides.</p>
+<p>IAB materials describe DSPs and SSPs as technologies that automate workflows and allow buyers and sellers to handle transaction volumes far beyond what would normally be practical through manual media buying.</p>
+<h3>Where Does Real-Time Bidding Fit In?</h3>
+<p>Real-time bidding, commonly called <strong>RTB</strong>, is one method of executing programmatic advertising.</p>
+<p>When an eligible impression becomes available, participating buyers can evaluate the advertising opportunity and submit bids automatically. The process occurs rapidly enough for the selected advertisement to be delivered while the webpage, app, or other content loads.</p>
+<p>It is important to understand that:</p>
+<p><strong>Programmatic advertising and RTB are not exactly the same thing.</strong></p>
+<p>RTB is one programmatic buying method. Programmatic transactions can also include:</p>
+<ul data-spread="false">
+<li>
+<p>Open auctions</p>
+</li>
+<li>
+<p>Private marketplaces</p>
+</li>
+<li>
+<p>Preferred deals</p>
+</li>
+<li>
+<p>Programmatic guaranteed deals</p>
+</li>
+</ul>
+<p>IAB documentation distinguishes RTB from arrangements such as private auctions, preferred deals, and programmatic guaranteed transactions.</p>
+<p>For a beginner running a first campaign, the practical priority is understanding your <strong>campaign objective, audience, budget, creative, bidding model, inventory, tracking, and optimization strategy</strong>.</p>
+<h2>Why Beginners Use Programmatic Advertising</h2>
+<p>Traditional digital media buying often involves selecting publishers individually, discussing pricing, confirming placements, exchanging creative files, and manually managing campaigns.</p>
+<p>Programmatic technology automates much of that workflow.</p>
+<p>For advertisers, the major advantages can include:</p>
+<ul data-spread="false">
+<li>
+<p>Access to advertising inventory across many publishers</p>
+</li>
+<li>
+<p>Centralized campaign management</p>
+</li>
+<li>
+<p>Audience-based targeting</p>
+</li>
+<li>
+<p>Geographic and device targeting</p>
+</li>
+<li>
+<p>Automated bidding</p>
+</li>
+<li>
+<p>Budget and pacing controls</p>
+</li>
+<li>
+<p>Real-time campaign reporting</p>
+</li>
+<li>
+<p>Creative performance comparison</p>
+</li>
+<li>
+<p>Retargeting opportunities</p>
+</li>
+<li>
+<p>Campaign optimization based on measurable results</p>
+</li>
+</ul>
+<p>Rather than asking only, &ldquo;Which website should display my advertisement?&rdquo;, programmatic advertising allows advertisers to ask a more useful question:</p>
+<p><strong>Which available impression best matches the person, context, location, device, price, and campaign objective I care about?</strong></p>
+<p>That shift is one of the most important concepts for anyone learning how programmatic advertising works.</p>
+<h2>The Programmatic Advertising Ecosystem Explained Simply</h2>
+<p>Before launching a campaign, understand the main pieces involved.</p>
+<table>
+<tbody>
+<tr>
+<th>Component</th>
+<th>What It Does</th>
+<th>Why an Advertiser Should Care</th>
+</tr>
+<tr>
+<td>Advertiser</td>
+<td>Pays to promote a product, service, or brand</td>
+<td>Defines the business objective</td>
+</tr>
+<tr>
+<td>DSP</td>
+<td>Helps advertisers buy digital inventory automatically</td>
+<td>Main campaign buying interface</td>
+</tr>
+<tr>
+<td>SSP</td>
+<td>Helps publishers sell advertising inventory</td>
+<td>Connects publisher supply to demand</td>
+</tr>
+<tr>
+<td>Ad Exchange</td>
+<td>Facilitates transactions between buyers and sellers</td>
+<td>Provides access to available inventory</td>
+</tr>
+<tr>
+<td>Publisher</td>
+<td>Owns the website, app, or media environment</td>
+<td>Supplies ad placements</td>
+</tr>
+<tr>
+<td>Ad Creative</td>
+<td>The visual, native, video, or other advertising unit</td>
+<td>Communicates the message</td>
+</tr>
+<tr>
+<td>Tracking System</td>
+<td>Measures impressions, clicks, and conversions</td>
+<td>Shows whether the campaign works</td>
+</tr>
+<tr>
+<td>Audience Data</td>
+<td>Helps identify or group potential users</td>
+<td>Improves targeting relevance</td>
+</tr>
+</tbody>
+</table>
+<p>The real ecosystem may contain additional technologies such as ad servers, measurement providers, verification vendors, data platforms, identity systems, and fraud-prevention tools.</p>
+<p>IAB has repeatedly noted that the programmatic supply chain can contain DSPs, SSPs, exchanges, data providers, measurement vendors, and other technology partners, which is why transparency around costs and supply paths remains important.</p>
+<p>A beginner does not need to master every component before launching a campaign. You simply need to understand how your campaign moves through the system and what you can control.</p>
+<h2>Step 1: Choose One Clear Campaign Objective</h2>
+<p>The biggest beginner mistake often happens before the first bid is ever placed: trying to accomplish too many objectives with one campaign.</p>
+<p>A campaign should begin with a specific business outcome.</p>
+<p>Possible objectives include:</p>
+<h3>Brand Awareness</h3>
+<p>Choose this when you primarily want more relevant people to see your brand.</p>
+<p>Typical metrics:</p>
+<ul data-spread="false">
+<li>
+<p>Impressions</p>
+</li>
+<li>
+<p>Reach</p>
+</li>
+<li>
+<p>Viewable impressions</p>
+</li>
+<li>
+<p>CPM</p>
+</li>
+<li>
+<p>Frequency</p>
+</li>
+<li>
+<p>Video completion rate, where applicable</p>
+</li>
+</ul>
+<h3>Website Traffic</h3>
+<p>Choose this when the campaign's primary goal is attracting qualified visitors.</p>
+<p>Typical metrics:</p>
+<ul data-spread="false">
+<li>
+<p>Clicks</p>
+</li>
+<li>
+<p>Click-through rate</p>
+</li>
+<li>
+<p>CPC</p>
+</li>
+<li>
+<p>Landing-page visits</p>
+</li>
+<li>
+<p>Engaged sessions</p>
+</li>
+</ul>
+<h3>Lead Generation</h3>
+<p>Choose this when you want visitors to submit:</p>
+<ul data-spread="false">
+<li>
+<p>Contact forms</p>
+</li>
+<li>
+<p>Quote requests</p>
+</li>
+<li>
+<p>Trial registrations</p>
+</li>
+<li>
+<p>Consultation requests</p>
+</li>
+<li>
+<p>Newsletter subscriptions</p>
+</li>
+</ul>
+<p>Your primary performance metrics may become <strong>CPA, conversion rate, and cost per lead</strong>.</p>
+<h3>Sales or <a href="https://www.engati.com/glossary/ecommerce-conversions">E-Commerce Conversions</a></h3>
+<p>For an online store, the campaign may focus on:</p>
+<ul data-spread="false">
+<li>
+<p>Purchases</p>
+</li>
+<li>
+<p>Revenue</p>
+</li>
+<li>
+<p>Cost per acquisition</p>
+</li>
+<li>
+<p>Return on ad spend</p>
+</li>
+<li>
+<p>Average order value</p>
+</li>
+</ul>
+<p>Google's own Display campaign planning guidance recommends identifying the campaign objective first because that decision affects audience targeting, budget, bidding, creative, and measurement.</p>
+<p>That principle applies broadly to programmatic media buying.</p>
+<h3>A Good Beginner Rule</h3>
+<p>Give each campaign:</p>
+<p><strong>one primary objective + one primary conversion event + a small number of supporting metrics.</strong></p>
+<p>Do not judge an awareness campaign exclusively by last-click purchases, and do not judge a direct-response campaign solely by impressions.</p>
+<h2>Step 2: Define the Audience Before Choosing Targeting Options</h2>
+<p>Beginners sometimes open an advertising platform and immediately begin selecting audience filters.</p>
+<p>Start outside the platform instead.</p>
+<p>Write a short audience definition:</p>
+<blockquote>
+<p>&ldquo;We want to reach small-business owners in the United States who are actively researching affordable accounting software and are likely to start a trial within the next 30 days.&rdquo;</p>
+</blockquote>
+<p>That description immediately gives you useful targeting clues.</p>
+<p>You now know:</p>
+<ul data-spread="false">
+<li>
+<p>Location</p>
+</li>
+<li>
+<p>Business context</p>
+</li>
+<li>
+<p>Product category</p>
+</li>
+<li>
+<p>Intent</p>
+</li>
+<li>
+<p>Likely funnel stage</p>
+</li>
+<li>
+<p>Desired action</p>
+</li>
+</ul>
+<h3>Common Programmatic Targeting Options</h3>
+<p>Depending on the platform, advertisers may be able to target by:</p>
+<h3>Geographic Location</h3>
+<p>Examples:</p>
+<ul data-spread="false">
+<li>
+<p>Country</p>
+</li>
+<li>
+<p>State or region</p>
+</li>
+<li>
+<p>City</p>
+</li>
+<li>
+<p>Postal area</p>
+</li>
+</ul>
+<h3>Device</h3>
+<p>Examples:</p>
+<ul data-spread="false">
+<li>
+<p>Desktop</p>
+</li>
+<li>
+<p>Mobile</p>
+</li>
+<li>
+<p>Tablet</p>
+</li>
+<li>
+<p>Connected TV</p>
+</li>
+</ul>
+<h3>Operating System or Browser</h3>
+<p>Useful when your product has specific technical requirements.</p>
+<h3>Audience Interests</h3>
+<p>Reach people whose broader behavior suggests an affinity with certain categories.</p>
+<h3>In-Market or Intent Audiences</h3>
+<p>Reach users who appear to be actively researching a product or service category.</p>
+<h3>Contextual Targeting</h3>
+<p>Show advertisements alongside content related to selected keywords, topics, or categories.</p>
+<p>For example, a cybersecurity company might target content discussing:</p>
+<ul data-spread="false">
+<li>
+<p>Data protection</p>
+</li>
+<li>
+<p>Ransomware</p>
+</li>
+<li>
+<p>Network security</p>
+</li>
+<li>
+<p>Cloud security</p>
+</li>
+<li>
+<p>Business cybersecurity</p>
+</li>
+</ul>
+<h3>Retargeting</h3>
+<p>Reach people who have already interacted with your brand, subject to applicable privacy requirements and platform policies.</p>
+<p><img src="https://api.boostrava.com/assets/images/blog/content/2026/08/e8654afd-b823-4d1d-aadd-05f7de0c73a4.webp" alt="" width="1920" height="1080"></p>
+<p>Google, for example, distinguishes between affinity audiences, intent audiences, and advertiser-owned data segments for its Display advertising products.</p>
+<h3>Do Not Over-Target Your First Campaign</h3>
+<p>A beginner may combine:</p>
+<p>Country + city + age + device + audience + keyword + placement + operating system + narrow schedule.</p>
+<p>The result can be an audience so restricted that the campaign cannot gather meaningful data.</p>
+<p>Start with targeting that expresses your actual customer hypothesis. Add restrictions when they solve a genuine problem.</p>
+<h2>Step 3: Select Geography Carefully</h2>
+<p>Location targeting sounds simple, but it can strongly affect performance.</p>
+<p>Suppose your business only serves customers in Canada.</p>
+<p>Showing ads globally because global traffic is cheaper does not make the campaign efficient.</p>
+<p>Your CPM may fall while business value collapses.</p>
+<p>For a first campaign:</p>
+<ol start="1" data-spread="false">
+<li>
+<p>Target only locations where your offer is actually available.</p>
+</li>
+<li>
+<p>Separate countries when economics differ significantly.</p>
+</li>
+<li>
+<p>Consider separate campaigns for major markets.</p>
+</li>
+<li>
+<p>Review geographic reporting after the campaign gathers data.</p>
+</li>
+<li>
+<p>Exclude locations producing irrelevant traffic.</p>
+</li>
+</ol>
+<p>A useful programmatic advertising principle is:</p>
+<p><strong>Cheap traffic is not necessarily valuable traffic.</strong></p>
+<p>A $0.20 click from someone who cannot purchase your product can be more expensive than a $2 click from someone who can.</p>
+<div><hr></div>
+<h2>Step 4: Set a Testing Budget You Can Learn From</h2>
+<p>&ldquo;How much should I spend on my first programmatic advertising campaign?&rdquo; is one of the most common long-tail questions beginners ask.</p>
+<p>There is no universal number.</p>
+<p>The right budget depends on:</p>
+<ul data-spread="false">
+<li>
+<p>Target market</p>
+</li>
+<li>
+<p>Audience size</p>
+</li>
+<li>
+<p>CPM or CPC levels</p>
+</li>
+<li>
+<p>Conversion rate</p>
+</li>
+<li>
+<p>Product price</p>
+</li>
+<li>
+<p>Conversion objective</p>
+</li>
+<li>
+<p>Campaign duration</p>
+</li>
+<li>
+<p>Creative inventory</p>
+</li>
+<li>
+<p>Bidding strategy</p>
+</li>
+</ul>
+<p>Instead of asking only, &ldquo;What is the minimum budget?&rdquo;, ask:</p>
+<p><strong>How much budget is required to generate enough meaningful activity to evaluate my campaign?</strong></p>
+<h3>Example</h3>
+<p>Imagine your estimated CPC is $1.25 and you allocate $10 per day.</p>
+<p>That might produce roughly eight clicks per day before accounting for normal variation.</p>
+<p>If your landing page converts 2% of visitors, it could take considerable time to gather enough conversions to make confident optimization decisions.</p>
+<p>A tiny budget is not automatically bad, but your expectations must match your data volume.</p>
+<h3>Daily Budget vs Total Budget</h3>
+<p>Platforms may support:</p>
+<ul data-spread="false">
+<li>
+<p>Daily budgets</p>
+</li>
+<li>
+<p>Lifetime budgets</p>
+</li>
+<li>
+<p>Campaign-level limits</p>
+</li>
+<li>
+<p>Ad-group limits</p>
+</li>
+</ul>
+<p>Choose a structure that prevents accidental overspending while giving the campaign sufficient room to deliver.</p>
+<p>For context, Google describes its Display daily budget as the average amount the advertiser wants to spend each day and provides automated or manual bidding options depending on the advertiser's goal.</p>
+<p>Your DSP or programmatic platform may calculate pacing differently, so always review its specific budget rules before launch.</p>
+<div><hr></div>
+<h2>Step 5: Understand CPM, CPC, CPA, and ROAS</h2>
+<p>These terms appear constantly in programmatic advertising.</p>
+<h3>CPM &mdash; Cost Per Mille</h3>
+<p>The cost of 1,000 ad impressions.</p>
+<p>Formula:</p>
+<p><strong>CPM = Ad Spend &divide; Impressions &times; 1,000</strong></p>
+<p>If you spend $50 for 25,000 impressions:</p>
+<p>CPM = $2.00</p>
+<p>CPM is particularly useful when assessing media cost and awareness activity.</p>
+<h3>CPC &mdash; Cost Per Click</h3>
+<p>Formula:</p>
+<p><strong>CPC = Ad Spend &divide; Clicks</strong></p>
+<p>Spend $100 and receive 80 clicks:</p>
+<p>CPC = $1.25</p>
+<h3>CTR &mdash; Click-Through Rate</h3>
+<p>Formula:</p>
+<p><strong>CTR = Clicks &divide; Impressions &times; 100</strong></p>
+<p>A high CTR does not automatically mean a profitable campaign. The clicks still need to generate useful post-click behavior.</p>
+<h3>CPA &mdash; Cost Per Acquisition</h3>
+<p>Formula:</p>
+<p><strong>CPA = Spend &divide; Conversions</strong></p>
+<p>Spend $500 and generate 20 leads:</p>
+<p>CPA = $25.</p>
+<h3>ROAS &mdash; Return on Ad Spend</h3>
+<p>Formula:</p>
+<p><strong>ROAS = Revenue Attributed to Ads &divide; Ad Spend</strong></p>
+<p>Spend $1,000 and generate $4,000 in attributable revenue:</p>
+<p>ROAS = 4.0, commonly expressed as <strong>4:1</strong> or <strong>400%</strong>.</p>
+<p>A practical first-campaign dashboard should focus on the metrics directly connected to the campaign objective rather than displaying every metric available.</p>
+<h2>Step 6: Choose an Appropriate Bidding Strategy</h2>
+<p>Your bid tells the advertising system how you want to compete for inventory.</p>
+<p>Depending on the platform, you may encounter strategies based on:</p>
+<ul data-spread="false">
+<li>
+<p>CPM</p>
+</li>
+<li>
+<p>CPC</p>
+</li>
+<li>
+<p>Viewable CPM</p>
+</li>
+<li>
+<p>Maximum conversions</p>
+</li>
+<li>
+<p>Target CPA</p>
+</li>
+<li>
+<p>Target ROAS</p>
+</li>
+</ul>
+<p>For beginners, the most important rule is:</p>
+<p><strong>Your bidding strategy should match your campaign objective and the quality of your conversion data.</strong></p>
+<p>If conversion tracking is inaccurate, automated conversion-based bidding can optimize toward misleading signals.</p>
+<p>Google explicitly recommends ensuring conversion tracking is functioning correctly because automated bidding systems can react to inaccurate conversion data.</p>
+<p>Before using sophisticated conversion optimization, confirm that the platform can reliably identify the event you consider a conversion.</p>
+<div><hr></div>
+<h2>Step 7: Create Ads That Match the Audience and Landing Page</h2>
+<p>Programmatic advertising technology cannot rescue weak creative indefinitely.</p>
+<p>Your advertisement has three jobs:</p>
+<ol start="1" data-spread="false">
+<li>
+<p>Capture attention.</p>
+</li>
+<li>
+<p>Communicate value.</p>
+</li>
+<li>
+<p>Create an appropriate next action.</p>
+</li>
+</ol>
+<p>A beginner display ad should make the offer understandable quickly.</p>
+<h3>A Simple Creative Formula</h3>
+<p><strong>Problem or benefit + value proposition + call to action</strong></p>
+<p>For example:</p>
+<p><strong>Automate Your Business Reports</strong><br>Create client-ready reports without hours of manual work.<br><strong>Start Free Trial</strong></p>
+<p>Avoid filling a banner with excessive text.</p>
+<p>Your landing page should also continue the same promise.</p>
+<p>If the advertisement says:</p>
+<p><strong>&ldquo;Get Your Free Marketing Audit&rdquo;</strong></p>
+<p>but the landing page leads to a generic homepage with no visible audit offer, you create friction.</p>
+<h3>Test Multiple Creatives</h3>
+<p>Do not launch one ad and treat its performance as the performance of the entire channel.</p>
+<p>Test variations in:</p>
+<ul data-spread="false">
+<li>
+<p>Headline</p>
+</li>
+<li>
+<p>Image</p>
+</li>
+<li>
+<p>Value proposition</p>
+</li>
+<li>
+<p>CTA</p>
+</li>
+<li>
+<p>Offer</p>
+</li>
+<li>
+<p>Format</p>
+</li>
+</ul>
+<p>Where responsive creative formats are available, platforms may assemble multiple uploaded assets into different combinations. Google's Display documentation, for example, recommends supplying images, logos, videos, headlines, and descriptions for responsive display ads.</p>
+<p><img src="https://api.boostrava.com/assets/images/blog/content/2026/08/d55dd0a7-4f1f-4dde-84a9-340d36368b12.webp" alt="" width="1920" height="1080"></p>
+<div><hr></div>
+<h2>Step 8: Build a Landing Page for the Campaign</h2>
+<p>The ad gets the click.</p>
+<p>The landing page earns the conversion.</p>
+<p>A good programmatic campaign landing page should have:</p>
+<h3>Message Consistency</h3>
+<p>The visitor should immediately recognize the offer promised in the advertisement.</p>
+<h3>One Primary CTA</h3>
+<p>Examples:</p>
+<ul data-spread="false">
+<li>
+<p>Start Free Trial</p>
+</li>
+<li>
+<p>Request Demo</p>
+</li>
+<li>
+<p>Buy Now</p>
+</li>
+<li>
+<p>Get Quote</p>
+</li>
+<li>
+<p>Download Guide</p>
+</li>
+<li>
+<p>Create Account</p>
+</li>
+</ul>
+<h3>Fast Loading</h3>
+<p>Slow pages waste paid traffic.</p>
+<h3>Mobile Compatibility</h3>
+<p>If mobile traffic is allowed, test the full conversion flow on an actual mobile device.</p>
+<h3>Trust Signals</h3>
+<p>Depending on the business:</p>
+<ul data-spread="false">
+<li>
+<p>Customer reviews</p>
+</li>
+<li>
+<p>Security information</p>
+</li>
+<li>
+<p>Client logos</p>
+</li>
+<li>
+<p>Case studies</p>
+</li>
+<li>
+<p>Clear pricing</p>
+</li>
+<li>
+<p>Contact information</p>
+</li>
+<li>
+<p>Refund terms</p>
+</li>
+<li>
+<p>Privacy information</p>
+</li>
+</ul>
+<p>Never optimize the advertising platform while ignoring what happens after the click.</p>
+<div><hr></div>
+<h2>Step 9: Install Tracking Before Launching</h2>
+<p>Do not wait until the campaign is live to decide how conversions will be measured.</p>
+<p>Set tracking up first.</p>
+<p>Possible conversion events include:</p>
+<ul data-spread="false">
+<li>
+<p>Purchase</p>
+</li>
+<li>
+<p>Lead form submission</p>
+</li>
+<li>
+<p>Account registration</p>
+</li>
+<li>
+<p>Trial start</p>
+</li>
+<li>
+<p>App installation</p>
+</li>
+<li>
+<p>Qualified page visit</p>
+</li>
+<li>
+<p>Phone call</p>
+</li>
+<li>
+<p>Demo request</p>
+</li>
+</ul>
+<p>Where appropriate, also record supporting events such as:</p>
+<ul data-spread="false">
+<li>
+<p>Add to cart</p>
+</li>
+<li>
+<p>Product view</p>
+</li>
+<li>
+<p>Checkout start</p>
+</li>
+<li>
+<p>Form start</p>
+</li>
+</ul>
+<p>But distinguish these from your primary business conversion.</p>
+<p>Google recommends testing conversion tracking and confirming that conversions register correctly across the advertising platform, analytics system, or third-party tracking solution.</p>
+<p>That is excellent advice for any programmatic campaign.</p>
+<h2>Use Tracking Parameters</h2>
+<p>A campaign URL might include tracking parameters such as:</p>
+<p><code dir="ltr">utm_source=programmatic</code></p>
+<p><code dir="ltr">utm_medium=display</code></p>
+<p><code dir="ltr">utm_campaign=first_campaign</code></p>
+<p>More advanced platforms may also support macros that dynamically pass information such as:</p>
+<ul data-spread="false">
+<li>
+<p>Campaign ID</p>
+</li>
+<li>
+<p>Creative ID</p>
+</li>
+<li>
+<p>Placement ID</p>
+</li>
+<li>
+<p>Publisher or site identifier</p>
+</li>
+<li>
+<p>Device information</p>
+</li>
+<li>
+<p>Click identifier</p>
+</li>
+</ul>
+<p>These parameters can make external analytics and attribution considerably easier.</p>
+<div><hr></div>
+<h2>Step 10: Add Brand-Safety and Inventory Controls</h2>
+<p>Not every impression is equally useful.</p>
+<p>Before launching, review any available controls for:</p>
+<ul data-spread="false">
+<li>
+<p>Content categories</p>
+</li>
+<li>
+<p>Site or app exclusions</p>
+</li>
+<li>
+<p>Sensitive content</p>
+</li>
+<li>
+<p>Invalid traffic protection</p>
+</li>
+<li>
+<p>Placement quality</p>
+</li>
+<li>
+<p>Frequency</p>
+</li>
+<li>
+<p>Domain lists</p>
+</li>
+<li>
+<p>Device types</p>
+</li>
+<li>
+<p>Inventory type</p>
+</li>
+</ul>
+<p>Programmatic advertising can provide enormous scale, but advertisers still need visibility into where their budgets are being spent.</p>
+<p>IAB has highlighted continuing concerns around transparency in the programmatic supply chain, including understanding platform, data, exchange, SSP, and verification costs.</p>
+<p>Beginners should therefore avoid treating the campaign's average CPM as the only indicator of inventory quality.</p>
+<div><hr></div>
+<h2>Step 11: Use Frequency Caps When Appropriate</h2>
+<p>Frequency describes how often a user sees an advertisement during a defined period.</p>
+<p>Too little exposure can reduce recall.</p>
+<p>Too much exposure can create:</p>
+<ul data-spread="false">
+<li>
+<p>Creative fatigue</p>
+</li>
+<li>
+<p>Wasted impressions</p>
+</li>
+<li>
+<p>Annoyance</p>
+</li>
+<li>
+<p>Falling CTR</p>
+</li>
+<li>
+<p>Reduced incremental value</p>
+</li>
+</ul>
+<p>There is no universal frequency cap that works for every campaign.</p>
+<p>Awareness campaigns, short promotions, retargeting campaigns, and long purchase cycles may require very different strategies.</p>
+<p>Watch performance by frequency when that reporting is available.</p>
+<p>If performance deteriorates after repeated exposure, adjust frequency or rotate fresh creative.</p>
+<div><hr></div>
+<h2>Step 12: Perform a Pre-Launch Campaign Check</h2>
+<p>Before clicking <strong>Launch</strong>, <strong>Submit</strong>, or <strong>Publish</strong>, review the full campaign.</p>
+<table>
+<tbody>
+<tr>
+<td>Campaign Element</td>
+<td>Check Before Launch</td>
+</tr>
+<tr>
+<td>Objective</td>
+<td>Is there one clear goal?</td>
+</tr>
+<tr>
+<td>Conversion</td>
+<td>Is the primary conversion defined?</td>
+</tr>
+<tr>
+<td>Tracking</td>
+<td>Has it been tested?</td>
+</tr>
+<tr>
+<td>Budget</td>
+<td>Are daily/total limits correct?</td>
+</tr>
+<tr>
+<td>Targeting</td>
+<td>Is the audience neither irrelevant nor unnecessarily narrow?</td>
+</tr>
+<tr>
+<td>Geography</td>
+<td>Can customers actually buy in these locations?</td>
+</tr>
+<tr>
+<td>Devices</td>
+<td>Are supported devices selected?</td>
+</tr>
+<tr>
+<td>Creatives</td>
+<td>Are all ads correct and approved?</td>
+</tr>
+<tr>
+<td>Landing Page</td>
+<td>Does it work on desktop and mobile?</td>
+</tr>
+<tr>
+<td>URL</td>
+<td>Does the destination URL work?</td>
+</tr>
+<tr>
+<td>CTA</td>
+<td>Does it match the landing page?</td>
+</tr>
+<tr>
+<td>Frequency</td>
+<td>Are controls reasonable?</td>
+</tr>
+<tr>
+<td>Exclusions</td>
+<td>Have obvious unwanted placements/categories been excluded?</td>
+</tr>
+<tr>
+<td>Schedule</td>
+<td>Are start/end dates correct?</td>
+</tr>
+</tbody>
+</table>
+<p>This five-minute review can prevent hours or days of wasted spend.</p>
+<div><hr></div>
+<h2>Step 13: Launch &mdash; Then Avoid Overreacting</h2>
+<p>The first hours of campaign data can be noisy.</p>
+<p>Beginners frequently make the mistake of changing:</p>
+<ul data-spread="false">
+<li>
+<p>Bid</p>
+</li>
+<li>
+<p>Targeting</p>
+</li>
+<li>
+<p>Creative</p>
+</li>
+<li>
+<p>Budget</p>
+</li>
+<li>
+<p>Geography</p>
+</li>
+<li>
+<p>Audience</p>
+</li>
+<li>
+<p>Landing page</p>
+</li>
+</ul>
+<p>all at once.</p>
+<p>When everything changes simultaneously, you cannot easily identify what caused the result.</p>
+<p>Instead, establish a reasonable review cadence based on spend and data volume.</p>
+<p>A campaign spending thousands of dollars per day can be evaluated faster than one spending $10 per day.</p>
+<div><hr></div>
+<h2>Step 14: Optimize the Campaign Systematically</h2>
+<p>Once meaningful data starts arriving, move from setup to optimization.</p>
+<h3>First: Check Delivery</h3>
+<p>Is the campaign spending?</p>
+<p>If not, investigate:</p>
+<ul data-spread="false">
+<li>
+<p>Bid competitiveness</p>
+</li>
+<li>
+<p>Budget</p>
+</li>
+<li>
+<p>Audience size</p>
+</li>
+<li>
+<p>Inventory availability</p>
+</li>
+<li>
+<p>Creative approval</p>
+</li>
+<li>
+<p>Schedule</p>
+</li>
+<li>
+<p>Targeting conflicts</p>
+</li>
+</ul>
+<h3>Second: Check Traffic Quality</h3>
+<p>Look beyond clicks.</p>
+<p>Review:</p>
+<ul data-spread="false">
+<li>
+<p>Bounce or engagement patterns</p>
+</li>
+<li>
+<p>Session quality</p>
+</li>
+<li>
+<p>Conversion rate</p>
+</li>
+<li>
+<p>Geographic performance</p>
+</li>
+<li>
+<p>Device performance</p>
+</li>
+<li>
+<p>Placement performance</p>
+</li>
+</ul>
+<h3>Third: Check Conversion Economics</h3>
+<p>A campaign can generate cheap traffic while losing money.</p>
+<p>Compare:</p>
+<ul data-spread="false">
+<li>
+<p>CPA against acceptable CPA</p>
+</li>
+<li>
+<p>ROAS against target ROAS</p>
+</li>
+<li>
+<p>Lead quality</p>
+</li>
+<li>
+<p>Revenue</p>
+</li>
+<li>
+<p>Customer value</p>
+</li>
+</ul>
+<h3>Fourth: Identify Winners and Losers</h3>
+<p>You may discover:</p>
+<ul data-spread="false">
+<li>
+<p>Creative A converts better than Creative B</p>
+</li>
+<li>
+<p>Mobile traffic is cheaper but converts poorly</p>
+</li>
+<li>
+<p>One geographic region produces higher-value customers</p>
+</li>
+<li>
+<p>A contextual segment outperforms a broad interest audience</p>
+</li>
+<li>
+<p>Certain placements spend heavily without conversions</p>
+</li>
+</ul>
+<p>Use those findings to make controlled changes.</p>
+<div><hr></div>
+<h2>A Simple First Programmatic Campaign Example</h2>
+<p>Imagine a SaaS company offering project-management software.</p>
+<h3>Objective</h3>
+<p>Free-trial registrations.</p>
+<h3>Audience</h3>
+<p>Small-business owners, startup teams, operations managers, and users researching productivity or project-management software.</p>
+<h3>Geography</h3>
+<p>Bangladesh, United States and Canada.</p>
+<h3>Devices</h3>
+<p>Desktop and mobile.</p>
+<h3>Creative</h3>
+<p>Three banner variations:</p>
+<ol start="1" data-spread="false">
+<li>
+<p>&ldquo;Manage Every Project in One Place&rdquo;</p>
+</li>
+<li>
+<p>&ldquo;Stop Losing Tasks Across Spreadsheets&rdquo;</p>
+</li>
+<li>
+<p>&ldquo;Start Your 14-Day Project Management Trial&rdquo;</p>
+</li>
+</ol>
+<h3>Landing Page</h3>
+<p>A campaign-specific free-trial page.</p>
+<h3>Primary Conversion</h3>
+<p>Successful trial registration.</p>
+<h3>Supporting Metrics</h3>
+<ul data-spread="false">
+<li>
+<p>CTR</p>
+</li>
+<li>
+<p>CPC</p>
+</li>
+<li>
+<p>Landing-page conversion rate</p>
+</li>
+<li>
+<p>CPA</p>
+</li>
+</ul>
+<h3>Initial Optimization Questions</h3>
+<p>After sufficient data:</p>
+<ul data-spread="false">
+<li>
+<p>Which creative generates the lowest CPA?</p>
+</li>
+<li>
+<p>Which device converts most efficiently?</p>
+</li>
+<li>
+<p>Which audience segment produces qualified trials?</p>
+</li>
+<li>
+<p>Which placements consume spend without conversions?</p>
+</li>
+<li>
+<p>Does frequency affect performance?</p>
+</li>
+<li>
+<p>Which locations produce the best acquisition economics?</p>
+</li>
+</ul>
+<p>That is a much more disciplined approach than simply asking whether the campaign generated &ldquo;lots of clicks.&rdquo;</p>
+<div><hr></div>
+<h2>Common Programmatic Advertising Mistakes Beginners Should Avoid</h2>
+<h3>1. Launching Without Conversion Tracking</h3>
+<p>If you cannot measure the desired outcome, you cannot properly optimize toward it.</p>
+<h3>2. Targeting Everyone</h3>
+<p>Large reach does not automatically mean useful reach.</p>
+<h3>3. Over-Targeting</h3>
+<p>The opposite problem also occurs. Too many filters can prevent delivery and limit learning.</p>
+<h3>4. Selecting the Cheapest Inventory</h3>
+<p>Cheap CPMs can be attractive, but the cheapest impression is not necessarily the impression most likely to produce business value.</p>
+<h3>5. Using One Creative Forever</h3>
+<p>Ad fatigue can reduce performance.</p>
+<h3>6. Ignoring Placement Reports</h3>
+<p>When site, app, publisher, or inventory-level reporting is available, use it.</p>
+<h3>7. Evaluating Only CTR</h3>
+<p>Clicks are an intermediate action for most performance campaigns, not the final business objective.</p>
+<h3>8. Editing Too Frequently</h3>
+<p>Constant changes make performance difficult to interpret.</p>
+<h3>9. Ignoring the Landing Page</h3>
+<p>Poor conversion rates may result from the page rather than the audience or ad platform.</p>
+<h3>10. Scaling Too Early</h3>
+<p>A campaign that generated two conversions has not necessarily proven that it can maintain the same CPA at ten times the budget.</p>
+<div><hr></div>
+<h2>How to Scale Your First Successful Campaign</h2>
+<p>Once the campaign demonstrates repeatable performance, scale gradually.</p>
+<p>Possible approaches include:</p>
+<h3>Increase Budget</h3>
+<p>Raise spend while monitoring whether CPA or ROAS remains acceptable.</p>
+<h3>Expand Audiences</h3>
+<p>Test adjacent segments rather than immediately targeting everyone.</p>
+<h3>Expand Geography</h3>
+<p>Enter additional markets when your product supports them.</p>
+<h3>Add Inventory Sources</h3>
+<p>Explore additional publishers, exchanges, channels, or deal types.</p>
+<h3>Add New Creatives</h3>
+<p>Fresh creative can increase reach and combat fatigue.</p>
+<h3>Build Retargeting Segments</h3>
+<p>Where legally and technically appropriate, create strategies for previous site visitors or users who reached meaningful funnel stages but did not convert.</p>
+<h3>Separate Prospecting and Retargeting</h3>
+<p>Keeping them separate can make budgeting, messaging, and performance analysis clearer.</p>
+<div><hr></div>
+<h2>What Does a Successful First Campaign Really Look Like?</h2>
+<p>Your first programmatic advertising campaign does not need to become instantly profitable to be useful.</p>
+<p>A successful first campaign should answer questions.</p>
+<p>For example:</p>
+<ul data-spread="false">
+<li>
+<p>Can the platform reach your intended audience?</p>
+</li>
+<li>
+<p>What does qualified traffic cost?</p>
+</li>
+<li>
+<p>Which creative concept receives meaningful engagement?</p>
+</li>
+<li>
+<p>Which targeting method performs best?</p>
+</li>
+<li>
+<p>Which devices or regions work?</p>
+</li>
+<li>
+<p>Which placements should be excluded?</p>
+</li>
+<li>
+<p>What is the approximate conversion rate?</p>
+</li>
+<li>
+<p>Is your tracking reliable?</p>
+</li>
+<li>
+<p>What should be tested next?</p>
+</li>
+</ul>
+<p>When a campaign produces reliable answers, the second campaign becomes substantially easier to build.</p>
+<p>That is why disciplined testing is more valuable than chasing a perfect campaign on day one.</p>
+<h2>Programmatic Advertising Beginner Checklist</h2>
+<p>Before running your first campaign, make sure you can answer these questions:</p>
+<ul data-spread="false">
+<li>
+<p>What is the primary campaign objective?</p>
+</li>
+<li>
+<p>Who is the target audience?</p>
+</li>
+<li>
+<p>Where should ads appear geographically?</p>
+</li>
+<li>
+<p>Which devices should be included?</p>
+</li>
+<li>
+<p>What is the testing budget?</p>
+</li>
+<li>
+<p>Which bidding model will be used?</p>
+</li>
+<li>
+<p>What is the primary conversion?</p>
+</li>
+<li>
+<p>Has conversion tracking been tested?</p>
+</li>
+<li>
+<p>Are campaign URLs tagged correctly?</p>
+</li>
+<li>
+<p>Are multiple creative variations available?</p>
+</li>
+<li>
+<p>Does the landing page match the advertisement?</p>
+</li>
+<li>
+<p>Are brand-safety settings configured?</p>
+</li>
+<li>
+<p>Are frequency controls appropriate?</p>
+</li>
+<li>
+<p>Which KPIs determine success?</p>
+</li>
+<li>
+<p>When will the first optimization review occur?</p>
+</li>
+</ul>
+<p>If these questions have clear answers, you are already approaching programmatic advertising more methodically than many first-time advertisers.</p>
+<h2>Final Thoughts: Start Simple, Measure Everything That Matters</h2>
+<p>Programmatic advertising becomes easier once you stop viewing it as a collection of technical acronyms and start viewing it as a structured decision system.</p>
+<p>You define:</p>
+<p><strong>who you want to reach, what you want them to do, how much you are willing to spend, what message they see, where the ads can appear, and how success will be measured.</strong></p>
+<p>The platform then uses automation to execute those decisions at scale.</p>
+<p>For beginners, the strongest first campaign is usually not the most complicated one.</p>
+<p>It is the campaign with:</p>
+<ul data-spread="false">
+<li>
+<p>A clear objective</p>
+</li>
+<li>
+<p>A sensible audience</p>
+</li>
+<li>
+<p>Controlled targeting</p>
+</li>
+<li>
+<p>Accurate tracking</p>
+</li>
+<li>
+<p>Several strong creatives</p>
+</li>
+<li>
+<p>A relevant landing page</p>
+</li>
+<li>
+<p>An appropriate budget</p>
+</li>
+<li>
+<p>Useful reporting</p>
+</li>
+<li>
+<p>Consistent optimization</p>
+</li>
+</ul>
+<p>Platforms such as <strong>Boost Rava Programmatic Ads Network</strong> can give advertisers the infrastructure needed to manage campaigns across programmatic inventory, but technology is only part of the equation. Campaign strategy, measurement quality, creative relevance, and disciplined optimization ultimately determine whether that technology produces meaningful business results.</p>
+<p>Build your first campaign to learn.</p>
+<p>Then use that data to make every campaign after it smarter.</p>11:["$","main",null,{"children":[["$","$L14",null,{"post":{"id":17,"title":"Programmatic Advertising for Beginners: A Practical First Campaign Guide","slug":"programmatic-advertising-for-beginners-a-practical-first-campaign-guide","category":{"id":1,"name":"Programmatic Advertising","slug":"programmatic-advertising","is_pillar":true},"author":{"id":2,"name":"Michael Chen","slug":"michael-chen","avatar":"/assets/images/icons/icon.png","role":"VP of Programmatic Engineering","bio":"Michael specializes in low-latency RTB protocols, header bidding auction mechanics, and SSP infrastructure optimization.","expertise":"RTB Engines, Header Bidding, Floor Price Algorithms","social_links":{"linkedin":"https://linkedin.com","github":"https://github.com"}},"tags":[{"id":1,"name":"Programmatic","slug":"programmatic"}],"content_type":"Guide","short_description":"Learn programmatic advertising from the ground up with a practical first-campaign guide covering DSPs, RTB, targeting, budget planning, bidding, creatives, conversion tracking, KPIs, optimization, and campaign scaling.","featured_image":"https://api.boostrava.com/uploads/blog/1787599597_why-beginners-use-programmatic-advertising.webp","featured_image_alt":"Programmatic advertising for beginners first campaign guide showing DSP, audience targeting, budget, bidding, ad creative, conversion tracking, and campaign optimization workflow.","reading_time":"19 min read","quick_answer":"Programmatic advertising is the automated buying and selling of digital ad inventory through advertising technology platforms. To launch your first programmatic campaign, choose one measurable objective, define your target audience and geography, establish a testing budget, select a bidding strategy, create relevant advertisements and a matching landing page, configure conversion tracking, apply inventory and brand-safety controls, launch the campaign, and optimize it using metrics such as CPM, CPC, CTR, CPA, conversion rate, and ROAS.","key_takeaways":["Programmatic advertising automates digital media buying using platforms such as DSPs, SSPs, exchanges, data systems, and measurement technology.","Beginners should start with one primary campaign objective rather than trying to optimize one campaign for several unrelated outcomes.","Targeting should balance relevance and scale; both overly broad and excessively narrow audiences can reduce campaign efficiency.","Accurate conversion tracking should be implemented and tested before meaningful performance optimization begins.","CPM and CPC measure media efficiency, while CPA, conversion rate, and ROAS usually provide stronger indicators of business performance for conversion-focused campaigns.","Creative quality, landing-page relevance, targeting, inventory quality, and bidding strategy should be evaluated together rather than independently.","Campaign optimization should be systematic, with controlled changes based on sufficient performance data.","A successful first campaign should produce reliable learning that helps advertisers improve targeting, creatives, measurement, and budget allocation in subsequent campaigns."],"table_of_contents":[],"body":"$15","faqs":[{"question":"What is programmatic advertising for beginners?","answer":"Programmatic advertising is an automated method of buying digital advertising inventory through software platforms. Advertisers define targeting, budgets, bids, creatives, and campaign objectives, while programmatic technology helps determine which available ad impressions should be purchased."},{"question":"How much money do I need to start programmatic advertising?","answer":"There is no universal starting budget. Your required budget depends on audience size, geography, media cost, conversion objective, expected conversion rate, campaign duration, and the minimum requirements of your chosen advertising platform. Beginners should use a budget large enough to generate meaningful data without risking an amount they cannot afford to test."},{"question":"What is the difference between programmatic advertising and Google Ads?","answer":"Programmatic advertising is a broad method of automated digital media buying. Google Ads is a specific advertising platform offering Search, Display, YouTube, and other campaign types. A programmatic DSP may provide access to inventory across multiple publishers, exchanges, SSPs, or channels rather than a single advertising ecosystem."},{"question":"What is the difference between a DSP and an SSP?","answer":"A DSP is primarily used by advertisers and agencies to buy digital ad inventory automatically. An SSP is primarily used by publishers to make their available advertising inventory accessible to buyers and optimize its sale."},{"question":"How do I optimize my first programmatic advertising campaign?","answer":"Begin by verifying delivery and tracking. Then evaluate campaign performance by audience, creative, device, geography, placement, conversion rate, CPA, and other metrics relevant to your goal. Make controlled changes, avoid changing everything simultaneously, and allocate more budget toward segments that consistently generate valuable results."}],"sources":[],"related_products":["DSP","SSP","RTB","Publisher Monetization"],"cta":{"type":"advertiser","text":"Launch With BoostRAVA","link":"https://panel.boostrava.com/#/register"},"seo":{"primary_keyword":"programmatic advertising guide, programmatic advertising explained, how programmatic advertising works, how to start programmatic advertising, first programmatic advertising campaign, programmatic advertising campaign setup,","secondary_keywords":["Programmatic","Programmatic Advertising"],"search_intent":"Informational","meta_title":"Programmatic Advertising for Beginners: A Practical First Ca","meta_description":"Learn programmatic advertising step by step. Build your first campaign with practical guidance on DSPs, targeting, budgets, bidding, creatives, tracking, KPIs","canonical_url":"https://www.boostrava.com/blog/programmatic-advertising-for-beginners-a-practical-first-campaign-guide/","robots":"index, follow","og_title":"Programmatic Advertising for Beginners: First Campaign Guide","og_description":"Learn programmatic advertising step by step. Build your first campaign with practical guidance on DSPs, targeting, budgets, bidding, creatives, tracking, KPIs","og_image":"https://api.boostrava.com/uploads/blog/1787599597_why-beginners-use-programmatic-advertising.webp","twitter_card":"summary_large_image","schema_type":"BlogPosting","json_ld":[{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.boostrava.com/blog/programmatic-advertising-for-beginners-a-practical-first-campaign-guide/"},"headline":"Programmatic Advertising for Beginners: A Practical First Campaign Guide","description":"Learn programmatic advertising step by step. Build your first campaign with practical guidance on DSPs, targeting, budgets, bidding, creatives, tracking, KPIs","image":"https://api.boostrava.com/uploads/blog/1787599597_why-beginners-use-programmatic-advertising.webp","datePublished":"2026-08-24T18:56:00+00:00","dateModified":"2026-08-24T19:26:37+00:00","author":{"@type":"Person","name":"Michael Chen"},"publisher":{"@type":"Organization","name":"Boost RAVA","url":"https://www.boostrava.com","logo":{"@type":"ImageObject","url":"https://www.boostrava.com/assets/images/icons/Logo full png file-02.png"}},"inLanguage":"en","isAccessibleForFree":true,"wordCount":3675,"url":"https://www.boostrava.com/blog/programmatic-advertising-for-beginners-a-practical-first-campaign-guide/","isPartOf":{"@type":"WebSite","name":"BoostRAVA","url":"https://www.boostrava.com"},"about":[{"@type":"Thing","name":"Programmatic Advertising"},{"@type":"Thing","name":"programmatic advertising guide, programmatic advertising explained, how programmatic advertising works, how to start programmatic advertising, first programmatic advertising campaign, programmatic advertising campaign setup,"}],"mentions":[{"@type":"Thing","name":"Programmatic"}],"keywords":"programmatic advertising guide, programmatic advertising explained, how programmatic advertising works, how to start programmatic advertising, first programmatic advertising campaign, programmatic advertising campaign setup,, Programmatic, Programmatic Advertising","articleSection":"Programmatic Advertising"},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.boostrava.com"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://www.boostrava.com/blog/"},{"@type":"ListItem","position":3,"name":"Programmatic Advertising","item":"https://www.boostrava.com/blog/category/programmatic-advertising/"},{"@type":"ListItem","position":4,"name":"Programmatic Advertising for Beginners: A Practical First Campaign Guide","item":"https://www.boostrava.com/blog/programmatic-advertising-for-beginners-a-practical-first-campaign-guide/"}]},{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is programmatic advertising for beginners?","acceptedAnswer":{"@type":"Answer","text":"Programmatic advertising is an automated method of buying digital advertising inventory through software platforms. Advertisers define targeting, budgets, bids, creatives, and campaign objectives, while programmatic technology helps determine which available ad impressions should be purchased."}},{"@type":"Question","name":"How much money do I need to start programmatic advertising?","acceptedAnswer":{"@type":"Answer","text":"There is no universal starting budget. Your required budget depends on audience size, geography, media cost, conversion objective, expected conversion rate, campaign duration, and the minimum requirements of your chosen advertising platform. Beginners should use a budget large enough to generate meaningful data without risking an amount they cannot afford to test."}},{"@type":"Question","name":"What is the difference between programmatic advertising and Google Ads?","acceptedAnswer":{"@type":"Answer","text":"Programmatic advertising is a broad method of automated digital media buying. Google Ads is a specific advertising platform offering Search, Display, YouTube, and other campaign types. A programmatic DSP may provide access to inventory across multiple publishers, exchanges, SSPs, or channels rather than a single advertising ecosystem."}},{"@type":"Question","name":"What is the difference between a DSP and an SSP?","acceptedAnswer":{"@type":"Answer","text":"A DSP is primarily used by advertisers and agencies to buy digital ad inventory automatically. An SSP is primarily used by publishers to make their available advertising inventory accessible to buyers and optimize its sale."}},{"@type":"Question","name":"How do I optimize my first programmatic advertising campaign?","acceptedAnswer":{"@type":"Answer","text":"Begin by verifying delivery and tracking. Then evaluate campaign performance by audience, creative, device, geography, placement, conversion rate, CPA, and other metrics relevant to your goal. Make controlled changes, avoid changing everything simultaneously, and allocate more budget toward segments that consistently generate valuable results."}}]}]},"published_at":"August 24, 2026","published_iso":"2026-08-24T18:56:00+00:00","updated_at":"August 28, 2026","updated_iso":"2026-08-28T04:16:49+00:00","display_date":"August 28, 2026","display_date_iso":"2026-08-28T04:16:49+00:00","display_date_label":"Updated","views_count":6,"related_posts":[{"id":25,"title":"Banner Advertising Cost in Bangladesh: Formats, Pricing and Value","slug":"banner-advertising-cost-bangladesh-formats-pricing-value","url":"/blog/banner-advertising-cost-bangladesh-formats-pricing-value/","category":{"name":"Programmatic Advertising","slug":"programmatic-advertising"},"author":{"name":"Shaidur Rahman","avatar":"/uploads/authors/author_1787638473.jpg","role":"Programmatic Ads Eng"},"short_description":"A Bangladesh-focused guide to banner advertising cost, covering CPM pricing, banner sizes, premium placements, mobile formats, campaign budgeting, cost drivers, and how advertisers can measure real value.","featured_image":"https://api.boostrava.com/uploads/blog/1787980464_what-is-cpm-in-banner-advertising.webp","featured_image_alt":"Banner advertising cost in Bangladesh showing common display ad formats, CPM pricing, mobile banners, premium placements and campaign value calculation.","reading_time":"16 min read","is_featured":true,"is_editors_pick":false,"content_type":"Guide","published_at":"August 29, 2026","published_date":"2026-08-29","updated_at":"September 04, 2026","updated_date":"2026-09-04","display_date":"September 04, 2026","display_date_iso":"2026-09-04T11:30:59+00:00","display_date_label":"Updated"},{"id":23,"title":"Rich Media Advertising Cost: What Brands Pay For","slug":"rich-media-advertising-cost-what-brands-pay-for","url":"/blog/rich-media-advertising-cost-what-brands-pay-for/","category":{"name":"Programmatic Advertising","slug":"programmatic-advertising"},"author":{"name":"Shaidur Rahman","avatar":"/uploads/authors/author_1787638473.jpg","role":"Programmatic Ads Eng"},"short_description":"Learn what rich media advertising really costs in Bangladesh, including CPM rates, HTML5 creative development, video, premium placements, technical production and the hidden costs brands should include in their budget.","featured_image":"https://api.boostrava.com/uploads/blog/1787644963_rich-media-advertising-cost-in-bangladesh.webp","featured_image_alt":"Rich media advertising cost in Bangladesh showing CPM pricing, HTML5 creative production, interactive ad formats, premium placements and total campaign budget calculation.","reading_time":"16 min read","is_featured":true,"is_editors_pick":true,"content_type":"Comparison","published_at":"August 25, 2026","published_date":"2026-08-25","updated_at":"September 07, 2026","updated_date":"2026-09-07","display_date":"September 07, 2026","display_date_iso":"2026-09-07T13:38:18+00:00","display_date_label":"Updated"},{"id":19,"title":"Programmatic Advertising for E-commerce Brands in Bangladesh","slug":"programmatic-advertising-for-ecommerce-brands-bangladesh","url":"/blog/programmatic-advertising-for-ecommerce-brands-bangladesh/","category":{"name":"Programmatic Advertising","slug":"programmatic-advertising"},"author":{"name":"Sarah Johnson","avatar":"/assets/images/icons/icon.png","role":"Principal AdTech Strategist"},"short_description":"A practical guide to programmatic advertising for e-commerce brands in Bangladesh, covering customer acquisition, retargeting, cart recovery, mobile shoppers, seasonal demand, campaign measurement, and profitable scaling.","featured_image":"https://api.boostrava.com/uploads/blog/1787637401_programmatic-advertising-for-e-commerce-brands-in-bangladesh.webp","featured_image_alt":"Programmatic advertising strategy for e-commerce brands in Bangladesh showing mobile shoppers, product discovery, retargeting, cart recovery and online purchase conversion.","reading_time":"15 min read","is_featured":true,"is_editors_pick":false,"content_type":"Guide","published_at":"August 25, 2026","published_date":"2026-08-25","updated_at":"September 07, 2026","updated_date":"2026-09-07","display_date":"September 07, 2026","display_date_iso":"2026-09-07T13:38:18+00:00","display_date_label":"Updated"}]}}],false]}]
+16:T14cc,<footer class="br-site-footer" aria-label="Site footer">
+  <div class="br-footer-wrap">
+    <div class="br-footer-top">
+      <div class="br-footer-brand">
+        <img src="/assets/images/logo/white-logo.png" alt="Boost RAVA" width="1200" height="182" loading="lazy" decoding="async" />
+        <p>Programmatic advertising technology for advertisers, publishers and modern media environments—from digital display and interactive creative to partner-powered CTV and DOOH opportunities.</p>
+        <span class="br-footer-badge">Bangladesh • International Markets</span>
+      </div>
+
+      <div class="br-footer-col">
+        <h3 class="br-footer-title">Platform</h3>
+        <ul class="br-footer-list">
+          <li><a class="br-footer-link" href="/advertiser/">Advertiser Platform</a></li>
+          <li><a class="br-footer-link" href="/publisher/">Publisher Platform</a></li>
+          <li><a class="br-footer-link" href="/programmatic-infrastructure/">Programmatic Infrastructure</a></li>
+          <li><a class="br-footer-link" href="/ai-programmatic-advertising/">AI Programmatic</a></li>
+          <li><a class="br-footer-link" href="/contextual-advertising/">Contextual Advertising</a></li>
+        </ul>
+      </div>
+
+      <div class="br-footer-col">
+        <h3 class="br-footer-title">Creative &amp; Screens</h3>
+        <ul class="br-footer-list">
+          <li><a class="br-footer-link" href="/rich-media/">Rich Media</a></li>
+          <li><a class="br-footer-link" href="/html5-ad-formats/">HTML5 Advertising</a></li>
+          <li><a class="br-footer-link" href="/ctv/">CTV Advertising</a></li>
+          <li><a class="br-footer-link" href="/dooh/">DOOH Advertising</a></li>
+        </ul>
+      </div>
+
+      <div class="br-footer-col">
+        <h3 class="br-footer-title">Bangladesh</h3>
+        <ul class="br-footer-list">
+          <li><a class="br-footer-link" href="/programmatic-advertising-bangladesh/">Programmatic Advertising</a></li>
+          <li><a class="br-footer-link" href="/ai-contextual-advertising-bangladesh/">AI &amp; Contextual</a></li>
+          <li><a class="br-footer-link" href="/rich-media-html5-advertising-bangladesh/">Rich Media &amp; HTML5</a></li>
+          <li><a class="br-footer-link" href="/publisher-monetization-bangladesh/">Publisher Monetization</a></li>
+          <li><a class="br-footer-link" href="/ctv-dooh-advertising-bangladesh/">Screen Advertising BD</a></li>
+        </ul>
+      </div>
+
+      <div class="br-footer-col">
+        <h3 class="br-footer-title">Company &amp; Resources</h3>
+        <ul class="br-footer-list">
+          <li><a class="br-footer-link" href="/about/">About</a></li>
+          <li><a class="br-footer-link" href="/blog/">Blog &amp; Insights</a></li>
+          <li><a class="br-footer-link" href="/case-studies/">Use Cases</a></li>
+          <li><a class="br-footer-link" href="/careers/">Careers</a></li>
+          <li><a class="br-footer-link" href="/our-team/">Our Team</a></li>
+          <li><a class="br-footer-link" href="/contact/">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="br-footer-col">
+        <h3 class="br-footer-title">Legal &amp; Privacy</h3>
+        <ul class="br-footer-list">
+          <li><a class="br-footer-link" href="/privacy-policy/">Privacy Policy</a></li>
+          <li><a class="br-footer-link" href="/terms-condition/">Terms &amp; Conditions</a></li>
+          <li><a class="br-footer-link" href="/payment-policy/">Payment Policy</a></li>
+          <li><a class="br-footer-link" href="/cookie-policy/">Cookie Policy</a></li>
+          <li><a class="br-footer-link" href="/opt-out/">Advertising Privacy Choices</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="br-footer-cta">
+      <div>
+        <strong>Ready to use Boost RAVA?</strong>
+        <span>Open your advertising workspace or sign in to manage an existing account.</span>
+      </div>
+      <div style="display:flex;gap:9px;flex-wrap:wrap">
+        <a class="br-footer-account login" href="https://panel.boostrava.com/#/login" target="_blank" rel="noopener noreferrer">Login</a>
+        <a class="br-footer-account register" href="https://panel.boostrava.com/#/register" target="_blank" rel="noopener noreferrer">Create Account</a>
+      </div>
+    </div>
+
+    <div class="br-footer-bottom">
+      <span>© 2026 Boost RAVA. All Rights Reserved.</span>
+      <div class="br-footer-socials" aria-label="Boost RAVA social media">
+        <a class="br-footer-social" href="https://www.linkedin.com/company/boost-rava/" target="_blank" rel="noopener noreferrer" aria-label="Boost RAVA on LinkedIn"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6ZM2 9h4v12H2zM4 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a class="br-footer-social" href="https://www.facebook.com/boostrvaads" target="_blank" rel="noopener noreferrer" aria-label="Boost RAVA on Facebook"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M14 8h4V3h-4c-3.3 0-6 2.7-6 6v3H4v5h4v4h5v-4h4l1-5h-5V9c0-.6.4-1 1-1Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+12:["$","div",null,{"dangerouslySetInnerHTML":{"__html":"$16"}}]
+8:{"metadata":[["$","title","0",{"children":"Programmatic Advertising for Beginners: A Practical First Ca"}],["$","meta","1",{"name":"description","content":"Learn programmatic advertising step by step. Build your first campaign with practical guidance on DSPs, targeting, budgets, bidding, creatives, tracking, KPIs"}],["$","meta","2",{"name":"robots","content":"index, follow"}],["$","link","3",{"rel":"canonical","href":"https://www.boostrava.com/blog/programmatic-advertising-for-beginners-a-practical-first-campaign-guide/"}],["$","meta","4",{"property":"og:title","content":"Programmatic Advertising for Beginners: First Campaign Guide"}],["$","meta","5",{"property":"og:description","content":"Learn programmatic advertising step by step. Build your first campaign with practical guidance on DSPs, targeting, budgets, bidding, creatives, tracking, KPIs"}],["$","meta","6",{"property":"og:url","content":"https://www.boostrava.com/blog/programmatic-advertising-for-beginners-a-practical-first-campaign-guide/"}],["$","meta","7",{"property":"og:image","content":"https://api.boostrava.com/uploads/blog/1787599597_why-beginners-use-programmatic-advertising.webp"}],["$","meta","8",{"property":"og:type","content":"article"}],["$","meta","9",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","10",{"name":"twitter:title","content":"Programmatic Advertising for Beginners: First Campaign Guide"}],["$","meta","11",{"name":"twitter:description","content":"Learn programmatic advertising step by step. Build your first campaign with practical guidance on DSPs, targeting, budgets, bidding, creatives, tracking, KPIs"}],["$","meta","12",{"name":"twitter:image","content":"https://api.boostrava.com/uploads/blog/1787599597_why-beginners-use-programmatic-advertising.webp"}]],"error":null,"digest":"$undefined"}
+d:"$8:metadata"

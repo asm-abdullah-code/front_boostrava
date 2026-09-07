@@ -23,9 +23,16 @@ export async function generateStaticParams() {
   const routes = allRoutes().map((route) => ({ slug: route ? route.split('/') : [] }));
   
   try {
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://api.boostrava.com';
-    const res = await fetch(`${apiUrl}/api/blog/posts?per_page=100`, { next: { revalidate: 60 } });
-    if (res.ok) {
+    const apiUrl = process.env.NODE_ENV === 'production'
+      ? 'https://api.boostrava.com'
+      : (process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000');
+
+    let res = await fetch(`${apiUrl}/api/blog/posts?per_page=100`, { next: { revalidate: 60 } }).catch(() => null);
+    if (!res || !res.ok) {
+      res = await fetch('https://api.boostrava.com/api/blog/posts?per_page=100', { next: { revalidate: 60 } }).catch(() => null);
+    }
+
+    if (res && res.ok) {
       const json = await res.json();
       if (Array.isArray(json?.data)) {
         for (const post of json.data) {
@@ -42,6 +49,7 @@ export async function generateStaticParams() {
 
   return routes;
 }
+
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
