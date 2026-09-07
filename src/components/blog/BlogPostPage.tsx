@@ -96,9 +96,11 @@ export function BlogPostPage({ post: initialPost, slug }: BlogPostPageProps) {
         <script
           key={`schema-${i}`}
           type="application/ld+json"
+          suppressHydrationWarning
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
         />
       ))}
+
 
       {/* Top Header / Breadcrumb Area */}
       <header className="bg-slate-50 border-b border-gray-200 py-7 px-4">
