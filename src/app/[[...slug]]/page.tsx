@@ -22,6 +22,9 @@ export const dynamicParams = false;
 export async function generateStaticParams() {
   const routes = allRoutes().map((route) => ({ slug: route ? route.split('/') : [] }));
   
+  // Ensure blog hub route exists
+  routes.push({ slug: ['blog'] });
+
   try {
     const apiUrl = process.env.NODE_ENV === 'production'
       ? 'https://api.boostrava.com'
@@ -37,10 +40,32 @@ export async function generateStaticParams() {
       if (Array.isArray(json?.data)) {
         for (const post of json.data) {
           if (post?.slug) {
-            const clean = post.slug.replace(/^\/+|\/+$/g, '');
-            if (clean) {
-              routes.push({ slug: ['blog', clean] });
+            const raw = post.slug.replace(/^\/+|\/+$/g, '');
+            if (raw) {
+              routes.push({ slug: ['blog', raw] });
+              try {
+                const decoded = decodeURIComponent(raw);
+                if (decoded !== raw) {
+                  routes.push({ slug: ['blog', decoded] });
+                }
+              } catch {}
             }
+          }
+        }
+      }
+
+      if (Array.isArray(json?.categories)) {
+        for (const cat of json.categories) {
+          if (cat?.slug) {
+            routes.push({ slug: ['blog', 'category', cat.slug] });
+          }
+        }
+      }
+
+      if (Array.isArray(json?.tags)) {
+        for (const tag of json.tags) {
+          if (tag?.slug) {
+            routes.push({ slug: ['blog', 'tag', tag.slug] });
           }
         }
       }
@@ -49,6 +74,7 @@ export async function generateStaticParams() {
 
   return routes;
 }
+
 
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

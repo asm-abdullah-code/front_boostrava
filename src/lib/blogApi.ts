@@ -113,26 +113,13 @@ async function safeJsonFetch(endpoint: string): Promise<any | null> {
 
   try {
     const res = await fetch(url);
-    if (!res.ok) {
-      if (url.includes('127.0.0.1:8000') || url.includes('localhost:8000')) {
-        const liveUrl = url.replace(/http:\/\/(127\.0\.0\.1|localhost):8000/, 'https://api.boostrava.com');
-        const fallbackRes = await fetch(liveUrl).catch(() => null);
-        if (fallbackRes && fallbackRes.ok) return await fallbackRes.json();
-      }
-      return null;
-    }
+    if (!res.ok) return null;
     return await res.json();
   } catch (err) {
-    if (url.includes('127.0.0.1:8000') || url.includes('localhost:8000')) {
-      try {
-        const liveUrl = url.replace(/http:\/\/(127\.0\.0\.1|localhost):8000/, 'https://api.boostrava.com');
-        const fallbackRes = await fetch(liveUrl);
-        if (fallbackRes.ok) return await fallbackRes.json();
-      } catch {}
-    }
     return null;
   }
 }
+
 
 export function normalizeImageUrl(url?: string | null): string {
   if (!url) return '/assets/images/blog/blog-hero.jpg';
