@@ -1,0 +1,15 @@
+*** when merge
+
+cd /home/boostrav/public_html
+git fetch origin
+git reset --hard origin/main
+cp -r out/* .
+cp out/.htaccess .
+
+
+
+
+*** git pull
+cd /home/boostrav/public_html && git fetch origin && git reset --hard origin/main && cp -r out/* . && cp out/.htaccess .
+
+
