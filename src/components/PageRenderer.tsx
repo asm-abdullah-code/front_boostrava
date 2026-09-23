@@ -10,6 +10,7 @@ import { AIProgrammaticLandingPage } from './AIProgrammaticLandingPage';
 import { HTML5LandingPage } from './html5/HTML5LandingPage';
 import { ContextualLandingPage } from './contextual/ContextualLandingPage';
 import { ProgrammaticInfrastructureLandingPage } from './infrastructure/ProgrammaticInfrastructureLandingPage';
+import { ProgrammaticAdvertisingLandingPage } from './programmatic/ProgrammaticAdvertisingLandingPage';
 import { CTVLandingPage } from './ctv/CTVLandingPage';
 import { DOOHLandingPage } from './dooh/DOOHLandingPage';
 import { ContactLandingPage } from './contact/ContactLandingPage';
@@ -35,7 +36,7 @@ export function PageRenderer({
   const bangladeshNative = ['programmatic-advertising-bangladesh', 'ai-contextual-advertising-bangladesh', 'rich-media-html5-advertising-bangladesh', 'publisher-monetization-bangladesh', 'ctv-dooh-advertising-bangladesh'].includes(page.route);
   const isBlogHub = page.route === 'blog' || page.route.startsWith('blog/category/') || page.route.startsWith('blog/tag/');
   const isBlogPost = !!postDetail;
-  const sourceNative = page.route === '' || isBlogHub || isBlogPost || legalNative || bangladeshNative || page.route === 'advertiser' || page.route === 'publisher' || page.route === 'rich-media' || page.route === 'ai-programmatic-advertising' || page.route === 'html5-ad-formats' || page.route === 'contextual-advertising' || page.route === 'programmatic-infrastructure' || page.route === 'ctv' || page.route === 'dooh' || page.route === 'contact';
+  const sourceNative = page.route === '' || isBlogHub || isBlogPost || legalNative || bangladeshNative || page.route === 'advertiser' || page.route === 'publisher' || page.route === 'rich-media' || page.route === 'ai-programmatic-advertising' || page.route === 'html5-ad-formats' || page.route === 'contextual-advertising' || page.route === 'programmatic-infrastructure' || page.route === 'programmatic-advertising' || page.route === 'ctv' || page.route === 'dooh' || page.route === 'contact';
 
   const categoryMatch = page.route.startsWith('blog/category/') ? page.route.replace('blog/category/', '') : undefined;
   const tagMatch = page.route.startsWith('blog/tag/') ? page.route.replace('blog/tag/', '') : undefined;
@@ -73,6 +74,8 @@ export function PageRenderer({
           <ContextualLandingPage />
         ) : page.route === 'programmatic-infrastructure' ? (
           <ProgrammaticInfrastructureLandingPage />
+        ) : page.route === 'programmatic-advertising' ? (
+          <ProgrammaticAdvertisingLandingPage />
         ) : page.route === 'ctv' ? (
           <CTVLandingPage />
         ) : page.route === 'dooh' ? (

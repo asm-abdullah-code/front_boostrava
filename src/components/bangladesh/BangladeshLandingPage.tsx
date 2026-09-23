@@ -1,3 +1,9 @@
+'use client';
+
+import React from 'react';
+
+const registerUrl = 'https://panel.boostrava.com/#/register';
+
 type Route =
   | 'programmatic-advertising-bangladesh'
   | 'ai-contextual-advertising-bangladesh'
@@ -6,179 +12,423 @@ type Route =
   | 'ctv-dooh-advertising-bangladesh';
 
 type Config = {
-  eyebrow:string; title:string; subtitle:string; primary:string; secondary:string; secondaryHref:string;
-  theme:string; visual:string;
-  pillars:Array<[string,string]>; steps:Array<[string,string]>;
-  qa:Array<[string,string]>; finalTitle:string; finalCopy:string;
+  eyebrow: string;
+  title: string;
+  subtitle: string;
+  primary: string;
+  secondary: string;
+  secondaryHref: string;
+  theme: string;
+  visual: string;
+  bengaliKeywords: string[];
+  pillars: Array<[string, string]>;
+  steps: Array<[string, string]>;
+  qa: Array<[string, string]>;
+  finalTitle: string;
+  finalCopy: string;
 };
 
-const configs:Record<Route,Config> = {
+const configs: Record<Route, Config> = {
   'programmatic-advertising-bangladesh': {
-    eyebrow:'PROGRAMMATIC ADVERTISING · BANGLADESH',
-    title:'Programmatic Advertising in Bangladesh',
-    subtitle:'Plan digital media around campaign objectives, eligible inventory, contextual signals and creative requirements—then extend to international markets where suitable supply is available.',
-    primary:'Create Account', secondary:'Talk to Boost RAVA', secondaryHref:'/contact/', theme:'blue', visual:'programmatic',
-    pillars:[
-      ['Outcome-led planning','Start with awareness, consideration, traffic or conversion goals before choosing channels.'],
-      ['Eligible inventory','Map available display, video, HTML5, rich media, CTV or DOOH opportunities to the brief.'],
-      ['Context & audience','Use supported location, device, browser, schedule and contextual controls where available.'],
-      ['Measure & refine','Review delivery and campaign performance without presenting estimates as guarantees.']
+    eyebrow: 'PROGRAMMATIC ADVERTISING BANGLADESH',
+    title: 'বাংলাদেশে প্রোগ্রাম্যাটিক বিজ্ঞাপন: Automated Media Buying at Scale',
+    subtitle: 'Plan, buy, and deliver digital advertising across Bangladesh’s top news dailies, lifestyle portals, and mobile apps. Reach over 130 million internet users with real-time bidding, localized audience targeting, and transparent eCPM reporting.',
+    primary: 'Start Advertising',
+    secondary: 'Publisher Monetization',
+    secondaryHref: '/publisher-monetization-bangladesh/',
+    theme: 'blue',
+    visual: 'programmatic',
+    bengaliKeywords: [
+      'বাংলাদেশে প্রোগ্রাম্যাটিক বিজ্ঞাপন',
+      'বাংলাদেশে অনলাইন বিজ্ঞাপন',
+      'বাংলাদেশে ডিজিটাল বিজ্ঞাপন',
+      'বাংলাদেশি ওয়েবসাইটে বিজ্ঞাপন'
     ],
-    steps:[
-      ['Brief the objective','Define market, audience, message, budget and timing.'],
-      ['Map media','Choose formats and inventory that fit the objective.'],
-      ['Prepare creative','Match creative specification to placement and device.'],
-      ['Activate & measure','Launch, monitor and refine using available reporting.']
+    pillars: [
+      ['Outcome-Led Planning', 'Align digital marketing briefs around verified brand awareness, Consideration, or lead conversions across Bangladesh.'],
+      ['Premium Local Inventory', 'Direct programmatic access to verified Bangladeshi news publishers, entertainment hubs, and mobile applications.'],
+      ['Context & Regional Precision', 'Target consumers by division (Dhaka, Chattogram, Sylhet, Khulna, Rajshahi), telecom network, and device.'],
+      ['Transparent Real-Time Measurement', 'Review campaign delivery, impressions, CTR, and postback events with zero vanity metrics or hidden fees.']
     ],
-    qa:[
-      ['What is programmatic advertising in Bangladesh?','It is automated digital media buying used to plan and deliver eligible advertising inventory for Bangladesh campaigns through supported targeting, creative and measurement workflows.'],
-      ['Can a Bangladesh campaign expand internationally?','Yes, where suitable partner or publisher inventory is available and the campaign meets market, creative and policy requirements.'],
-      ['Does Boost RAVA guarantee reach or performance?','No. Reach, inventory, CPM, clicks, conversions and other outcomes depend on campaign settings, supply and market conditions.']
+    steps: [
+      ['Campaign Objective', 'Define your target market in Bangladesh, audience demographics, message, and media budget.'],
+      ['Format Mapping', 'Select standard display banners, responsive HTML5 ads, interactive rich media, or in-stream video.'],
+      ['Targeting Matrix', 'Apply location filters across Bangladesh divisions, smartphone carriers, and content categories.'],
+      ['Launch & Measure', 'Activate programmatic delivery across local supply and optimize pacing using live dashboard metrics.']
     ],
-    finalTitle:'Build a Bangladesh programmatic plan around the objective.',
-    finalCopy:'Start with the campaign goal, then map the channels, formats and inventory that actually fit.'
+    qa: [
+      ['বাংলাদেশে প্রোগ্রাম্যাটিক বিজ্ঞাপন কীভাবে কাজ করে?', 'প্রোগ্রাম্যাটিক বিজ্ঞাপন হলো রিয়েল-টাইম বিডিং (RTB) অ্যালগরিদমের মাধ্যমে স্বয়ংক্রিয়ভাবে ডিজিটাল বিজ্ঞাপন ক্রয় ও বিক্রয় ব্যবস্থা। একজন ভিজিটর যখন বাংলাদেশি কোনো ওয়েবসাইটে প্রবেশ করেন, মিলি-সেকেন্ডের মধ্যে বিজ্ঞাপন নিলাম সম্পন্ন হয়ে সবচেয়ে প্রাসঙ্গিক ও সেরা মূল্যের বিজ্ঞাপনটি প্রদর্শিত হয়।'],
+      ['Can brands target specific cities like Dhaka and Chattogram?', 'Yes. Advertisers can isolate specific urban centers such as Dhaka metro, Chattogram, Sylhet, or execute nationwide coverage across all 8 administrative divisions.'],
+      ['What ad formats deliver the best performance in Bangladesh?', 'Interactive HTML5 banners (300×250, 320×50, 300×600) and mobile-optimized rich media formats consistently drive 2x to 4x higher engagement across local news readers.']
+    ],
+    finalTitle: 'বাংলাদেশে আপনার ব্র্যান্ড ক্যাম্পেইন স্কেল করুন।',
+    finalCopy: 'সঠিক অডিয়েন্স, সঠিক কনটেন্ট এবং স্বচ্ছ প্রোগ্রাম্যাটিক প্রযুক্তির মাধ্যমে ফলাফল নিশ্চিত করুন।'
   },
   'ai-contextual-advertising-bangladesh': {
-    eyebrow:'AI + CONTEXTUAL · BANGLADESH',
-    title:'AI & Contextual Advertising in Bangladesh',
-    subtitle:'Use content meaning, campaign context and machine-assisted decision support to make media choices more relevant—without treating AI as a black-box guarantee of performance.',
-    primary:'Create Account', secondary:'Explore Contextual Advertising', secondaryHref:'/contextual-advertising/', theme:'indigo', visual:'contextual',
-    pillars:[
-      ['Semantic context','Evaluate page topic, content theme and surrounding environment where supported.'],
-      ['Campaign signals','Combine objective, creative, market, device and timing inputs for planning.'],
-      ['AI-assisted insight','Use recommendations as decision support; advanced automation remains status-dependent.'],
-      ['Privacy-aware relevance','Reduce unnecessary dependence on personal profiling when contextual signals can do the job.']
+    eyebrow: 'AI + CONTEXTUAL ADVERTISING BANGLADESH',
+    title: 'বাংলাদেশে এআই ও কনটেক্সচুয়াল বিজ্ঞাপন: Privacy-First Relevance',
+    subtitle: 'Align digital ads directly with content meaning, article sentiment, and editorial themes across Bengali and English media—without third-party cookies or intrusive user tracking.',
+    primary: 'Start Contextual Ads',
+    secondary: 'Explore Contextual Engine',
+    secondaryHref: '/contextual-advertising/',
+    theme: 'indigo',
+    visual: 'contextual',
+    bengaliKeywords: [
+      'বাংলাদেশে এআই বিজ্ঞাপন',
+      'বাংলা কনটেন্টে বিজ্ঞাপন টার্গেটিং',
+      'কনটেক্সচুয়াল বিজ্ঞাপন বাংলাদেশ',
+      'কুকিলেস ডিজিটাল অ্যাডভারটাইজিং'
     ],
-    steps:[
-      ['Define the objective','Clarify campaign outcome and eligible audience context.'],
-      ['Read the environment','Interpret content and placement signals where available.'],
-      ['Score fit','Compare opportunities against campaign rules and relevance.'],
-      ['Measure & adjust','Use actual campaign reporting to refine the plan.']
+    pillars: [
+      ['Bengali Semantic Analysis', 'Evaluates Bengali (বাংলা) vocabulary, news topics, and article sentiment for natural cultural relevance.'],
+      ['Multi-Signal Matching', 'Combines content theme, division location, mobile device, and dayparting to optimize ad delivery.'],
+      ['Brand Suitability', 'Protects brand reputation by automatically preventing ad appearance near sensitive news or negative editorial stories.'],
+      ['100% Cookieless Future', 'Delivers exceptional audience relevance while fully respecting consumer privacy and international standards.']
     ],
-    qa:[
-      ['What is contextual advertising?','Contextual advertising aligns ads with the topic, meaning or environment of the content around the placement instead of relying only on historical user profiles.'],
-      ['Does programmatic advertising use AI?','AI can assist planning, recommendations, forecasting or optimization, but the live level of automation depends on the verified production feature and data available.'],
-      ['Is AI performance guaranteed?','No. AI-assisted recommendations and forecasts are not guarantees of CTR, CPA, ROAS, revenue or any other campaign outcome.']
+    steps: [
+      ['Define Context', 'Choose the industry categories, editorial themes, or keywords most relevant to your campaign.'],
+      ['Semantic Crawl', 'Boost RAVA AI context engine evaluates publisher pages across Bangladesh in real time.'],
+      ['Score Relevance', 'Calculates environmental fit between your ad message and the surrounding editorial article.'],
+      ['Serve & Track', 'Delivers the ad creative at the exact moment of high reader attention and measures engagement.']
     ],
-    finalTitle:'Use intelligence where it improves the media decision.',
-    finalCopy:'Keep the campaign objective, context, controls and measurement visible from planning through optimization.'
+    qa: [
+      ['বাংলা ভাষার ওয়েবসাইটে কনটেক্সচুয়াল বিজ্ঞাপন কীভাবে কাজ করে?', 'Boost RAVA-এর কনটেক্সচুয়াল ইঞ্জিন বাংলা ও ইংরেজি উভয় ভাষার কনটেন্ট বিশ্লেষণ করে আর্টিকেলের মূল বিষয় (যেমন: প্রযুক্তি, খেলাধুলা, ব্যবসা, লাইফস্টাইল) শনাক্ত করে স্বয়ংক্রিয়ভাবে সম্পর্কিত বিজ্ঞাপন উপস্থাপন করে।'],
+      ['Does contextual advertising need third-party cookies?', 'No. Contextual targeting matches ads to page content and environment rather than tracking individual user identities, making it 100% immune to cookie deprecation.'],
+      ['How does brand safety work in local news environments?', 'Dynamic negative keyword filters prevent ads from appearing alongside accidents, disasters, or controversial political commentary.']
+    ],
+    finalTitle: 'কনটেন্টের প্রাসঙ্গিকতা দিয়েই অডিয়েন্সের মনোযোগ আকর্ষণ করুন।',
+    finalCopy: 'বাংলা ও ইংরেজি উভয় কনটেন্ট প্ল্যাটফর্মে আধুনিক এআই কনটেক্সচুয়াল টার্গেটিং চালু করুন।'
   },
   'rich-media-html5-advertising-bangladesh': {
-    eyebrow:'RICH MEDIA + HTML5 · BANGLADESH',
-    title:'Rich Media & HTML5 Advertising in Bangladesh',
-    subtitle:'Build interactive creative around the placement, device and campaign objective—from responsive HTML5 canvases to richer carousel, video, parallax and expandable-style experiences where supported.',
-    primary:'Create Account', secondary:'Explore Rich Media', secondaryHref:'/rich-media/', theme:'violet', visual:'creative',
-    pillars:[
-      ['Specification first','Start with size, placement, device, file and runtime requirements.'],
-      ['Interactive storytelling','Use motion or interaction only when it supports the message.'],
-      ['Responsive preview','Check desktop, tablet and mobile behavior before approval.'],
-      ['Programmatic delivery','Use eligible inventory and validated creative in supported campaign workflows.']
+    eyebrow: 'RICH MEDIA + HTML5 BANGLADESH',
+    title: 'রিচ মিডিয়া ও HTML5 বিজ্ঞাপন বাংলাদেশ: High-Impact Display',
+    subtitle: 'Engage smartphone and desktop audiences with interactive banner ads, side banners, scroll-reactive canvases, and responsive HTML5 creatives engineered for high brand recall.',
+    primary: 'Build Rich Media Ad',
+    secondary: 'Explore Formats',
+    secondaryHref: '/rich-media/',
+    theme: 'violet',
+    visual: 'creative',
+    bengaliKeywords: [
+      'রিচ মিডিয়া বিজ্ঞাপন বাংলাদেশ',
+      'HTML5 বিজ্ঞাপন বাংলাদেশ',
+      'ইন্টারেক্টিভ ব্যানার অ্যাড',
+      'হাই-ইমপ্যাক্ট ডিসপ্লে বিজ্ঞাপন'
     ],
-    steps:[
-      ['Choose format','Select the creative pattern and supported placement.'],
-      ['Build assets','Prepare HTML5, imagery, video or interaction layers.'],
-      ['Preview & validate','Check size, click behavior, loading and responsiveness.'],
-      ['Submit & measure','Deliver to eligible inventory and review supported metrics.']
+    pillars: [
+      ['Mobile-First Rich Media', 'Smooth touch-friendly expandable units, 360° product lookbooks, and floating interactive bars.'],
+      ['Zero Site Latency', 'Polite loading protocols under 150 KB initial payload ensure lightning-fast page loading.'],
+      ['Interactive Storytelling', 'Multi-frame messaging inviting user taps, swipes, and in-unit video exploration.'],
+      ['Programmatic Ready', 'Fully compatible with programmatic display ad exchanges across Bangladesh.']
     ],
-    qa:[
-      ['What is rich media advertising?','Rich media uses interactive, animated, video or multi-state creative experiences instead of relying on one static frame.'],
-      ['Can HTML5 ads run in Bangladesh campaigns?','Yes, when the selected campaign, placement and inventory support the creative specification.'],
-      ['Are all rich media formats available everywhere?','No. Runtime, format, placement and inventory availability must be validated for the specific campaign.']
+    steps: [
+      ['Format Selection', 'Choose between Side Banner, Magic Scroller, Accordion Folding, Floating Footer, or Standard HTML5.'],
+      ['Creative Design', 'Design responsive graphics, vector typography, animations, and call-to-action buttons.'],
+      ['Automated QA', 'Validate polite file weights, ClickTag macros, and multi-device preview rendering.'],
+      ['Campaign Launch', 'Deliver interactive ads across Bangladesh publisher inventory with deep dwell time reporting.']
     ],
-    finalTitle:'Turn the campaign idea into an eligible interactive experience.',
-    finalCopy:'Choose the interaction because it improves the message—not simply because it moves.'
+    qa: [
+      ['রিচ মিডিয়া বিজ্ঞাপন সাধারণ ব্যানারের চেয়ে কেন বেশি কার্যকর?', 'সাধারণ স্ট্যাটিক ব্যানারে ক্লিক-থ্রু রেট অনেক কম থাকে। রিচ মিডিয়া বিজ্ঞাপনে মোশন, ইন্টারেকশন ও এক্সপান্ডেবল ফিচার থাকার কারণে এটি পাঠকের মনোযোগ দ্রুত আকর্ষণ করে এবং ব্র্যান্ড রিকল ৩ থেকে ৫ গুণ বাড়িয়ে দেয়।'],
+      ['Can HTML5 ads run smoothly on low-speed mobile connections in Bangladesh?', 'Yes. All creatives are compressed and optimized for mobile 4G and broadband connections, loading asynchronously without stalling host websites.'],
+      ['What metrics are tracked for rich media campaigns?', 'In addition to impressions and clicks, we measure expansion rate, average interaction dwell time, and video completion rates.']
+    ],
+    finalTitle: 'আপনার ব্র্যান্ডের জন্য তৈরি করুন আকর্ষণীয় রিচ মিডিয়া অভিজ্ঞতা।',
+    finalCopy: 'সাধারণ ব্যানার ছেড়ে আধুনিক ইন্টারেক্টিভ ও রেসপন্সিভ বিজ্ঞাপনে রূপান্তর করুন।'
   },
   'publisher-monetization-bangladesh': {
-    eyebrow:'PUBLISHER MONETIZATION · BANGLADESH',
-    title:'Publisher Monetization in Bangladesh',
-    subtitle:'Connect eligible digital inventory to programmatic demand while protecting user experience, ad quality and reporting integrity. Revenue depends on valid traffic, demand and inventory quality—not promises.',
-    primary:'Monetize With Boost RAVA', secondary:'Explore Publisher Platform', secondaryHref:'/publisher/', theme:'green', visual:'publisher',
-    pillars:[
-      ['Inventory mapping','Define properties, placements, formats and available ad opportunities.'],
-      ['Demand access','Connect eligible inventory to supported demand and campaign paths.'],
-      ['Quality controls','Protect the property with review, placement and traffic-quality controls.'],
-      ['Revenue visibility','Measure valid delivery, eCPM and earnings using verified reporting data.']
+    eyebrow: 'PUBLISHER MONETIZATION BANGLADESH',
+    title: 'ওয়েবসাইট মনিটাইজেশন বাংলাদেশ: Top Publisher Ad Network',
+    subtitle: 'Monetize your Bangladeshi website or mobile app with premium programmatic demand. Maximize eCPM yield with high fill rates, clean ad tags, and reliable local bank and mobile financial payouts.',
+    primary: 'Monetize Website',
+    secondary: 'Publisher Platform',
+    secondaryHref: '/publisher/',
+    theme: 'green',
+    visual: 'publisher',
+    bengaliKeywords: [
+      'ওয়েবসাইট মনিটাইজেশন বাংলাদেশ',
+      'বাংলাদেশি publisher ad network',
+      'বাংলা ব্লগে বিজ্ঞাপন বসানো',
+      'ওয়েবসাইট থেকে আয় ও পেমেন্ট'
     ],
-    steps:[
-      ['Review inventory','Identify properties, placements and supported formats.'],
-      ['Set controls','Define quality, category and placement rules.'],
-      ['Enable demand','Activate eligible demand and ad-serving paths.'],
-      ['Review performance','Use valid reporting to refine monetization.']
+    pillars: [
+      ['Single Tag Integration', 'Paste one clean, lightweight JavaScript tag to unlock access to competing global and local advertisers.'],
+      ['High Local Fill Rates', 'Keep ad inventory filled with verified brand campaigns, e-commerce promotions, and programmatic demand.'],
+      ['Brand-Safe Advertisers', 'Strict anti-malware and content verification prevents deceptive or inappropriate ads on your site.'],
+      ['Reliable Local Payouts', 'On-time monthly publisher earnings transferred directly to Bangladeshi bank accounts.']
     ],
-    qa:[
-      ['Can Bangladesh publishers use programmatic monetization?','Eligible publishers can use Boost RAVA publisher workflows subject to property approval, traffic quality, inventory requirements and current demand availability.'],
-      ['Does Boost RAVA guarantee publisher revenue?','No. Revenue depends on valid traffic, demand, format, location, inventory quality, campaign competition and other market conditions.'],
-      ['What should publishers optimize first?','Start with inventory quality, correct placement implementation, user experience and valid traffic before focusing on yield.']
+    steps: [
+      ['Add Website', 'Register your digital publication or mobile property in the Boost RAVA publisher console.'],
+      ['Configure Placements', 'Create standard 728×90 leaderboards, 300×250 rectangles, or mobile 320×50 ad slots.'],
+      ['Embed Ad Tag', 'Insert our asynchronous JS tag into your website template header or widget area.'],
+      ['Earn Monthly Yield', 'Track live impressions, fill rates, and eCPM in your dashboard and receive scheduled payouts.']
     ],
-    finalTitle:'Protect the audience experience while building monetization.',
-    finalCopy:'Start with inventory quality and controls, then connect the demand paths that are actually eligible.'
+    qa: [
+      ['বাংলাদেশি ওয়েবসাইট কীভাবে মনিটাইজ করা যায়?', 'Boost RAVA-তে পাবলিশার হিসেবে অ্যাকাউন্ট খুলে আপনার ওয়েবসাইট ভেরিফাই করুন। এরপর সাইটে অ্যাড ট্যাগ বসালেই আন্তর্জাতিক ও দেশি ব্র্যান্ডগুলোর বিজ্ঞাপন আপনার সাইটে দেখানো শুরু হবে এবং ভেরিফায়েড ইমপ্রেশনের বিপরীতে আয় শুরু হবে।'],
+      ['পাবলিশারদের পেমেন্ট কীভাবে প্রদান করা হয়?', 'বাংলাদেশি পাবলিশারদের জন্য নির্ধারিত মাসিক শিডিউলে সরাসরি লোকাল ব্যাংক একাউন্টে পেমেন্ট ট্রান্সফার করা হয়।'],
+      ['অ্যাড বসালে কি ওয়েবসাইটের স্পিড কমে যাবে?', 'না। Boost RAVA-এর অ্যাড ট্যাগ সম্পূর্ণ অ্যাসিনক্রোনাস (Asynchronous) ও অপ্টিমাইজড, যা আপনার মূল ওয়েবসাইট লোড হওয়ার পর অ্যাড ফেচ করে, ফলে পেজ স্পিড ও গুগলের কোর ওয়েব ভাইটালস শতভাগ সুরক্ষিত থাকে।']
+    ],
+    finalTitle: 'আপনার ওয়েবসাইটের ট্রাফিক থেকে নির্ভরযোগ্য আয় নিশ্চিত করুন।',
+    finalCopy: 'সহজ ইন্টিগ্রেশন এবং স্বচ্ছ রিপোর্টিং নিয়ে Boost RAVA পাবলিশার নেটওয়ার্কে যুক্ত হোন।'
   },
   'ctv-dooh-advertising-bangladesh': {
-    eyebrow:'SCREEN ADVERTISING · BANGLADESH',
-    title:'CTV Planning + DOOH Integration in Bangladesh',
-    subtitle:'Use this page as the Bangladesh screen-advertising gateway: plan partner-powered CTV where available, and onboard DOOH screens through a compatible player/CMS adapter, verified metadata, caching and proof-of-play.',
-    primary:'Plan Screen Advertising', secondary:'Talk to Boost RAVA', secondaryHref:'/contact/', theme:'screen', visual:'screen',
-    pillars:[
-      ['Stations & transit','Onboard eligible screens with accurate venue, device and operating metadata.'],
-      ['Markets & retail','Plan screen context, timing, creative and venue-safe category controls.'],
-      ['Airports','Use approved inventory and market availability; never assume universal access.'],
-      ['High-footfall areas','Treat audience estimates as measurement inputs only when backed by an approved source.']
+    eyebrow: 'SCREEN ADVERTISING BANGLADESH',
+    title: 'স্ক্রিন বিজ্ঞাপন বাংলাদেশ: DOOH বিলবোর্ড ও CTV নেটওয়ার্ক',
+    subtitle: 'Dominate high-traffic urban corridors across Dhaka, Chattogram, and regional expressways with digital billboard advertising (DOOH), plus partner-powered Connected TV opportunities.',
+    primary: 'Book Digital Billboard',
+    secondary: 'Explore DOOH',
+    secondaryHref: '/dooh/',
+    theme: 'screen',
+    visual: 'screen',
+    bengaliKeywords: [
+      'বাংলাদেশে ডিজিটাল বিলবোর্ড বিজ্ঞাপন',
+      'ঢাকা ডিজিটাল স্ক্রিন বিজ্ঞাপন',
+      'DOOH advertising Bangladesh',
+      'আউটডোর এলইডি স্ক্রিন বুকিং'
     ],
-    steps:[
-      ['Link the adapter','Connect the CMS/player with the required network token, API credential or device mapping.'],
-      ['Describe the screen','Provide screen ID, venue, latitude/longitude, resolution, aspect ratio, orientation and operating hours.'],
-      ['Create the programmatic slot','Insert the supported ad-source/programmatic placeholder and configure duration, fallback and creative rules.'],
-      ['Cache, play & report','Prefetch where supported, validate playback and reconcile proof-of-play before calling the screen live.']
+    pillars: [
+      ['Prime Urban Corridors', 'Premium roadside LED billboards located across Dhaka, Chattogram, and major expressway junctions.'],
+      ['High-Footfall Malls', 'Digital signage panels inside leading shopping complexes and commercial business hubs.'],
+      ['Flexible Time Slots', 'Book hourly, weekly, or monthly rotations with peak commute dayparting.'],
+      ['Verified Playback', 'Proof-of-play reporting and traffic estimation models ensuring verified visibility.']
     ],
-    qa:[
-      ['Does a digital signage screen automatically support programmatic DOOH?','No. A screen typically needs a compatible CMS/player integration or adapter plus inventory metadata, request handling, creative playback and proof-of-play reporting.'],
-      ['Where can Boost RAVA plan DOOH in Bangladesh?','The page is designed for eligible station, transit, market, retail, airport and high-footfall environments where inventory has been onboarded, verified and approved.'],
-      ['Is CTV the same integration as DOOH?','No. CTV is a buyer-side video inventory path, while DOOH requires screen/player onboarding and venue-level integration. Availability is supply-dependent.']
+    steps: [
+      ['Select Screen Venue', 'Choose roadside digital billboards, mall displays, or transit network screens in Bangladesh.'],
+      ['Choose Flight Model', 'Schedule hourly peak bursts, 7-day product launch flights, or monthly branding takeovers.'],
+      ['Upload Creative', 'Provide high-resolution digital visual or video creative matching screen technical specs.'],
+      ['Broadcast & Verify', 'Ad broadcasts across selected LED screens with automated playback tracking and logs.']
     ],
-    finalTitle:'Plan the campaign—or onboard the screen correctly first.',
-    finalCopy:'CTV and DOOH can sit in one media plan, but they should keep separate inventory, integration and measurement logic.'
+    qa: [
+      ['বাংলাদেশে ডিজিটাল বিলবোর্ড বিজ্ঞাপন কীভাবে বুক করা যায়?', 'Boost RAVA-এর মাধ্যমে ঢাকা ও অন্যান্য গুরুত্বপূর্ণ শহরের প্রধান প্রধান মোড় ও শপিং সেন্টারের এলইডি বিলবোর্ড স্ক্রিনগুলো নির্বাচন করে পছন্দের টাইম স্লটে সহজে বুকিং করা যায়।'],
+      ['ডিজিটাল বিলবোর্ডের জন্য কী ধরনের কনটেন্ট প্রয়োজন?', 'স্ক্রিনের রেজোলিউশন ও অ্যাসপেক্ট রেশিও অনুযায়ী হাই-ডেফিনিশন স্ট্যাটিক ব্যানার বা ১০–১৫ সেকেন্ডের মোশন ভিডিও ফাইল প্রয়োজন হয়।'],
+      ['স্ক্রিন মালিকরা কি তাদের এলইডি স্ক্রিন Boost RAVA-তে যুক্ত করতে পারেন?', 'হ্যাঁ। কমার্শিয়াল এলইডি স্ক্রিন বা ডিজিটাল সাইনেজ নেটওয়ার্কের মালিকরা তাদের স্ক্রিন Boost RAVA প্ল্যাটফর্মে তালিকাভুক্ত করে বিজ্ঞাপনদাতাদের জন্য উন্মুক্ত করতে পারেন।']
+    ],
+    finalTitle: 'বাস্তব পৃথিবীর বিশাল স্ক্রিনে আপনার ব্র্যান্ডকে তুলে ধরুন।',
+    finalCopy: 'ডিজিটাল বিলবোর্ড ও স্ক্রিন বিজ্ঞাপনের মাধ্যমে সর্বোচ্চ সংখ্যক দর্শকের কাছে পৌঁছান।'
   }
 };
 
-function HeroVisual({type}:{type:string}){
-  if(type==='programmatic') return <div className="bdx-visual bdx-programmatic"><div className="bdx-mini">BRIEF</div><div className="bdx-core">PROGRAMMATIC<br/><small>DECISIONING</small></div><div className="bdx-grid4"><span>DISPLAY</span><span>VIDEO</span><span>HTML5</span><span>CTV / DOOH</span></div></div>;
-  if(type==='contextual') return <div className="bdx-visual bdx-contextual"><div className="bdx-page"><i/><i/><i/><b>CONTENT</b></div><div className="bdx-dots"><i/><i/><i/></div><div className="bdx-ai">AI<small>CONTEXT</small></div><div className="bdx-match">RELEVANT<br/>AD</div></div>;
-  if(type==='creative') return <div className="bdx-visual bdx-creative"><div className="bdx-layer l1"/><div className="bdx-layer l2"/><div className="bdx-ad"><small>300×250</small><i/><b>INTERACTIVE</b><button>EXPLORE</button></div></div>;
-  if(type==='publisher') return <div className="bdx-visual bdx-publisher"><div className="bdx-inventory"><i/><i/><i/><i/></div><div className="bdx-auction">DEMAND</div><div className="bdx-bars"><i/><i/><i/><i/><b>VALID YIELD</b></div></div>;
-  return <div className="bdx-visual bdx-screen"><div className="bdx-tv">CTV</div><div className="bdx-plus">+</div><div className="bdx-board">DOOH<span/></div><div className="bdx-pin"/></div>;
+export function BangladeshLandingPage({ route }: { route: Route }) {
+  const c = configs[route];
+
+  return (
+    <div className={`br-bd-root bg-white text-slate-900 font-sans antialiased overflow-hidden theme-${c.theme}`}>
+      
+      {/* 1. HERO SECTION */}
+      <section className="relative pt-24 pb-20 lg:pt-32 lg:pb-28 bg-gradient-to-br from-[#071329] via-[#0d224d] to-[#250d4d] text-white">
+        <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#920dff_1px,transparent_1px)] [background-size:28px_28px]" aria-hidden="true" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <div className="lg:col-span-7 space-y-6">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-xs font-semibold uppercase tracking-wider text-[#23d8e1]">
+                <span className="w-2 h-2 rounded-full bg-[#23d8e1] animate-pulse" />
+                {c.eyebrow}
+              </div>
+
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-[1.12] text-white">
+                {c.title}
+              </h1>
+
+              <p className="text-base sm:text-lg text-slate-300 font-normal leading-relaxed max-w-2xl">
+                {c.subtitle}
+              </p>
+
+              {/* Natural Bengali Search Keywords Pills */}
+              <div className="flex flex-wrap gap-2 pt-1">
+                {c.bengaliKeywords.map((kw) => (
+                  <span
+                    key={kw}
+                    className="text-xs px-3 py-1 rounded-full bg-white/10 border border-white/15 text-slate-200 backdrop-blur-sm"
+                  >
+                    #{kw}
+                  </span>
+                ))}
+              </div>
+
+              <div className="flex flex-wrap gap-4 pt-3">
+                <a
+                  href={registerUrl}
+                  className="inline-flex items-center justify-center px-7 py-3.5 rounded-full font-bold text-sm bg-gradient-to-r from-[#920dff] to-[#6a32ff] text-white shadow-lg shadow-[#920dff]/30 hover:opacity-95 hover:shadow-xl hover:scale-[1.02] transition-all duration-200"
+                >
+                  {c.primary} <span className="ml-2">→</span>
+                </a>
+                <a
+                  href={c.secondaryHref}
+                  className="inline-flex items-center justify-center px-7 py-3.5 rounded-full font-bold text-sm bg-white/10 text-white border border-white/20 hover:bg-white/15 hover:border-white/30 backdrop-blur-md transition-all duration-200"
+                >
+                  {c.secondary}
+                </a>
+              </div>
+            </div>
+
+            {/* Right: Bangladesh Ecosystem Card */}
+            <div className="lg:col-span-5">
+              <div className="bg-slate-900/90 rounded-3xl p-6 border border-white/15 shadow-2xl backdrop-blur-xl relative space-y-4">
+                <div className="flex items-center justify-between pb-3 border-b border-white/10 text-xs text-slate-400">
+                  <span className="font-mono text-slate-300">bangladesh.market.status</span>
+                  <span className="text-[#23d8e1] font-mono text-[11px] font-bold">130M+ CONNECTED</span>
+                </div>
+
+                <div className="bg-white/5 p-4 rounded-2xl border border-white/10 space-y-2">
+                  <div className="text-xs text-[#23d8e1] font-mono uppercase font-bold">LOCAL MARKET ADVANTAGE</div>
+                  <h4 className="text-base font-bold text-white leading-snug">
+                    Verified Digital Advertising Infrastructure in Bangladesh
+                  </h4>
+                  <p className="text-xs text-slate-300 leading-relaxed">
+                    Connecting top local brands, advertising agencies, and verified publishers across Dhaka, Chattogram, and nationwide internet audiences.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-2 gap-3 text-center">
+                  <div className="bg-white/5 p-3 rounded-xl border border-white/5">
+                    <span className="text-[10px] text-slate-400 block font-mono">LANGUAGE SUPPORT</span>
+                    <strong className="text-base font-extrabold text-white mt-0.5 block">বাংলা + English</strong>
+                  </div>
+                  <div className="bg-white/5 p-3 rounded-xl border border-white/5">
+                    <span className="text-[10px] text-slate-400 block font-mono">PAYMENT CHANNELS</span>
+                    <strong className="text-base font-extrabold text-[#23d8e1] mt-0.5 block">Bank / Direct</strong>
+                  </div>
+                </div>
+
+                <div className="pt-2 flex justify-between items-center text-xs text-slate-400 font-mono">
+                  <span>Coverage: All 8 Divisions</span>
+                  <span className="text-emerald-400 font-bold">Active Inventory</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* 2. PILLARS / PRINCIPLES */}
+      <section className="py-20 bg-slate-50 border-b border-slate-200/80">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#920dff]">CORE CAPABILITIES</span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+              Designed for the Bangladesh Digital Media Landscape
+            </h2>
+            <p className="text-slate-600 text-base">
+              Engineered with deep understanding of local consumer habits, device penetration, and publisher ecosystems.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {c.pillars.map(([h, p], idx) => (
+              <div
+                key={h}
+                className="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-md hover:border-[#920dff]/40 transition-all flex flex-col justify-between"
+              >
+                <div>
+                  <span className="text-xs font-mono font-bold text-[#920dff] bg-purple-100/70 px-2.5 py-0.5 rounded inline-block mb-3">
+                    0{idx + 1}
+                  </span>
+                  <h3 className="text-lg font-bold text-slate-900 mb-2">{h}</h3>
+                  <p className="text-xs text-slate-600 leading-relaxed">{p}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 3. STEP-BY-STEP WORKFLOW */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#920dff]">HOW IT WORKS</span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+              Clear &amp; Controlled Execution Blueprint
+            </h2>
+            <p className="text-slate-600 text-base">
+              A structured operational pathway from initial campaign brief to auditable measurement.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {c.steps.map(([h, p], idx) => (
+              <div
+                key={h}
+                className="bg-slate-50 rounded-2xl p-6 border border-slate-200/80 hover:shadow-lg hover:border-[#920dff]/40 transition-all flex flex-col justify-between"
+              >
+                <div>
+                  <span className="text-xs font-mono font-bold text-[#ff6900] bg-orange-100/70 px-2.5 py-0.5 rounded inline-block mb-3">
+                    Step 0{idx + 1}
+                  </span>
+                  <h3 className="text-lg font-bold text-slate-900 mb-2">{h}</h3>
+                  <p className="text-xs text-slate-600 leading-relaxed">{p}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 4. AEO / BILINGUAL SEARCH FAQ */}
+      <section className="py-20 bg-slate-50 border-t border-slate-200">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-14 space-y-3">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#920dff]">BILINGUAL KNOWLEDGE BASE</span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+              সচরাচর জিজ্ঞাসিত প্রশ্নাবলী (FAQ)
+            </h2>
+            <p className="text-slate-600 text-base">
+              Clear answers to common questions asked by advertisers, digital agencies, and publishers in Bangladesh.
+            </p>
+          </div>
+
+          <div className="space-y-4">
+            {c.qa.map(([q, a], idx) => (
+              <details
+                key={idx}
+                className="group bg-white rounded-2xl border border-slate-200 p-5 transition-all duration-200 open:shadow-md open:border-[#920dff]/40"
+              >
+                <summary className="font-bold text-slate-900 text-base cursor-pointer list-none flex items-center justify-between gap-4">
+                  <span>{q}</span>
+                  <span className="w-6 h-6 rounded-full bg-slate-100 group-open:bg-[#920dff] group-open:text-white flex items-center justify-center text-xs transition-colors shrink-0">
+                    +
+                  </span>
+                </summary>
+                <p className="text-sm text-slate-600 leading-relaxed mt-4 pt-3 border-t border-slate-100">
+                  {a}
+                </p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 5. CTA BANNER */}
+      <section className="py-16 bg-gradient-to-r from-[#0d224d] via-[#250d4d] to-[#071329] text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
+            <div className="space-y-2 text-center lg:text-left">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+                {c.finalTitle}
+              </h2>
+              <p className="text-slate-300 text-sm sm:text-base max-w-xl">
+                {c.finalCopy}
+              </p>
+            </div>
+            <div className="flex flex-wrap items-center justify-center gap-4 shrink-0">
+              <a
+                href={registerUrl}
+                className="px-7 py-3 rounded-full font-bold text-sm bg-gradient-to-r from-[#920dff] to-[#6a32ff] text-white shadow-lg hover:opacity-95 hover:scale-[1.02] transition-all"
+              >
+                {c.primary}
+              </a>
+              <a
+                href="/contact/"
+                className="px-7 py-3 rounded-full font-bold text-sm bg-white/10 text-white border border-white/20 hover:bg-white/20 transition-all"
+              >
+                Talk to Boost RAVA →
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  );
 }
-function StatusStrip({type}:{type:string}){const items=type==='screen'?['Partner-powered CTV','CMS / player adapter','Screen metadata','Proof of play']:type==='publisher'?['Inventory quality','Demand access','Ad controls','Verified reporting']:type==='creative'?['HTML5 canvas','Rich media','Responsive preview','Eligible delivery']:type==='contextual'?['Content context','Campaign signals','AI-assisted insight','Privacy-aware planning']:['Campaign brief','Eligible media','Creative fit','Measurement'];return <div className="bdx-status">{items.map((x,i)=><span key={x}><b>{String(i+1).padStart(2,'0')}</b>{x}</span>)}</div>}
-function ProcessVisual({type}:{type:string}){const a=type==='screen'?['CMS / Player','Adapter','Boost RAVA','Screen','Proof of Play']:type==='publisher'?['Inventory','Ad Request','Demand','Valid Delivery','Revenue']:type==='creative'?['Canvas','Interaction','Preview','Validation','Campaign']:type==='contextual'?['Content','Signals','Context Fit','Decision','Measure']:['Brief','Eligibility','Auction / Delivery','Creative','Report'];return <div className="bdx-processVisual">{a.map((x,i)=><div key={x}><span>{String(i+1).padStart(2,'0')}</span><strong>{x}</strong>{i<a.length-1&&<i>→</i>}</div>)}</div>}
-function SectionHead({eyebrow,title,copy,light=false}:{eyebrow:string;title:string;copy?:string;light?:boolean}){return <div className={`bdx-head ${light?'light':''}`}><span>{eyebrow}</span><h2>{title}</h2>{copy&&<p>{copy}</p>}</div>}
-function FAQ({items}:{items:Array<[string,string]>}){return <div className="bdx-faq">{items.map(([q,a],i)=><details key={q} open={i===0}><summary>{q}<span aria-hidden="true">+</span></summary><p>{a}</p></details>)}</div>}
-
-
-function ToolBridge({route}:{route:Route}){
- const links:Record<Route,Array<[string,string,string]>>={
-  'programmatic-advertising-bangladesh':[['Campaign Calculator','Calculate CPM, impressions, CPC, CPA and ROAS from your own assumptions.','/advertiser/#bradv-calculator-title']],
-  'ai-contextual-advertising-bangladesh':[['Contextual Targeting Planner','Turn a Bangladesh campaign brief into transparent topic, exclusion and format directions.','/contextual-advertising/#contextual-planner']],
-  'rich-media-html5-advertising-bangladesh':[['Rich Media Format Finder','Choose from Boost RAVA’s nine Rich Media format families and seven declared Rich Media canvases.','/rich-media/#format-finder'],['HTML5 Rich Media Size Finder','Choose HTML5 starting sizes from the same seven Rich Media canvases when the creative is intended for Rich Media use.','/html5-ad-formats/#size-finder']],
-  'publisher-monetization-bangladesh':[['Publisher Revenue Calculator','Model impressions, fill, eCPM, revenue share and publisher revenue without a revenue guarantee.','/publisher/#revenue-calculator']],
-  'ctv-dooh-advertising-bangladesh':[['CTV Calculator','Model budget, CPM, impressions, completion and frequency-based reach.','/ctv/#ctv-calculator'],['DOOH Planning Tools','Estimate DOOH campaign scenarios and publisher-side screen revenue with the dedicated DOOH tools.','/dooh/']]
- };
- return <div className="bdx-tools">{links[route].map(([h,p,u])=><a key={h} href={u}><small>PLANNING TOOL</small><h3>{h}</h3><p>{p}</p><span>Open tool →</span></a>)}</div>
-}
-export function BangladeshLandingPage({route}:{route:Route}){const c=configs[route];const register='https://panel.boostrava.com/#/register';return <div className={`bdx-root theme-${c.theme}`}><style dangerouslySetInnerHTML={{__html:CSS}}/><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify({'@context':'https://schema.org','@type':'FAQPage',mainEntity:c.qa.map(([q,a])=>({'@type':'Question',name:q,acceptedAnswer:{'@type':'Answer',text:a}}))})}}/>
-<section className="bdx-hero"><div className="bdx-heroGrid"/><div className="bdx-container bdx-heroIn"><div className="bdx-heroCopy"><span className="bdx-eyebrow">{c.eyebrow}</span><h1>{c.title}</h1><p>{c.subtitle}</p><div className="bdx-actions"><a className="bdx-btn primary" href={register}>{c.primary}</a><a className="bdx-btn ghost" href={c.secondaryHref}>{c.secondary}</a></div></div><div className="bdx-heroPanel"><HeroVisual type={c.visual}/><div><strong>{c.visual==='screen'?'Two channels. Separate activation logic.':'One planning layer with clear controls.'}</strong><p>{c.visual==='screen'?'CTV stays supply-led; DOOH stays integration-led.':'Use the right signal, format and inventory for the objective.'}</p></div></div></div></section>
-<section className="bdx-stripSec"><div className="bdx-container"><StatusStrip type={c.visual}/></div></section>
-<section className="bdx-section"><div className="bdx-container"><SectionHead eyebrow="PLANNING PRINCIPLES" title={c.visual==='screen'?'Choose the environment before the screen plan.':'Build the plan around what the campaign actually needs.'} copy="Avoid channel-first checklists. Start with the objective, then use only the signals, formats and inventory that are eligible for the campaign."/><div className="bdx-pillarGrid">{c.pillars.map(([h,p],i)=><article key={h}><span>{String(i+1).padStart(2,'0')}</span><i/><h3>{h}</h3><p>{p}</p></article>)}</div></div></section>
-<section className="bdx-section bdx-soft"><div className="bdx-container bdx-split"><div><SectionHead eyebrow="HOW IT WORKS" title={c.visual==='screen'?'A screen is not live until the integration can prove playback.':'A controlled workflow from brief to measurable delivery.'} copy="Each stage should have a clear owner, valid inputs and an auditable output."/><div className="bdx-stepList">{c.steps.map(([h,p],i)=><article key={h}><b>{String(i+1).padStart(2,'0')}</b><div><h3>{h}</h3><p>{p}</p></div></article>)}</div></div><ProcessVisual type={c.visual}/></div></section>
-{c.visual==='screen'&&<section className="bdx-section bdx-dark"><div className="bdx-container"><SectionHead light eyebrow="DOOH INTEGRATION" title="A separate adapter layer connects the screen to programmatic demand." copy="Digital signage playback alone is not enough. The player or CMS needs a compatible integration path that can identify the screen, request an eligible ad, cache and play the creative, and return playback evidence."/><div className="bdx-techGrid"><article><span>01</span><h3>Adapter identity</h3><p>Map account/network credentials plus device, player or screen identifiers required by the integration.</p></article><article><span>02</span><h3>Venue metadata</h3><p>Provide latitude/longitude, venue type, resolution, aspect ratio, orientation, operating hours and supported media.</p></article><article><span>03</span><h3>Programmatic slot</h3><p>Configure the ad-source placeholder, creative rules, duration, fallback behavior and category controls.</p></article><article><span>04</span><h3>Playback verification</h3><p>Use test mode where supported, inspect player logs, verify the physical screen and reconcile proof-of-play.</p></article></div><div className="bdx-settings"><div><b>Reliability</b><span>Prefetch / caching</span><span>Retry / timeout</span><span>Fallback content</span></div><div><b>Inventory control</b><span>Category rules</span><span>Dayparting</span><span>Pricing / floor policy</span></div><div><b>Measurement</b><span>Proof of play</span><span>Approved audience source</span><span>No invented multiplier</span></div></div></div></section>}
-<section className="bdx-section bdx-soft"><div className="bdx-container"><SectionHead eyebrow="PLANNING TOOLS" title="Use the specialist calculator or finder instead of guessing." copy="Each tool keeps assumptions visible and links to the deeper Boost RAVA capability page."/><ToolBridge route={route}/></div></section>
-<section className="bdx-section"><div className="bdx-container bdx-answerSplit"><SectionHead eyebrow="COMMON QUESTIONS" title="Clear answers before you activate." copy="These answers are written for people first and are aligned with the availability and verification rules used across Boost RAVA."/><FAQ items={c.qa}/></div></section>
-<section className="bdx-final"><div className="bdx-container bdx-finalIn"><div><span className="bdx-eyebrow">READY TO MOVE?</span><h2>{c.finalTitle}</h2><p>{c.finalCopy}</p></div><div><a className="bdx-btn white" href={register}>{c.primary}</a><a className="bdx-btn outline" href="/contact/">Talk to Boost RAVA</a></div></div></section>
-</div>}
-
-const CSS=String.raw`
-.bdx-root{--ink:#101b33;--muted:#5d6d87;--line:#dce5f4;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:#fff;overflow:hidden}.bdx-root *{box-sizing:border-box}.bdx-container{width:min(1180px,calc(100% - 40px));margin:auto}.bdx-hero{position:relative;isolation:isolate;padding:86px 0 78px;background:radial-gradient(circle at 80% 16%,rgba(123,72,255,.42),transparent 31%),linear-gradient(125deg,#071a4d,#183ca5 52%,#4d249d);color:#fff}.theme-green .bdx-hero{background:radial-gradient(circle at 78% 15%,rgba(48,220,164,.22),transparent 30%),linear-gradient(125deg,#071b3f,#123d68 55%,#14533f)}.theme-screen .bdx-hero{background:radial-gradient(circle at 82% 14%,rgba(88,204,255,.24),transparent 31%),linear-gradient(125deg,#071530,#153d82 54%,#4a257e)}.bdx-heroGrid{position:absolute;inset:0;z-index:-1;opacity:.22;background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);background-size:56px 56px;mask-image:linear-gradient(#000,transparent)}.bdx-heroIn{display:grid;grid-template-columns:1.04fr .96fr;gap:64px;align-items:center}.bdx-eyebrow{display:inline-flex;align-items:center;gap:10px;color:#c7d9ff;font-size:11px;font-weight:900;letter-spacing:.17em}.bdx-eyebrow:before{content:"";width:26px;height:2px;background:#7ce3ff}.bdx-hero h1{margin:16px 0 22px;color:#fff!important;font-size:clamp(54px,6.2vw,82px);line-height:.98;letter-spacing:-.055em}.bdx-heroCopy>p{margin:0;max-width:720px;color:#dbe7ff!important;font-size:18px;line-height:1.75}.bdx-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}.bdx-btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 22px;border-radius:14px;text-decoration:none;font-weight:850;transition:transform .2s ease,box-shadow .2s ease}.bdx-btn:hover{transform:translateY(-2px)}.bdx-btn.primary,.bdx-btn.white{background:#fff;color:#253b9a;box-shadow:0 14px 34px rgba(0,0,0,.18)}.bdx-btn.ghost,.bdx-btn.outline{color:#fff;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.07)}.bdx-heroPanel{border:1px solid rgba(255,255,255,.18);border-radius:28px;padding:22px;background:linear-gradient(145deg,rgba(255,255,255,.13),rgba(255,255,255,.055));box-shadow:0 30px 80px rgba(5,13,54,.34);backdrop-filter:blur(10px)}.bdx-heroPanel>div:last-child{padding:18px 6px 2px}.bdx-heroPanel strong{color:#fff;font-size:20px}.bdx-heroPanel p{color:#cbd8f4!important;line-height:1.6;margin:8px 0 0}.bdx-visual{position:relative;min-height:260px;border-radius:21px;border:1px solid rgba(255,255,255,.16);background:rgba(7,18,57,.24);overflow:hidden}.bdx-visual:before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:24px 24px}.bdx-programmatic{display:grid;grid-template-columns:82px 1fr 132px;align-items:center;gap:13px;padding:24px}.bdx-mini,.bdx-core,.bdx-grid4{position:relative;z-index:2}.bdx-mini{display:grid;place-items:center;height:60px;border-radius:15px;background:#fff;color:#1f2c59;font-size:10px;font-weight:900;letter-spacing:.12em}.bdx-core{padding:22px 10px;text-align:center;border-radius:18px;background:linear-gradient(135deg,#3275ff,#7d50ff);color:#fff;font-weight:900;box-shadow:0 18px 38px rgba(39,62,200,.35)}.bdx-core small{font-size:8px;letter-spacing:.12em;opacity:.85}.bdx-grid4{display:grid;grid-template-columns:1fr 1fr;gap:8px}.bdx-grid4 span{min-height:43px;border:1px solid rgba(255,255,255,.15);border-radius:12px;display:grid;place-items:center;color:#fff;font-size:8px;font-weight:850;background:rgba(255,255,255,.08);text-align:center}.bdx-contextual{display:grid;grid-template-columns:92px 30px 96px 1fr;gap:10px;align-items:center;padding:24px}.bdx-page{position:relative;z-index:2;height:142px;border-radius:16px;background:#fff;padding:18px 12px;color:#1a2b57}.bdx-page i{display:block;height:6px;border-radius:8px;background:#dfe6f8;margin:9px 0}.bdx-page i:nth-child(2){background:#79decf;width:78%}.bdx-page i:nth-child(3){width:58%}.bdx-page b{font-size:9px;letter-spacing:.12em}.bdx-dots{display:grid;gap:9px;position:relative;z-index:2}.bdx-dots i{width:8px;height:8px;border-radius:50%;background:#5ed8ff;box-shadow:0 0 0 5px rgba(94,216,255,.08)}.bdx-ai{position:relative;z-index:2;height:96px;border-radius:50%;display:grid;place-items:center;text-align:center;background:radial-gradient(circle at 35% 30%,#57dfff,#416cff 48%,#7b4de8);color:#fff;font-size:24px;font-weight:900}.bdx-ai small{display:block;font-size:7px;letter-spacing:.12em}.bdx-match{position:relative;z-index:2;border:1px solid rgba(255,255,255,.17);border-radius:16px;padding:22px 10px;text-align:center;color:#fff;font-size:11px;font-weight:900;line-height:1.7;background:rgba(255,255,255,.08)}.bdx-creative{display:grid;place-items:center;padding:20px}.bdx-ad,.bdx-layer{position:absolute;width:172px;aspect-ratio:300/250;border-radius:15px}.bdx-layer.l1{background:rgba(94,89,255,.22);transform:translate(22px,-13px) rotate(7deg)}.bdx-layer.l2{background:rgba(64,210,255,.15);transform:translate(-26px,17px) rotate(-7deg)}.bdx-ad{position:relative;background:linear-gradient(145deg,#fff,#eaf0ff);z-index:3;box-shadow:0 22px 44px rgba(0,0,0,.24);padding:13px;color:#33405e}.bdx-ad small{font-size:8px;font-weight:900}.bdx-ad i{display:block;width:56px;height:56px;border-radius:14px;margin:14px 0;background:linear-gradient(135deg,#4668ff,#9948ee)}.bdx-ad b{display:block;font-size:9px}.bdx-ad button{position:absolute;left:13px;bottom:13px;border:0;border-radius:999px;background:#ff7b36;color:#fff;font-size:7px;font-weight:900;padding:7px 10px}.bdx-publisher{display:grid;grid-template-columns:90px 86px 1fr;gap:14px;align-items:center;padding:24px}.bdx-inventory{display:grid;grid-template-columns:1fr 1fr;gap:7px;position:relative;z-index:2}.bdx-inventory i{height:50px;border-radius:11px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.08)}.bdx-inventory i:nth-child(2){background:rgba(74,214,176,.22)}.bdx-auction{position:relative;z-index:2;height:80px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#2d7cff,#6657ec);color:#fff;font-size:8px;font-weight:900;letter-spacing:.1em}.bdx-bars{height:144px;display:flex;align-items:end;gap:7px;padding:8px 8px 25px;border-left:1px solid rgba(255,255,255,.15);border-bottom:1px solid rgba(255,255,255,.15);position:relative;z-index:2}.bdx-bars i{flex:1;border-radius:6px 6px 2px 2px;background:linear-gradient(#67e0b9,#26a177)}.bdx-bars i:nth-child(1){height:38%}.bdx-bars i:nth-child(2){height:56%}.bdx-bars i:nth-child(3){height:72%}.bdx-bars i:nth-child(4){height:88%}.bdx-bars b{position:absolute;left:8px;bottom:6px;color:#bde9d9;font-size:7px;letter-spacing:.12em}.bdx-screen{display:grid;grid-template-columns:1fr 30px 1fr;align-items:center;gap:9px;padding:24px}.bdx-tv,.bdx-board{position:relative;z-index:2;border:4px solid #d8e1ff;border-radius:12px;background:linear-gradient(145deg,#173777,#7148d6);aspect-ratio:16/9;display:grid;place-items:center;color:#fff;font-weight:900}.bdx-tv:after{content:"";position:absolute;left:38%;right:38%;bottom:-13px;height:9px;border-bottom:3px solid #d8e1ff}.bdx-plus{position:relative;z-index:2;color:#7edcff;font-size:24px;font-weight:900;text-align:center}.bdx-board{border-radius:7px;aspect-ratio:16/10;background:linear-gradient(135deg,#112349,#2f61c5 55%,#8b50e3)}.bdx-board span{position:absolute;left:48%;bottom:-32px;width:7px;height:30px;background:#d8e1ff}.bdx-pin{position:absolute;right:31px;top:23px;width:18px;height:24px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:#ff8148;z-index:3}.bdx-stripSec{padding:0;background:#fff}.bdx-status{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid #e1e7f2;border-top:0;border-radius:0 0 20px 20px;overflow:hidden;box-shadow:0 14px 36px rgba(21,40,92,.06)}.bdx-status span{display:flex;align-items:center;gap:10px;padding:17px 18px;color:#52627c;font-size:12px;font-weight:750;border-right:1px solid #e7ebf3}.bdx-status span:last-child{border-right:0}.bdx-status b{color:#5369d9;font-size:9px}.bdx-section{padding:96px 0}.bdx-soft{background:linear-gradient(180deg,#f7f9ff,#f1f5ff)}.bdx-head{max-width:780px;margin-bottom:40px}.bdx-head>span{font-size:10px;font-weight:900;letter-spacing:.16em;color:#5264d7}.bdx-head h2{margin:10px 0 14px;color:var(--ink)!important;font-size:clamp(36px,4vw,56px);line-height:1.04;letter-spacing:-.045em}.bdx-head p{margin:0;color:var(--muted)!important;line-height:1.72;font-size:17px}.bdx-pillarGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.bdx-pillarGrid article{position:relative;border:1px solid var(--line);border-radius:20px;padding:23px;background:#fff;box-shadow:0 14px 32px rgba(29,47,97,.045);overflow:hidden}.bdx-pillarGrid article>span{float:right;color:#909db0;font-size:9px;font-weight:900}.bdx-pillarGrid article>i{display:block;width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,#e9efff,#f0eaff);margin-bottom:17px}.theme-green .bdx-pillarGrid article>i{background:linear-gradient(135deg,#e6f8f2,#e7f5ff)}.bdx-pillarGrid h3{color:#17233d!important;margin:9px 0;font-size:18px}.bdx-pillarGrid p{color:#637087!important;line-height:1.65;margin:0;font-size:13px}.bdx-split{display:grid;grid-template-columns:1fr .92fr;gap:56px;align-items:center}.bdx-stepList{display:grid;gap:11px}.bdx-stepList article{display:grid;grid-template-columns:52px 1fr;gap:14px;padding:17px;border:1px solid #dce4f2;border-radius:16px;background:#fff}.bdx-stepList article>b{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:#eef2ff;color:#435bd1;font-size:10px}.bdx-stepList h3{margin:0 0 5px;color:#16223b!important;font-size:15px}.bdx-stepList p{margin:0;color:#647189!important;line-height:1.55;font-size:12px}.bdx-processVisual{border-radius:26px;padding:28px;background:linear-gradient(145deg,#0b1b45,#203e96 58%,#552a91);box-shadow:0 26px 65px rgba(18,42,116,.18);display:grid;gap:9px}.bdx-processVisual>div{display:grid;grid-template-columns:38px 1fr 22px;align-items:center;min-height:64px;border:1px solid rgba(255,255,255,.12);border-radius:14px;background:rgba(255,255,255,.06);padding:10px 13px;color:#fff}.bdx-processVisual span{font-size:8px;color:#7edcff}.bdx-processVisual strong{font-size:12px}.bdx-processVisual i{font-style:normal;color:#8ddfff}.bdx-dark{background:radial-gradient(circle at 85% 10%,rgba(99,77,255,.25),transparent 30%),linear-gradient(135deg,#06152f,#11275a 55%,#36196b);color:#fff}.bdx-head.light h2{color:#fff!important}.bdx-head.light>span{color:#81dbff}.bdx-head.light p{color:#cbd8ee!important}.bdx-techGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.bdx-techGrid article{border:1px solid rgba(255,255,255,.13);border-radius:18px;padding:21px;background:rgba(255,255,255,.055)}.bdx-techGrid span{color:#83dcff;font-size:9px;font-weight:900}.bdx-techGrid h3{color:#fff!important;margin:10px 0 8px}.bdx-techGrid p{color:#cbd8ee!important;font-size:13px;line-height:1.6;margin:0}.bdx-settings{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}.bdx-settings>div{border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:18px;background:rgba(255,255,255,.04);display:flex;flex-wrap:wrap;gap:7px}.bdx-settings b{width:100%;color:#fff;margin-bottom:6px}.bdx-settings span{padding:7px 9px;border-radius:999px;background:rgba(255,255,255,.08);color:#dbe5f7;font-size:10px}.bdx-answerSplit{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:start}.bdx-faq{display:grid;gap:10px}.bdx-faq details{border:1px solid var(--line);border-radius:16px;background:#fff;box-shadow:0 10px 30px rgba(24,42,90,.045);overflow:hidden}.bdx-faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:18px;padding:18px 20px;color:#15213b;font-size:14px;font-weight:850}.bdx-faq summary::-webkit-details-marker{display:none}.bdx-faq summary span{color:#5364d4;font-size:20px;line-height:1}.bdx-faq details[open] summary span{transform:rotate(45deg)}.bdx-faq p{margin:0;padding:0 20px 20px;color:#647189!important;line-height:1.7;font-size:13px}.bdx-final{padding:80px 0;background:radial-gradient(circle at 80% 10%,rgba(99,224,255,.2),transparent 28%),linear-gradient(135deg,#10195a,#2944b4 58%,#6f2ba1);color:#fff}.bdx-finalIn{display:grid;grid-template-columns:1fr auto;gap:50px;align-items:center}.bdx-final h2{color:#fff!important;margin:12px 0;font-size:clamp(38px,4.8vw,62px);line-height:1;letter-spacing:-.05em}.bdx-final p{color:#dce5fb!important;line-height:1.65;max-width:740px}.bdx-finalIn>div:last-child{display:flex;flex-direction:column;gap:10px;min-width:240px}
-.bdx-tools{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.bdx-tools a{display:block;border:1px solid var(--line);border-radius:20px;padding:22px;background:#fff;text-decoration:none;color:#17233d;box-shadow:0 12px 30px rgba(24,42,90,.05)}.bdx-tools small{font-size:9px;font-weight:900;letter-spacing:.12em;color:#5364d4}.bdx-tools h3{margin:8px 0;font-size:20px}.bdx-tools p{margin:0;color:#647189!important;line-height:1.65;font-size:13px}.bdx-tools span{display:inline-block;margin-top:14px;color:#435bd1;font-weight:850;font-size:12px}
-@media(max-width:980px){.bdx-heroIn,.bdx-split,.bdx-answerSplit{grid-template-columns:1fr}.bdx-heroIn{gap:36px}.bdx-pillarGrid,.bdx-techGrid{grid-template-columns:1fr 1fr}.bdx-status{grid-template-columns:1fr 1fr}.bdx-status span:nth-child(2){border-right:0}.bdx-finalIn{grid-template-columns:1fr}.bdx-finalIn>div:last-child{min-width:0;flex-direction:row}.bdx-btn{flex:1}.bdx-contextual{grid-template-columns:80px 24px 82px 1fr}}
-.bdx-tools{grid-template-columns:1fr}
-@media(max-width:680px){.bdx-container{width:min(100% - 28px,1180px)}.bdx-hero{padding:66px 0 58px}.bdx-hero h1{font-size:clamp(44px,13vw,60px)}.bdx-heroCopy>p{font-size:16px}.bdx-actions,.bdx-finalIn>div:last-child{flex-direction:column}.bdx-pillarGrid,.bdx-techGrid,.bdx-settings,.bdx-status{grid-template-columns:1fr}.bdx-status span{border-right:0;border-bottom:1px solid #e7ebf3}.bdx-status span:last-child{border-bottom:0}.bdx-section{padding:72px 0}.bdx-programmatic{grid-template-columns:64px 1fr 94px;padding:14px}.bdx-contextual{grid-template-columns:68px 18px 68px 1fr;padding:14px}.bdx-page{height:112px;padding:12px 8px}.bdx-ai{height:68px;font-size:17px}.bdx-match{padding:14px 6px;font-size:8px}.bdx-publisher{grid-template-columns:70px 64px 1fr;padding:14px}.bdx-auction{height:64px;font-size:7px}.bdx-bars{height:112px}.bdx-screen{padding:14px}.bdx-btn{width:100%}}
-@media(prefers-reduced-motion:reduce){.bdx-root *{transition:none!important;animation:none!important}}
-`;

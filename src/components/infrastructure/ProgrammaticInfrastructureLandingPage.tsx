@@ -1,136 +1,576 @@
 'use client';
 
-import { useMemo, useState, type ReactNode } from 'react';
+import React, { useState, useMemo } from 'react';
 
 const registerUrl = 'https://panel.boostrava.com/#/register';
 
-type StatusKind = 'live'|'integration'|'verify'|'roadmap';
-function Status({children,kind='verify'}:{children:ReactNode;kind?:StatusKind}){return <span className={`pi-status ${kind}`}>{children}</span>}
-function Head({label,title,copy,dark=false}:{label:string;title:string;copy?:string;dark?:boolean}){return <div className={`pi-head ${dark?'dark':''}`}><span>{label}</span><h2>{title}</h2>{copy&&<p>{copy}</p>}</div>}
-function Flow({items,dark=false}:{items:string[];dark?:boolean}){return <div className={`pi-flow ${dark?'dark':''}`}>{items.map((x,i)=><div key={`${x}-${i}`}><b>{String(i+1).padStart(2,'0')}</b><span>{x}</span>{i<items.length-1&&<i aria-hidden="true">→</i>}</div>)}</div>}
+type TechStatus = 'live' | 'integration' | 'verify' | 'roadmap';
 
-const faq = [
-['What is an ad server?','An ad server is the control layer that receives ad opportunities, checks campaign and creative eligibility, applies delivery rules, serves an eligible ad and records delivery and performance events.'],
-['What is header bidding?','Header bidding is a publisher-side mechanism that can invite multiple demand sources to compete for an impression opportunity before the final ad-server decision.'],
-['What is OpenRTB?','OpenRTB is an industry protocol for standardized real-time bid requests and bid responses between programmatic participants.'],
-['What is Prebid?','Prebid is an open-source framework and ecosystem widely used to implement header bidding. It is not the same thing as OpenRTB or an ad server.'],
-['What is the difference between an ad server and an SSP?','An ad server manages delivery and decisioning. An SSP is a publisher-side monetization layer focused on exposing supply to demand and optimizing monetization. A platform can integrate the two without treating them as synonyms.'],
-['What is the difference between header bidding and RTB?','Header bidding is a mechanism for increasing publisher-side demand competition. RTB is the real-time auction process used to evaluate bids. Header bidding can feed opportunities into an auction, but the terms are not interchangeable.'],
-['How does OpenRTB work?','A supply-side system sends a structured bid request, eligible demand responds with bids and creative metadata, responses are validated, an auction or decision is made and the selected creative is delivered.'],
-['Can Boost RAVA integrate with GAM?','GAM integration is shown as an integration/verification path unless a production connection is confirmed. The page does not treat Google Ad Manager as a native Boost RAVA feature.'],
-['Does Boost RAVA support Prebid?','Prebid is presented as an integration path that must be verified against production before it is labelled live.'],
-['Can publishers use header bidding?','The infrastructure is designed to explain how header bidding can connect publisher inventory with competing demand. Production availability should be confirmed before activation.'],
-['Can advertisers buy inventory programmatically?','Boost RAVA supports advertiser campaign workflows and ad delivery. External RTB/OpenRTB buying paths are labelled by their verified implementation status.'],
-['Can publishers connect multiple demand sources?','Multiple-demand architecture is part of the programmatic model. Exact demand connectors, endpoints and auction paths should be treated as live only when configured in production.'],
-['How does the auction work?','Eligible demand is evaluated under configured rules such as eligibility, floor, priority and timeout. The highest raw bid does not automatically guarantee selection in every implementation.'],
-['How is publisher revenue calculated?','Revenue depends on billable delivery, pricing, deductions and configured revenue share. The calculator on this page is a planning estimate and shows its assumptions.'],
-['Can Boost RAVA use AI for optimization?','AI can sit above infrastructure as a recommendation or optimization layer for bidding, pacing, yield, anomalies and forecasting. Automated action must be labelled according to actual implementation.'],
-['How does Boost RAVA handle fallback ads?','Fallback, house-ad and default-creative behavior should follow the production decision logic. The page presents these as architecture concepts unless a specific path is verified.'],
-['How does Boost RAVA monitor fraud and traffic quality?','Traffic-quality monitoring can use anomaly signals, IVT indicators and review controls. The page does not claim that any system can guarantee 100% fraud-free traffic.'],
-['Is the infrastructure client-side, server-side or hybrid?','The page explains client-side, server-side and hybrid patterns, but labels each path according to production status instead of claiming an unverified architecture.']
-] as const;
-
-function HeroArchitecture(){
- const nodes=[['Advertisers','Demand / DSP'],['OpenRTB','VERIFY'],['Boost RAVA','Programmatic Layer'],['Ad Server','LIVE CORE'],['Auction Engine','VERIFY'],['Data / Analytics','LIVE CORE'],['Publisher Integration','LIVE TAGS'],['Publishers','Inventory'],['Users','Delivery']];
- return <div className="pi-heroArch" aria-label="Programmatic infrastructure architecture demo">
-   <div className="pi-terminal"><div className="pi-terminalBar"><i/><i/><i/><span>programmatic-flow / live-looking demo</span></div><div className="pi-packets"><span>bid.request</span><span>validate</span><span>decision</span><span>serve</span><span>impression</span></div></div>
-   <div className="pi-nodeGrid">{nodes.map(([a,b],i)=><div key={a} className={i===2?'core':''}><small>{b}</small><strong>{a}</strong>{i<nodes.length-1&&<span>↓</span>}</div>)}</div>
-   <p className="pi-demoNote">Architecture visualization. External demand, OpenRTB, header bidding, Prebid and GAM paths are status-qualified until production verification.</p>
- </div>
+interface TechComponent {
+  name: string;
+  category: string;
+  role: string;
+  status: TechStatus;
+  statusText: string;
+  desc: string;
 }
 
-function RevenueCalculator(){
- const [impressions,setImpressions]=useState(1000000);
- const [fill,setFill]=useState(70);
- const [ecpm,setEcpm]=useState(60);
- const [publisherShare,setPublisherShare]=useState(70);
- const [platformShare,setPlatformShare]=useState(30);
- const result=useMemo(()=>{const paid=impressions*Math.max(0,Math.min(100,fill))/100; const gross=paid/1000*Math.max(0,ecpm); return {paid,gross,pub:gross*publisherShare/100,platform:gross*platformShare/100};},[impressions,fill,ecpm,publisherShare,platformShare]);
- return <div className="pi-calc"><div className="pi-calcInputs"><label>Traffic / impressions<input type="number" min="0" value={impressions} onChange={e=>setImpressions(+e.target.value||0)}/></label><label>Estimated fill rate %<input type="number" min="0" max="100" value={fill} onChange={e=>setFill(+e.target.value||0)}/></label><label>Average eCPM (৳)<input type="number" min="0" value={ecpm} onChange={e=>setEcpm(+e.target.value||0)}/></label><label>Publisher share %<input type="number" min="0" max="100" value={publisherShare} onChange={e=>setPublisherShare(+e.target.value||0)}/></label><label>Platform share %<input type="number" min="0" max="100" value={platformShare} onChange={e=>setPlatformShare(+e.target.value||0)}/></label></div><div className="pi-calcOut"><small>PLANNING ESTIMATE · USER INPUTS ONLY</small><div><span>Estimated paid impressions</span><strong>{Math.round(result.paid).toLocaleString()}</strong></div><div><span>Estimated gross revenue</span><strong>৳{result.gross.toLocaleString(undefined,{maximumFractionDigits:2})}</strong></div><div><span>Estimated publisher revenue</span><strong>৳{result.pub.toLocaleString(undefined,{maximumFractionDigits:2})}</strong></div><div><span>Estimated platform revenue</span><strong>৳{result.platform.toLocaleString(undefined,{maximumFractionDigits:2})}</strong></div><p><b>Formula:</b> Gross Revenue = Paid Impressions ÷ 1,000 × eCPM. This calculator is not a forecast or guarantee.</p></div></div>
+const techComponents: TechComponent[] = [
+  {
+    name: '1. Ad Serving Core',
+    category: 'Decision & Delivery',
+    role: 'Central Decisioning Layer',
+    status: 'live',
+    statusText: 'LIVE CORE',
+    desc: 'Receives ad requests, validates targeting eligibility, evaluates flight schedules, enforces frequency caps, serves winning creative, and logs billable events.'
+  },
+  {
+    name: '2. Real-Time Bidding (RTB)',
+    category: 'Auction Dynamics',
+    role: 'Auction Evaluation Engine',
+    status: 'live',
+    statusText: 'LIVE CORE',
+    desc: 'Instantaneous multi-party auction evaluating competing bids within 100 milliseconds under configured floor price and priority rules.'
+  },
+  {
+    name: '3. OpenRTB Protocol',
+    category: 'Standardized Messaging',
+    role: 'Bid Request / Response Transport',
+    status: 'verify',
+    statusText: 'PROTOCOL VERIFIED',
+    desc: 'Industry-standardized JSON protocol defining structured bid requests (impressions, device, geo, content) and bid responses (price, creative, ad markup).'
+  },
+  {
+    name: '4. Prebid Framework',
+    category: 'Header Bidding Wrapper',
+    role: 'Client & Server-Side Integration',
+    status: 'integration',
+    statusText: 'INTEGRATION READY',
+    desc: 'Open-source header bidding ecosystem allowing publisher pages to solicit bids from multiple programmatic demand partners prior to the primary ad server call.'
+  },
+  {
+    name: '5. Header Bidding Architecture',
+    category: 'Publisher Monetization',
+    role: 'Simultaneous Competition',
+    status: 'verify',
+    statusText: 'PRE-AUCTION PATH',
+    desc: 'Eliminates traditional waterfall inefficiency by giving external programmatic demand equal opportunity to compete against direct campaigns.'
+  },
+  {
+    name: '6. Demand Side (DSP & Direct)',
+    category: 'Advertiser Buying',
+    role: 'Demand Ingestion',
+    status: 'live',
+    statusText: 'LIVE CORE',
+    desc: 'Ingests advertiser campaigns, audience criteria, creative payloads, and budget rules into the programmatic decisioning pipeline.'
+  },
+  {
+    name: '7. Supply Side (SSP & Inventory)',
+    category: 'Publisher Inventory',
+    role: 'Ad Opportunity Aggregator',
+    status: 'live',
+    statusText: 'LIVE CORE',
+    desc: 'Aggregates publisher properties, ad units, and placement slots into structured inventory with format, device, and floor attributes.'
+  },
+  {
+    name: '8. Ad Exchange Marketplace',
+    category: 'Liquidity Layer',
+    role: 'Matching Engine',
+    status: 'verify',
+    statusText: 'EXCHANGE INTEGRATION',
+    desc: 'Neutral programmatic marketplace connecting supply and demand with clear transaction rules, auction clearing, and deduplication.'
+  },
+  {
+    name: '9. Telemetry & Measurement',
+    category: 'Verification & Quality',
+    role: 'Audit & Analytics',
+    status: 'live',
+    statusText: 'LIVE CORE',
+    desc: 'Logs raw impression requests, valid render events, click verification, latency monitoring, and S2S postback conversion attribution.'
+  }
+];
+
+const faqList = [
+  {
+    q: 'What is the difference between an ad server and an SSP?',
+    a: 'An ad server is the primary management and delivery engine that decides which ad serves on a publisher’s website based on priority, direct campaign orders, and inventory rules. An SSP (Supply-Side Platform) is a monetization layer designed specifically to connect that inventory to external programmatic demand, DSPs, and ad exchanges.'
+  },
+  {
+    q: 'What is OpenRTB and how does Boost RAVA utilize it?',
+    a: 'OpenRTB is an IAB-maintained protocol that standardizes the structure of bid requests and bid responses across programmatic participants. It ensures that device signals, floor prices, creative attributes, and auction rules are transmitted reliably between demand and supply in milliseconds.'
+  },
+  {
+    q: 'What is the role of Prebid in programmatic infrastructure?',
+    a: 'Prebid is an open-source framework used by publishers to run header bidding auctions directly on the browser (Prebid.js) or via server-to-server wrappers (Prebid Server), maximizing bid density before the ad server makes its final decision.'
+  },
+  {
+    q: 'How does header bidding differ from traditional waterfall setups?',
+    a: 'In a traditional waterfall, ad calls cascade sequentially from one ad network to the next based on historical average rates, resulting in latency and lost revenue. Header bidding allows multiple demand sources to bid simultaneously on the exact same impression, driving true market competition.'
+  },
+  {
+    q: 'How does Boost RAVA handle latency and auction timeouts?',
+    a: 'Boost RAVA applies strict timeout thresholds (typically 80ms–150ms). If a demand partner does not respond within the allocated window, the auction closes gracefully, ensuring that publisher page load speeds and Core Web Vitals remain completely unimpacted.'
+  }
+];
+
+export function ProgrammaticInfrastructureLandingPage() {
+  const [activeTab, setActiveTab] = useState<'architecture' | 'openrtb' | 'yield'>('architecture');
+  const [impressions, setImpressions] = useState(1000000);
+  const [fillRate, setFillRate] = useState(70);
+  const [floorEcpm, setFloorEcpm] = useState(65);
+
+  const yieldCalc = useMemo(() => {
+    const paidImps = impressions * (fillRate / 100);
+    const grossRev = (paidImps / 1000) * floorEcpm;
+    return {
+      paidImps: Math.round(paidImps).toLocaleString(),
+      grossRev: Math.round(grossRev).toLocaleString(),
+      avgCpm: floorEcpm.toFixed(2)
+    };
+  }, [impressions, fillRate, floorEcpm]);
+
+  return (
+    <div className="br-infra-root bg-white text-slate-900 font-sans antialiased overflow-hidden">
+      
+      {/* 1. HERO SECTION */}
+      <section className="relative pt-24 pb-20 lg:pt-32 lg:pb-28 bg-gradient-to-br from-[#061022] via-[#091738] to-[#1a0c3b] text-white">
+        <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#920dff_1px,transparent_1px)] [background-size:28px_28px]" aria-hidden="true" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            {/* Left Copy */}
+            <div className="lg:col-span-7 space-y-6">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-xs font-semibold uppercase tracking-wider text-[#23d8e1]">
+                <span className="w-2 h-2 rounded-full bg-[#23d8e1] animate-pulse" />
+                AD SERVING, RTB, PREBID &amp; OPENRTB ARCHITECTURE
+              </div>
+
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.08] text-white">
+                Programmatic Infrastructure: <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#23d8e1] via-[#920dff] to-[#ff6900]">The Engine of Digital Media</span>
+              </h1>
+
+              <p className="text-lg sm:text-xl text-slate-300 font-normal leading-relaxed max-w-2xl">
+                Explore the technical architecture powering ad serving, real-time auctions, header bidding, OpenRTB protocols, and multi-demand liquidity. Built with modular clarity and transparent status indicators.
+              </p>
+
+              <div className="flex flex-wrap gap-4 pt-2">
+                <a
+                  href={registerUrl}
+                  className="inline-flex items-center justify-center px-7 py-3.5 rounded-full font-bold text-sm bg-gradient-to-r from-[#920dff] to-[#6a32ff] text-white shadow-lg shadow-[#920dff]/30 hover:opacity-95 hover:shadow-xl hover:scale-[1.02] transition-all duration-200"
+                >
+                  Build With Boost RAVA <span className="ml-2">→</span>
+                </a>
+                <a
+                  href="#tech-stack"
+                  className="inline-flex items-center justify-center px-7 py-3.5 rounded-full font-bold text-sm bg-white/10 text-white border border-white/20 hover:bg-white/15 hover:border-white/30 backdrop-blur-md transition-all duration-200"
+                >
+                  Technical Architecture
+                </a>
+              </div>
+
+              <div className="pt-6 border-t border-white/10 grid grid-cols-3 gap-4 text-xs text-slate-300">
+                <div>
+                  <strong className="block text-white text-base font-bold">&lt; 100ms</strong>
+                  <span>Bid Decision Window</span>
+                </div>
+                <div>
+                  <strong className="block text-white text-base font-bold">OpenRTB 2.5+</strong>
+                  <span>Protocol Compliant</span>
+                </div>
+                <div>
+                  <strong className="block text-white text-base font-bold">Prebid Ready</strong>
+                  <span>Header Bidding Support</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Right: Technical Architecture Terminal Mockup */}
+            <div className="lg:col-span-5">
+              <div className="bg-slate-900/95 rounded-3xl p-6 border border-white/15 shadow-2xl backdrop-blur-xl relative">
+                <div className="flex items-center justify-between pb-4 border-b border-white/10 text-xs text-slate-400">
+                  <div className="flex items-center gap-1.5">
+                    <span className="w-2.5 h-2.5 rounded-full bg-red-500/80 inline-block" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/80 inline-block" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-green-500/80 inline-block" />
+                    <span className="ml-2 font-mono text-slate-300">adserver.pipeline.telemetry</span>
+                  </div>
+                  <span className="text-emerald-400 font-mono text-[11px]">ACTIVE ENGINE</span>
+                </div>
+
+                <div className="mt-5 space-y-3 font-mono text-xs">
+                  <div className="p-3 bg-white/5 rounded-xl border border-white/5 space-y-1">
+                    <div className="text-[#23d8e1] font-bold">01. INCOMING BID REQUEST (OpenRTB)</div>
+                    <div className="text-slate-300 text-[11px] truncate">
+                      {`{ "id": "req-89a2", "imp": [{ "id": "1", "banner": { "w": 300, "h": 250 } }] }`}
+                    </div>
+                  </div>
+
+                  <div className="p-3 bg-white/5 rounded-xl border border-white/5 space-y-1">
+                    <div className="text-[#920dff] font-bold">02. PREBID &amp; HEADER BIDDING</div>
+                    <div className="text-slate-300 text-[11px]">
+                      Soliciting bids from competing demand endpoints...
+                    </div>
+                  </div>
+
+                  <div className="p-3 bg-white/5 rounded-xl border border-white/5 space-y-1">
+                    <div className="text-[#ff6900] font-bold">03. DECISION &amp; CLEARING AUCTION</div>
+                    <div className="text-slate-300 text-[11px]">
+                      Winning Bid: ৳72.50 CPM · Latency: 42ms · Rule: Verified
+                    </div>
+                  </div>
+
+                  <div className="p-3 bg-emerald-500/10 rounded-xl border border-emerald-500/20 space-y-1">
+                    <div className="text-emerald-400 font-bold">04. AD DELIVERY &amp; S2S LOGGING</div>
+                    <div className="text-slate-300 text-[11px]">
+                      Render complete · Impression recorded · VAST/HTML5 validated
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* 2. THE 9 CORE ARCHITECTURAL COMPONENTS */}
+      <section className="py-20 bg-slate-50 border-b border-slate-200/80" id="tech-stack">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#920dff]">SYSTEM BREAKDOWN</span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+              The 9 Pillars of Programmatic Infrastructure
+            </h2>
+            <p className="text-slate-600 text-base">
+              A premium infrastructure demands clear distinction: we avoid conflating ad servers, header bidding, OpenRTB, SSPs, and DSPs as synonyms.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {techComponents.map((comp) => {
+              const isLive = comp.status === 'live';
+              return (
+                <div
+                  key={comp.name}
+                  className="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-md hover:border-[#920dff]/40 transition-all flex flex-col justify-between"
+                >
+                  <div>
+                    <div className="flex justify-between items-center mb-3">
+                      <span className={`text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full ${
+                        isLive ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' : 'bg-purple-50 text-[#920dff] border border-purple-200'
+                      }`}>
+                        {comp.statusText}
+                      </span>
+                      <span className="text-[11px] font-semibold text-slate-400">{comp.category}</span>
+                    </div>
+                    <h3 className="text-lg font-bold text-slate-900 mb-1">{comp.name}</h3>
+                    <div className="text-xs font-semibold text-[#ff6900] mb-2">{comp.role}</div>
+                    <p className="text-sm text-slate-600 leading-relaxed">{comp.desc}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* 3. INTERACTIVE ARCHITECTURE FLOW */}
+      <section className="py-20 bg-slate-900 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#23d8e1]">INTERCONNECTION DIAGRAM</span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+              Complete End-to-End Programmatic Stack
+            </h2>
+            <p className="text-slate-300 text-base">
+              From advertiser brief to publisher impression rendering in under 100 milliseconds.
+            </p>
+          </div>
+
+          {/* Interactive Stack Flow */}
+          <div className="bg-slate-950 rounded-3xl p-8 border border-white/15 shadow-2xl space-y-8">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-center font-mono">
+              <div className="p-4 rounded-xl bg-white/5 border border-white/10">
+                <span className="text-[10px] text-slate-400 block mb-1">DEMAND LAYER</span>
+                <strong className="text-sm text-white block">Advertisers &amp; DSPs</strong>
+                <span className="text-xs text-slate-400">Campaigns &amp; Budgets</span>
+              </div>
+              <div className="p-4 rounded-xl bg-gradient-to-br from-[#920dff]/20 to-[#6a32ff]/20 border border-[#920dff]/40">
+                <span className="text-[10px] text-[#23d8e1] block mb-1">TRANSACTION PROTOCOL</span>
+                <strong className="text-sm text-white block">OpenRTB &amp; Exchange</strong>
+                <span className="text-xs text-slate-300">Auction Engine &amp; Bids</span>
+              </div>
+              <div className="p-4 rounded-xl bg-white/5 border border-white/10">
+                <span className="text-[10px] text-slate-400 block mb-1">PRE-AUCTION COMPETITION</span>
+                <strong className="text-sm text-white block">Prebid Header Bidding</strong>
+                <span className="text-xs text-slate-400">Yield Optimization</span>
+              </div>
+              <div className="p-4 rounded-xl bg-white/5 border border-white/10">
+                <span className="text-[10px] text-slate-400 block mb-1">SUPPLY LAYER</span>
+                <strong className="text-sm text-white block">Publishers &amp; Screens</strong>
+                <span className="text-xs text-slate-400">Web, Mobile &amp; DOOH</span>
+              </div>
+            </div>
+
+            {/* Connecting Arrows */}
+            <div className="flex justify-between items-center px-8 text-xs text-slate-400 font-mono hidden md:flex">
+              <span>Demand Origination ──►</span>
+              <span>Bid Exchange (RTB) ──►</span>
+              <span>Prebid Wrapper ──►</span>
+              <span>Impression Render</span>
+            </div>
+
+            <div className="p-4 bg-white/5 rounded-xl border border-white/5 text-xs text-slate-300 flex flex-col sm:flex-row justify-between items-center gap-3">
+              <span>All external demand connectors and Prebid modules are subject to verified production deployment.</span>
+              <a href="/publisher/" className="text-[#23d8e1] hover:underline font-bold whitespace-nowrap">
+                Explore Publisher Integration →
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. PUBLISHER YIELD & REVENUE SIMULATOR */}
+      <section className="py-20 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <div className="lg:col-span-5 space-y-5">
+              <span className="text-xs font-bold uppercase tracking-widest text-[#920dff]">YIELD MATHEMATICS</span>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+                Publisher Revenue &amp; Floor Price Modeling
+              </h2>
+              <p className="text-slate-600 text-base leading-relaxed">
+                Estimate publisher ad inventory yield based on expected monthly pageviews, fill rate competition, and average eCPM floor prices.
+              </p>
+              <div className="p-4 rounded-2xl bg-white border border-slate-200 text-xs text-slate-600 space-y-1.5 shadow-sm">
+                <strong className="text-slate-900 block font-bold">Planning Formula:</strong>
+                <div>Gross Revenue = (Monthly Impressions × Fill Rate %) ÷ 1,000 × eCPM</div>
+              </div>
+            </div>
+
+            {/* Interactive Calculator */}
+            <div className="lg:col-span-7">
+              <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-xl space-y-6">
+                
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+                  <div>
+                    <label className="text-xs font-bold text-slate-700 block mb-2">
+                      Monthly Ad Impressions: {impressions.toLocaleString()}
+                    </label>
+                    <input
+                      type="range"
+                      min="100000"
+                      max="10000000"
+                      step="100000"
+                      value={impressions}
+                      onChange={(e) => setImpressions(+e.target.value)}
+                      className="w-full accent-[#920dff]"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="text-xs font-bold text-slate-700 block mb-2">
+                      Expected Fill Rate: {fillRate}%
+                    </label>
+                    <input
+                      type="range"
+                      min="20"
+                      max="100"
+                      step="5"
+                      value={fillRate}
+                      onChange={(e) => setFillRate(+e.target.value)}
+                      className="w-full accent-[#23d8e1]"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="text-xs font-bold text-slate-700 block mb-2">
+                      Average eCPM (৳): ৳{floorEcpm}
+                    </label>
+                    <input
+                      type="range"
+                      min="20"
+                      max="250"
+                      step="5"
+                      value={floorEcpm}
+                      onChange={(e) => setFloorEcpm(+e.target.value)}
+                      className="w-full accent-[#ff6900]"
+                    />
+                  </div>
+                </div>
+
+                <div className="pt-6 border-t border-slate-100 grid grid-cols-2 sm:grid-cols-3 gap-4 text-center">
+                  <div className="bg-slate-50 rounded-xl p-3 border border-slate-100">
+                    <span className="text-xs text-slate-500 block">Paid Impressions</span>
+                    <strong className="text-base sm:text-lg font-extrabold text-slate-900">{yieldCalc.paidImps}</strong>
+                  </div>
+                  <div className="bg-purple-50 rounded-xl p-3 border border-purple-100">
+                    <span className="text-xs text-[#920dff] block font-semibold">Estimated Gross Yield</span>
+                    <strong className="text-base sm:text-lg font-extrabold text-[#920dff]">৳{yieldCalc.grossRev}</strong>
+                  </div>
+                  <div className="bg-slate-50 rounded-xl p-3 border border-slate-100 col-span-2 sm:col-span-1">
+                    <span className="text-xs text-slate-500 block">Average eCPM</span>
+                    <strong className="text-base sm:text-lg font-extrabold text-slate-900">৳{yieldCalc.avgCpm}</strong>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* 4B. INTERCONNECTED ADTECH ECOSYSTEM */}
+      <section className="py-20 bg-slate-900 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#23d8e1]">CONNECTED STACK</span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+              Programmatic Ecosystem Solutions
+            </h2>
+            <p className="text-slate-400 text-base">
+              Explore how our infrastructure powers advertiser buying, publisher yield, and rich interactive experiences.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              {
+                title: 'Programmatic Advertising',
+                tag: 'Media Buying Core',
+                desc: 'RTB auction mechanics, automated pacing, and end-to-end campaign execution.',
+                href: '/programmatic-advertising/'
+              },
+              {
+                title: 'Publisher Monetization',
+                tag: 'SSP & Floor Control',
+                desc: 'Header bidding, Prebid adapters, floor yield optimization, and monetization.',
+                href: '/publisher/'
+              },
+              {
+                title: 'Advertiser Platform',
+                tag: 'DSP & Campaigns',
+                desc: 'Targeted display, rich media, video, and programmatic reach across premium sites.',
+                href: '/advertiser/'
+              },
+              {
+                title: 'Rich Media Delivery',
+                tag: 'High-Impact Canvas',
+                desc: 'Expandables, sticky anchors, side skins, and interactive creative engine.',
+                href: '/rich-media/'
+              },
+              {
+                title: 'HTML5 Formats',
+                tag: 'IAB Responsive',
+                desc: 'Code-driven creatives with multi-device QA checklist and lightweight payloads.',
+                href: '/html5-ad-formats/'
+              },
+              {
+                title: 'AI & Contextual Engine',
+                tag: 'Signal Intelligence',
+                desc: 'Semantic context parsing, zero-cookie signal scoring, and privacy-first matching.',
+                href: '/ai-programmatic-advertising/'
+              },
+              {
+                title: 'Connected TV (CTV)',
+                tag: 'Living Room Screens',
+                desc: 'Big screen digital streaming delivery across international CTV inventory partners.',
+                href: '/ctv/'
+              },
+              {
+                title: 'Digital Out-of-Home',
+                tag: 'Urban Billboards',
+                desc: 'DOOH highway and mall screen inventory booked with programmatic dayparting.',
+                href: '/dooh/'
+              }
+            ].map((sol) => (
+              <a
+                key={sol.title}
+                href={sol.href}
+                className="group p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-[#920dff]/50 hover:bg-white/10 transition-all flex flex-col justify-between"
+              >
+                <div>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#23d8e1] block mb-2">{sol.tag}</span>
+                  <h3 className="text-lg font-bold text-white group-hover:text-[#23d8e1] transition-colors mb-2">{sol.title}</h3>
+                  <p className="text-xs text-slate-400 leading-relaxed">{sol.desc}</p>
+                </div>
+                <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-xs font-semibold text-[#920dff] group-hover:text-white transition-colors">
+                  <span>View Documentation</span>
+                  <span>→</span>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 5. AEO / SEARCH ENGINE FAQ */}
+      <section className="py-20 bg-white border-t border-slate-200">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-14 space-y-3">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#920dff]">KNOWLEDGE BASE</span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+              Frequently Asked Questions on AdTech Infrastructure
+            </h2>
+            <p className="text-slate-600 text-base">
+              Clear technical definitions for ad engineers, media planners, and programmatic buyers.
+            </p>
+          </div>
+
+          <div className="space-y-4">
+            {faqList.map((item, idx) => (
+              <details
+                key={idx}
+                className="group bg-slate-50 rounded-2xl border border-slate-200/80 p-5 transition-all duration-200 open:bg-white open:shadow-md open:border-[#920dff]/40"
+              >
+                <summary className="font-bold text-slate-900 text-base cursor-pointer list-none flex items-center justify-between gap-4">
+                  <span>{item.q}</span>
+                  <span className="w-6 h-6 rounded-full bg-slate-200 group-open:bg-[#920dff] group-open:text-white flex items-center justify-center text-xs transition-colors shrink-0">
+                    +
+                  </span>
+                </summary>
+                <p className="text-sm text-slate-600 leading-relaxed mt-4 pt-3 border-t border-slate-100">
+                  {item.a}
+                </p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 6. CTA BANNER */}
+      <section className="py-16 bg-gradient-to-r from-[#0d224d] via-[#250d4d] to-[#071329] text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
+            <div className="space-y-2 text-center lg:text-left">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+                Integrate With Boost RAVA&apos;s Programmatic Infrastructure
+              </h2>
+              <p className="text-slate-300 text-sm sm:text-base max-w-xl">
+                Whether deploying advertiser campaigns or monetizing publisher ad slots, our infrastructure connects you to programmatic scale.
+              </p>
+            </div>
+            <div className="flex flex-wrap items-center justify-center gap-4 shrink-0">
+              <a
+                href={registerUrl}
+                className="px-7 py-3 rounded-full font-bold text-sm bg-gradient-to-r from-[#920dff] to-[#6a32ff] text-white shadow-lg hover:opacity-95 hover:scale-[1.02] transition-all"
+              >
+                Create Account
+              </a>
+              <a
+                href="/advertiser/"
+                className="px-7 py-3 rounded-full font-bold text-sm bg-white/10 text-white border border-white/20 hover:bg-white/20 transition-all"
+              >
+                Advertiser Solutions →
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  );
 }
-
-function YieldSimulator(){
- const [currentFill,setCurrentFill]=useState(55), [targetFill,setTargetFill]=useState(70), [currentEcpm,setCurrentEcpm]=useState(45), [targetEcpm,setTargetEcpm]=useState(60), [impressions,setImpressions]=useState(1000000);
- const r=useMemo(()=>{const curr=impressions*currentFill/100/1000*currentEcpm; const next=impressions*targetFill/100/1000*targetEcpm; return {curr,next,delta:next-curr,extraPaid:impressions*(targetFill-currentFill)/100};},[currentFill,targetFill,currentEcpm,targetEcpm,impressions]);
- return <div className="pi-sim"><div><label>Traffic<input type="number" value={impressions} min="0" onChange={e=>setImpressions(+e.target.value||0)}/></label><label>Current fill %<input type="number" value={currentFill} min="0" max="100" onChange={e=>setCurrentFill(+e.target.value||0)}/></label><label>Target fill %<input type="number" value={targetFill} min="0" max="100" onChange={e=>setTargetFill(+e.target.value||0)}/></label><label>Current eCPM ৳<input type="number" value={currentEcpm} min="0" onChange={e=>setCurrentEcpm(+e.target.value||0)}/></label><label>Target eCPM ৳<input type="number" value={targetEcpm} min="0" onChange={e=>setTargetEcpm(+e.target.value||0)}/></label></div><aside><small>WHAT-IF SIMULATION</small><strong>+৳{Math.max(0,r.delta).toLocaleString(undefined,{maximumFractionDigits:2})}</strong><p>Estimated difference under the selected assumptions.</p><dl><div><dt>Current estimate</dt><dd>৳{r.curr.toLocaleString(undefined,{maximumFractionDigits:2})}</dd></div><div><dt>Scenario estimate</dt><dd>৳{r.next.toLocaleString(undefined,{maximumFractionDigits:2})}</dd></div><div><dt>Additional filled impressions</dt><dd>{Math.round(r.extraPaid).toLocaleString()}</dd></div></dl></aside></div>
-}
-
-export function ProgrammaticInfrastructureLandingPage(){
- const terms=[['Ad Server','Delivery, campaign controls, eligibility, creative selection, reporting and decisioning infrastructure.','live'],['Header Bidding','Publisher-side demand competition before the final ad decision.','verify'],['Prebid','Open-source header bidding framework/ecosystem used as an integration path.','integration'],['OpenRTB','Standardized real-time bid-request / bid-response protocol.','verify'],['SSP','Publisher-side monetization and supply connectivity layer.','verify'],['DSP','Advertiser-side programmatic buying layer.','verify'],['GAM','External Google Ad Manager integration where applicable.','integration'],['RTB','Real-time auction and bidding process.','verify']] as const;
- const benefits=[['Unified ad delivery','Coordinate campaign and inventory decision-making in one infrastructure model.'],['Real-time competition','Evaluate eligible demand under auction, floor, timeout and priority rules.'],['Publisher monetization','Turn structured inventory into measurable monetization opportunities.'],['Open connectivity','Design around standard protocols and integration paths without conflating their roles.'],['Transparent analytics','Connect campaign, auction, inventory and revenue reporting.'],['Scalable architecture','Keep the infrastructure modular as traffic and demand connectivity grow.']];
- const adServer=[['Campaign Management','Campaign, creative, budget and schedule controls','live'],['Targeting','Geography, device and other verified campaign eligibility controls','live'],['Delivery','Ad request, eligible creative selection and delivery','live'],['Measurement','Impression, click, spend and revenue event surfaces','live'],['Optimization','Pacing, placement and AI-driven recommendation paths','verify']];
- const integrations=[['JavaScript Ad Tag','LIVE','live'],['Header Bidding','VERIFY','verify'],['Prebid','INTEGRATION','integration'],['GAM','INTEGRATION / VERIFY','integration'],['OpenRTB','VERIFY','verify'],['API / Server-side','VERIFY / ROADMAP','roadmap']];
- const formats=[['Display','Standard campaign and inventory delivery.','/advertiser/'],['HTML5','Interactive HTML creative delivery.','/html5-ad-formats/'],['Rich Media','Richer supported creative experiences.','/rich-media/'],['Native','Native inventory where supported.',null],['Video','Video delivery where supported.',null],['Responsive','Multi-size / responsive inventory paths.',null]] as const;
- const reporting=[['Advertiser','Spend · Impressions · CPM · Clicks · CTR · CPC · Conversions'],['Publisher','Revenue · eCPM · Impressions · Ad Unit · Device · Geography'],['Demand','Bid · Win · Timeout · eCPM — where captured'],['Auction','Bid density · win rate · no-bid — where captured'],['System','Latency · errors · request volume — where monitoring exists']];
- return <div className="pi-page"><style>{css}</style>
-  <section className="pi-hero" aria-labelledby="pi-title"><div className="pi-wrap pi-heroGrid"><div><div className="pi-eyebrow">PROGRAMMATIC INFRASTRUCTURE</div><h1 id="pi-title">One Infrastructure. Every Programmatic Connection.</h1><p>Power ad delivery, publisher monetization, real-time auctions and programmatic demand through a connected advertising infrastructure—while keeping ad serving, header bidding, Prebid, OpenRTB, SSP, DSP and GAM roles technically distinct.</p><div className="pi-actions"><a className="pi-btn primary" href={registerUrl}>Build With Boost RAVA</a><a className="pi-btn ghost" href="#architecture">Explore the Architecture</a></div><div className="pi-proof"><span>Ad serving core</span><span>Publisher + advertiser workflows</span><span>External integrations status-qualified</span></div></div><HeroArchitecture/></div></section>
-
-  <section className="pi-section"><div className="pi-wrap"><Head label="TERMINOLOGY" title="Technical Terms, Used Correctly." copy="A premium infrastructure page must make each component's role clear instead of treating ad server, header bidding, OpenRTB, SSP, DSP, GAM and RTB as synonyms."/><div className="pi-termGrid">{terms.map(([name,desc,status])=><article key={name}><Status kind={status as StatusKind}>{status==='live'?'LIVE CORE':status==='integration'?'INTEGRATION':'VERIFY'}</Status><h3>{name}</h3><p>{desc}</p></article>)}</div></div></section>
-
-  <section className="pi-section soft"><div className="pi-wrap"><Head label="WHY INFRASTRUCTURE" title="Advertising Infrastructure Should Work as One System."/><div className="pi-grid3">{benefits.map(([a,b])=><article className="pi-card" key={a}><span>◆</span><h3>{a}</h3><p>{b}</p></article>)}</div></div></section>
-
-  <section className="pi-section dark" id="architecture"><div className="pi-wrap"><Head dark label="COMPLETE PROGRAMMATIC STACK" title="From Demand to Delivery." copy="The architecture separates buying, supply, transport, auction and delivery responsibilities so technical and business users can see where each layer fits."/><Flow dark items={['Advertiser / Agency','Campaign + Creative','Ad Server','Decision Layer','Programmatic Demand Paths','Auction / Selection','Publisher Inventory','User','Measurement','Optimization']}/><div className="pi-pathGrid"><article><Status kind="verify">VERIFY</Status><h3>OpenRTB / RTB path</h3><p>Bid request and response connectivity is shown as a protocol path, not as a synonym for the ad server.</p></article><article><Status kind="integration">INTEGRATION</Status><h3>Header Bidding / Prebid</h3><p>Publisher-side competition and Prebid integration are separated from the final ad-server decision.</p></article><article><Status kind="integration">INTEGRATION</Status><h3>GAM / External Stack</h3><p>External ad-stack integration is presented as integration, never as a proprietary Boost RAVA feature.</p></article></div></div></section>
-
-  <section className="pi-section"><div className="pi-wrap"><Head label="BOOST RAVA AD SERVER" title="A Control Layer for Digital Advertising." copy="The verified core centers on campaign delivery, publisher inventory, ad tags, event tracking and revenue/accounting surfaces. Advanced auction and optimization capabilities remain status-qualified."/><div className="pi-grid5">{adServer.map(([a,b,s])=><article className="pi-card" key={a}><Status kind={s as StatusKind}>{s==='live'?'LIVE CORE':'VERIFY'}</Status><h3>{a}</h3><p>{b}</p></article>)}</div><div className="pi-sub"><h3>Every Impression Needs a Decision.</h3><Flow items={['Ad Request','Identify Inventory','Check Campaign Eligibility','Targeting','Budget / Schedule','Creative Eligibility','Demand Evaluation','Decision / Auction','Serve','Track']}/></div></div></section>
-
-  <section className="pi-section soft"><div className="pi-wrap"><Head label="HEADER BIDDING" title="Let Multiple Demand Sources Compete for an Impression." copy="Header bidding can expose a publisher opportunity to multiple demand sources before the final ad-server decision. Eligibility, floors, priorities, timeouts and policy can affect the selected outcome, so the highest raw bid should not be presented as an unconditional winner."/><div className="pi-split"><div><Flow items={['Publisher Page','Ad Slot','Header Bidding','Demand A / B / C','Bid Comparison','Eligible Result','Ad Server Decision','Ad Served']}/></div><aside className="pi-panel"><Status kind="verify">VERIFY</Status><h3>Production status</h3><p>Header bidding is shown as an infrastructure path that requires production verification before being labelled live.</p><ul><li>Parallel demand competition where configured</li><li>Timeout and floor awareness</li><li>Final decision remains separate</li></ul></aside></div></div></section>
-
-  <section className="pi-section dark"><div className="pi-wrap"><div className="pi-duo"><div><Head dark label="PREBID" title="Connect Demand Through Prebid." copy="Prebid is a framework for header bidding implementation. It is not OpenRTB and it is not the ad server."/><Status kind="integration">INTEGRATION / VERIFY</Status><Flow dark items={['Publisher','Prebid','Demand Partners','Bid Responses','Ad Server']}/></div><div><Head dark label="OPENRTB" title="OpenRTB for Real-Time Programmatic Connectivity." copy="OpenRTB standardizes bid requests and bid responses between programmatic participants."/><Status kind="verify">VERIFY</Status><div className="pi-request"><article><small>BID REQUEST</small><p>Impression · placement · device · context · auction information · permitted signals</p></article><span>⇄</span><article><small>BID RESPONSE</small><p>Bid · creative · landing URL · ad metadata · protocol fields</p></article></div></div></div></div></section>
-
-  <section className="pi-section"><div className="pi-wrap"><Head label="OPENRTB BID FLOW" title="Request → Demand → Bid → Validate → Auction → Serve."/><Flow items={['Publisher / Ad Slot','Ad Request','Supply / Ad Server','OpenRTB Bid Request','Demand Sources','Bid Responses','Validation','Auction / Decision','Creative','Ad Delivery','Impression / Click','Reporting']}/><div className="pi-ecosystem"><article><small>ADVERTISER SIDE</small><strong>Advertiser → DSP / Demand</strong><p>Buying and campaign demand path.</p></article><article><small>PROGRAMMATIC TRANSACTION</small><strong>Exchange / RTB / protocol layer</strong><p>Transport and auction relationship, depending on architecture.</p></article><article><small>PUBLISHER SIDE</small><strong>Publisher → Supply / Monetization</strong><p>Inventory and demand connectivity path.</p></article></div></div></section>
-
-  <section className="pi-section soft"><div className="pi-wrap"><Head label="PUBLISHER INTEGRATION" title="One Integration. Programmatic Monetization."/><div className="pi-integrationGrid">{integrations.map(([a,b,s])=><article key={a}><Status kind={s as StatusKind}>{b}</Status><h3>{a}</h3><p>{a==='JavaScript Ad Tag'?'Verified delivery tags connect publisher ad units to Boost RAVA ad delivery.':'Presented as an integration or verification path until production connectivity is confirmed.'}</p></article>)}</div><Flow items={['Register','Create Property','Create Ad Unit','Configure Eligible Demand','Integrate','Test','Go Live','Monitor Revenue']}/></div></section>
-
-  <section className="pi-section"><div className="pi-wrap"><div className="pi-duo"><div><Head label="GAM INTEGRATION" title="Work With Your Existing Ad Stack." copy="Google Ad Manager is shown only as an external integration where applicable. No proprietary GAM behavior is attributed to Boost RAVA."/><Status kind="integration">INTEGRATION / VERIFY</Status><Flow items={['Publisher','GAM','Boost RAVA / Demand','Competition / Decision','Winning Eligible Demand','Ad Delivery']}/></div><div><Head label="AD REQUEST LIFECYCLE" title="What Happens in the Milliseconds Behind an Ad."/><Flow items={['Page Load','Ad Request','Inventory ID','Demand Evaluation','Bid / Decision','Creative Delivery','Impression','Click / Conversion']}/></div></div></div></section>
-
-  <section className="pi-section dark"><div className="pi-wrap"><Head dark label="REAL-TIME AUCTION" title="Every Impression Can Become a Marketplace." copy="The visual below is an architecture example only. It deliberately avoids fabricated bid values and guaranteed auction outcomes."/><div className="pi-auction"><div><small>1 IMPRESSION</small><strong>Eligible opportunity</strong></div><div className="pi-bidders"><span>Demand A · Bid</span><span>Demand B · Bid</span><span>Demand C · No Bid</span><span>House / Fallback</span></div><div><small>RULES</small><strong>Eligibility + Floor + Priority + Timeout</strong></div><div><small>RESULT</small><strong>Winning Eligible Ad</strong></div></div></div></section>
-
-  <section className="pi-section"><div className="pi-wrap"><div className="pi-duo"><div><Head label="FLOOR PRICE & YIELD" title="Give Publishers More Control Over Inventory Value."/><div className="pi-listCards"><span>Floor price <Status kind="verify">VERIFY</Status></span><span>Ad unit</span><span>Demand source <Status kind="verify">VERIFY</Status></span><span>Format</span><span>Placement</span><span>Priority <Status kind="verify">VERIFY</Status></span></div><p className="pi-note">Automated floor optimization is not labelled live unless verified; AI can be presented as a recommendation layer.</p></div><div><Head label="DEMAND MANAGEMENT" title="Connect and Manage Demand."/><div className="pi-adminMock">{['Demand partner','Endpoint','Bid settings','Timeout','Floor','Priority','Status','Allowed formats','Allowed inventory'].map(x=><span key={x}>{x}</span>)}</div><Status kind="verify">VERIFY ADMIN CONNECTIVITY</Status></div></div></div></section>
-
-  <section className="pi-section soft"><div className="pi-wrap"><Head label="INVENTORY MANAGEMENT" title="Every Ad Slot Becomes Structured Inventory."/><Flow items={['Publisher','Property','Ad Unit','Placement','Format','Impression']}/><div className="pi-meta">{['Size','Device','Location','Content / category where available','Floor where configured','Status'].map(x=><span key={x}>{x}</span>)}</div><Head label="AD FORMAT SUPPORT" title="One Infrastructure. Multiple Ad Experiences."/><div className="pi-formatGrid">{formats.map(([a,b,href])=><article key={a}><h3>{a}</h3><p>{b}</p>{href&&<a href={href}>Explore →</a>}</article>)}</div></div></section>
-
-  <section className="pi-section"><div className="pi-wrap"><div className="pi-duo"><div><Head label="CREATIVE DELIVERY" title="Deliver the Right Creative at the Right Opportunity."/><Flow items={['Creative Approval','Format + Size','Campaign Eligibility','Targeting','Budget + Schedule','Placement Eligibility','Serve']}/></div><div><Head label="TRACKING & MEASUREMENT" title="From Impression to Outcome."/><div className="pi-metricGrid">{['Impression','Click','CTR','Conversion','Spend','Revenue','eCPM / CPM','CPC / CPA','ROAS where derivable','Ad request events'].map(x=><span key={x}>{x}</span>)}</div><p className="pi-note">Bid request, bid response, win/loss, viewability and auction metrics are shown only where those events are reliably captured.</p></div></div></div></section>
-
-  <section className="pi-section dark"><div className="pi-wrap"><Head dark label="AUCTION + REVENUE ANALYTICS" title="See What Happens Across the Stack."/><div className="pi-reportGrid">{reporting.map(([a,b])=><article key={a}><small>{a.toUpperCase()}</small><h3>{b}</h3><p>Availability depends on the dimensions and events captured by the production reporting pipeline.</p></article>)}</div></div></section>
-
-  <section className="pi-section"><div className="pi-wrap"><Head label="CLIENT-SIDE / SERVER-SIDE" title="Flexible Programmatic Infrastructure." copy="Latency, scale, control and demand connectivity differ by architecture. These patterns are explained without claiming an unverified deployment model."/><div className="pi-grid3"><article className="pi-card"><Status kind="integration">INTEGRATION / VERIFY</Status><h3>Client-Side</h3><p>Browser → header bidding → demand → ad server.</p></article><article className="pi-card"><Status kind="roadmap">ROADMAP / VERIFY</Status><h3>Server-Side</h3><p>Browser → server → demand → auction → response.</p></article><article className="pi-card"><Status kind="roadmap">ROADMAP / VERIFY</Status><h3>Hybrid</h3><p>Browser + server paths → demand → decision.</p></article></div></div></section>
-
-  <section className="pi-section soft"><div className="pi-wrap"><div className="pi-duo"><div><Head label="LATENCY & PERFORMANCE" title="Real-Time Doesn't Have to Mean Slow."/><div className="pi-checks">{['Timeout management','Async / lightweight tags','Efficient requests','Caching where appropriate','Parallel bidding where implemented','Bid latency monitoring','Ad response monitoring','Render-time awareness'].map(x=><span key={x}>✓ {x}</span>)}</div></div><div><Head label="RELIABILITY & FALLBACK" title="Keep Inventory Working When Demand Is Unavailable."/><Flow items={['Primary / Paid Demand','Alternative Demand','Fallback Logic','House Ad / Default','Ad Delivery']}/><Status kind="verify">DECISION LOGIC VERIFY</Status></div></div></div></section>
-
-  <section className="pi-section"><div className="pi-wrap"><div className="pi-duo"><div><Head label="DELIVERY CONTROL" title="Control How Ads Are Delivered."/><div className="pi-listCards">{['Frequency control','Pacing','Schedule','Priority','Budget','Creative rotation','Publisher targeting','Placement targeting'].map(x=><span key={x}>{x}<Status kind={['Schedule','Budget'].includes(x)?'live':'verify'}>{['Schedule','Budget'].includes(x)?'LIVE':'VERIFY'}</Status></span>)}</div></div><div><Head label="BRAND SAFETY & QUALITY" title="Programmatic Scale With Quality Controls."/><div className="pi-checks">{['Publisher allow/block controls where implemented','Creative review','URL validation','Sensitive-content controls where implemented','Traffic-quality monitoring','No 100% fraud-free claim'].map(x=><span key={x}>✓ {x}</span>)}</div></div></div></div></section>
-
-  <section className="pi-section dark"><div className="pi-wrap"><Head dark label="AI + INFRASTRUCTURE" title="Infrastructure Meets Intelligence." copy="AI belongs above the transaction and delivery layers as an intelligence capability—not as a replacement for the ad server, protocol or auction."/><div className="pi-aiArch"><div>AD SERVER</div><div>RTB / AUCTION</div><div>HEADER BIDDING</div><div>ANALYTICS</div><strong>AI LAYER</strong><span>Bid intelligence</span><span>Budget recommendations</span><span>Yield recommendations</span><span>Anomaly detection</span><span>Forecasting</span></div><div className="pi-actions"><a className="pi-btn light" href="/ai-programmatic-advertising/">Explore AI Programmatic</a><a className="pi-btn outline" href="/contextual-advertising/">Explore Contextual Advertising</a></div></div></section>
-
-  <section className="pi-section"><div className="pi-wrap"><Head label="END-TO-END ARCHITECTURE" title="Connect → Request → Bid → Auction → Serve → Measure → Monetize." copy="This is the page centerpiece: a technically separated view of demand, delivery, supply, measurement and optimization."/><Flow items={['Advertiser','Campaign / Creative','Ad Server','Programmatic Decision','OpenRTB / Header Bidding / External Demand','Auction / Eligibility','Winning Ad','Publisher','User','Tracking','Analytics','AI Recommendations','Revenue / ROAS']}/></div></section>
-
-  <section className="pi-section soft"><div className="pi-wrap"><Head label="ADMIN CONTROL CENTER" title="One Control Center for Programmatic Operations."/><div className="pi-adminGrid">{['Publishers','Advertisers','Campaigns','Ad Units','Creatives','Demand Partners','OpenRTB','Header Bidding','Prebid','GAM','Auctions','Floor Prices','Reporting','Revenue','Fraud / Quality','System Health','Logs'].map(x=><span key={x}>{x}{['Publishers','Advertisers','Campaigns','Ad Units','Creatives','Reporting','Revenue'].includes(x)?<Status kind="live">LIVE CORE</Status>:<Status kind="verify">VERIFY</Status>}</span>)}</div></div></section>
-
-  <section className="pi-section"><div className="pi-wrap"><div className="pi-duo"><div><Head label="MONITORING & OBSERVABILITY" title="Know When the System Needs Attention."/><div className="pi-monitor"><article><small>API HEALTH</small><strong>Monitor</strong></article><article><small>REQUEST / RESPONSE</small><strong>Monitor</strong></article><article><small>TIMEOUT / ERRORS</small><strong>Where captured</strong></article><article><small>REVENUE</small><strong>Tracked</strong></article></div></div><div><Head label="API & DEVELOPER CONNECTIVITY" title="Built to Connect."/><div className="pi-checks">{['API surfaces where available','Publisher integration','Demand integration — verify','Authentication','Logs','Webhooks — verify','Reporting API — verify','OpenRTB endpoint — verify'].map(x=><span key={x}>• {x}</span>)}</div><p className="pi-note">No Documentation link is exposed because a production documentation route was not verified for this patch.</p></div></div></div></section>
-
-  <section className="pi-section dark"><div className="pi-wrap"><div className="pi-duo"><div><Head dark label="SECURITY" title="Infrastructure Built for Trust."/><div className="pi-checks dark">{['HTTPS','Authentication','Authorization','Request validation','API security controls','Creative validation','Logging','Access control'].map(x=><span key={x}>✓ {x}</span>)}</div></div><div><Head dark label="SCALABILITY" title="Built to Scale With Every Impression."/><div className="pi-checks dark">{['Horizontal scaling principles','Load balancing','Caching','Queueing where appropriate','Database optimization','CDN delivery','Stateless services where appropriate','Monitoring + fault isolation'].map(x=><span key={x}>✓ {x}</span>)}</div><p className="pi-note light">No unverified requests-per-second, traffic-volume or uptime number is claimed.</p></div></div></div></section>
-
-  <section className="pi-section"><div className="pi-wrap"><Head label="PROGRAMMATIC CALCULATOR" title="Turn Infrastructure Assumptions Into Transparent Estimates." copy="All outputs are formula-based planning estimates from the values you enter. There are no hidden benchmark assumptions."/><RevenueCalculator/></div></section>
-
-  <section className="pi-section soft"><div className="pi-wrap"><Head label="WHAT-IF MONETIZATION" title="See What Better Yield Could Mean." copy="Compare current and target fill/eCPM assumptions before making a business decision. The result is a simulation, not a revenue guarantee."/><YieldSimulator/></div></section>
-
-  <section className="pi-section"><div className="pi-wrap"><Head label="PROGRAMMATIC REPORTING" title="One View Across the Entire Stack."/><div className="pi-reportGrid light">{reporting.map(([a,b])=><article key={a}><small>{a}</small><h3>{b}</h3></article>)}</div></div></section>
-
-  <section className="pi-section soft"><div className="pi-wrap"><Head label="WHO IS IT FOR?" title="Infrastructure for Every Side of the Marketplace."/><div className="pi-grid3">{[['Publishers','Monetize structured inventory.'],['Advertisers','Activate campaigns across eligible digital inventory.'],['Agencies','Manage campaign and media workflows.'],['Developers','Integrate advertising infrastructure.'],['Ad Operations','Control delivery, inventory and demand.'],['Enterprise Partners','Connect through verified programmatic standards and integrations.']].map(([a,b])=><article className="pi-card" key={a}><h3>{a}</h3><p>{b}</p></article>)}</div></div></section>
-
-  <section className="pi-section dark"><div className="pi-wrap"><Head dark label="WHY BOOST RAVA INFRASTRUCTURE" title="A Connected Foundation for Advertising Operations."/><div className="pi-benefits">{['Open architecture','Real-time decisioning','Publisher control','Advertiser control','Transparent analytics','Multiple demand paths','AI-ready design','Scalable principles','Flexible integration'].map(x=><span key={x}>{x}</span>)}</div></div></section>
-
-  <section className="pi-section"><div className="pi-wrap"><Head label="QUESTIONS & ANSWERS" title="Programmatic Infrastructure, Explained Clearly." copy="Concise technical answers help business, ad-ops and developer visitors understand the stack without collapsing distinct technologies into one term."/><div className="pi-faq">{faq.map(([q,a])=><details key={q}><summary>{q}<span>+</span></summary><p>{a}</p></details>)}</div></div></section>
-
-  <section className="pi-section links"><div className="pi-wrap"><Head label="CONNECTED BOOST RAVA ECOSYSTEM" title="Go Deeper Into Each Layer."/><div className="pi-links"><a href="/advertiser/">Advertiser Platform</a><a href="/publisher/">Publisher Monetization</a><a href="/ai-programmatic-advertising/">AI Programmatic</a><a href="/contextual-advertising/">Contextual Advertising</a><a href="/rich-media/">Rich Media</a><a href="/html5-ad-formats/">HTML5 Advertising</a><a href="/programmatic-advertising-bangladesh/">Programmatic Advertising Bangladesh</a></div></div></section>
-
-  <section className="pi-final"><div className="pi-wrap"><div><span>PROGRAMMATIC INFRASTRUCTURE</span><h2>Build the Infrastructure Behind Better Programmatic Advertising.</h2><p>Connect demand, manage inventory, run verified real-time workflows and build smarter monetization operations with Boost RAVA—without hiding implementation status behind marketing claims.</p></div><div className="pi-actions"><a className="pi-btn light" href={registerUrl}>Get Started</a><a className="pi-btn outline" href="/ai-programmatic-advertising/">Explore Programmatic Advertising</a></div></div></section>
- </div>
-}
-
-const css=`
-.pi-page{--navy:#07162e;--navy2:#0a2149;--blue:#3157d9;--cyan:#25c8e7;--violet:#6b54e6;--ink:#102040;--muted:#60718e;--line:#dce5f1;--soft:#f4f7fb;background:#fff;color:var(--ink);font-family:inherit}.pi-wrap{width:min(1180px,calc(100% - 36px));margin:auto}.pi-section{padding:86px 0}.pi-section.soft{background:linear-gradient(180deg,#f6f9fd,#eef4fa)}.pi-section.dark{background:radial-gradient(circle at 12% 10%,rgba(49,87,217,.22),transparent 30%),radial-gradient(circle at 86% 20%,rgba(37,200,231,.13),transparent 28%),linear-gradient(145deg,#07162e,#0a1c3c 58%,#08162f);color:#fff}.pi-head{max-width:820px;margin-bottom:28px}.pi-head>span,.pi-eyebrow{font-size:11px;font-weight:900;letter-spacing:.16em;color:#4d66d5}.pi-head h2{font-size:clamp(32px,4.2vw,52px);line-height:1.05;letter-spacing:-.04em;margin:9px 0 12px;color:#102040}.pi-head p{font-size:15px;line-height:1.75;color:var(--muted);max-width:790px}.pi-head.dark h2{color:#fff}.pi-head.dark p{color:#b9c8e1}.pi-head.dark>span{color:#70e0ee}.pi-hero{padding:86px 0;background:radial-gradient(circle at 80% 10%,rgba(53,92,230,.34),transparent 26%),radial-gradient(circle at 92% 55%,rgba(37,200,231,.16),transparent 30%),linear-gradient(145deg,#07162e,#0a1d43 60%,#07142b);color:#fff}.pi-heroGrid{display:grid;grid-template-columns:.9fr 1.1fr;gap:54px;align-items:center}.pi-hero h1{font-size:clamp(48px,6.3vw,78px);line-height:.98;letter-spacing:-.055em;margin:13px 0 20px;max-width:760px;color:#fff}.pi-hero p{font-size:17px;line-height:1.75;color:#c4d0e5}.pi-eyebrow{color:#70e0ee}.pi-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:25px}.pi-btn{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:12px 18px;font-size:12px;font-weight:900;text-decoration:none;transition:.22s}.pi-btn.primary{background:linear-gradient(90deg,#4965e6,#26cbe7);color:#fff}.pi-btn.ghost{border:1px solid rgba(255,255,255,.25);color:#fff;background:rgba(255,255,255,.05)}.pi-btn.light{background:#fff;color:#18315f}.pi-btn.outline{border:1px solid rgba(255,255,255,.28);color:#fff}.pi-proof{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}.pi-proof span{font-size:10px;padding:8px 10px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:#cbd7eb}.pi-heroArch{position:relative;min-height:570px;padding:20px;border-radius:24px;border:1px solid rgba(255,255,255,.12);background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.035));box-shadow:0 30px 80px rgba(0,0,0,.23)}.pi-terminal{border:1px solid rgba(255,255,255,.12);border-radius:15px;background:#061126;overflow:hidden}.pi-terminalBar{display:flex;gap:6px;align-items:center;padding:10px 12px;border-bottom:1px solid rgba(255,255,255,.08)}.pi-terminalBar i{width:7px;height:7px;border-radius:50%;background:#5a6b8d}.pi-terminalBar span{font-size:9px;color:#7d8eae;margin-left:6px}.pi-packets{display:flex;gap:7px;overflow:hidden;padding:11px}.pi-packets span{white-space:nowrap;font-size:9px;padding:6px 8px;border-radius:7px;background:rgba(42,202,230,.09);color:#7ce5f0;border:1px solid rgba(42,202,230,.15)}.pi-nodeGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:14px}.pi-nodeGrid>div{position:relative;min-height:90px;border:1px solid rgba(255,255,255,.1);border-radius:15px;background:rgba(255,255,255,.055);padding:15px;display:flex;flex-direction:column;justify-content:center}.pi-nodeGrid .core{background:linear-gradient(145deg,rgba(71,97,222,.55),rgba(36,196,225,.17));border-color:rgba(102,218,239,.3)}.pi-nodeGrid small{font-size:8px;color:#73dce9}.pi-nodeGrid strong{font-size:13px;margin-top:5px;color:#fff}.pi-nodeGrid span{position:absolute;bottom:-14px;left:50%;color:#56d2e4;z-index:3}.pi-demoNote{font-size:9px!important;margin:15px 0 0!important;color:#8899b8!important}.pi-termGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.pi-termGrid article,.pi-card,.pi-integrationGrid article,.pi-formatGrid article{border:1px solid var(--line);background:#fff;border-radius:17px;padding:19px}.pi-termGrid h3,.pi-card h3,.pi-integrationGrid h3,.pi-formatGrid h3{font-size:17px;margin:9px 0 7px}.pi-termGrid p,.pi-card p,.pi-integrationGrid p,.pi-formatGrid p{font-size:12px;line-height:1.65;color:var(--muted)}.pi-status{display:inline-flex;width:max-content;border-radius:999px;padding:5px 7px;font-size:8px;letter-spacing:.08em;font-weight:900}.pi-status.live{background:#e4f8f0;color:#086a53}.pi-status.integration{background:#e7f6fd;color:#136b8d}.pi-status.verify{background:#fff3d5;color:#7c5c00}.pi-status.roadmap{background:#eee9ff;color:#5b43aa}.pi-grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.pi-grid5{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.pi-card>span:first-child{color:#4965db}.pi-sub{margin-top:34px}.pi-sub h3{font-size:24px}.pi-flow{display:flex;gap:7px;overflow:auto;padding:5px 2px 15px;scrollbar-width:thin}.pi-flow>div{position:relative;min-width:120px;min-height:92px;border-radius:14px;border:1px solid var(--line);background:#fff;padding:15px}.pi-flow.dark>div{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.11)}.pi-flow b{display:block;font-size:8px;color:#7282a1}.pi-flow span{display:block;font-size:11px;font-weight:900;margin-top:8px;color:#18305d}.pi-flow.dark span{color:#fff}.pi-flow i{position:absolute;right:-7px;top:34px;color:#3ecfe3;font-style:normal;z-index:2}.pi-pathGrid,.pi-reportGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin-top:22px}.pi-pathGrid article,.pi-reportGrid article{padding:19px;border-radius:16px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.11)}.pi-pathGrid h3,.pi-reportGrid h3{font-size:15px;color:#fff}.pi-pathGrid p,.pi-reportGrid p{font-size:11px;line-height:1.65;color:#afbdd5}.pi-split,.pi-duo{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:start}.pi-panel{padding:25px;border-radius:18px;background:#0b2149;color:#fff}.pi-panel h3{font-size:25px}.pi-panel p,.pi-panel li{font-size:12px;color:#bdc9df;line-height:1.7}.pi-request{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center}.pi-request article{padding:18px;border:1px solid rgba(255,255,255,.12);border-radius:14px;background:rgba(255,255,255,.06)}.pi-request small{color:#6ee2ef;font-weight:900}.pi-request p{font-size:11px;color:#bdcae0;line-height:1.7}.pi-request>span{font-size:30px;color:#63dce9}.pi-ecosystem{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:24px}.pi-ecosystem article{padding:20px;border:1px solid var(--line);border-radius:15px;background:white}.pi-ecosystem small{font-size:9px;color:#566fd4;font-weight:900}.pi-ecosystem strong{display:block;margin:8px 0;font-size:14px}.pi-ecosystem p{font-size:11px;color:var(--muted)}.pi-integrationGrid{display:grid;grid-template-columns:repeat(6,1fr);gap:9px;margin-bottom:25px}.pi-integrationGrid article{padding:16px}.pi-auction{display:grid;grid-template-columns:.8fr 1.6fr 1fr .8fr;gap:10px;align-items:stretch}.pi-auction>div{padding:21px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.055);border-radius:16px}.pi-auction small{font-size:9px;color:#6fe0ed}.pi-auction strong{display:block;color:#fff;margin-top:7px;font-size:13px}.pi-bidders{display:grid;grid-template-columns:1fr 1fr;gap:7px}.pi-bidders span{padding:9px;border-radius:9px;background:#07162f;color:#c3d0e6;font-size:9px}.pi-listCards,.pi-checks{display:grid;grid-template-columns:1fr 1fr;gap:8px}.pi-listCards>span,.pi-checks>span{display:flex;align-items:center;justify-content:space-between;gap:7px;padding:12px;border:1px solid var(--line);border-radius:11px;background:#fff;font-size:10px}.pi-checks.dark span{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.1);color:#d8e2f3}.pi-adminMock{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:15px}.pi-adminMock span,.pi-meta span,.pi-metricGrid span,.pi-benefits span{padding:11px;border-radius:10px;background:#f5f8fc;border:1px solid var(--line);font-size:10px}.pi-meta{display:flex;gap:7px;flex-wrap:wrap;margin:18px 0 42px}.pi-formatGrid{display:grid;grid-template-columns:repeat(6,1fr);gap:9px}.pi-formatGrid a{font-size:10px;color:#405fd1;font-weight:900}.pi-metricGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:7px}.pi-reportGrid{grid-template-columns:repeat(5,1fr)}.pi-reportGrid.light article{background:#fff;border:1px solid var(--line)}.pi-reportGrid.light h3{color:#172c56}.pi-reportGrid.light small{color:#4f69d6}.pi-note{font-size:10px;color:var(--muted);line-height:1.65;margin-top:12px}.pi-note.light{color:#aebbd3}.pi-aiArch{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.pi-aiArch div,.pi-aiArch span,.pi-aiArch strong{padding:16px;border-radius:13px;border:1px solid rgba(255,255,255,.11);background:rgba(255,255,255,.055);font-size:10px;color:#dce5f5}.pi-aiArch strong{grid-column:1/-1;text-align:center;background:linear-gradient(90deg,rgba(74,96,224,.5),rgba(37,200,231,.22));font-size:14px}.pi-adminGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.pi-adminGrid>span{display:flex;justify-content:space-between;align-items:center;gap:5px;padding:12px;border:1px solid var(--line);background:white;border-radius:11px;font-size:10px}.pi-monitor{display:grid;grid-template-columns:1fr 1fr;gap:9px}.pi-monitor article{padding:17px;border-radius:13px;background:#f6f8fc;border:1px solid var(--line)}.pi-monitor small{display:block;font-size:8px;color:#6679a6}.pi-monitor strong{display:block;font-size:13px;margin-top:5px}.pi-calc,.pi-sim{display:grid;grid-template-columns:1fr 1fr;gap:20px}.pi-calcInputs,.pi-sim>div{display:grid;grid-template-columns:1fr 1fr;gap:10px}.pi-calc label,.pi-sim label{display:grid;gap:7px;font-size:10px;font-weight:800}.pi-calc input,.pi-sim input{width:100%;border:1px solid #ccd8e8;border-radius:10px;background:#fff;padding:12px;color:#102040}.pi-calcOut,.pi-sim aside{padding:22px;border-radius:18px;background:#0b2149;color:#fff}.pi-calcOut>small,.pi-sim aside>small{color:#6fe1ed;font-size:8px;font-weight:900}.pi-calcOut>div{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid rgba(255,255,255,.09);padding:12px 0}.pi-calcOut span{font-size:10px;color:#b9c6dd}.pi-calcOut strong{font-size:13px}.pi-calcOut p,.pi-sim aside p{font-size:10px;line-height:1.65;color:#aebbd2}.pi-sim aside>strong{display:block;font-size:38px;margin:8px 0}.pi-sim dl{display:grid;gap:8px}.pi-sim dl>div{display:flex;justify-content:space-between;font-size:10px}.pi-benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.pi-benefits span{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.11);color:#d7e3f4;text-align:center}.pi-faq{display:grid;grid-template-columns:1fr 1fr;gap:9px}.pi-faq details{border:1px solid var(--line);border-radius:13px;background:#fff;padding:0 16px}.pi-faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:12px;padding:16px 0;font-size:12px;font-weight:900}.pi-faq summary::-webkit-details-marker{display:none}.pi-faq summary span{font-size:17px;color:#5069d2}.pi-faq p{font-size:11px;line-height:1.75;color:var(--muted);margin:0 0 16px}.pi-section.links{padding:58px 0}.pi-links{display:flex;flex-wrap:wrap;gap:8px}.pi-links a{padding:10px 13px;border:1px solid var(--line);background:#fff;border-radius:999px;text-decoration:none;color:#31446f;font-size:10px;font-weight:900}.pi-final{padding:78px 0;background:linear-gradient(120deg,#183d9d,#3e4bc9 55%,#6448c6);color:#fff}.pi-final>.pi-wrap{display:flex;align-items:center;justify-content:space-between;gap:34px}.pi-final span{font-size:9px;letter-spacing:.15em;font-weight:900;color:#a6eff7}.pi-final h2{font-size:clamp(34px,4.2vw,54px);letter-spacing:-.04em;margin:9px 0;color:#fff}.pi-final p{max-width:760px;color:#dce5f6;line-height:1.7}.pi-page :is(button,a,summary,input):focus-visible{outline:3px solid #59ddeb;outline-offset:3px}.pi-card,.pi-termGrid article,.pi-integrationGrid article,.pi-formatGrid article,.pi-btn{transition:.22s}@media(hover:hover){.pi-card:hover,.pi-termGrid article:hover,.pi-integrationGrid article:hover,.pi-formatGrid article:hover{transform:translateY(-4px);box-shadow:0 16px 35px rgba(20,43,88,.08)}.pi-btn:hover{transform:translateY(-2px)}}
-@media(max-width:1050px){.pi-heroGrid,.pi-split,.pi-duo,.pi-calc,.pi-sim{grid-template-columns:1fr}.pi-termGrid{grid-template-columns:repeat(2,1fr)}.pi-grid5{grid-template-columns:repeat(3,1fr)}.pi-integrationGrid,.pi-formatGrid{grid-template-columns:repeat(3,1fr)}.pi-reportGrid{grid-template-columns:repeat(3,1fr)}.pi-heroArch{min-height:auto}.pi-auction{grid-template-columns:1fr 1fr}}
-@media(max-width:760px){.pi-wrap{width:min(100% - 28px,1180px)}.pi-hero{padding:60px 0}.pi-hero h1{font-size:48px}.pi-grid3,.pi-pathGrid,.pi-ecosystem,.pi-adminGrid,.pi-benefits,.pi-faq{grid-template-columns:1fr}.pi-grid5{grid-template-columns:repeat(2,1fr)}.pi-nodeGrid{grid-template-columns:repeat(2,1fr)}.pi-integrationGrid,.pi-formatGrid{grid-template-columns:repeat(2,1fr)}.pi-reportGrid{grid-template-columns:1fr 1fr}.pi-aiArch{grid-template-columns:1fr 1fr}.pi-final>.pi-wrap{display:block}.pi-final .pi-actions{margin-top:24px}}
-@media(max-width:480px){.pi-hero h1{font-size:40px}.pi-head h2{font-size:34px}.pi-termGrid,.pi-grid5,.pi-integrationGrid,.pi-formatGrid,.pi-reportGrid,.pi-nodeGrid,.pi-listCards,.pi-checks,.pi-calcInputs,.pi-sim>div,.pi-metricGrid,.pi-adminMock,.pi-monitor,.pi-auction{grid-template-columns:1fr}.pi-request{grid-template-columns:1fr}.pi-request>span{transform:rotate(90deg);justify-self:center}.pi-bidders{grid-template-columns:1fr}.pi-aiArch{grid-template-columns:1fr}.pi-aiArch strong{grid-column:auto}}
-@media(prefers-reduced-motion:reduce){.pi-page *, .pi-page *::before,.pi-page *::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}}
-`;

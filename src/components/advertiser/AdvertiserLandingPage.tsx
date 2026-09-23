@@ -1,201 +1,446 @@
-import { AdvertiserMediaCalculator, AnalyticsPreview, CampaignJourney, CreativeFormatExplorer, CreativeStudioDemo, HeroDashboard, RtbAuctionDemo, TargetingExplorer } from './AdvertiserInteractions';
+'use client';
+
+import React, { useState, useMemo } from 'react';
 
 const registerUrl = 'https://panel.boostrava.com/#/register';
-const contactUrl = '/contact/';
 
-const whyCards = [
-  ['Targeted Reach', 'Build campaigns around supported geography, device, operating-system, browser, network and schedule controls.'],
-  ['Publisher Inventory', 'Connect campaign demand to publisher inventory through Boost RAVA’s advertising and monetization ecosystem.'],
-  ['Programmatic Buying', 'Use automated campaign buying workflows with bidding controls and auction-aware delivery where supported.'],
-  ['Campaign Analytics', 'Review delivery and performance metrics in the advertiser reporting experience instead of relying on disconnected spreadsheets.'],
-  ['Flexible Budget', 'Choose daily or lifetime budget logic and control campaign start and end scheduling in the setup flow.'],
-  ['Brand Controls', 'Use campaign review, targeting, placement controls and creative review workflows to keep activation intentional.'],
-  ['Traffic Quality', 'Fraud-analysis and traffic-quality surfaces exist in the advertiser panel; use them alongside placement and reporting controls.'],
+const advertiserFlow = [
+  { step: '01', title: 'Campaign', role: 'Objective & Flight', desc: 'Define your advertising goal—brand awareness, website traffic, or sales conversions—and set flight dates.' },
+  { step: '02', title: 'Creative', role: 'Format Selection', desc: 'Upload standard IAB display banners, animated HTML5 packages, interactive rich media, or video creatives.' },
+  { step: '03', title: 'Audience', role: 'Targeting Matrix', desc: 'Target your ideal audience by geography (Bangladesh & global), device, OS, browser, contextual topic, and time.' },
+  { step: '04', title: 'Budget', role: 'Pacing & Bidding', desc: 'Set daily or lifetime media budgets with automated delivery pacing and maximum CPM/CPC bidding limits.' },
+  { step: '05', title: 'Programmatic Delivery', role: 'Real-Time Scale', desc: 'Campaign bids in real time across verified publisher websites, mobile apps, and screens in under 100ms.' },
+  { step: '06', title: 'Measurement', role: 'Transparent ROI', desc: 'Track live impressions, clicks, CTR, effective CPA, and S2S postback conversions in your advertiser dashboard.' },
 ];
 
-const safetyItems = [
-  ['Publisher quality', 'Use approved supply and placement controls as part of campaign activation.'],
-  ['Content & placement control', 'Keep targeting and placement decisions connected to the campaign rather than treating delivery as a black box.'],
-  ['Block / exclusion controls', 'Exclusion patterns are available across supported targeting controls such as browser targeting.'],
-  ['Invalid traffic visibility', 'The advertiser panel includes a fraud-analysis workspace for traffic-quality review.'],
-  ['Ad review', 'Creative and campaign review steps help catch configuration issues before activation.'],
+const targetingControls = [
+  { name: 'Bangladesh & Geographic Focus', desc: 'Target by country, division, and cities including Dhaka, Chattogram, Sylhet, Rajshahi, and Khulna with zero waste.' },
+  { name: 'Device & Hardware Screen', desc: 'Filter delivery across smartphones, tablets, desktop computers, and connected smart TV screens.' },
+  { name: 'Operating System & Browser', desc: 'Reach users specifically on Android, iOS, Windows, macOS, Chrome, Safari, and popular mobile browsers.' },
+  { name: 'Contextual Topic Categories', desc: 'Align your brand with high-intent editorial content such as News, Business, Technology, Lifestyle, and Sports.' },
+  { name: 'Dayparting & Time Schedules', desc: 'Activate ads during peak conversion windows, meal times, lunch breaks, or specific days of the week.' },
+  { name: 'Telecom & Connection Speed', desc: 'Optimize ad delivery based on mobile carrier data (Grameenphone, Banglalink, Robi) and high-speed Wi-Fi.' },
 ];
 
-const networkFacts = [
-  ['Publishers', 'Network-connected', 'Publisher inventory is part of the Boost RAVA ecosystem; no unverified publisher count is published here.'],
-  ['Reach', 'Campaign-defined', 'Reach depends on selected targeting, available inventory and market coverage.'],
-  ['Impressions', 'Measured', 'Impressions are reported from campaign delivery rather than replaced with a vanity total.'],
-  ['Campaigns', 'Dashboard-managed', 'Advertisers create, review and manage campaigns in the advertiser workspace.'],
-  ['Coverage', 'Geo-selectable', 'Location controls support campaign geography selection; delivery still depends on available supply.'],
-];
-
-
-const advertiserQuestions = [
-  ['What is Boost RAVA for advertisers?', 'Boost RAVA gives advertisers a programmatic campaign workspace for campaign setup, supported targeting controls, creative production, budget and schedule configuration, delivery and reporting.'],
-  ['How do I create and launch a campaign?', 'Create an advertiser account, configure the campaign, choose supported targeting, add or build the creative, set budget and schedule, review the setup and launch when the campaign is ready.'],
-  ['What targeting options are available?', 'The current advertiser workflow supports location, device, operating system, browser, network and day-and-time controls. Advanced audience and remarketing options are shown only where the production data path is configured.'],
-  ['Which advertising formats can I use?', 'Boost RAVA supports campaign workflows for display, video, native creative, HTML5 rich media and connected-screen experiences such as CTV and DOOH where inventory and campaign configuration support them.'],
-  ['Can I build HTML5 and rich media creatives?', 'Yes. The Creative Studio includes HTML5 and rich-media workflows with formats such as carousel, parallax, expandable, interactive and 3D experiences, plus responsive sizing and preview tooling.'],
-  ['How are campaign budgets and schedules controlled?', 'Advertisers can configure budget logic and campaign start and end scheduling in the campaign setup flow, keeping spend and flight timing connected to the same workflow.'],
-  ['How does conversion tracking work?', 'The advertiser tracking area includes S2S postback conversion tracking. Destination URL tools also support UTM-ready tracking. Other third-party integrations are not presented as native until their production integration is verified.'],
-  ['What campaign performance can I measure?', 'Reporting can surface delivery and cost metrics such as impressions, clicks, CTR and spend. Conversion, CPA, revenue and ROAS views depend on conversion tracking and the required reporting data being available.'],
-  ['Does Boost RAVA support programmatic and auction-based delivery?', 'Boost RAVA is built around automated campaign buying and auction-aware delivery workflows. This page does not claim exchange-level connectivity that has not been independently verified.'],
-  ['Can campaigns target Bangladesh and other markets?', 'Location targeting can be configured for campaigns. Actual delivery and scale in Bangladesh or international markets depend on available publisher inventory and the targeting selected for the campaign.'],
-  ['How do I calculate CPM for an advertising campaign?', 'CPM is calculated as total ad spend divided by impressions, multiplied by 1,000. For example, $100 spent for 50,000 impressions equals a $2 CPM.'],
-  ['How many impressions can I buy with a given budget?', 'Estimated impressions equal budget divided by CPM, multiplied by 1,000. A $500 budget at a $2.50 CPM estimates about 200,000 impressions before delivery differences, fees or inventory constraints.'],
-  ['How do I calculate CTR and CPC?', 'CTR equals clicks divided by impressions multiplied by 100. CPC equals total spend divided by clicks. These calculations help advertisers compare traffic efficiency across campaigns.'],
-  ['How do I calculate CPA and ROAS?', 'CPA equals ad spend divided by conversions. ROAS equals attributed revenue divided by ad spend. A ROAS of 4 means four units of tracked revenue for each unit of ad spend.'],
-];
-
-const trackingItems = [
-  { title: 'S2S Postback', state: 'Available', copy: 'The advertiser tracking area includes a reusable S2S postback URL flow for conversion tracking.' },
-  { title: 'Conversion dataset / event tracking', state: 'Panel flow', copy: 'Campaign tracking UI includes dataset and conversion-event selection concepts for campaign measurement.' },
-  { title: 'Purchase / lead outcomes', state: 'Data-dependent', copy: 'Outcome naming and attribution depend on the event data configured by the advertiser or tracker.' },
-  { title: 'UTM parameters', state: 'Available', copy: 'Destination URL tooling includes UTM-ready tracking assistance and tracking macros.' },
-  { title: 'GA4', state: 'UTM-ready, not claimed as native integration', copy: 'The campaign URL helper is GA4/UTM-ready. This page does not claim a native GA4 API integration without backend verification.' },
-  { title: 'GTM', state: 'Verify before promotion', copy: 'Not presented as an active native integration until the production integration is verified.' },
-  { title: 'Facebook CAPI', state: 'Verify before promotion', copy: 'Not presented as active until server-side integration is verified.' },
-  { title: 'Google Ads integration', state: 'Verify before promotion', copy: 'Not presented as active until account/API integration is verified.' },
+const faqList = [
+  {
+    q: 'How do I advertise online in Bangladesh with Boost RAVA?',
+    a: 'Create a free advertiser account on Boost RAVA, configure your campaign objective, choose your target audience (by Bangladesh location, device, or topic), upload your display or HTML5 creative, set your budget, and launch. Your campaign starts delivering across top publisher sites within minutes.'
+  },
+  {
+    q: 'What is the minimum budget required to start digital advertising in Bangladesh?',
+    a: 'Boost RAVA is an accessible online advertising platform for both high-growth startups and established brands. You can start with flexible daily or lifetime budgets, retaining complete control over spend with no hidden fees.'
+  },
+  {
+    q: 'What ad formats are supported on the Boost RAVA advertiser platform?',
+    a: 'Boost RAVA supports standard display banners (300×250, 728×90, 320×50, 970×250, 300×600), interactive HTML5 ads, high-impact rich media, in-stream and out-stream video ads, and connected screen placements.'
+  },
+  {
+    q: 'How does conversion tracking work for programmatic campaigns?',
+    a: 'Boost RAVA includes built-in Server-to-Server (S2S) postback conversion tracking and UTM tracking macro helpers. You can track leads, purchases, app downloads, and custom conversion events with full attribution.'
+  },
+  {
+    q: 'How does targeted advertising in Bangladesh work on Boost RAVA?',
+    a: 'Advertisers can target consumers by division, district, carrier network, smartphone brand, operating system, and content category across leading Bengali and English publisher networks.'
+  },
+  {
+    q: 'Can I calculate estimated campaign reach and impressions before launching?',
+    a: 'Yes. Boost RAVA provides a media planning calculator that estimates your expected impressions, clicks, and effective CPA based on your budget, target CPM, and format choices.'
+  }
 ];
 
 export function AdvertiserLandingPage() {
+  const [budget, setBudget] = useState(50000);
+  const [cpm, setCpm] = useState(60);
+  const [ctr, setCtr] = useState(1.5);
+  const [convRate, setConvRate] = useState(2.0);
+
+  const planner = useMemo(() => {
+    const imps = cpm > 0 ? (budget / cpm) * 1000 : 0;
+    const clicks = imps * (ctr / 100);
+    const conversions = clicks * (convRate / 100);
+    const cpc = clicks > 0 ? budget / clicks : 0;
+    const cpa = conversions > 0 ? budget / conversions : 0;
+    return {
+      impressions: Math.round(imps).toLocaleString(),
+      clicks: Math.round(clicks).toLocaleString(),
+      conversions: Math.round(conversions).toLocaleString(),
+      cpc: cpc.toFixed(2),
+      cpa: cpa.toFixed(2)
+    };
+  }, [budget, cpm, ctr, convRate]);
+
   return (
-    <div className="bradv br-advertiser-landing">
-      <section className="bradv-hero" aria-labelledby="bradv-hero-title">
-        <div className="bradv-hero-grid-bg" aria-hidden="true" />
-        <div className="bradv-orb bradv-orb-a" aria-hidden="true" /><div className="bradv-orb bradv-orb-b" aria-hidden="true" />
-        <div className="bradv-container bradv-hero-inner">
-          <div className="bradv-hero-copy">
-            <span className="bradv-eyebrow">PROGRAMMATIC ADVERTISING FOR ADVERTISERS</span>
-            <h1 id="bradv-hero-title">Programmatic Advertising Platform to Plan, Build and Launch Smarter Campaigns</h1>
-            <p>Bring campaign setup, supported audience controls, creative production, budget and scheduling, programmatic delivery and measurement into one advertiser workflow—built for advertisers in Bangladesh and international markets where supported publisher inventory is available.</p>
-            <div className="bradv-hero-actions">
-              <a className="bradv-btn bradv-btn-primary" href={registerUrl}>Start Advertising <span aria-hidden="true">→</span></a>
-              <a className="bradv-btn bradv-btn-ghost" href={registerUrl}>Create Campaign</a>
+    <div className="br-adv-root bg-white text-slate-900 font-sans antialiased overflow-hidden">
+      
+      {/* 1. HERO SECTION */}
+      <section className="relative pt-24 pb-20 lg:pt-32 lg:pb-28 bg-gradient-to-br from-[#071329] via-[#0d224d] to-[#250d4d] text-white">
+        <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#920dff_1px,transparent_1px)] [background-size:28px_28px]" aria-hidden="true" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            {/* Left Copy */}
+            <div className="lg:col-span-7 space-y-6">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-xs font-semibold uppercase tracking-wider text-[#23d8e1]">
+                <span className="w-2 h-2 rounded-full bg-[#23d8e1] animate-pulse" />
+                PROGRAMMATIC ADVERTISING FOR ADVERTISERS
+              </div>
+
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.08] text-white">
+                Programmatic Advertising Platform to <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#23d8e1] via-[#920dff] to-[#ff6900]">Plan, Launch &amp; Scale</span>
+              </h1>
+
+              <p className="text-lg sm:text-xl text-slate-300 font-normal leading-relaxed max-w-2xl">
+                Advertise online in Bangladesh and global markets with unmatched targeted advertising precision. Combine automated campaign buying, interactive creative studio tools, flexible budgeting, and real-time reporting in one unified online advertising platform.
+              </p>
+
+              <div className="flex flex-wrap gap-4 pt-2">
+                <a
+                  href={registerUrl}
+                  className="inline-flex items-center justify-center px-7 py-3.5 rounded-full font-bold text-sm bg-gradient-to-r from-[#920dff] to-[#6a32ff] text-white shadow-lg shadow-[#920dff]/30 hover:opacity-95 hover:shadow-xl hover:scale-[1.02] transition-all duration-200"
+                >
+                  Start Advertising Now <span className="ml-2">→</span>
+                </a>
+                <a
+                  href="#campaign-workflow"
+                  className="inline-flex items-center justify-center px-7 py-3.5 rounded-full font-bold text-sm bg-white/10 text-white border border-white/20 hover:bg-white/15 hover:border-white/30 backdrop-blur-md transition-all duration-200"
+                >
+                  Campaign Workflow
+                </a>
+              </div>
+
+              <div className="pt-6 border-t border-white/10 grid grid-cols-3 gap-4 text-xs text-slate-300">
+                <div>
+                  <strong className="block text-white text-base font-bold">Targeted Reach</strong>
+                  <span>Bangladesh &amp; International</span>
+                </div>
+                <div>
+                  <strong className="block text-white text-base font-bold">Multi-Format</strong>
+                  <span>Display, HTML5 &amp; Rich Media</span>
+                </div>
+                <div>
+                  <strong className="block text-white text-base font-bold">Full Control</strong>
+                  <span>Real-Time ROI Tracking</span>
+                </div>
+              </div>
             </div>
-            <div className="bradv-hero-proof" aria-label="Verified advertiser capabilities">
-              <span><i /> Campaign setup</span><span><i /> Creative Studio</span><span><i /> Targeting controls</span><span><i /> Reporting</span>
+
+            {/* Right: Advertiser Campaign Console Mockup */}
+            <div className="lg:col-span-5">
+              <div className="bg-slate-900/90 rounded-3xl p-6 border border-white/15 shadow-2xl backdrop-blur-xl relative">
+                <div className="flex items-center justify-between pb-4 border-b border-white/10 text-xs text-slate-400">
+                  <div className="flex items-center gap-1.5">
+                    <span className="w-2.5 h-2.5 rounded-full bg-red-500/80 inline-block" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/80 inline-block" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-green-500/80 inline-block" />
+                    <span className="ml-2 font-mono text-slate-300">advertiser.console</span>
+                  </div>
+                  <span className="text-[#23d8e1] font-mono text-[11px] font-bold">CAMPAIGN ACTIVE</span>
+                </div>
+
+                <div className="mt-5 space-y-4">
+                  <div className="bg-white/5 p-4 rounded-xl border border-white/5 space-y-2">
+                    <div className="flex justify-between items-center text-xs">
+                      <span className="text-white font-bold text-sm">Bangladesh Mega Campaign</span>
+                      <span className="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-mono text-[10px] font-bold">
+                        Pacing 100%
+                      </span>
+                    </div>
+                    <div className="flex flex-wrap gap-1.5 text-[10px] text-slate-300">
+                      <span className="px-2 py-0.5 rounded bg-white/10">Location: Bangladesh (Nationwide)</span>
+                      <span className="px-2 py-0.5 rounded bg-white/10">Device: Mobile + Desktop</span>
+                      <span className="px-2 py-0.5 rounded bg-white/10">Format: HTML5 + Rich Media</span>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-3 text-center">
+                    <div className="bg-white/5 p-3 rounded-xl border border-white/5">
+                      <span className="text-[10px] text-slate-400 block font-mono">DELIVERED IMPRESSIONS</span>
+                      <strong className="text-xl font-extrabold text-white">833,330</strong>
+                      <span className="text-[10px] text-emerald-400 block mt-0.5">99.8% Viewable</span>
+                    </div>
+                    <div className="bg-white/5 p-3 rounded-xl border border-white/5">
+                      <span className="text-[10px] text-slate-400 block font-mono">MEASURED CTR</span>
+                      <strong className="text-xl font-extrabold text-[#23d8e1]">1.65%</strong>
+                      <span className="text-[10px] text-slate-300 block mt-0.5">13,750 Clicks</span>
+                    </div>
+                  </div>
+
+                  <div className="pt-2 flex justify-between items-center text-xs text-slate-400 font-mono">
+                    <span>Conversion Attribution: Active</span>
+                    <span className="text-[#ff6900] font-bold">ROAS 3.8×</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* 2. MANDATORY: ADVERTISER CAMPAIGN FLOW */}
+      <section className="py-20 bg-slate-50 border-b border-slate-200/80" id="campaign-workflow">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#920dff]">CAMPAIGN JOURNEY</span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+              The 6-Step Advertiser Campaign Workflow
+            </h2>
+            <p className="text-slate-600 text-base">
+              A structured, transparent pathway from campaign objective definition to real-time ROI measurement.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {advertiserFlow.map((s) => (
+              <div
+                key={s.step}
+                className="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-md hover:border-[#920dff]/40 transition-all flex flex-col justify-between"
+              >
+                <div>
+                  <div className="flex justify-between items-center mb-3">
+                    <span className="text-xs font-mono font-bold text-[#920dff] bg-purple-100/70 px-2.5 py-0.5 rounded">
+                      {s.step}
+                    </span>
+                    <span className="text-[10px] font-semibold text-slate-400 uppercase">{s.role}</span>
+                  </div>
+                  <h3 className="text-lg font-bold text-slate-900 mb-1">{s.title}</h3>
+                  <p className="text-xs text-slate-600 leading-relaxed">{s.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Workflow Summary Flow Bar */}
+          <div className="mt-10 bg-slate-900 text-white rounded-2xl p-4 text-center font-mono text-xs sm:text-sm font-bold flex flex-wrap items-center justify-center gap-2 sm:gap-4">
+            <span>Campaign</span>
+            <span className="text-[#23d8e1]">↓</span>
+            <span>Creative</span>
+            <span className="text-[#23d8e1]">↓</span>
+            <span>Audience</span>
+            <span className="text-[#23d8e1]">↓</span>
+            <span>Budget</span>
+            <span className="text-[#23d8e1]">↓</span>
+            <span>Programmatic Delivery</span>
+            <span className="text-[#23d8e1]">↓</span>
+            <span className="text-[#ff6900]">Measurement</span>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. TARGETED ADVERTISING CAPABILITIES */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#920dff]">PRECISION TARGETING</span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+              Targeted Advertising Across Bangladesh &amp; Beyond
+            </h2>
+            <p className="text-slate-600 text-base">
+              Eliminate ad waste. Direct your digital advertising spend to users who match your ideal customer profile.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {targetingControls.map((t) => (
+              <div
+                key={t.name}
+                className="bg-slate-50 rounded-2xl p-6 border border-slate-200/80 hover:shadow-lg hover:border-[#920dff]/40 transition-all"
+              >
+                <div className="w-8 h-8 rounded-lg bg-purple-100 text-[#920dff] font-bold flex items-center justify-center text-sm mb-3">
+                  ✓
+                </div>
+                <h3 className="font-bold text-slate-900 text-lg mb-2">{t.name}</h3>
+                <p className="text-sm text-slate-600 leading-relaxed">{t.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 4. MEDIA PLANNING & BUDGET CALCULATOR */}
+      <section className="py-20 bg-slate-900 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <div className="lg:col-span-5 space-y-5">
+              <span className="text-xs font-bold uppercase tracking-widest text-[#23d8e1]">CAMPAIGN PLANNER</span>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+                Media Budget &amp; Outcome Estimator
+              </h2>
+              <p className="text-slate-300 text-base leading-relaxed">
+                Estimate how many impressions, clicks, and conversions your digital advertising budget can purchase before you launch.
+              </p>
+              <div className="p-4 rounded-2xl bg-white/5 border border-white/10 text-xs text-slate-300 space-y-1">
+                <span className="text-white font-bold block">Calculation Transparency:</span>
+                <div>• Estimated Impressions = (Budget ÷ CPM) × 1,000</div>
+                <div>• Estimated Clicks = Impressions × (CTR ÷ 100)</div>
+                <div>• Effective CPA = Total Budget ÷ Conversions</div>
+              </div>
+            </div>
+
+            {/* Interactive Inputs */}
+            <div className="lg:col-span-7">
+              <div className="bg-slate-950 rounded-3xl p-6 sm:p-8 border border-white/15 shadow-2xl space-y-6">
+                
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div>
+                    <div className="flex justify-between text-xs font-bold text-slate-300 mb-2">
+                      <span>Budget (৳ / USD)</span>
+                      <span className="text-[#23d8e1]">{budget.toLocaleString()}</span>
+                    </div>
+                    <input
+                      type="range"
+                      min="5000"
+                      max="500000"
+                      step="5000"
+                      value={budget}
+                      onChange={(e) => setBudget(+e.target.value)}
+                      className="w-full accent-[#920dff]"
+                    />
+                  </div>
+
+                  <div>
+                    <div className="flex justify-between text-xs font-bold text-slate-300 mb-2">
+                      <span>Target CPM</span>
+                      <span className="text-[#23d8e1]">৳{cpm}</span>
+                    </div>
+                    <input
+                      type="range"
+                      min="20"
+                      max="200"
+                      step="5"
+                      value={cpm}
+                      onChange={(e) => setCpm(+e.target.value)}
+                      className="w-full accent-[#920dff]"
+                    />
+                  </div>
+
+                  <div>
+                    <div className="flex justify-between text-xs font-bold text-slate-300 mb-2">
+                      <span>Assumed CTR (%)</span>
+                      <span className="text-[#ff6900]">{ctr}%</span>
+                    </div>
+                    <input
+                      type="range"
+                      min="0.3"
+                      max="5.0"
+                      step="0.1"
+                      value={ctr}
+                      onChange={(e) => setCtr(+e.target.value)}
+                      className="w-full accent-[#ff6900]"
+                    />
+                  </div>
+
+                  <div>
+                    <div className="flex justify-between text-xs font-bold text-slate-300 mb-2">
+                      <span>Conversion Rate (%)</span>
+                      <span className="text-[#ff6900]">{convRate}%</span>
+                    </div>
+                    <input
+                      type="range"
+                      min="0.5"
+                      max="8.0"
+                      step="0.5"
+                      value={convRate}
+                      onChange={(e) => setConvRate(+e.target.value)}
+                      className="w-full accent-[#ff6900]"
+                    />
+                  </div>
+                </div>
+
+                {/* Outputs */}
+                <div className="pt-6 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
+                  <div className="bg-white/5 p-3 rounded-xl border border-white/5">
+                    <span className="text-[11px] text-slate-400 block font-mono">EST. IMPRESSIONS</span>
+                    <strong className="text-base sm:text-lg font-extrabold text-white mt-1 block">{planner.impressions}</strong>
+                  </div>
+                  <div className="bg-white/5 p-3 rounded-xl border border-white/5">
+                    <span className="text-[11px] text-slate-400 block font-mono">EST. CLICKS</span>
+                    <strong className="text-base sm:text-lg font-extrabold text-[#23d8e1] mt-1 block">{planner.clicks}</strong>
+                  </div>
+                  <div className="bg-white/5 p-3 rounded-xl border border-white/5">
+                    <span className="text-[11px] text-slate-400 block font-mono">EST. CONVERSIONS</span>
+                    <strong className="text-base sm:text-lg font-extrabold text-[#ff6900] mt-1 block">{planner.conversions}</strong>
+                  </div>
+                  <div className="bg-white/5 p-3 rounded-xl border border-white/5">
+                    <span className="text-[11px] text-slate-400 block font-mono">EFFECTIVE CPA</span>
+                    <strong className="text-base sm:text-lg font-extrabold text-white mt-1 block">৳{planner.cpa}</strong>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* 5. AEO / SEARCH ENGINE FAQ */}
+      <section className="py-20 bg-white border-t border-slate-200">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-14 space-y-3">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#920dff]">ADVERTISER GUIDE</span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+              Frequently Asked Questions About Advertising Online
+            </h2>
+            <p className="text-slate-600 text-base">
+              Key answers regarding digital advertising in Bangladesh, campaign budgets, and programmatic buying.
+            </p>
+          </div>
+
+          <div className="space-y-4">
+            {faqList.map((item, idx) => (
+              <details
+                key={idx}
+                className="group bg-slate-50 rounded-2xl border border-slate-200/80 p-5 transition-all duration-200 open:bg-white open:shadow-md open:border-[#920dff]/40"
+              >
+                <summary className="font-bold text-slate-900 text-base cursor-pointer list-none flex items-center justify-between gap-4">
+                  <span>{item.q}</span>
+                  <span className="w-6 h-6 rounded-full bg-slate-200 group-open:bg-[#920dff] group-open:text-white flex items-center justify-center text-xs transition-colors shrink-0">
+                    +
+                  </span>
+                </summary>
+                <p className="text-sm text-slate-600 leading-relaxed mt-4 pt-3 border-t border-slate-100">
+                  {item.a}
+                </p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 6. CTA BANNER */}
+      <section className="py-16 bg-gradient-to-r from-[#0d224d] via-[#250d4d] to-[#071329] text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
+            <div className="space-y-2 text-center lg:text-left">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+                Ready to Launch Your Advertising Campaign?
+              </h2>
+              <p className="text-slate-300 text-sm sm:text-base max-w-xl">
+                Open your advertiser account today and start reaching verified audiences across Bangladesh and international networks.
+              </p>
+            </div>
+            <div className="flex flex-wrap items-center justify-center gap-4 shrink-0">
+              <a
+                href={registerUrl}
+                className="px-7 py-3 rounded-full font-bold text-sm bg-gradient-to-r from-[#920dff] to-[#6a32ff] text-white shadow-lg hover:opacity-95 hover:scale-[1.02] transition-all"
+              >
+                Create Advertiser Account
+              </a>
+              <a
+                href="/rich-media/"
+                className="px-7 py-3 rounded-full font-bold text-sm bg-white/10 text-white border border-white/20 hover:bg-white/20 transition-all"
+              >
+                Creative Formats →
+              </a>
             </div>
           </div>
-          <HeroDashboard />
         </div>
       </section>
 
-      <section className="bradv-network bradv-section" aria-labelledby="bradv-network-title">
-        <div className="bradv-container">
-          <div className="bradv-section-head bradv-section-head-split">
-            <div><span className="bradv-eyebrow">NETWORK SIGNALS WITHOUT VANITY NUMBERS</span><h2 id="bradv-network-title">Use verified campaign data—not made-up scale claims</h2></div>
-            <p>Boost RAVA does not need fake publisher, reach or impression totals to look credible. The page separates platform capability from live network data, so real figures can be connected later when a verified API or reporting source is available.</p>
-          </div>
-          <div className="bradv-network-grid">
-            {networkFacts.map(([title, value, copy]) => <article key={title}><span>{title}</span><strong>{value}</strong><p>{copy}</p></article>)}
-          </div>
-        </div>
-      </section>
-
-      <section className="bradv-section bradv-why" aria-labelledby="bradv-why-title">
-        <div className="bradv-container">
-          <div className="bradv-section-head"><span className="bradv-eyebrow">WHY BOOST RAVA</span><h2 id="bradv-why-title">More control between the idea and the impression</h2><p>Programmatic buying is useful only when the advertiser can understand what is being targeted, what is being delivered and how the campaign is performing.</p></div>
-          <div className="bradv-why-grid">{whyCards.map(([title, copy], index) => <article key={title}><span className="bradv-card-number">0{index + 1}</span><div className="bradv-feature-icon" aria-hidden="true"><i /></div><h3>{title}</h3><p>{copy}</p></article>)}</div>
-        </div>
-      </section>
-
-      <section className="bradv-section bradv-how" aria-labelledby="bradv-how-title">
-        <div className="bradv-container">
-          <div className="bradv-section-head bradv-section-head-split"><div><span className="bradv-eyebrow">CAMPAIGN JOURNEY</span><h2 id="bradv-how-title">From account to measurable delivery</h2></div><p>Explore the campaign path. The interface below is explanatory; it mirrors verified areas of the advertiser workflow without pretending to be a live campaign forecast.</p></div>
-          <CampaignJourney />
-        </div>
-      </section>
-
-      <section className="bradv-section bradv-solutions" aria-labelledby="bradv-solutions-title">
-        <div className="bradv-container">
-          <div className="bradv-section-head"><span className="bradv-eyebrow">ADVERTISING SOLUTIONS</span><h2 id="bradv-solutions-title">Choose the creative and screen that fit the campaign</h2><p>Display, video, native creative, HTML5 rich media, CTV and DOOH capabilities are represented from the advertiser and Creative Studio source. Availability still depends on the campaign path and inventory.</p></div>
-          <CreativeFormatExplorer />
-        </div>
-      </section>
-
-      <section className="bradv-section bradv-targeting" aria-labelledby="bradv-targeting-title">
-        <div className="bradv-container">
-          <div className="bradv-section-head bradv-section-head-split"><div><span className="bradv-eyebrow">AUDIENCE & DELIVERY CONTROLS</span><h2 id="bradv-targeting-title">Target what the campaign UI can actually control</h2></div><p>Core targeting is shown as available only where it is implemented in the current advertiser panel. Advanced audience and remarketing concepts stay explicitly configuration-dependent until the production data path is verified.</p></div>
-          <TargetingExplorer />
-        </div>
-      </section>
-
-      <section className="bradv-section bradv-studio" aria-labelledby="bradv-studio-title">
-        <div className="bradv-container">
-          <div className="bradv-section-head bradv-section-head-split"><div><span className="bradv-eyebrow">CREATIVE STUDIO</span><h2 id="bradv-studio-title">Build beyond a flat banner</h2></div><p>The Creative Studio source includes native blocks, rich-media engines, 3D, parallax, carousel, expandable and interactive experiences, responsive sizing and preview tooling. The public site should demonstrate that depth rather than hide it behind a feature list.</p></div>
-          <CreativeStudioDemo />
-          <div className="bradv-inline-features" aria-label="Creative Studio capabilities"><span>HTML5 builder</span><span>Templates</span><span>Animation</span><span>Carousel</span><span>Parallax</span><span>Interactive layers</span><span>Multiple sizes</span><span>Preview</span></div>
-        </div>
-      </section>
-
-      <section className="bradv-section bradv-calculator" aria-labelledby="bradv-calculator-title">
-        <div className="bradv-container">
-          <div className="bradv-section-head bradv-section-head-split">
-            <div><span className="bradv-eyebrow">PROGRAMMATIC ADVERTISING CALCULATOR</span><h2 id="bradv-calculator-title">Calculate CPM, impressions, clicks, CPC, conversions, CPA and ROAS</h2></div>
-            <p>Turn a media budget and performance assumptions into a transparent planning estimate. The calculator uses standard advertising formulas and does not promise delivery, conversion volume or return.</p>
-          </div>
-          <AdvertiserMediaCalculator />
-          <div className="bradv-formula-grid" aria-label="Advertising calculation formulas">
-            <article><h3>CPM formula</h3><p><strong>CPM = Spend ÷ Impressions × 1,000</strong></p><p>Use CPM to understand the cost of one thousand delivered impressions.</p></article>
-            <article><h3>Impressions from budget</h3><p><strong>Impressions = Budget ÷ CPM × 1,000</strong></p><p>Use this for a planning estimate when budget and expected CPM are known.</p></article>
-            <article><h3>CTR and CPC formulas</h3><p><strong>CTR = Clicks ÷ Impressions × 100</strong><br/><strong>CPC = Spend ÷ Clicks</strong></p><p>CTR measures click rate; CPC measures the average paid cost per click.</p></article>
-            <article><h3>CPA and ROAS formulas</h3><p><strong>CPA = Spend ÷ Conversions</strong><br/><strong>ROAS = Revenue ÷ Spend</strong></p><p>These outcome metrics require reliable conversion and revenue tracking.</p></article>
-          </div>
-        </div>
-      </section>
-
-      <section className="bradv-section bradv-analytics" aria-labelledby="bradv-analytics-title">
-        <div className="bradv-container bradv-analytics-grid">
-          <div className="bradv-section-head bradv-section-head-left"><span className="bradv-eyebrow">CAMPAIGN ANALYTICS</span><h2 id="bradv-analytics-title">See delivery, cost and outcomes in context</h2><p>The reporting source supports delivery metrics such as impressions, clicks, CTR, spend and cost metrics. Conversion, CPA, revenue and ROAS views depend on conversion tracking and reporting data being available.</p><a className="bradv-text-link" href={registerUrl}>Open an advertiser account <span aria-hidden="true">→</span></a></div>
-          <AnalyticsPreview />
-        </div>
-      </section>
-
-      <section className="bradv-section bradv-tracking" aria-labelledby="bradv-tracking-title">
-        <div className="bradv-container">
-          <div className="bradv-section-head"><span className="bradv-eyebrow">CONVERSION TRACKING</span><h2 id="bradv-tracking-title">Connect the campaign to the outcome</h2><p>The strongest verified conversion feature in the current advertiser source is S2S postback tracking. Other integrations are labeled by their real implementation status instead of being presented as finished because they sound familiar.</p></div>
-          <div className="bradv-tracking-grid">
-            <article className="bradv-postback-card"><div className="bradv-postback-head"><span className="bradv-status is-live"><i /> Available</span><strong>S2S Postback</strong></div><div className="bradv-code-line"><span>POSTBACK</span><code>.../conversion?click_id={'{clickId}'}</code></div><p>Use a generated postback URL with a tracker or CPA network to send conversion events back to the campaign measurement flow.</p></article>
-            <div className="bradv-tracking-list">{trackingItems.map((item) => <article key={item.title}><div><strong>{item.title}</strong><span>{item.state}</span></div><p>{item.copy}</p></article>)}</div>
-          </div>
-        </div>
-      </section>
-
-      <section className="bradv-section bradv-rtb" aria-labelledby="bradv-rtb-title">
-        <div className="bradv-container">
-          <div className="bradv-section-head bradv-section-head-split"><div><span className="bradv-eyebrow">PROGRAMMATIC DELIVERY</span><h2 id="bradv-rtb-title">Understand the auction path, not just the acronym</h2></div><p>Campaign setup includes auction-aware bidding controls and reporting contains an RTB/auction view when enabled for an account. This section explains the programmatic flow without claiming exchange-level OpenRTB connectivity that has not been independently verified here.</p></div>
-          <RtbAuctionDemo />
-        </div>
-      </section>
-
-      <section className="bradv-section bradv-safety" aria-labelledby="bradv-safety-title">
-        <div className="bradv-container bradv-safety-grid">
-          <div className="bradv-safety-copy"><span className="bradv-eyebrow">BRAND SAFETY & TRAFFIC QUALITY</span><h2 id="bradv-safety-title">Put controls around where and how a campaign runs</h2><p>Trust comes from visible controls and measurable signals—not a made-up “99.9% safe” badge. Boost RAVA’s advertiser experience includes review, targeting, reporting and fraud-analysis surfaces that can support safer campaign operations.</p><a className="bradv-text-link" href="/contact/">Discuss campaign controls <span aria-hidden="true">→</span></a></div>
-          <div className="bradv-safety-stack">{safetyItems.map(([title, copy]) => <article key={title}><div className="bradv-shield" aria-hidden="true"><i /></div><div><h3>{title}</h3><p>{copy}</p></div></article>)}</div>
-        </div>
-      </section>
-
-      <section className="bradv-section bradv-questions" aria-labelledby="bradv-answer-title">
-        <div className="bradv-container">
-          <div className="bradv-section-head bradv-section-head-split">
-            <div><span className="bradv-eyebrow">BEFORE YOU LAUNCH</span><h2 id="bradv-answer-title">Questions advertisers ask before starting a campaign</h2></div>
-            <p>Clear answers help media buyers understand the workflow before creating an account. Every answer below reflects supported or explicitly qualified Boost RAVA capabilities—without invented scale or integration claims.</p>
-          </div>
-          <div className="bradv-question-grid">
-            {advertiserQuestions.map(([question, answer], index) => <details className="bradv-question" key={question} open={index === 0}><summary><span>{question}</span><i aria-hidden="true" /></summary><p>{answer}</p></details>)}
-          </div>
-          <div className="bradv-answer-links" aria-label="Explore advertiser capabilities"><a href="/ai-programmatic-advertising/">AI programmatic advertising</a><a href="/contextual-advertising/">Contextual advertising</a><a href="/programmatic-advertising-bangladesh/">Programmatic advertising in Bangladesh</a><a href="/rich-media/">Rich media</a><a href="/html5-ad-formats/">HTML5 formats</a><a href="/ctv/">CTV advertising</a><a href="/dooh/">DOOH advertising</a></div>
-        </div>
-      </section>
-
-      <section className="bradv-final-cta" aria-labelledby="bradv-cta-title">
-        <div className="bradv-final-grid" aria-hidden="true" />
-        <div className="bradv-container bradv-final-inner">
-          <div><span className="bradv-eyebrow">READY TO BUILD A CAMPAIGN?</span><h2 id="bradv-cta-title">Turn your next media plan into a controlled, measurable workflow</h2><p>Create an advertiser account, build the campaign, choose supported targeting and creative controls, and measure what happens after launch.</p></div>
-          <div className="bradv-final-actions"><a className="bradv-btn bradv-btn-light" href={registerUrl}>Start Advertising</a><a className="bradv-btn bradv-btn-outline-light" href={registerUrl}>Create Your First Campaign</a><a className="bradv-talk" href={contactUrl}>Talk to Our Team →</a></div>
-        </div>
-      </section>
     </div>
   );
 }

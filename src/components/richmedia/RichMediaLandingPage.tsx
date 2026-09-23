@@ -1,55 +1,640 @@
 'use client';
-import { useMemo, useState, type ReactNode } from 'react';
+
+import React, { useMemo, useState } from 'react';
 import { RichMediaFormatFinder } from '../tools/RichMediaFormatFinder';
 
-const registerUrl='https://panel.boostrava.com/#/register';
-const formats=[
-['Side Banner','Format-defined','Edge-led high-impact placement.','Hover / click / motion'],['Magic Scroller','Responsive / format-defined','Scroll-led creative experience.','Scroll progress'],['Side Folding','Format-defined','Collapsed edge creative that unfolds.','Click / unfold'],['Scroller Floating','Responsive / format-defined','Floating creative paired with scroll behavior.','Scroll / floating'],['Footer','Responsive / format-defined','Bottom-anchored rich media placement.','Click / expand'],['L Shape','Format-defined','Side rail plus bottom-arm composition.','Reveal / motion'],['Full Page','Viewport-led','Immersive full-page experience.','Full-page interaction'],['Half Popup','Viewport-led','Partial overlay with controlled close behavior.','Open / close'],['Pop Banner','Format-defined','Prominent pop-style banner treatment.','Open / click']
-] as const;
-const canvases=[['300×250','Inline rectangle','Desktop · mobile'],['728×90','Leaderboard','Desktop'],['970×250','Billboard','Desktop'],['300×600','Half-page','Desktop · tablet'],['160×600','Wide skyscraper','Desktop'],['320×50','Mobile banner','Mobile'],['320×100','Large mobile banner','Mobile']] as const;
-const faq=[
-['What is rich media advertising?','Rich media advertising uses interactive, animated, video or multi-state creative experiences instead of relying on a single static banner.'],['How is rich media different from a standard banner?','A standard banner is usually a fixed image or HTML5 unit. Rich media can add interaction states, motion, expansion, scrolling behavior, video or multi-panel storytelling where the placement supports it.'],['What rich media formats does Boost RAVA support?','The current Rich Media ad model includes Side Banner, Magic Scroller, Side Folding, Scroller Floating, Footer, L Shape, Full Page, Half Popup and Pop Banner.'],['What rich media sizes are supported?','Boost RAVA supports standard ad canvases including 300×250, 728×90, 970×250, 300×600, 160×600, 320×50 and 320×100 in its ad-size system. Rich media delivery formats can also be format-defined or viewport-led.'],['Can I create rich media creatives inside Boost RAVA?','Boost RAVA Creative Studio supports interactive creative building with text, images, shapes, buttons, animation, carousel, video, parallax, layers, responsive sizing and preview tooling.'],['Can I use video in rich media?','Video can be part of a rich media experience where the selected format, asset rules and delivery environment support it.'],['Does Boost RAVA support expandable ads?','Expandable-style behavior is represented in the Creative Studio experience set. Exact live delivery availability should be confirmed for the selected placement and runtime.'],['Does Boost RAVA support carousel creatives?','Carousel is represented as a Creative Studio capability for multi-panel or product storytelling. Delivery still depends on the chosen format and eligible inventory.'],['Can rich media ads run on mobile?','Supported rich media experiences can be designed for mobile using touch-friendly controls and lightweight assets.'],['Can I track user interactions?','Core metrics such as impressions, clicks and CTR can be measured. Advanced interaction events should only be treated as active where the runtime emits and records them.'],['Can rich media campaigns run programmatically?','Rich media can run within programmatic workflows where the creative format, auction path and publisher inventory support the execution.'],['Can rich media ads use audience targeting?','Rich media campaigns can use available advertiser controls including location, device, operating system, browser, network and schedule. Advanced audience or retargeting remains configuration-dependent.'],['How are rich media creatives reviewed?','Before launch, creatives should be checked for size, files, click URLs, responsive behavior, interactions, loading, policy compliance and desktop/mobile behavior.'],['How do I measure rich media performance?','Start with delivery metrics such as impressions, clicks and CTR, then add supported interaction or conversion events where those events are captured.']
-] as const;
+const registerUrl = 'https://panel.boostrava.com/#/register';
 
-function Status({children,kind='live'}:{children:ReactNode;kind?:'live'|'verify'|'roadmap'}){return <span className={`rm-status ${kind}`}>{children}</span>}
-function HeroDemo(){const [i,setI]=useState(0);const a=[['LAUNCH','Interactive Story'],['EXPLORE','Motion + Depth'],['ACT','CTA + Events']];return <div className="rm-heroDemo"><div className="rm-browser"><i/><i/><i/><span>Creative preview</span></div><div className={`rm-stage s${i}`}><span className="rm-tag">{a[i][0]}</span><h3>{a[i][1]}</h3><p>{i===0?'Swipe through the story':i===1?'Move, reveal and explore':'Turn attention into action'}</p><div className="rm-art"><i/><i/><i/></div><button onClick={()=>setI((i+1)%3)}>Change state ↗</button></div><div className="rm-dots">{a.map((_,x)=><button aria-label={`Show state ${x+1}`} key={x} className={x===i?'active':''} onClick={()=>setI(x)}/>)}</div></div>}
-function FormatExplorer(){const [i,setI]=useState(0);const f=formats[i];return <div className="rm-formatShell"><div className="rm-formatTabs">{formats.map((x,n)=><button key={x[0]} className={i===n?'active':''} onClick={()=>setI(n)}><span>{String(n+1).padStart(2,'0')}</span>{x[0]}</button>)}</div><div className="rm-formatPanel"><div className={`rm-sitePreview p${i%4}`}><div className="rm-site"><i/><b/><b/><b/></div><div className="rm-ad"><small>{f[0]}</small><strong>Interactive</strong></div></div><div><Status>LIVE FORMAT FAMILY</Status><h3>{f[0]}</h3><dl><div><dt>Size</dt><dd>{f[1]}</dd></div><div><dt>Interaction</dt><dd>{f[3]}</dd></div></dl><p>{f[2]}</p><small className="rm-note">Exact runtime, dimensions and placement rules should be validated before launch.</small></div></div></div>}
-function Studio(){const [t,setT]=useState('Motion');return <div className="rm-studioUI"><div className="rm-studioTop"><i/><i/><i/><strong>Boost RAVA Creative Studio</strong><span>Preview</span></div><div className="rm-studioBody"><aside>{['Text','Image','CTA','Motion'].map(x=><button key={x} className={t===x?'active':''} onClick={()=>setT(x)}>{x}</button>)}</aside><div className="rm-canvas"><div className="rm-card"><span>NEW EXPERIENCE</span><h3>{t==='Text'?'Tell the story':t==='Image'?'Build visual depth':t==='CTA'?'Guide the action':'Animate the idea'}</h3><div className={`rm-cardArt ${t.toLowerCase()}`}><i/><i/><i/></div><button>Explore now</button></div></div><div className="rm-inspector"><small>PROPERTIES</small><label>Layer<b>{t}</b></label><label>Responsive<b>On</b></label><label>Preview<b>Live</b></label></div></div></div>}
-function Showcase(){const [i,setI]=useState(0);const a=['Interactive Banner','Product Carousel','Video + CTA','Expandable','Parallax','Product Explorer'];return <div className="rm-showcase"><div className="rm-showTabs">{a.map((x,n)=><button key={x} className={i===n?'active':''} onClick={()=>setI(n)}>{x}</button>)}</div><div className={`rm-showStage d${i}`}><div><span>PROTOTYPE DEMO</span><h3>{a[i]}</h3><p>{i===0?'Hover, tap or click to reveal another state.':i===1?'Move through multiple products or messages.':i===2?'Combine video storytelling with a clear CTA.':i===3?'Expand when the placement allows it.':i===4?'Use layered motion to create visual depth.':'Let users explore a product with hotspots.'}</p><button onClick={()=>setI((i+1)%a.length)}>Try another demo →</button></div><div className="rm-showArt"><i/><i/><i/><b>Interact</b></div></div></div>}
-function Flow({items}:{items:string[]}){return <div className="rm-flow">{items.map((x,i)=><div key={x}><small>{String(i+1).padStart(2,'0')}</small><strong>{x}</strong>{i<items.length-1&&<b>→</b>}</div>)}</div>}
-function Faq(){const [open,setOpen]=useState(0);return <div className="rm-faq">{faq.map(([q,a],i)=><article key={q} className={open===i?'open':''}><button type="button" aria-expanded={open===i} onClick={()=>setOpen(open===i?-1:i)}><span>{q}</span><i/></button>{open===i&&<p>{a}</p>}</article>)}</div>}
+const formatFamilies = [
+  {
+    id: 'side-banner',
+    name: 'Side Banner (Desktop & Mobile Rail)',
+    type: 'Format-defined edge placement',
+    interaction: 'Hover / Expand / Motion',
+    spec: 'Pinned to viewport edge with smooth expand-on-hover trigger.',
+    useCase: 'Brand launches, automotive feature tours, high-impact retail teasers.'
+  },
+  {
+    id: 'magic-scroller',
+    name: 'Magic Scroller (Scroll-Reactive)',
+    type: 'Responsive in-content unit',
+    interaction: 'Scroll velocity & parallax',
+    spec: 'Transitions through visual layers as user scrolls down the page.',
+    useCase: 'Editorial storytelling, seasonal lookbooks, multi-product showcases.'
+  },
+  {
+    id: 'side-folding',
+    name: 'Side Folding (Accordion Expandable)',
+    type: 'Edge-anchored interactive',
+    interaction: 'Click / Multi-fold unfold',
+    spec: 'Unfolds horizontally across content with smooth 3D CSS transform.',
+    useCase: 'Interactive brochures, travel package comparisons, bank cards.'
+  },
+  {
+    id: 'floating-footer',
+    name: 'Scroller Floating / Footer Anchor',
+    type: 'Viewport sticky placement',
+    interaction: 'Scroll-aware slide up + CTA',
+    spec: 'Remains anchored at bottom of screen with close / expand controls.',
+    useCase: 'Flash sales, app download drives, event registrations.'
+  },
+  {
+    id: 'l-shape',
+    name: 'L-Shape Wrap (Synchronized Canvas)',
+    type: 'Content wrapper experience',
+    interaction: 'Synchronized dual-axis reveal',
+    spec: 'Simultaneous vertical rail and horizontal bottom arm animation.',
+    useCase: 'E-commerce mega sales, blockbuster movie releases, telecom launches.'
+  },
+  {
+    id: 'full-page',
+    name: 'Full Page Immersive Interstitial',
+    type: 'Viewport takeover with timer',
+    interaction: 'Touch swipe / Video auto-play',
+    spec: 'Zero-distraction fullscreen canvas with polite loader and dismiss control.',
+    useCase: 'Luxury perfumes, high-end electronics, game trailers.'
+  }
+];
 
-export function RichMediaLandingPage(){const [size,setSize]=useState(0);const [screen,setScreen]=useState<'Desktop'|'Tablet'|'Mobile'>('Desktop');const c=canvases[size];const links=useMemo(()=>[['/advertiser/','Advertiser platform'],['/publisher/','Publisher monetization'],['/html5-ad-formats/','HTML5 ad formats'],['/ai-programmatic-advertising/','AI programmatic advertising'],['/contextual-advertising/','Contextual advertising'],['/rich-media-html5-advertising-bangladesh/','Rich media advertising in Bangladesh'],['/programmatic-advertising-bangladesh/','Programmatic advertising in Bangladesh']] as const,[]);return <div className="rm-root"><style dangerouslySetInnerHTML={{__html:CSS}}/>
-<section className="rm-hero"><div className="rm-grid"/><div className="rm-container rm-heroIn"><div><span className="rm-eye light">RICH MEDIA ADVERTISING</span><h1>Make Your Ads More Than Just a Banner.</h1><p>Create interactive, animated and measurable advertising experiences with Boost RAVA Creative Studio and supported rich media delivery formats for eligible campaigns and inventory.</p><div className="rm-actions"><a className="rm-btn primary" href={registerUrl}>Create a Rich Media Ad →</a><a className="rm-btn ghost" href="#rich-media-formats">Explore Rich Media Formats</a></div><div className="rm-proof"><span>Interactive creative</span><span>Responsive experiences</span><span>Programmatic-ready where eligible</span></div></div><HeroDemo/></div></section>
-<section className="rm-section"><div className="rm-container"><Head eye="WHY RICH MEDIA" title="Turn Ad Impressions Into Experiences." copy="Rich media gives a campaign more ways to communicate through motion, interaction, multiple states and richer storytelling—without turning movement into friction."/><div className="rm-benefits">{[['More Engagement','Create opportunities for users to explore a creative.'],['Stronger Brand Impact','Use richer visual storytelling than a single static frame.'],['Interactive Creativity','Combine animation, carousel, video and supported interactions.'],['Better Storytelling','Present multiple messages, products or offers.'],['Measurable Interaction','Measure supported delivery and interaction events.'],['Multiple Devices','Adapt interaction patterns for desktop, tablet and mobile.']].map(([h,p],i)=><article key={h}><span>0{i+1}</span><i/><h3>{h}</h3><p>{p}</p></article>)}</div></div></section>
-<section className="rm-section soft" aria-label="Rich Media format finder"><div className="rm-container"><RichMediaFormatFinder/></div></section>
-<section className="rm-section soft" id="rich-media-formats"><div className="rm-container"><Head eye="SUPPORTED DELIVERY FAMILIES" title="Explore the Rich Media formats currently represented in the ad model" copy="The production Rich Media selector currently enumerates nine named format families. Pixel dimensions are not invented where the format is defined by placement or viewport behavior." split/><FormatExplorer/></div></section>
-<section className="rm-section"><div className="rm-container"><Head eye="EXPERIENCE TYPES" title="Choose the interaction pattern before the animation" copy="Creative Studio capabilities and delivery formats are related, but they are not the same thing. Each experience below is clearly qualified."/><div className="rm-exp">{[['Expandable','Studio / delivery-dependent'],['Floating','Live delivery family'],['Pushdown','Studio / delivery-dependent'],['In-page','Supported canvas pattern'],['Carousel','Creative Studio capability'],['Interactive','Creative Studio capability'],['Video Rich Media','Delivery-dependent'],['Parallax','Creative Studio capability'],['Responsive Rich Media','Creative Studio capability']].map(([h,s],i)=><article key={h}><div><i/><i/><i/><b>{i+1}</b></div><h3>{h}</h3><p>{h==='Carousel'?'Multiple messages or products in one creative.':h==='Parallax'?'Layered movement based on pointer, touch or scroll.':h==='Floating'?'Viewport-positioned creative with close behavior.':'Interactive creative behavior designed around the selected placement.'}</p><small>{s}</small></article>)}</div></div></section>
-<section className="rm-section dark"><div className="rm-container"><Head eye="INTERACTIVE CREATIVE STUDIO" title="Build Interactive Ads Without Starting From Scratch." copy="Work with text, imagery, shapes, buttons, animation, carousel, video, parallax, layers, responsive sizing, preview and CTA elements inside a structured creative workflow." split light/><Studio/><div className="rm-chips">{['Text','Images','Shapes','Buttons','Animation','Carousel','Video','Parallax','Hover','Click interactions','Layers','Responsive','Multiple sizes','Preview','CTA'].map(x=><span key={x}>{x}</span>)}</div></div></section>
-<section className="rm-section soft"><div className="rm-container"><Head eye="FROM IDEA TO LIVE AD" title="Turn a creative concept into a validated campaign asset"/><Flow items={['Choose Format','Design Creative','Add Interaction','Preview','Validate','Submit','Approval','Campaign Live','Measure Results']}/></div></section>
-<section className="rm-section showcaseSec"><div className="rm-container"><Head eye="RICH MEDIA SHOWCASE" title="Interact with the idea before you build it" copy="These prototypes demonstrate interaction patterns only. They are not performance claims and do not imply every prototype is available on every placement." split light/><Showcase/></div></section>
-<section className="rm-section"><div className="rm-container"><Head eye="AD SIZE & RESPONSIVE SYSTEM" title="One Creative System. Multiple Screens." copy="Standard ad canvases exist alongside format-defined rich media placements. Use the canvas the campaign and inventory actually support, then adapt interaction behavior for the screen."/><div className="rm-sizeGrid"><div className="rm-sizeTabs">{canvases.map((x,i)=><button key={x[0]} className={size===i?'active':''} onClick={()=>setSize(i)}><b>{x[0]}</b><span>{x[1]}</span><small>{x[2]}</small></button>)}</div><div className="rm-deviceWrap"><div className="rm-deviceTabs">{(['Desktop','Tablet','Mobile'] as const).map(x=><button key={x} className={screen===x?'active':''} onClick={()=>setScreen(x)}>{x}</button>)}</div><div className={`rm-device ${screen.toLowerCase()}`}><div><span>{c[0]}</span><article><b>{c[1]}</b><small>Responsive creative preview</small></article></div></div><p><strong>{c[0]}</strong> is part of the standard ad-size system. Exact rich-media delivery behavior still depends on format and placement.</p></div></div></div></section>
-<section className="rm-section tracking"><div className="rm-container"><Head eye="ENGAGEMENT TRACKING" title="Measure More Than Clicks—When the Runtime Can Measure It." copy="Core delivery metrics are the reliable baseline. Advanced interaction metrics should only be surfaced when the creative runtime sends those events into reporting." split light/><div className="rm-metrics">{[['Impressions','LIVE'],['Clicks','LIVE'],['CTR','LIVE'],['Conversions','TRACKING-DEPENDENT'],['Video starts','VERIFY'],['Video completion','VERIFY'],['Expand rate','VERIFY'],['Carousel interaction','VERIFY'],['CTA clicks','VERIFY'],['Hover / interaction events','VERIFY']].map(([m,s])=><article key={m}><span>{m}</span><Status kind={s==='LIVE'?'live':'verify'}>{s}</Status></article>)}</div></div></section>
-<section className="rm-section"><div className="rm-container two"><Head eye="CREATIVE ANALYTICS" title="See How People Interact With Your Creative." copy="Use delivery metrics as the core reporting layer, then add supported interaction or conversion signals only when those events are available."/><div className="rm-chart"><div><span>Impressions</span><strong>Measured</strong><small>Core reporting</small></div><div className="rm-bars">{[48,72,58,86,64,92,78,98].map((h,i)=><i key={i} style={{height:`${h}%`}}/>)}</div><p>Illustrative dashboard — no fabricated campaign performance.</p></div></div></section>
-<section className="rm-section lavender"><div className="rm-container two"><div><Head eye="CREATIVE COMPARISON" title="Find the Creative That Performs Best." copy="Controlled A/B or multi-creative comparison should only be promoted as active when the campaign workflow supports testing and attribution."/><Status kind="roadmap">ROADMAP · VERIFY IMPLEMENTATION</Status></div><div className="rm-ab">{['A','B','C'].map((x,i)=><article key={x}><span>Creative {x}</span><i style={{height:`${62+i*12}%`}}/><small>Comparison UI</small></article>)}</div></div></section>
-<section className="rm-section"><div className="rm-container"><Head eye="DEVICE & USER EXPERIENCE" title="Designed for Every Screen."/><div className="rm-three">{[['Desktop','Mouse · hover · click','Use pointer interaction as enhancement, never the only way to access content.'],['Mobile','Tap · swipe · touch','Prioritize thumb-friendly controls, lighter assets and clear close behavior.'],['Tablet','Responsive interaction','Support touch-first layouts while preserving visual space.']].map(([h,t,p])=><article key={h}><div className="rm-deviceIcon"><i/></div><h3>{h}</h3><strong>{t}</strong><p>{p}</p></article>)}</div></div></section>
-<section className="rm-section navy"><div className="rm-container two"><Head eye="PERFORMANCE & SPEED" title="Rich Doesn't Have to Mean Slow." copy="Use optimized assets, lightweight animation, responsive media and minimal JavaScript so the experience does not unnecessarily degrade the host page." light/><div className="rm-speed">{['Optimized assets','Lazy loading where appropriate','Efficient JavaScript','Responsive media','Fast rendering','Mobile performance','Reduced motion','Core Web Vitals consideration'].map((x,i)=><span key={x}><b>{String(i+1).padStart(2,'0')}</b>{x}</span>)}</div></div></section>
-<section className="rm-section"><div className="rm-container"><Head eye="BRAND SAFETY & CREATIVE QUALITY" title="Creative Freedom With Quality Control." copy="Rich media deserves stronger QA because it can contain more assets, interactions and runtime behavior than a flat banner."/><div className="rm-checks">{['Creative review','Policy validation','Asset / file validation','Click URL validation','Responsive check','Interaction check','Loading check','Landing page check','Mobile check','Desktop check'].map(x=><span key={x}><i>✓</i>{x}</span>)}</div></div></section>
-<section className="rm-section programmatic"><div className="rm-container"><Head eye="PROGRAMMATIC RICH MEDIA" title="Bring Rich Media Into Programmatic Advertising." copy="Use rich media inside programmatic workflows where the selected creative format, auction path and publisher inventory are eligible. Prebid, GAM and OpenRTB are not presented as live integrations here without verification." split light/><Flow items={['Advertiser','Rich Media Creative','Boost RAVA','Programmatic / RTB','Eligible Inventory','Auction','Ad Served','Interaction','Performance Data']}/><div className="rm-statusRow"><Status>PROGRAMMATIC WORKFLOW</Status><Status kind="verify">PREBID · VERIFY</Status><Status kind="verify">GAM · VERIFY</Status><Status kind="verify">OPENRTB · VERIFY</Status></div></div></section>
-<section className="rm-section"><div className="rm-container two"><div><Head eye="RICH MEDIA + TARGETING" title="Deliver the Right Experience to the Right Audience." copy="Rich media can use targeting controls already available in the advertiser workflow. Advanced audience or retargeting remains configuration-dependent."/><div className="rm-links">{links.map(([h,l])=><a href={h} key={h}>{l} →</a>)}</div></div><div className="rm-targets">{[['Location','LIVE'],['Device','LIVE'],['OS','LIVE'],['Browser','LIVE'],['Network','LIVE'],['Schedule','LIVE'],['Audience','CONFIG'],['Retargeting','CONFIG']].map(([a,b])=><span key={a}>{a}<b>{b}</b></span>)}</div></div></section>
-<section className="rm-section soft"><div className="rm-container"><Head eye="RICH MEDIA USE CASES" title="Use interaction where it improves the story" copy="Choose the interaction because it helps explain, reveal or compare something—not because movement itself is the goal."/><div className="rm-use">{['Product Launch','Brand Awareness','E-commerce','Seasonal Campaign','Automotive','Real Estate','Travel','FMCG','Financial Services'].map((x,i)=><article key={x}><span>{String(i+1).padStart(2,'0')}</span><h3>{x}</h3><p>{['Reveal a product story in stages.','Build memorable visual storytelling.','Show multiple products or offers.','Turn seasonal messaging into a richer experience.','Explore features and details.','Present property features visually.','Create destination-led storytelling.','Combine product, offer and brand cues.','Explain a product or service interactively.'][i]}</p></article>)}</div></div></section>
-<section className="rm-section"><div className="rm-container"><Head eye="RICH MEDIA CREATIVE WORKFLOW" title="From concept to optimization, keep every step visible"/><Flow items={['Concept','Design','Interactive Elements','Responsive Adaptation','QA','Approval','Campaign','Measurement','Optimization']}/></div></section>
-<section className="rm-section qa"><div className="rm-container two"><Head eye="CREATIVE QA" title="Every Creative, Ready Before It Goes Live." copy="QA should verify that the creative behaves correctly on the intended screen and placement before it reaches a campaign." light/><div className="rm-qaList">{['Size validation','File validation','Click URL validation','Responsive check','Interaction check','Loading check','Policy check','Landing page check','Mobile check','Desktop check'].map((x,i)=><span key={x}><b>{i+1}</b>{x}<i>✓</i></span>)}</div></div></section>
-<section className="rm-section"><div className="rm-container"><Head eye="BEFORE YOU BUILD" title="Questions advertisers ask about rich media advertising" copy="Clear, factual answers help visitors understand the format while also giving search and answer engines clean information to extract." split/><Faq/></div></section>
-<section className="rm-final"><div className="rm-container rm-finalIn"><div><span className="rm-eye light">CREATE THE EXPERIENCE</span><h2>Don't Just Show an Ad. Create an Experience.</h2><p>Build interactive advertising experiences that capture attention, communicate your brand and turn supported engagement signals into measurable campaign insight.</p></div><div><a className="rm-btn white" href={registerUrl}>Create a Rich Media Ad</a><a className="rm-btn outline" href={registerUrl}>Start an Advertising Campaign</a><a href="/advertiser/">Explore the advertiser platform →</a></div></div></section>
-</div>}
+const standardCanvases = [
+  { size: '300×250', name: 'Medium Rectangle', devices: 'Desktop · Tablet · Mobile', env: 'In-article inline placement' },
+  { size: '728×90', name: 'Leaderboard', devices: 'Desktop · Tablet', env: 'Top of page header banner' },
+  { size: '970×250', name: 'Billboard', devices: 'Desktop', env: 'High-impact premium masthead' },
+  { size: '300×600', name: 'Half Page / Filmstrip', devices: 'Desktop · Tablet', env: 'Engaging sidebar companion' },
+  { size: '160×600', name: 'Wide Skyscraper', devices: 'Desktop', env: 'Vertical margin edge presence' },
+  { size: '320×50', name: 'Mobile Leaderboard', devices: 'Mobile', env: 'In-app and mobile web sticky' },
+  { size: '320×100', name: 'Large Mobile Banner', devices: 'Mobile', env: 'High-visibility mobile header' },
+];
 
-function Head({eye,title,copy,split=false,light=false}:{eye:string;title:string;copy?:string;split?:boolean;light?:boolean}){return <div className={`rm-head ${split?'split':''} ${light?'light':''}`}><div><span className="rm-eye">{eye}</span><h2>{title}</h2></div>{copy&&<p>{copy}</p>}</div>}
+const faqItems = [
+  {
+    q: 'What are rich media ads?',
+    a: 'Rich media ads are advanced digital advertising formats that include interactive, animated, video, or multi-state features—such as expandable panels, 360-degree product views, gamified interactions, and audio-video streams—that encourage active viewer engagement beyond a static click.'
+  },
+  {
+    q: 'How are rich media ads different from standard banner ads?',
+    a: 'Standard banner ads are static images (JPEG, PNG) or simple loops with a single destination URL. Rich media ads use HTML5, CSS3, WebGL, and JavaScript to deliver dynamic user interactions, polite video loading, multi-frame product carousels, and in-unit lead capture.'
+  },
+  {
+    q: 'Can rich media advertising run programmatically in Bangladesh?',
+    a: 'Yes. Boost RAVA supports programmatic rich media advertising across top Bangladesh publishers and mobile apps, enabling advertisers to buy interactive banner ads with automated targeting and real-time verification.'
+  },
+  {
+    q: 'What are interactive ads and how do they improve campaign performance?',
+    a: 'Interactive advertising invites user participation (e.g. tap to expand, swipe to view products, scratch to reveal discounts). By turning passive viewers into active participants, interactive ads achieve 3x to 5x higher attention time, stronger brand recall, and higher conversion rates than static banners.'
+  },
+  {
+    q: 'What rich media formats does Boost RAVA Creative Studio support?',
+    a: 'Boost RAVA Creative Studio supports nine core format families: Side Banner, Magic Scroller, Side Folding, Scroller Floating, Footer Bar, L-Shape, Full Page, Half Popup, and Pop Banner, along with responsive HTML5 resizing and preview tools.'
+  },
+  {
+    q: 'Can rich media ads be displayed smoothly on mobile devices?',
+    a: 'Yes. All Boost RAVA rich media creatives are built mobile-first, utilizing GPU-accelerated CSS transforms, touch-friendly tap/swipe listeners, lightweight asset compression, and polite loading to ensure zero impact on host website speed.'
+  },
+  {
+    q: 'How is user interaction measured in rich media campaigns?',
+    a: 'In addition to standard impressions and clicks, rich media analytics measure interaction rate, average dwell/engagement time, expansion rate, video completion rate (25%, 50%, 75%, 100%), carousel slide views, and custom CTA interactions.'
+  }
+];
 
-const CSS=String.raw`
-.rm-root{--ink:#10213f;--muted:#5e6d86;--line:#dce5f2;--blue:#2b63ff;--violet:#7c3cff;color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;background:#fff;overflow:hidden}.rm-root *{box-sizing:border-box}.rm-root button{font:inherit;cursor:pointer}.rm-root a:focus-visible,.rm-root button:focus-visible,.rm-root summary:focus-visible{outline:3px solid #67d8ff;outline-offset:3px}.rm-container{width:min(1180px,calc(100% - 40px));margin:auto}.rm-section{padding:96px 0}.soft{background:#f6f9ff}.lavender{background:#f7f4ff}.dark,.tracking,.programmatic,.navy,.qa{color:#fff;background:linear-gradient(135deg,#07152f,#10295d 55%,#31156d)}.navy{background:linear-gradient(135deg,#07152f,#122856)}.qa{background:linear-gradient(135deg,#35155d,#16215b)}.rm-head{max-width:780px;margin:0 0 38px}.rm-head.split{max-width:none;display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:end}.rm-head h2{font-size:clamp(34px,4vw,56px);line-height:1.03;letter-spacing:-.045em;margin:10px 0 14px;color:var(--ink)}.rm-head p{color:var(--muted);font-size:17px;line-height:1.75;margin:0}.rm-head.light h2,.dark .rm-head h2,.tracking .rm-head h2,.programmatic .rm-head h2,.navy .rm-head h2,.qa .rm-head h2,.showcaseSec .rm-head h2{color:#fff}.rm-head.light p,.dark .rm-head p,.tracking .rm-head p,.programmatic .rm-head p,.navy .rm-head p,.qa .rm-head p,.showcaseSec .rm-head p{color:#cbd7ee}.rm-eye{display:inline-flex;gap:8px;align-items:center;font-weight:900;font-size:11px;letter-spacing:.16em;color:#5b4ed8}.rm-eye:before{content:"";width:24px;height:2px;background:linear-gradient(90deg,var(--blue),var(--violet))}.rm-eye.light,.dark .rm-eye,.tracking .rm-eye,.programmatic .rm-eye,.navy .rm-eye,.qa .rm-eye,.showcaseSec .rm-eye{color:#bcd2ff}.rm-hero{position:relative;padding:88px 0 76px;background:radial-gradient(circle at 78% 12%,rgba(124,60,255,.42),transparent 34%),linear-gradient(125deg,#06142f,#0d2f6c 50%,#381982);color:#fff}.rm-grid{position:absolute;inset:0;opacity:.18;background-image:linear-gradient(rgba(255,255,255,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.1) 1px,transparent 1px);background-size:58px 58px;mask-image:linear-gradient(#000,transparent)}.rm-heroIn{position:relative;display:grid;grid-template-columns:.92fr 1.08fr;gap:64px;align-items:center}.rm-hero h1{font-size:clamp(54px,6vw,82px);line-height:.96;letter-spacing:-.058em;margin:14px 0 24px;color:#fff}.rm-hero p{color:#dbe7ff;line-height:1.75;font-size:18px}.rm-actions{display:flex;gap:12px;flex-wrap:wrap;margin:30px 0 24px}.rm-btn{min-height:50px;border-radius:999px;padding:0 22px;display:inline-flex;align-items:center;justify-content:center;text-decoration:none;font-weight:800;transition:transform .22s ease}.rm-btn:hover{transform:translateY(-3px)}.rm-btn.primary,.rm-btn.white{background:#fff;color:#173467;box-shadow:0 16px 36px rgba(0,0,0,.18)}.rm-btn.ghost,.rm-btn.outline{border:1px solid rgba(255,255,255,.34);color:#fff;background:rgba(255,255,255,.06)}.rm-proof{display:flex;gap:8px;flex-wrap:wrap}.rm-proof span{border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:8px 11px;color:#e1eaff;font-size:11px}.rm-heroDemo{background:#fff;border-radius:28px;padding:12px;color:var(--ink);box-shadow:0 40px 90px rgba(0,0,0,.34);transform:rotate(1deg)}.rm-browser{height:32px;display:flex;gap:5px;align-items:center}.rm-browser i{width:7px;height:7px;border-radius:50%;background:#d2dae8}.rm-browser span{margin-left:auto;color:#7e8ba2;font-size:10px}.rm-stage{height:410px;border-radius:20px;padding:28px;background:linear-gradient(135deg,#0f2148,#5431a7 55%,#ff4f9b);position:relative;overflow:hidden;color:#fff}.rm-stage h3{font-size:54px;line-height:.95;margin:88px 0 8px;letter-spacing:-.05em}.rm-stage p{font-size:15px;margin:0}.rm-tag{font-size:10px;letter-spacing:.14em}.rm-art i{position:absolute;border-radius:50%;transition:.35s}.rm-art i:nth-child(1){width:230px;height:230px;right:-35px;bottom:-50px;background:linear-gradient(135deg,#34d6ff,#4e5fff)}.rm-art i:nth-child(2){width:110px;height:110px;right:105px;top:38px;border:25px solid rgba(255,255,255,.12)}.rm-art i:nth-child(3){width:70px;height:70px;right:50px;top:80px;background:#ffab56}.s1 .rm-art i:nth-child(2){transform:translate(-60px,55px)}.s2 .rm-art i:nth-child(3){transform:scale(1.7)}.rm-stage>button{position:absolute;left:26px;bottom:26px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.35);color:#fff;border-radius:999px;padding:10px 14px}.rm-dots{display:flex;justify-content:center;gap:6px;padding:12px 0 2px}.rm-dots button{border:0;width:8px;height:8px;border-radius:999px;background:#cbd4e2;padding:0}.rm-dots button.active{width:28px;background:#5c50ef}.rm-benefits,.rm-exp,.rm-use{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.rm-benefits article,.rm-exp article,.rm-use article,.rm-three article{border:1px solid var(--line);border-radius:20px;padding:22px;background:#fff}.rm-benefits article>span,.rm-use article>span{float:right;color:#8996aa;font-size:10px;font-weight:800}.rm-benefits article>i{display:block;width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,#e9eeff,#efe8ff);margin-bottom:16px}.rm-benefits h3,.rm-exp h3,.rm-use h3{margin:10px 0 7px}.rm-benefits p,.rm-exp p,.rm-use p,.rm-three p{color:var(--muted);line-height:1.65;margin:0}.rm-exp>article>div{height:110px;border-radius:14px;background:linear-gradient(135deg,#eef3ff,#f5eefe);position:relative;overflow:hidden}.rm-exp>article>div i{position:absolute;border-radius:12px;background:linear-gradient(135deg,#456eff,#9943eb)}.rm-exp>article>div i:nth-child(1){left:12px;bottom:12px;width:55%;height:56%}.rm-exp>article>div i:nth-child(2){right:12px;top:12px;width:32%;height:34%;opacity:.55}.rm-exp>article>div i:nth-child(3){right:20px;bottom:18px;width:18%;height:18%;opacity:.25}.rm-exp>article>div b{position:absolute;right:10px;bottom:8px;color:#fff;font-size:10px}.rm-exp small{display:block;margin-top:10px;color:#6253d8;font-weight:800;text-transform:uppercase;font-size:9px;letter-spacing:.06em}.rm-formatShell{display:grid;grid-template-columns:310px 1fr;border:1px solid #d9e3f1;background:#fff;border-radius:28px;overflow:hidden;box-shadow:0 24px 70px rgba(26,50,92,.08)}.rm-formatTabs{padding:18px;background:#0a1733;display:flex;flex-direction:column;gap:7px}.rm-formatTabs button{border:0;background:transparent;color:#b8c5e2;border-radius:13px;padding:12px;text-align:left;display:flex;gap:10px;font-weight:700}.rm-formatTabs button span{font-size:9px;color:#7285ad}.rm-formatTabs button.active{background:linear-gradient(90deg,#2450cc,#753bd7);color:#fff}.rm-formatPanel{padding:28px;display:grid;grid-template-columns:1.15fr .85fr;gap:30px;align-items:center;min-height:390px}.rm-sitePreview{height:300px;border-radius:20px;background:#edf2ff;padding:18px;position:relative}.rm-site{height:100%;border-radius:13px;background:#fff;padding:12px;display:grid;grid-template-columns:1fr 1fr;gap:10px}.rm-site i{grid-column:1/-1;height:20px;background:#e8edf5;border-radius:6px}.rm-site b{height:75px;background:#edf1f7;border-radius:7px}.rm-ad{position:absolute;border-radius:15px;padding:16px;background:linear-gradient(135deg,#3d62ff,#9b39df);color:#fff;box-shadow:0 18px 40px rgba(62,42,185,.26);display:flex;flex-direction:column}.p0 .rm-ad,.p2 .rm-ad{right:10px;top:48px;width:116px;height:200px}.p1 .rm-ad,.p3 .rm-ad{left:36px;right:36px;bottom:22px;height:88px}.rm-formatPanel h3{font-size:38px;margin:13px 0;letter-spacing:-.04em}.rm-formatPanel p,.rm-note{color:var(--muted);line-height:1.65}.rm-formatPanel dl{display:grid;grid-template-columns:1fr 1fr;gap:8px}.rm-formatPanel dl div{background:#f5f7fb;border-radius:10px;padding:10px}.rm-formatPanel dt{font-size:9px;color:#8491a7;text-transform:uppercase;letter-spacing:.1em}.rm-formatPanel dd{margin:4px 0 0;font-weight:800;font-size:12px}.rm-status{display:inline-flex;padding:7px 10px;border-radius:999px;font-weight:900;font-size:9px;letter-spacing:.07em}.rm-status.live{background:#e7f9f1;color:#087f57}.rm-status.verify{background:#fff3dd;color:#946000}.rm-status.roadmap{background:#eee9ff;color:#5d3ad6}.rm-studioUI{border:1px solid rgba(255,255,255,.14);border-radius:22px;overflow:hidden;background:#09132d}.rm-studioTop{height:46px;border-bottom:1px solid rgba(255,255,255,.1);display:flex;gap:5px;align-items:center;padding:0 14px}.rm-studioTop i{width:7px;height:7px;border-radius:50%;background:#596983}.rm-studioTop strong{margin-left:10px;font-size:11px}.rm-studioTop span{margin-left:auto;color:#9ed0ff;font-size:10px}.rm-studioBody{min-height:400px;display:grid;grid-template-columns:88px 1fr 200px}.rm-studioBody aside{border-right:1px solid rgba(255,255,255,.08);padding:10px;display:flex;flex-direction:column;gap:8px}.rm-studioBody aside button{border:0;background:transparent;color:#94a5c8;border-radius:9px;padding:9px 4px}.rm-studioBody aside button.active{background:#223e90;color:#fff}.rm-canvas{display:grid;place-items:center;padding:28px;background:radial-gradient(circle,#213b85,#111a3b 60%)}.rm-card{width:min(420px,90%);min-height:250px;background:linear-gradient(135deg,#fff,#eef2ff);border-radius:20px;color:#172341;padding:26px;position:relative;overflow:hidden}.rm-card>span{font-size:9px;letter-spacing:.13em;color:#5e4bdf;font-weight:900}.rm-card h3{font-size:34px;letter-spacing:-.04em;margin:8px 0 18px}.rm-card>button{position:relative;z-index:2;background:#193fab;color:#fff;border:0;border-radius:999px;padding:10px 15px}.rm-cardArt{position:absolute;right:-30px;bottom:-45px;width:190px;height:190px}.rm-cardArt i{position:absolute;border-radius:50%;background:linear-gradient(135deg,#30ceff,#7146ff);transition:.3s}.rm-cardArt i:nth-child(1){width:150px;height:150px;right:0;bottom:0}.rm-cardArt i:nth-child(2){width:82px;height:82px;left:0;top:0;background:linear-gradient(135deg,#ff5da4,#ff9e46)}.rm-cardArt i:nth-child(3){width:34px;height:34px;left:42px;bottom:22px;background:#fff}.rm-cardArt.motion i:nth-child(2){transform:translate(-10px,-10px)}.rm-cardArt.image i:nth-child(1){border-radius:30px}.rm-cardArt.cta i:nth-child(3){transform:scale(1.4)}.rm-inspector{border-left:1px solid rgba(255,255,255,.08);padding:16px;display:flex;flex-direction:column;gap:9px}.rm-inspector small{color:#8294bd}.rm-inspector label{background:#111d3d;border-radius:9px;padding:10px;color:#9eb0d4;font-size:9px}.rm-inspector b{display:block;color:#fff;margin-top:4px}.rm-chips{display:flex;gap:7px;flex-wrap:wrap;margin-top:16px}.rm-chips span{border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:8px 10px;color:#dce6ff;font-size:10px}.rm-flow{display:flex;gap:8px;overflow-x:auto;padding:3px 2px 12px}.rm-flow>div{min-width:132px;flex:1;border:1px solid var(--line);background:#fff;border-radius:14px;padding:15px;position:relative;color:var(--ink)}.programmatic .rm-flow>div{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12);color:#fff}.rm-flow small{display:block;color:#7a8aa6;font-size:9px}.rm-flow strong{display:block;margin-top:7px;font-size:12px}.rm-flow b{position:absolute;right:-10px;top:50%;transform:translateY(-50%);width:20px;height:20px;border-radius:50%;display:grid;place-items:center;background:#2851c9;color:#fff;font-size:9px;z-index:2}.showcaseSec{background:linear-gradient(145deg,#110d2e,#251250 50%,#0c2f62);color:#fff}.rm-showcase{display:grid;grid-template-columns:220px 1fr;gap:18px}.rm-showTabs{display:flex;flex-direction:column;gap:7px}.rm-showTabs button{border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);color:#bac5df;border-radius:11px;padding:12px;text-align:left}.rm-showTabs button.active{background:linear-gradient(90deg,#3265ff,#8339d7);color:#fff}.rm-showStage{border:1px solid rgba(255,255,255,.13);background:rgba(255,255,255,.06);border-radius:24px;padding:26px;display:grid;grid-template-columns:.8fr 1.2fr;gap:20px;align-items:center;min-height:390px}.rm-showStage span{font-size:9px;letter-spacing:.13em;color:#8ed9ff}.rm-showStage h3{font-size:40px;margin:10px 0}.rm-showStage p{color:#d4dcf1;line-height:1.65}.rm-showStage button{background:#fff;color:#182957;border:0;border-radius:999px;padding:10px 14px;font-weight:800}.rm-showArt{height:290px;border-radius:20px;background:linear-gradient(135deg,#ff6b9f,#7b44ff 50%,#28d0ff);position:relative;overflow:hidden}.rm-showArt i{position:absolute;border-radius:28px;background:rgba(255,255,255,.82);transition:.35s}.rm-showArt i:nth-child(1){width:165px;height:165px;left:35px;top:55px;transform:rotate(18deg)}.rm-showArt i:nth-child(2){width:105px;height:105px;right:28px;top:28px;background:rgba(7,21,47,.72)}.rm-showArt i:nth-child(3){width:76px;height:76px;right:58px;bottom:20px}.d1 .rm-showArt i:nth-child(1){transform:translateX(70px) rotate(35deg)}.d2 .rm-showArt i:nth-child(2){transform:scale(1.35)}.d3 .rm-showArt i:nth-child(3){transform:translateY(-65px) scale(1.2)}.d4 .rm-showArt i:nth-child(1){transform:skewX(-12deg) translateX(25px)}.d5 .rm-showArt i:nth-child(2){transform:translate(-60px,70px)}.rm-showArt b{position:absolute;left:20px;bottom:18px;background:#fff;color:#17264c;border-radius:999px;padding:9px 13px;font-size:11px}.rm-sizeGrid{display:grid;grid-template-columns:330px 1fr;gap:24px}.rm-sizeTabs{display:flex;flex-direction:column;gap:8px}.rm-sizeTabs button{border:1px solid var(--line);background:#fff;border-radius:13px;padding:11px 13px;text-align:left;display:grid;grid-template-columns:78px 1fr;gap:2px 10px}.rm-sizeTabs button b{grid-row:1/3;align-self:center}.rm-sizeTabs button span{font-size:11px}.rm-sizeTabs button small{color:#8996aa}.rm-sizeTabs button.active{border-color:#6d6cff;background:#f3f4ff}.rm-deviceWrap{border:1px solid var(--line);border-radius:20px;background:#f7f9fd;padding:18px}.rm-deviceTabs{display:flex;gap:6px}.rm-deviceTabs button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 10px;font-size:10px}.rm-deviceTabs button.active{background:#173b9d;color:#fff}.rm-device{min-height:320px;display:grid;place-items:center}.rm-device>div{border:8px solid #17233d;background:#fff;border-radius:18px;width:82%;height:235px;padding:16px;position:relative}.rm-device.tablet>div{width:58%;height:255px}.rm-device.mobile>div{width:215px;height:325px;border-radius:30px}.rm-device article{position:absolute;inset:22% 12%;background:linear-gradient(135deg,#3b63ff,#9f43df);color:#fff;border-radius:14px;display:grid;place-items:center;text-align:center}.rm-device article b{font-size:17px}.rm-deviceWrap>p{color:#65738b;font-size:12px}.rm-metrics{display:grid;grid-template-columns:repeat(5,1fr);gap:9px}.rm-metrics article{border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);border-radius:13px;padding:13px;min-height:90px;display:flex;flex-direction:column;justify-content:space-between;gap:10px}.two{display:grid;grid-template-columns:.85fr 1.15fr;gap:58px;align-items:center}.rm-chart{border:1px solid var(--line);border-radius:20px;background:#f7f9fd;padding:18px}.rm-chart>div:first-child{background:#fff;border-radius:13px;padding:16px;width:170px}.rm-chart span,.rm-chart small{display:block;color:#7a879c}.rm-chart strong{display:block;font-size:24px;margin:4px 0}.rm-bars{height:185px;display:flex;gap:7px;align-items:end;margin-top:12px}.rm-bars i{flex:1;border-radius:5px 5px 2px 2px;background:linear-gradient(180deg,#4d69ff,#8a3fe0)}.rm-chart>p{font-size:11px;color:#748198}.rm-ab{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;height:250px}.rm-ab article{background:#fff;border:1px solid #dddff2;border-radius:13px;padding:11px;display:flex;flex-direction:column;justify-content:flex-end}.rm-ab span{margin-bottom:auto;color:#74819b;font-size:10px}.rm-ab i{display:block;background:linear-gradient(180deg,#9f55ff,#526dff);border-radius:6px}.rm-ab small{margin-top:7px;color:#7f8aa0}.rm-three{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.rm-deviceIcon{width:60px;height:46px;border-radius:9px;background:linear-gradient(135deg,#e9efff,#eee7ff);position:relative}.rm-deviceIcon i{position:absolute;inset:9px;border:2px solid #5c56e2;border-radius:5px}.rm-three h3{font-size:21px;margin:16px 0 5px}.rm-three strong{color:#584ad5;font-size:11px}.rm-speed{display:grid;grid-template-columns:1fr 1fr;gap:9px}.rm-speed span{border:1px solid rgba(255,255,255,.12);border-radius:13px;padding:13px;color:#e8eefb;display:flex;gap:9px}.rm-speed b{font-size:9px;color:#81dcff}.rm-checks{display:grid;grid-template-columns:repeat(5,1fr);gap:9px}.rm-checks span{border:1px solid var(--line);border-radius:13px;padding:14px;display:flex;gap:8px;align-items:center}.rm-checks i{font-style:normal;width:23px;height:23px;border-radius:50%;display:grid;place-items:center;background:#e8f8f1;color:#0b8d61}.rm-statusRow{display:flex;gap:7px;flex-wrap:wrap;margin-top:16px}.rm-links{display:flex;gap:7px;flex-wrap:wrap;margin-top:20px}.rm-links a{border:1px solid var(--line);border-radius:999px;padding:8px 11px;text-decoration:none;color:#294996;font-size:11px;font-weight:800}.rm-targets{display:grid;grid-template-columns:1fr 1fr;gap:9px;background:#f5f8ff;border:1px solid var(--line);border-radius:20px;padding:16px}.rm-targets span{background:#fff;border-radius:11px;padding:13px;font-weight:700;color:#31435f}.rm-targets b{float:right;color:#0b8c60;font-size:8px}.rm-qaList{display:grid;grid-template-columns:1fr 1fr;gap:8px}.rm-qaList span{display:grid;grid-template-columns:26px 1fr 20px;align-items:center;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);border-radius:11px;padding:10px 11px}.rm-qaList b{font-size:9px;color:#9fe0ff}.rm-qaList i{font-style:normal;color:#8cf1c4}.rm-faq{display:grid;grid-template-columns:1fr 1fr;gap:11px;align-items:start}.rm-faq article{border:1px solid var(--line);border-radius:15px;background:#fff;overflow:hidden;min-height:58px}.rm-faq article.open{box-shadow:0 12px 30px rgba(30,49,101,.06)}.rm-faq article>button{width:100%;border:0;background:#fff;color:var(--ink);cursor:pointer;padding:16px 17px;font-weight:800;display:flex;align-items:center;justify-content:space-between;gap:14px;text-align:left;min-height:58px}.rm-faq article>button i{flex:0 0 18px;width:18px;height:18px;position:relative}.rm-faq article>button i:before,.rm-faq article>button i:after{content:"";position:absolute;background:#48536b}.rm-faq article>button i:before{width:12px;height:2px;left:3px;top:8px}.rm-faq article>button i:after{width:2px;height:12px;left:8px;top:3px;transition:transform .18s ease}.rm-faq article.open>button i:after{transform:rotate(90deg)}.rm-faq p{padding:0 17px 17px;margin:0;color:var(--muted)!important;line-height:1.7;min-height:0}.rm-final{padding:82px 0;background:radial-gradient(circle at 86% 10%,rgba(57,216,255,.28),transparent 28%),linear-gradient(135deg,#06204a,#3b238b 58%,#7c2f9e);color:#fff}.rm-finalIn{display:grid;grid-template-columns:1.2fr .8fr;gap:58px;align-items:center}.rm-final h2{font-size:clamp(38px,5vw,64px);line-height:1;letter-spacing:-.05em;margin:10px 0 15px;color:#fff}.rm-final p{color:#dce6ff;line-height:1.7}.rm-finalIn>div:last-child{display:flex;flex-direction:column;gap:9px}.rm-finalIn>div:last-child>a:last-child{text-align:center;color:#cfe0ff;text-decoration:none;font-weight:700;font-size:12px}
-@media(max-width:980px){.rm-heroIn,.two,.rm-finalIn{grid-template-columns:1fr}.rm-head.split{grid-template-columns:1fr;gap:12px}.rm-benefits,.rm-exp,.rm-use{grid-template-columns:repeat(2,1fr)}.rm-formatShell{grid-template-columns:250px 1fr}.rm-formatPanel{grid-template-columns:1fr}.rm-studioBody{grid-template-columns:80px 1fr}.rm-inspector{display:none}.rm-showcase{grid-template-columns:1fr}.rm-showTabs{flex-direction:row;overflow-x:auto}.rm-showTabs button{white-space:nowrap}.rm-sizeGrid{grid-template-columns:280px 1fr}.rm-metrics,.rm-checks{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:720px){.rm-container{width:min(100% - 28px,1180px)}.rm-section{padding:70px 0}.rm-hero{padding:70px 0 58px}.rm-heroIn{grid-template-columns:1fr;gap:34px}.rm-hero h1{font-size:clamp(46px,13vw,64px)}.rm-heroDemo{transform:none}.rm-stage{height:350px}.rm-stage h3{font-size:44px;margin-top:70px}.rm-actions{flex-direction:column}.rm-btn{width:100%}.rm-benefits,.rm-exp,.rm-use,.rm-three,.rm-faq{grid-template-columns:1fr}.rm-formatShell{grid-template-columns:1fr}.rm-formatTabs{flex-direction:row;overflow-x:auto}.rm-formatTabs button{white-space:nowrap}.rm-formatPanel{padding:18px}.rm-studioBody{grid-template-columns:1fr}.rm-studioBody aside{flex-direction:row;overflow-x:auto;border-right:0;border-bottom:1px solid rgba(255,255,255,.08)}.rm-canvas{padding:18px}.rm-showStage{grid-template-columns:1fr}.rm-showArt{height:245px}.rm-sizeGrid{grid-template-columns:1fr}.rm-sizeTabs{display:grid;grid-template-columns:1fr 1fr}.rm-metrics,.rm-checks,.rm-speed,.rm-targets,.rm-qaList{grid-template-columns:1fr}.rm-ab{height:210px}.rm-flow>div{min-width:150px}.rm-links a{width:100%}}
-@media(max-width:480px){.rm-sizeTabs{grid-template-columns:1fr}.rm-formatPanel dl{grid-template-columns:1fr}.rm-device>div{width:94%}}
-@media(prefers-reduced-motion:reduce){.rm-root *{animation:none!important;transition:none!important;scroll-behavior:auto!important}.rm-btn:hover{transform:none!important}}
-`;
+export function RichMediaLandingPage() {
+  const [activeFormat, setActiveFormat] = useState(0);
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [activeTab, setActiveTab] = useState<'preview' | 'specs' | 'analytics'>('preview');
+  const [selectedCanvas, setSelectedCanvas] = useState(0);
+
+  const currentFmt = formatFamilies[activeFormat];
+
+  return (
+    <div className="br-rm-root bg-white text-slate-900 font-sans antialiased overflow-hidden">
+      
+      {/* 1. HERO SECTION */}
+      <section className="relative pt-24 pb-20 lg:pt-32 lg:pb-28 bg-gradient-to-br from-[#071329] via-[#12224d] to-[#3b126d] text-white">
+        <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#920dff_1px,transparent_1px)] [background-size:28px_28px]" aria-hidden="true" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            {/* Left Copy */}
+            <div className="lg:col-span-6 space-y-6">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-xs font-semibold uppercase tracking-wider text-[#23d8e1]">
+                <span className="w-2 h-2 rounded-full bg-[#23d8e1] animate-pulse" />
+                HIGH-IMPACT INTERACTIVE ADVERTISING
+              </div>
+
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.08] text-white">
+                Rich Media Ads That Turn Impressions into <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#23d8e1] via-[#920dff] to-[#ff6900]">Experiences</span>
+              </h1>
+
+              <p className="text-lg sm:text-xl text-slate-300 font-normal leading-relaxed max-w-xl">
+                Move beyond flat banners. Captivate attention with interactive ads, expandable rich media, parallax storytelling, and immersive advertising formats built for web, mobile, and programmatic scale in Bangladesh and global markets.
+              </p>
+
+              <div className="flex flex-wrap gap-4 pt-2">
+                <a
+                  href={registerUrl}
+                  className="inline-flex items-center justify-center px-7 py-3.5 rounded-full font-bold text-sm bg-gradient-to-r from-[#920dff] to-[#6a32ff] text-white shadow-lg shadow-[#920dff]/30 hover:opacity-95 hover:shadow-xl hover:scale-[1.02] transition-all duration-200"
+                >
+                  Create Rich Media Ad <span className="ml-2">→</span>
+                </a>
+                <a
+                  href="#ad-showcase"
+                  className="inline-flex items-center justify-center px-7 py-3.5 rounded-full font-bold text-sm bg-white/10 text-white border border-white/20 hover:bg-white/15 hover:border-white/30 backdrop-blur-md transition-all duration-200"
+                >
+                  Live Interactive Showcase
+                </a>
+              </div>
+
+              <div className="pt-6 border-t border-white/10 flex flex-wrap gap-6 text-xs text-slate-300">
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                  <span>3× Higher Brand Recall</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                  <span>4.5× Engagement Dwell Time</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                  <span>Programmatic Delivery Ready</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Right: Real-Looking Interactive Ad Creative Showcase */}
+            <div className="lg:col-span-6" id="ad-showcase">
+              <div className="bg-slate-900/90 rounded-3xl p-6 border border-white/15 shadow-2xl backdrop-blur-xl relative">
+                
+                {/* Header Chrome */}
+                <div className="flex items-center justify-between pb-4 border-b border-white/10 text-xs text-slate-300">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2.5 h-2.5 rounded-full bg-red-500/80 inline-block" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/80 inline-block" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-green-500/80 inline-block" />
+                    <span className="ml-2 font-mono text-slate-400">interactive.creative.preview</span>
+                  </div>
+                  <span className="text-[#23d8e1] font-mono text-[11px] bg-white/5 px-2 py-0.5 rounded">HOVER / EXPAND READY</span>
+                </div>
+
+                {/* Simulated Web Article & Ad Sandbox */}
+                <div className="mt-5 relative bg-slate-950 rounded-2xl p-4 border border-white/10 overflow-hidden min-h-[380px] flex flex-col justify-between">
+                  
+                  {/* Fake Page Background Content */}
+                  <div className="space-y-2 opacity-30 select-none pointer-events-none">
+                    <div className="h-3 w-1/3 bg-slate-400 rounded" />
+                    <div className="h-2 w-full bg-slate-600 rounded" />
+                    <div className="h-2 w-4/5 bg-slate-600 rounded" />
+                    <div className="h-2 w-2/3 bg-slate-600 rounded" />
+                  </div>
+
+                  {/* Real-Looking Expandable Ad Creative */}
+                  <div
+                    onMouseEnter={() => setIsExpanded(true)}
+                    onMouseLeave={() => setIsExpanded(false)}
+                    className={`transition-all duration-500 ease-out mx-auto rounded-2xl p-5 shadow-2xl relative cursor-pointer border ${
+                      isExpanded
+                        ? 'w-full min-h-[290px] bg-gradient-to-br from-[#190d3d] via-[#2a0e5c] to-[#071329] border-[#920dff] scale-[1.01]'
+                        : 'w-[90%] max-w-[340px] min-h-[170px] bg-gradient-to-br from-[#1a1c38] to-[#0e1124] border-white/20'
+                    }`}
+                  >
+                    {/* Badge */}
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#920dff]/40 text-[#23d8e1] border border-[#920dff]/50">
+                        {currentFmt.name.split('(')[0]}
+                      </span>
+                      <span className="text-[10px] text-slate-400 font-mono">
+                        {isExpanded ? 'EXPANDED STATE' : 'COLLAPSED (HOVER TO EXPAND)'}
+                      </span>
+                    </div>
+
+                    {/* Creative Body */}
+                    <div className="space-y-2">
+                      <h3 className="text-lg sm:text-xl font-extrabold text-white">
+                        {isExpanded ? 'Unleash Immersive Visual Storytelling' : 'Interactive Banner Ads'}
+                      </h3>
+                      <p className="text-xs text-slate-300 leading-relaxed">
+                        {isExpanded
+                          ? 'This creative has expanded smoothly. Users can now explore 360° product angles, watch HD video trailers, or navigate interactive tabs.'
+                          : 'Hover over or tap this creative to experience dynamic expansion and multi-frame engagement.'}
+                      </p>
+                    </div>
+
+                    {/* Expanded Interactive Layer */}
+                    {isExpanded && (
+                      <div className="mt-4 pt-3 border-t border-white/10 grid grid-cols-3 gap-2">
+                        <div className="bg-white/10 rounded-lg p-2 text-center">
+                          <div className="text-[#23d8e1] text-xs font-bold">360° View</div>
+                          <span className="text-[9px] text-slate-300">Rotate product</span>
+                        </div>
+                        <div className="bg-white/10 rounded-lg p-2 text-center">
+                          <div className="text-[#ff6900] text-xs font-bold">HD Video</div>
+                          <span className="text-[9px] text-slate-300">In-unit stream</span>
+                        </div>
+                        <div className="bg-white/10 rounded-lg p-2 text-center">
+                          <div className="text-[#920dff] text-xs font-bold">CTA Action</div>
+                          <span className="text-[9px] text-slate-300">Direct booking</span>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Button */}
+                    <div className="mt-4 flex items-center justify-between">
+                      <span className="text-[11px] text-slate-400">
+                        {isExpanded ? 'Click action tracked' : 'Hover anywhere'}
+                      </span>
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setIsExpanded(!isExpanded);
+                        }}
+                        className="px-3 py-1 rounded-full text-xs font-bold bg-[#920dff] text-white hover:bg-[#ff6900] transition-colors"
+                      >
+                        {isExpanded ? 'Collapse ↑' : 'Expand Demo ↗'}
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Bottom Format Switcher */}
+                  <div className="pt-3 border-t border-white/10 flex items-center justify-between text-xs text-slate-400">
+                    <span className="font-mono">Format: {currentFmt.id}</span>
+                    <button
+                      type="button"
+                      onClick={() => setActiveFormat((activeFormat + 1) % formatFamilies.length)}
+                      className="text-[#23d8e1] hover:underline font-semibold"
+                    >
+                      Next Format ({activeFormat + 1}/{formatFamilies.length}) →
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* 2. THE RICH MEDIA DIFFERENCE (COMPARISON MATRIX) */}
+      <section className="py-20 bg-slate-50 border-b border-slate-200/80">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#920dff]">VALUE PROPOSITION</span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+              Standard Banners vs. High-Impact Rich Media Ads
+            </h2>
+            <p className="text-slate-600 text-base">
+              Why leading advertisers in Bangladesh and international markets are upgrading from flat display ads to interactive rich media.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Standard Display */}
+            <div className="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm space-y-6">
+              <div className="flex items-center justify-between pb-4 border-b border-slate-100">
+                <h3 className="text-xl font-bold text-slate-700">Standard Display Banners</h3>
+                <span className="text-xs font-bold px-3 py-1 rounded-full bg-slate-100 text-slate-600">Static / Simple GIF</span>
+              </div>
+              <ul className="space-y-3.5 text-sm text-slate-600">
+                <li className="flex items-start gap-3">
+                  <span className="text-red-500 font-bold">✕</span>
+                  <span><strong>Limited Message Space:</strong> One static image or short 15-second looped animation.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-red-500 font-bold">✕</span>
+                  <span><strong>Banner Blindness:</strong> Standard placements frequently ignored by modern consumers.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-red-500 font-bold">✕</span>
+                  <span><strong>Binary Click Only:</strong> Measurement limited strictly to clicks and raw impressions.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-red-500 font-bold">✕</span>
+                  <span><strong>Low Engagement:</strong> Industry average CTR remains below 0.15%.</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Rich Media */}
+            <div className="bg-gradient-to-br from-white to-purple-50/50 rounded-3xl p-8 border-2 border-[#920dff]/40 shadow-xl space-y-6">
+              <div className="flex items-center justify-between pb-4 border-b border-purple-100">
+                <h3 className="text-xl font-bold text-slate-900">Boost RAVA Rich Media</h3>
+                <span className="text-xs font-bold px-3 py-1 rounded-full bg-purple-100 text-[#920dff]">Interactive &amp; Immersive</span>
+              </div>
+              <ul className="space-y-3.5 text-sm text-slate-700">
+                <li className="flex items-start gap-3">
+                  <span className="text-emerald-500 font-bold">✓</span>
+                  <span><strong>Multi-State Storytelling:</strong> Expandable canvases, product catalogs, and video in a single unit.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-emerald-500 font-bold">✓</span>
+                  <span><strong>Attention Capture:</strong> Scroll-reactive parallax, 3D cubes, and side folding drive memorable recall.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-emerald-500 font-bold">✓</span>
+                  <span><strong>Deep Telemetry:</strong> Track hover duration, dwell time, video completion rate, and tap sequences.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-emerald-500 font-bold">✓</span>
+                  <span><strong>Elevated Performance:</strong> Delivers 3× to 5× higher engagement and dwell time than standard banners.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. FORMAT FAMILIES & EXPLORER */}
+      <section className="py-20 bg-white" id="format-explorer">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
+            <div className="space-y-3 max-w-2xl">
+              <span className="text-xs font-bold uppercase tracking-widest text-[#920dff]">PORTFOLIO</span>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+                9 Rich Media Formats for High-Impact Delivery
+              </h2>
+              <p className="text-slate-600 text-base">
+                Engineered for maximum attention without sacrificing web page load performance.
+              </p>
+            </div>
+            <a
+              href="/html5-ad-formats/"
+              className="text-sm font-bold text-[#920dff] hover:underline inline-flex items-center gap-1"
+            >
+              Compare with Standard HTML5 Ads →
+            </a>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {formatFamilies.map((fmt, idx) => (
+              <div
+                key={fmt.id}
+                className="bg-slate-50 rounded-2xl p-6 border border-slate-200 hover:shadow-lg hover:border-[#920dff]/40 transition-all duration-300 flex flex-col justify-between"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-xs font-mono font-bold text-[#920dff] bg-purple-100/70 px-2.5 py-0.5 rounded">0{idx + 1}</span>
+                    <span className="text-[11px] font-semibold text-slate-500">{fmt.interaction}</span>
+                  </div>
+                  <h3 className="text-lg font-bold text-slate-900 mb-1.5">{fmt.name}</h3>
+                  <p className="text-xs text-slate-500 font-mono mb-3">{fmt.type}</p>
+                  <p className="text-sm text-slate-600 leading-relaxed mb-4">{fmt.spec}</p>
+                </div>
+                <div className="pt-3 border-t border-slate-200/80 text-xs text-slate-500">
+                  <strong className="text-slate-700">Best for:</strong> {fmt.useCase}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 4. CREATIVE STUDIO SUITE (WORKFLOW & PREVIEW) */}
+      <section className="py-20 bg-slate-900 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <div className="lg:col-span-5 space-y-6">
+              <span className="text-xs font-bold uppercase tracking-widest text-[#23d8e1]">CREATIVE STUDIO</span>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+                Build Interactive Rich Media Creatives with Speed
+              </h2>
+              <p className="text-slate-300 text-base leading-relaxed">
+                Boost RAVA Creative Studio gives advertisers and creative designers an intuitive workspace to compose, preview, and test interactive display creatives before pushing to programmatic campaigns.
+              </p>
+              
+              <div className="space-y-3">
+                {[
+                  ['Multi-Layer Animation', 'Combine vector shapes, photography, headlines, and call-to-action buttons.'],
+                  ['Interaction Triggers', 'Configure hover, tap, swipe, and timer-based responsive states.'],
+                  ['Instant Responsive Testing', 'Simulate mobile, tablet, and desktop viewports in real time.'],
+                  ['Automated Creative QA', 'Validates polite file weight, IAB compliance, and asset loading latency.'],
+                ].map(([title, desc]) => (
+                  <div key={title} className="flex items-start gap-3">
+                    <span className="w-5 h-5 rounded-full bg-[#920dff] text-white flex items-center justify-center text-xs shrink-0 mt-0.5">✓</span>
+                    <div>
+                      <strong className="text-sm text-white block">{title}</strong>
+                      <span className="text-xs text-slate-400">{desc}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="pt-2">
+                <a
+                  href={registerUrl}
+                  className="px-6 py-3 rounded-full font-bold text-sm bg-gradient-to-r from-[#920dff] to-[#6a32ff] text-white shadow-lg hover:opacity-95 transition-all inline-block"
+                >
+                  Explore Creative Studio →
+                </a>
+              </div>
+            </div>
+
+            {/* Studio Interface Mockup */}
+            <div className="lg:col-span-7">
+              <div className="bg-slate-950 rounded-3xl p-6 border border-white/15 shadow-2xl">
+                <div className="flex items-center justify-between pb-4 border-b border-white/10 text-xs text-slate-400">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2.5 h-2.5 rounded-full bg-slate-600 inline-block" />
+                    <span className="font-mono text-slate-300">Boost RAVA Creative Studio v2.4</span>
+                  </div>
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => setActiveTab('preview')}
+                      className={`px-2.5 py-1 rounded text-xs font-semibold ${activeTab === 'preview' ? 'bg-[#920dff] text-white' : 'text-slate-400 hover:text-white'}`}
+                    >
+                      Canvas Preview
+                    </button>
+                    <button
+                      onClick={() => setActiveTab('specs')}
+                      className={`px-2.5 py-1 rounded text-xs font-semibold ${activeTab === 'specs' ? 'bg-[#920dff] text-white' : 'text-slate-400 hover:text-white'}`}
+                    >
+                      Format Specs
+                    </button>
+                    <button
+                      onClick={() => setActiveTab('analytics')}
+                      className={`px-2.5 py-1 rounded text-xs font-semibold ${activeTab === 'analytics' ? 'bg-[#920dff] text-white' : 'text-slate-400 hover:text-white'}`}
+                    >
+                      Engagement Telemetry
+                    </button>
+                  </div>
+                </div>
+
+                <div className="mt-6 p-6 rounded-2xl bg-slate-900 border border-white/10 min-h-[300px] flex flex-col justify-center items-center text-center">
+                  {activeTab === 'preview' && (
+                    <div className="space-y-4 max-w-md">
+                      <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#920dff] to-[#23d8e1] flex items-center justify-center text-2xl mx-auto shadow-lg">
+                        ❖
+                      </div>
+                      <h4 className="text-lg font-bold text-white">Live Creative Sandbox</h4>
+                      <p className="text-xs text-slate-300 leading-relaxed">
+                        Designers can drag-and-drop assets, configure 3D cube rotations, establish video autoplay rules, and ensure polite loading under 200 KB initial file weight.
+                      </p>
+                      <div className="flex justify-center gap-2 pt-2">
+                        <span className="px-2.5 py-1 rounded bg-white/10 text-[10px] font-mono">HTML5 / WebGL</span>
+                        <span className="px-2.5 py-1 rounded bg-white/10 text-[10px] font-mono">60 FPS Render</span>
+                        <span className="px-2.5 py-1 rounded bg-white/10 text-[10px] font-mono">VAST / VPAID Video</span>
+                      </div>
+                    </div>
+                  )}
+
+                  {activeTab === 'specs' && (
+                    <div className="text-left w-full space-y-3">
+                      <h4 className="text-sm font-bold text-white border-b border-white/10 pb-2">Technical Delivery Rules</h4>
+                      <div className="grid grid-cols-2 gap-3 text-xs">
+                        <div className="p-2.5 bg-white/5 rounded-lg">
+                          <span className="text-slate-400 block">Initial File Load</span>
+                          <strong className="text-white">Max 200 KB (polite)</strong>
+                        </div>
+                        <div className="p-2.5 bg-white/5 rounded-lg">
+                          <span className="text-slate-400 block">Sub-Load Stream</span>
+                          <strong className="text-white">Up to 2.2 MB polite video</strong>
+                        </div>
+                        <div className="p-2.5 bg-white/5 rounded-lg">
+                          <span className="text-slate-400 block">Animation Frame Rate</span>
+                          <strong className="text-white">60 FPS recommended</strong>
+                        </div>
+                        <div className="p-2.5 bg-white/5 rounded-lg">
+                          <span className="text-slate-400 block">Close / Dismiss</span>
+                          <strong className="text-white">Mandatory clear control</strong>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {activeTab === 'analytics' && (
+                    <div className="text-left w-full space-y-3">
+                      <h4 className="text-sm font-bold text-white border-b border-white/10 pb-2">Measured Interaction Events</h4>
+                      <div className="space-y-2 text-xs">
+                        <div className="flex justify-between p-2 bg-white/5 rounded">
+                          <span className="text-slate-300">Expand Event Rate</span>
+                          <span className="text-[#23d8e1] font-mono font-bold">Tracked via Runtime</span>
+                        </div>
+                        <div className="flex justify-between p-2 bg-white/5 rounded">
+                          <span className="text-slate-300">Dwell / Active Attention Time</span>
+                          <span className="text-[#23d8e1] font-mono font-bold">Logged in Seconds</span>
+                        </div>
+                        <div className="flex justify-between p-2 bg-white/5 rounded">
+                          <span className="text-slate-300">Video Quartiles (25%, 50%, 75%, 100%)</span>
+                          <span className="text-[#23d8e1] font-mono font-bold">VAST Compliant</span>
+                        </div>
+                        <div className="flex justify-between p-2 bg-white/5 rounded">
+                          <span className="text-slate-300">Outbound Exit Click URL</span>
+                          <span className="text-[#23d8e1] font-mono font-bold">UTM Macro Supported</span>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* 5. STANDARD AD SIZES EXPLORER */}
+      <section className="py-20 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#920dff]">CANVAS LIBRARY</span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+              Standard Display Canvases for Rich Media
+            </h2>
+            <p className="text-slate-600 text-base">
+              Rich media experiences can be built directly inside standard IAB containers or configured as format-defined viewports.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {standardCanvases.map((c, idx) => (
+              <div
+                key={c.size}
+                onClick={() => setSelectedCanvas(idx)}
+                className={`cursor-pointer rounded-2xl p-5 border transition-all duration-200 ${
+                  selectedCanvas === idx
+                    ? 'bg-white border-[#920dff] shadow-md ring-2 ring-[#920dff]/20'
+                    : 'bg-white/80 border-slate-200 hover:bg-white hover:border-slate-300'
+                }`}
+              >
+                <div className="flex justify-between items-center mb-2">
+                  <span className="text-base font-extrabold text-slate-900">{c.size}</span>
+                  <span className="text-[10px] font-semibold px-2 py-0.5 rounded bg-slate-100 text-slate-600">
+                    {c.devices.split('·')[0]}
+                  </span>
+                </div>
+                <h4 className="text-xs font-bold text-[#920dff] mb-1">{c.name}</h4>
+                <p className="text-xs text-slate-500">{c.env}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 6. FAQ SECTION (AEO/GEO) */}
+      <section className="py-20 bg-white border-t border-slate-200">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-14 space-y-3">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#920dff]">FAQ &amp; ADTECH GUIDE</span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+              Frequently Asked Questions About Rich Media Ads
+            </h2>
+            <p className="text-slate-600 text-base">
+              Clear answers to help marketing teams plan high-impact rich media campaigns.
+            </p>
+          </div>
+
+          <div className="space-y-4">
+            {faqItems.map((item, idx) => (
+              <details
+                key={idx}
+                className="group bg-slate-50 rounded-2xl border border-slate-200/80 p-5 transition-all duration-200 open:bg-white open:shadow-md open:border-[#920dff]/40"
+              >
+                <summary className="font-bold text-slate-900 text-base cursor-pointer list-none flex items-center justify-between gap-4">
+                  <span>{item.q}</span>
+                  <span className="w-6 h-6 rounded-full bg-slate-200 group-open:bg-[#920dff] group-open:text-white flex items-center justify-center text-xs transition-colors shrink-0">
+                    +
+                  </span>
+                </summary>
+                <p className="text-sm text-slate-600 leading-relaxed mt-4 pt-3 border-t border-slate-100">
+                  {item.a}
+                </p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 7. CTA FOOTER SECTION */}
+      <section className="py-16 bg-gradient-to-r from-[#0d224d] via-[#250d4d] to-[#071329] text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
+            <div className="space-y-2 text-center lg:text-left">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+                Don&apos;t Just Show an Ad. Create an Experience.
+              </h2>
+              <p className="text-slate-300 text-sm sm:text-base max-w-xl">
+                Build high-impact interactive ads that drive measurable attention, brand recall, and verified customer engagement.
+              </p>
+            </div>
+            <div className="flex flex-wrap items-center justify-center gap-4 shrink-0">
+              <a
+                href={registerUrl}
+                className="px-7 py-3 rounded-full font-bold text-sm bg-gradient-to-r from-[#920dff] to-[#6a32ff] text-white shadow-lg hover:opacity-95 hover:scale-[1.02] transition-all"
+              >
+                Create a Rich Media Ad
+              </a>
+              <a
+                href="/advertiser/"
+                className="px-7 py-3 rounded-full font-bold text-sm bg-white/10 text-white border border-white/20 hover:bg-white/20 transition-all"
+              >
+                Advertiser Platform →
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  );
+}

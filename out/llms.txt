@@ -10,6 +10,7 @@ Boost RAVA is an advertising technology platform for advertisers and publishers.
 - Contact: https://www.boostrava.com/contact/
 
 ## Core product pages
+- Programmatic advertising: https://www.boostrava.com/programmatic-advertising/
 - Programmatic infrastructure: https://www.boostrava.com/programmatic-infrastructure/
 - AI programmatic advertising: https://www.boostrava.com/ai-programmatic-advertising/
 - Contextual advertising: https://www.boostrava.com/contextual-advertising/
